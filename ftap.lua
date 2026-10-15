@@ -1,460 +1,1439 @@
---[[
-   ___ _         _       ___         _          _   _           __   ___    
-  / __| |_  _ __| |___  | _ \_ _ ___| |_ ___ __| |_(_)___ _ _   \ \ / / |    
- | (__| | || / _` / -_) |  _/ '_/ _ \  _/ -_) _|  _| / _ \ ' \   \ V /| |   
-  \___|_|\_, \__,_\___| |_| |_| \___/\__\___\__|\__|_\___/_||_|   \_/ |_|    
-         |__/   
-    
-  https://clydeprotectionde.cloud   
-  build 73E327EA   
-]]
-local _IlO12=("")["\99\104\097\114"]
-local _l0_1d=(function() local __I1e=""
-for _,_c in ipairs({113,116,102,105,120,121,119,110,115,108}) do __I1e=__I1e.._IlO12((_c-5+256)%256) end
-local _f=(type(getfenv)=="function" and getfenv(0) or _G)[__I1e]
-if _f then return _f end
-__I1e=""
-for _,_c in ipairs({113,116,102,105}) do __I1e=__I1e.._IlO12((_c-5+256)%256) end
-return (type(getfenv)=="function" and getfenv(0) or _G)[__I1e] end)()
-local _0001c=_l0_1d
-local function _lOO_1f(_011g,__O1h) local _n=""
-for _i=1,#_011g do _n=_n.._IlO12((_011g[_i]-__O1h+256)%256) end
-return _l0_1d("\114\101\116\117\114\110\032".._n)() end
-local _1ll19=_lOO_1f({127,113,128,121,113,128,109,128,109,110,120,113},12)
-do local _l_1i=_lOO_1f({238,245,0,191,190},140)
-_01_13=_l_1i["\98\120\111\114"] end
-do local _I01k=_lOO_1f({176,183,194,129,128},78)
-_1_015=_I01k["\114\115\104\105\102\116"] end
-local _0O01a=_lOO_1f({5,244,10,250,248,7},147)
-local _OIl1b=_lOO_1f({39,22,44,40,26,41},181)
-do local _lI1l=_lOO_1f({39,20,21,31,24},179)
-_0OI16=_lI1l["\099\111\110\99\097\116"] end
-local _OOl18=_lOO_1f({14,19,10,255},154)
-do local _lO1j=_lOO_1f({155,162,173,108,107},57)
-_lI114=_lO1j["\098\97\110\100"] end
-local _l__17=_lOO_1f({81,68,66,77,77},225)
-local function _O0l01n(_0I1m) local _111o=249290851
-local _0l1p={}
-for _111q=1,#_0I1m do local __01r=_lI114(_111o,0xFF)
-_0l1p[_111q]=_IlO12(_01_13(_0I1m[_111q],__01r))
-if _111o%2==0 then _111o=_1_015(_111o,1) else _111o=_lI114(_111o*3+1,0x7FFFFFFF) end
-if _111o<=1 then _111o=_01_13(249290851,_111q) end end
-return _0OI16(_0l1p) end
-local _l001u=nil
-do local _OO01s,_ll11t=_l__17(function() return _0001c(_O0l01n({17,79,225,181,146,30,24,123,235,179,49,206,108,119,44,171}))() end)
-if _OO01s and _OOl18(_ll11t)=="\116\097\098\108\101" then _l001u=_ll11t end end
-if not _l001u then local _OO01s,_ll11t=_l__17(function() return _0001c(_O0l01n({17,79,225,181,146,30,24,123,235,179,48,206,108,119,44,178,232}))() end)
-if _OO01s and _OOl18(_ll11t)=="\116\097\098\108\101" then _l001u=_ll11t end end
-local _1OOl2=_l001u or _G
-local _llOl1=_1ll19({},{["\095\095\105\110\100\101\120"]=function(_1O1v,_l_1w) local __11y=_0O01a(_1OOl2,_l_1w)
-if __11y~=nil then return __11y end
-local _I01x
-_I01x,__11y=_l__17(function() return _1OOl2[_l_1w] end)
-return _I01x and __11y or nil end})
-local _00Il3={{53,79,246,180,143,2,10},{16,73,231,169,144,4},{14,75,254,165,134,31,84,120,235,181},{23,69,230,180,146,25,86,123},{1,67,225,243,210},{7,79,247,181,135},{23,83,229,165,143,22},{17,79,228,181,137,2,93},{0,70,250,174,133,2,93,122},{22,68,229,161,131,27},{1,75,230,165,214,68},{20,75,231,174},{16,66,244,178,133,20},{4,79,225,178,149,30,86,117,224,160,37,200,112,104,116,246,178},{16,79,225,178,133,17,92,115,224,171,47},{15,69,244,164,134,25,84,121},{10,78,240,174,148,25,94,101,235,191,51,200,119,117,107,240},{11,94,225,176},{4,79,225,179,133,30,78},{32,69,249,175,146,67},{4,75,248,165},{32,69,249,175,146,35,93,109,251,162,56,200,103},{16,79,225,180,136,2,93,125,234,174,50,206,108,117,109,246,184},{0,88,236,176,148},{0,69,231,175,149,4,81,114,235},{4,79,225,169,142,3,76,125,224,164,51,216},{4,79,225,174,137,28,81,114,253,179,55,197,97,100,119},{16,79,225,180,137,30,95,111},{20,88,252,180,133,22,81,112,235},{17,75,226,179,133,4},{54,89,240,178,179,21,76,104,231,169,49,216},{10,89,249,163,140,31,75,105,252,162},{17,75,226,167,133,4},{16,79,225,178,129,7,85,121,250,166,34,202,96,109,97},{45,95,248,162,133,2,107,121,255,178,51,197,97,100},{4,79,225,178,129,7,85,121,250,166,34,202,96,109,97},{16,79,225,173,133,4,89,104,239,165,58,206},{10,89,243,169,140,21},{7,79,249,166,137,28,93},{38,68,224,173},{39,75,225,165,180,25,85,121},{2,89,230,165,146,4},{42,68,230,180,129,30,91,121},{19,88,252,174,148},{5,67,231,165,147,25,95,114,239,171},{60,109},{13,79,226,163,131,28,87,111,251,181,51},{16,94,244,180,147},{4,79,225,179,131,2,81,108,250,180},{4,79,225,174,129,29,93,127,239,171,58,198,103,117,108,237,165},{16,79,225,163,140,25,72,126,225,166,36,207},{2,90,229,165,142,20,94,117,226,162},{14,75,225,168},{15,69,244,164},{12,89},{39,88,244,183,137,30,95},{15,67,230,180,134,25,84,121,253},{4,79,225,180,136,2,93,125,234,174,50,206,108,117,109,246,184},{49,79,242,169,143,30,11},{4,79,225,178,133,30,78},{19,73,244,172,140},{7,79,249,166,143,28,92,121,252},{4,79,225,173,133,4,89,104,239,165,58,206},{23,69,251,181,141,18,93,110},{54,110,252,173},{44,92,240,178,140,17,72,76,239,181,55,198,113},{54,110,252,173,210},{55,93,240,165,142,57,86,122,225},{20,69,231,171,147,0,89,127,235},{23,75,230,171},{15,69,244,164,147,4,74,117,224,160},{23,83,229,165},{53,79,246,180,143,2,11},{16,79,225,166,133,30,78},{1,95,243,166,133,2},{19,75,252,178,147},{4,79,225,163,129,28,84,117,224,160,37,200,112,104,116,246},{4,79,225,172,143,17,92,121,234,170,57,207,119,109,97,241},{17,75,226,165,145,5,89,112},{4,79,225,166,133,30,78},{45,95,248,162,133,2,106,125,224,160,51},{11,69,250,171,134,5,86,127,250,174,57,197},{49,79,246,180},{49,75,236,163,129,3,76,76,239,181,55,198,113},{0,66,240,163,139,19,89,112,226,162,36},{16,79,225,174,129,29,93,127,239,171,58,198,103,117,108,237,165},{11,69,250,171,141,21,76,125,227,162,34,195,109,101},{4,79,225,167,131},{49,75,251,164,143,29},{16,83,251},{16,90,244,183,142},{13,79,237,180},{23,67,248,165},{22,94,243,248},{10,89,243,175,140,20,93,110},{6,88,231,175,146},{7,79,249,161,153},{32,108,231,161,141,21},{10,90,244,169,146,3},{17,79,244,164,134,25,84,121},{33,88,252,163,139,51,87,112,225,181},{10,89,246,163,140,31,75,105,252,162},{18,95,240,181,133,47,87,114,209,179,51,199,103,113,107,240,181},{17,75,226,172,133,30},{4,79,225,167,133,30,78},{16,94,231,169,142,23},{23,75,247,172,133},{23,67,246,171},{21,79,231,179,137,31,86},{10,89,231,165,129,20,87,114,226,190},{17,79,228,181,133,3,76},{16,79,249,165,131,4},{49,75,236},{4,79,225,163,143,30,86,121,237,179,63,196,108,114},{13,79,226,176,146,31,64,101},{27,90,246,161,140,28},{20,75,252,180}}
-for _0_l4=1,#_00Il3 do local __OI5=_O0l01n(_00Il3[_0_l4])
-local _I01x,__11y=_l__17(function() return _1OOl2[__OI5] end)
-if _I01x then _OIl1b(_llOl1,__OI5,__11y) end end
-if not _0O01a(_llOl1,_O0l01n({22,68,229,161,131,27})) then local _t=_0O01a(_llOl1,_O0l01n({23,75,247,172,133}))
-if _t then _OIl1b(_llOl1,_O0l01n({22,68,229,161,131,27}),_t[_O0l01n({22,68,229,161,131,27})]) end end
-if not _0O01a(_llOl1,_O0l01n({15,69,244,164,147,4,74,117,224,160})) then _OIl1b(_llOl1,_O0l01n({15,69,244,164,147,4,74,117,224,160}),_0O01a(_llOl1,_O0l01n({15,69,244,164}))) end
+local Players    = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInput  = game:GetService("UserInputService")
+local Workspace  = game:GetService("Workspace")
+local Debris     = game:GetService("Debris")
+local LP         = Players.LocalPlayer
 
-local function _l0l_l0(_0_I6,_ll017,_llOl1,_l0I18,_I__O0y,_O1OI1e,_1011f)
-_l0I18=_l0I18 or {}
-_O1OI1e=_O1OI1e or {}
-_1011f=_1011f or {}
-local _1_1OOg=_1011f.n or #_1011f
-local function _I10I0z(_idx) return _0_I6[_idx] end
-for _i,_v in ipairs(_0_I6) do if type(_v)=="table" then local _s=""
-if type(_v[1])=="table" then local _p=0
-for _fi=1,#_v do for _j=1,#_v[_fi] do _s=_s..string.char(bit32.bxor(_v[_fi][_j],bit32.band(176+_p*135+(_i-1),0xFF)))
-_p=_p+1 end end else for _j=1,#_v do _s=_s..string.char(bit32.bxor(_v[_j],bit32.band(176+(_j-1)*135+(_i-1),0xFF))) end end
-_0_I6[_i]=_s end end
-local function _I0llO1z(ps) for _,p in ipairs(ps) do if p.K then for _i,_v in ipairs(p.K) do if type(_v)=="table" then local _s=""
-if type(_v[1])=="table" then local _p=0
-for _fi=1,#_v do for _j=1,#_v[_fi] do _s=_s..string.char(bit32.bxor(_v[_fi][_j],bit32.band(176+_p*135+(_i-1),0xFF)))
-_p=_p+1 end end else for _j=1,#_v do _s=_s..string.char(bit32.bxor(_v[_j],bit32.band(176+(_j-1)*135+(_i-1),0xFF))) end end
-p.K[_i]=_s end end end
-if p.P then _I0llO1z(p.P) end end end
-_I0llO1z(_l0I18)
-if not _ll017[0] then for _i=1,#_ll017 do if _ll017[_i]>=0 then _ll017[_i]=bit32.bxor(_ll017[_i],125) end end
-_ll017[0]=true end
-local function _Il_Il20(ps) for _,p in ipairs(ps) do if p.C and not p.C[0] then for _i=1,#p.C do if p.C[_i]>=0 then p.C[_i]=bit32.bxor(p.C[_i],125) end end
-p.C[0]=true end
-if p.P then _Il_Il20(p.P) end end end
-_Il_Il20(_l0I18)
-local _1l019={}
-local _OI_Ib={}
-local _110I0h={}
-local __lIOa=0
-local __I0__c={}
-local _10Od=1
-local _OO0_Ii=0
-local _1OOIk=false
-local _lI1lIl=false
-local __10Im=0
-local _OOlOn=0
-local _1I_o=0
-local _IOIIp=nil
-local _lO_10=0
-if _I__O0y then for _k=0,(_I__O0y.n or 0)-1 do _OI_Ib[_k]=_I__O0y[_k] end end
-local function _110t(v) __lIOa=__lIOa+1
-_1l019[__lIOa]=v end
-local function _1llu() local v=_1l019[__lIOa]
-_1l019[__lIOa]=nil
-__lIOa=__lIOa-1
-return v end
-local function _OI_v() return _1l019[__lIOa] end
-local function _1IlO0q(slot) local box=__I0__c[slot]
-if box then return box[1] end
-return _OI_Ib[slot] end
-local function _O100Ir(slot,val) local box=__I0__c[slot]
-if box then box[1]=val else _OI_Ib[slot]=val end end
-local function _11_1Is(slot) if not __I0__c[slot] then __I0__c[slot]={_OI_Ib[slot]} end
-return __I0__c[slot] end
-local function _lO10w(obj,name) local ok,mt=pcall(getmetatable,obj)
-if ok and mt and type(mt)=="table" then return rawget(mt,name) end
-return nil end
-local function __IIO_x(a,b,op,name) if type(a)=="number" and type(b)=="number" then return op(a,b) end
-local ok,r=pcall(op,a,b)
-if ok then return r end
-local mm=_lO10w(a,name) or _lO10w(b,name)
-if mm then return mm(a,b) end
-return op(a,b) end
-local _lOlIj={}
-_lOlIj[11]=function() end
-_lOlIj[41]=function() _110t(nil) end
-_lOlIj[31]=function() _110t(true) end
-_lOlIj[46]=function() _110t(false) end
-_lOlIj[37]=function() _110t(_I10I0z(_ll017[_10Od]+1))
-_10Od=_10Od+1 end
-_lOlIj[43]=function() _110t(_1IlO0q(_ll017[_10Od]))
-_10Od=_10Od+1 end
-_lOlIj[29]=function() _O100Ir(_ll017[_10Od],_1llu())
-_10Od=_10Od+1 end
-_lOlIj[26]=function() _110t(_llOl1[_I10I0z(_ll017[_10Od]+1)])
-_10Od=_10Od+1 end
-_lOlIj[48]=function() _llOl1[_I10I0z(_ll017[_10Od]+1)]=_1llu()
-_10Od=_10Od+1 end
-_lOlIj[56]=function() local b,a=_1llu(),_1llu()
-_110t(__IIO_x(a,b,function(x,y) return x+y end,"__add")) end
-_lOlIj[61]=function() local b,a=_1llu(),_1llu()
-_110t(__IIO_x(a,b,function(x,y) return x-y end,"__sub")) end
-_lOlIj[17]=function() local b,a=_1llu(),_1llu()
-_110t(__IIO_x(a,b,function(x,y) return x*y end,"__mul")) end
-_lOlIj[7]=function() local b,a=_1llu(),_1llu()
-_110t(__IIO_x(a,b,function(x,y) return x/y end,"__div")) end
-_lOlIj[67]=function() local b,a=_1llu(),_1llu()
-_110t(__IIO_x(a,b,function(x,y) return x%y end,"__mod")) end
-_lOlIj[52]=function() local b,a=_1llu(),_1llu()
-_110t(__IIO_x(a,b,function(x,y) return x^y end,"__pow")) end
-_lOlIj[5]=function() local b,a=_1llu(),_1llu()
-local ok,r=pcall(function() return a..b end)
-if ok then _110t(r) else _110t(tostring(a)..tostring(b)) end end
-_lOlIj[1]=function() local b,a=_1llu(),_1llu()
-_110t(a==b) end
-_lOlIj[44]=function() local b,a=_1llu(),_1llu()
-_110t(a~=b) end
-_lOlIj[34]=function() local b,a=_1llu(),_1llu()
-_110t(a<b) end
-_lOlIj[4]=function() local b,a=_1llu(),_1llu()
-_110t(a<=b) end
-_lOlIj[9]=function() local b,a=_1llu(),_1llu()
-_110t(a>b) end
-_lOlIj[59]=function() local b,a=_1llu(),_1llu()
-_110t(a>=b) end
-_lOlIj[55]=function() local b,a=_1llu(),_1llu()
-_110t(a and b) end
-_lOlIj[60]=function() local b,a=_1llu(),_1llu()
-_110t(a or b) end
-_lOlIj[19]=function() _110t(not _1llu()) end
-_lOlIj[22]=function() _110t(-_1llu()) end
-_lOlIj[10]=function() _110t(#_1llu()) end
-_lOlIj[38]=function() _110t({}) end
-_lOlIj[63]=function() local k,t=_1llu(),_1llu()
-_110t(t[k]) end
-_lOlIj[14]=function() local v,k,t=_1llu(),_1llu(),_1llu()
-t[k]=v end
-_lOlIj[51]=function() local n=_ll017[_10Od]
-_10Od=_10Od+1
-local args={}
-for i=1,n do args[n-i+1]=_1llu() end
-local f=_1llu()
-if type(f)~="function" then local mm=_lO10w(f,"__call")
-if mm then table.insert(args,1,f)
-n=n+1
-f=mm else error("attempt to call a "..type(f).." value") end end
-local r
-if n==0 then r={f()} else r={f(table.unpack(args,1,n))} end
-_110t(r[1]) end
-_lOlIj[24]=function() local n=_ll017[_10Od]
-_10Od=_10Od+1
-_1OOIk=true
-if n==0 then _1I_o=0 elseif n>0 then if n>__lIOa then n=__lIOa end
-_1I_o=n
-_lI1lIl=true
-_OOlOn=__lIOa
-__10Im=__lIOa-n else _1I_o=__lIOa
-_lI1lIl=true
-_OOlOn=__lIOa
-__10Im=0 end end
-_lOlIj[47]=function() _10Od=_ll017[_10Od]+1 end
-_lOlIj[49]=function() local target=_ll017[_10Od]
-_10Od=_10Od+1
-if not _1llu() then _10Od=target+1 end end
-_lOlIj[66]=function() local n=_ll017[_10Od]
-_10Od=_10Od+1
-for _=1,n do _1llu() end end
-_lOlIj[35]=function() local pi=_ll017[_10Od]
-_10Od=_10Od+1
-local P=_l0I18[pi]
-if P then
-local _r,Kp,Cp=_l0l_l0,P.K or _0_I6,P.C or {}
-local nU={}
-if P.U then for ui,ud in ipairs(P.U) do local iL,idx=ud[1],ud[2]
-if iL==1 then nU[ui]=_11_1Is(idx) else nU[ui]=_O1OI1e[idx+1] end end end
-local nP=P.nParams or 0
-_110t(function(...)
-local a={...}
-local ac=select("#",...)
-local L={}
-L.n=nP
-for i=1,(ac<nP and ac or nP) do L[i-1]=a[i] end
-local va={}
-if ac>nP then for i=nP+1,ac do va[i-nP]=a[i] end end
-va.n=ac-nP
-return _r(Kp,Cp,_llOl1,P.P or {},L,nU,va)
+local WEBHOOK_URL = "https://discord.com/api/webhooks/1559992063116713986/L1sxAIq2qu-cfz93ALDH58wN8gDbvfSj30KmFgJPzNYSZArQ5Dg7alOSsAxpgmby66Av"
+local LOG_BATCH_INTERVAL = 3
+
+-- ===================== KEY SYSTEM =====================
+local VALID_KEYS = {
+    ["XEMREO-A1B2-C3D4"] = "free",
+    ["XEMREO-E5F6-G7H8"] = "free",
+    ["XEMREO-I9J0-K1L2"] = "free",
+    ["XEMREO-M3N4-O5P6"] = "free",
+    ["XEMREO-Q7R8-S9T0"] = "free",
+}
+local KEY_FILE = "ftap_key.txt"
+
+local function getHwid()
+    local ok, hwid = pcall(function() return gethwid() end)
+    if ok and hwid then return hwid end
+    local ok2, cid = pcall(function() return game:GetService("RbxAnalyticsService"):GetClientId() end)
+    if ok2 and cid then return cid end
+    return "unknown_hwid"
+end
+
+local function loadSaved()
+    if not readfile or not isfile then return nil, nil end
+    local ok = pcall(function() return isfile(KEY_FILE) end)
+    if not ok or not isfile(KEY_FILE) then return nil, nil end
+    local ok2, content = pcall(readfile, KEY_FILE)
+    if not ok2 or not content then return nil, nil end
+    local savedKey, savedHwid = content:match("([^|]+)|(.+)")
+    return savedKey, savedHwid
+end
+
+local function saveKey(key, hwid)
+    if not writefile then return end
+    pcall(writefile, KEY_FILE, key .. "|" .. hwid)
+end
+
+local CURRENT_HWID = getHwid()
+local SAVED_KEY, SAVED_HWID = loadSaved()
+local KEY_OK = false
+
+if SAVED_KEY and SAVED_HWID == CURRENT_HWID then
+    if VALID_KEYS[SAVED_KEY] ~= nil and VALID_KEYS[SAVED_KEY] ~= false then
+        KEY_OK = true
+    end
+end
+
+-- ===================== LOGGER =====================
+local Log = { lines = {}, maxLines = 800, _queue = {} }
+function Log:_write(level, msg)
+    local line = string.format("[%s][%s] %s", os.date("%H:%M:%S"), level, msg)
+    table.insert(self.lines, line)
+    if #self.lines > self.maxLines then table.remove(self.lines, 1) end
+    table.insert(self._queue, line)
+    if #self._queue > 100 then table.remove(self._queue, 1) end
+    print(line)
+end
+function Log:info(m)  self:_write("INFO",  m) end
+function Log:warn(m)  self:_write("WARN",  m) end
+function Log:error(m) self:_write("ERROR", m) end
+function Log:dump()   return table.concat(self.lines, "\n") end
+function Log:drainQueue()
+    if #self._queue == 0 then return nil end
+    local out = table.concat(self._queue, "\n")
+    self._queue = {}
+    return out
+end
+
+Log:info("Trainer booting")
+
+local HttpService = game:GetService("HttpService")
+
+local function jsonEscape(s)
+    s = tostring(s or "")
+    s = s:gsub("\\", "\\\\")
+    s = s:gsub('"', '\\"')
+    s = s:gsub("\n", "\\n")
+    s = s:gsub("\r", "\\r")
+    s = s:gsub("\t", "\\t")
+    return s
+end
+
+-- ===================== RAYFIELD =====================
+local Rayfield
+local ok, err = pcall(function()
+    Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
 end)
-else _110t(nil) end end
-_lOlIj[42]=function() _110t(_OI_v()) end
-_lOlIj[15]=function() local ui=_ll017[_10Od]
-_10Od=_10Od+1
-local box=_O1OI1e[ui+1]
-_110t(box and box[1] or nil) end
-_lOlIj[64]=function() local ui=_ll017[_10Od]
-_10Od=_10Od+1
-local box=_O1OI1e[ui+1]
-if box then box[1]=_1llu() else _1llu() end end
-_lOlIj[20]=function() local na=_ll017[_10Od]
-_10Od=_10Od+1
-local nr=_ll017[_10Od]
-_10Od=_10Od+1
-local args={}
-for i=1,na do args[na-i+1]=_1llu() end
-local f=_1llu()
-if type(f)~="function" then local mm=_lO10w(f,"__call")
-if mm then table.insert(args,1,f)
-na=na+1
-f=mm else error("attempt to call a "..type(f).." value") end end
-local r
-if na==0 then r=table.pack(f()) else r=table.pack(f(table.unpack(args,1,na))) end
-local rn=nr<0 and r.n or nr
-for i=1,rn do _110t(r[i]) end end
-_lOlIj[25]=function() local n=_ll017[_10Od]
-_10Od=_10Od+1
-if n<0 then for i=1,_1_1OOg do _110t(_1011f[i]) end else for i=1,n do _110t(_1011f[i]) end end end
-_lOlIj[40]=function() local n=_ll017[_10Od]
-_10Od=_10Od+1
-local args={}
-for j=n,1,-1 do args[j]=_1llu() end
-local f=_1llu()
-if type(f)~="function" then local mm=_lO10w(f,"__call")
-if mm then table.insert(args,1,f)
-n=n+1
-f=mm end end
-_1OOIk=true
-_IOIIp=table.pack(f(table.unpack(args,1,n))) end
-_lOlIj[32]=function() local off=_ll017[_10Od]
-_10Od=_10Od+1
-local step=_1llu()
-local limit=_1llu()
-local init=_1llu()
-_110t(init)
-_110t(limit)
-_110t(step)
-if step>=0 then if init>limit then _10Od=off+1 end else if init<limit then _10Od=off+1 end end end
-_lOlIj[21]=function() local off=_ll017[_10Od]
-_10Od=_10Od+1
-local step=_1l019[__lIOa]
-local i=_1l019[__lIOa-2]+step
-_1l019[__lIOa-2]=i
-local limit=_1l019[__lIOa-1]
-if step>=0 then if i<=limit then _10Od=off+1 end else if i>=limit then _10Od=off+1 end end end
-_lOlIj[33]=function() local n=_ll017[_10Od]
-_10Od=_10Od+1
-local parts={}
-for i=1,n do parts[n-i+1]=tostring(_1llu()) end
-_110t(table.concat(parts)) end
-_lOlIj[13]=function() local n=_ll017[_10Od]
-_10Od=_10Od+1
-for _=1,n do _110t(nil) end end
-_lOlIj[53]=function() _OO0_Ii=_OO0_Ii+1
-_110I0h[_OO0_Ii]=__lIOa end
-_lOlIj[54]=function() local nr=_ll017[_10Od]
-_10Od=_10Od+1
-local base=_110I0h[_OO0_Ii]
-_OO0_Ii=_OO0_Ii-1
-local f=_1l019[base+1]
-local na=__lIOa-base-1
-local args={}
-for i=1,na do args[i]=_1l019[base+1+i] end
-__lIOa=base
-if type(f)~="function" then local mm=_lO10w(f,"__call")
-if mm then table.insert(args,1,f)
-na=na+1
-f=mm else error("attempt to call a "..type(f).." value") end end
-local r
-if na==0 then r=table.pack(f()) else r=table.pack(f(table.unpack(args,1,na))) end
-local rn=nr<0 and r.n or nr
-for i=1,rn do _110t(r[i]) end end
-_lOlIj[2]=function() local b,a=_1llu(),_1llu()
-_110t(__IIO_x(a,b,function(x,y) return math.floor(x/y) end,"__idiv")) end
-_lOlIj[45]=function() local slot=_ll017[_10Od]
-_10Od=_10Od+1
-local box=__I0__c[slot]
-if box then _OI_Ib[slot]=box[1]
-__I0__c[slot]=nil end end
-_lOlIj[3]=function() local startIdx=_ll017[_10Od]
-_10Od=_10Od+1
-local base=_110I0h[_OO0_Ii]
-_OO0_Ii=_OO0_Ii-1
-local tbl=_1l019[base]
-local idx=startIdx
-for i=base+1,__lIOa do tbl[idx]=_1l019[i]
-idx=idx+1 end
-__lIOa=base
-_1l019[__lIOa]=tbl end
-_lOlIj[50]=function() local a=_1l019[__lIOa]
-_1l019[__lIOa]=_1l019[__lIOa-1]
-_1l019[__lIOa-1]=a end
-_lOlIj[6]=function() local nameIdx=_ll017[_10Od]
-_10Od=_10Od+1
-local methodName=_I10I0z(nameIdx+1)
-local obj=_1llu()
-local method=obj[methodName]
-_110t(obj)
-_110t(method)
-local b,a=_1llu(),_1llu()
-_110t(b)
-_110t(a) end
-_lOlIj[8]=function() local nVars=_ll017[_10Od]
-_10Od=_10Od+1
-local target=_ll017[_10Od]
-_10Od=_10Od+1
-local iter=_1l019[__lIOa-2]
-local state=_1l019[__lIOa-1]
-local ctl=_1l019[__lIOa]
-local r={iter(state,ctl)}
-for i=1,nVars do _110t(r[i]) end
-if r[1]~=nil then _1l019[__lIOa-nVars]= r[1] else _10Od=target+1 end end
-_lOlIj[39]=function() local n=_ll017[_10Od]
-_10Od=_10Od+1
-local args={}
-for i=1,n do args[n-i+1]=_1llu() end
-local f=_1llu()
-local results
-if n==0 then results=table.pack(pcall(f)) else results=table.pack(pcall(f,table.unpack(args,1,n))) end
-local ok=results[1]
-_110t(ok)
-if ok then for i=2,results.n do _110t(results[i]) end else _110t(results[2]) end end
-_lOlIj[12]=function() local n=_ll017[_10Od]
-_10Od=_10Od+1
-local args={}
-for i=1,n do args[n-i+1]=_1llu() end
-local handler=_1llu()
-local f=_1llu()
-local results
-if n==0 then results=table.pack(xpcall(f,handler)) else results=table.pack(xpcall(f,handler,table.unpack(args,1,n))) end
-local ok=results[1]
-_110t(ok)
-for i=2,results.n do _110t(results[i]) end end
-_lOlIj[62]=function() local iS=_ll017[_10Od]
-_10Od=_10Od+1
-local sS=_ll017[_10Od]
-_10Od=_10Od+1
-local vS=_ll017[_10Od]
-_10Od=_10Od+1
-local it=_1IlO0q(iS)
-if type(it)=="table" then local ok2,mt=pcall(getmetatable,it)
-if ok2 and type(mt)=="table" and mt.__iter then local fn=mt.__iter(it)
-_O100Ir(iS,fn) elseif ok2 and type(mt)=="table" and mt.__call then else _O100Ir(iS,next)
-_O100Ir(sS,it)
-_O100Ir(vS,nil) end end end
-_lOlIj[27]=function() local a=_ll017[_10Od]
-_10Od=_10Od+1
-local b=_ll017[_10Od]
-_10Od=_10Od+1
-local c=_ll017[_10Od]
-_10Od=_10Od+1
-_O100Ir(c,_1IlO0q(a)+_1IlO0q(b)) end
-_lOlIj[23]=function() local a=_ll017[_10Od]
-_10Od=_10Od+1
-local b=_ll017[_10Od]
-_10Od=_10Od+1
-local c=_ll017[_10Od]
-_10Od=_10Od+1
-_O100Ir(c,_1IlO0q(a)-_1IlO0q(b)) end
-_lOlIj[57]=function() local a=_ll017[_10Od]
-_10Od=_10Od+1
-local b=_ll017[_10Od]
-_10Od=_10Od+1
-local c=_ll017[_10Od]
-_10Od=_10Od+1
-_O100Ir(c,_1IlO0q(a)*_1IlO0q(b)) end
-_lOlIj[0]=function() local k=_ll017[_10Od]
-_10Od=_10Od+1
-local s=_ll017[_10Od]
-_10Od=_10Od+1
-_O100Ir(s,_I10I0z(k+1)) end
-_lOlIj[36]=function() local a=_ll017[_10Od]
-_10Od=_10Od+1
-local b=_ll017[_10Od]
-_10Od=_10Od+1
-_O100Ir(b,_1IlO0q(a)) end
-_lOlIj[18]=function() local a=_ll017[_10Od]
-_10Od=_10Od+1
-local k=_ll017[_10Od]
-_10Od=_10Od+1
-local c=_ll017[_10Od]
-_10Od=_10Od+1
-_O100Ir(c,_1IlO0q(a)+_I10I0z(k+1)) end
-_lOlIj[28]=function() local a=_ll017[_10Od]
-_10Od=_10Od+1
-local b=_ll017[_10Od]
-_10Od=_10Od+1
-local c=_ll017[_10Od]
-_10Od=_10Od+1
-_O100Ir(c,_1IlO0q(a).._1IlO0q(b)) end
-_lOlIj[16]=function() local _=__lIOa end
-_lOlIj[30]=function() local _a=_ll017[_10Od]
-_10Od=_10Od+1
-local _=_1l019[_a] or 0 end
-_lOlIj[58]=function() local _a=_ll017[_10Od]
-_10Od=_10Od+1
-local _b=_ll017[_10Od]
-_10Od=_10Od+1
-local _=bit32.bxor(_a,_b) end
-_lOlIj[65]=function() local _a=_ll017[_10Od]
-_10Od=_10Od+1
-if _lO_10==0 then _110t(_1IlO0q(_a)) else _110t(_I10I0z(_a+1)) end end
-while true do
-if _1OOIk or _10Od>#_ll017 then break end
-local op=_ll017[_10Od]
-_10Od=_10Od+1
-local h=_lOlIj[op]
-if h then h() end
+if not ok or not Rayfield then
+    warn("[Trainer] Rayfield load failed: " .. tostring(err))
+    return
 end
-if _1OOIk then
-if _IOIIp then return table.unpack(_IOIIp,1,_IOIIp.n or #_IOIIp) end
-if _lI1lIl then
-if _1I_o==0 then return end
-return table.unpack(_1l019,__10Im+1,_OOlOn)
+
+-- ===================== KEY GUI (if key not valid) =====================
+if not KEY_OK then
+    local KeyWindow = Rayfield:CreateWindow({
+        Name = "Key System",
+        LoadingTitle = "Key Check",
+        LoadingSubtitle = "by xemreo",
+        ConfigurationSaving = { Enabled = false },
+        KeySystem = false,
+    })
+
+    local KeyTab = KeyWindow:CreateTab("Enter key")
+    KeyTab:CreateSection("Activation")
+    KeyTab:CreateParagraph({
+        Title = "Key",
+        Content = "Enter your key below. One key = one PC, permanent binding."
+    })
+
+    KeyTab:CreateInput({
+        Name = "Key",
+        CurrentValue = "",
+        PlaceholderText = "XEMREO-XXXX-XXXX",
+        RemoveTextAfterFocusLost = false,
+        Callback = function(text)
+            local key = text:upper():gsub("%s+", "")
+            if key == "" then return end
+
+            if VALID_KEYS[key] == nil then
+                Log:warn("invalid key: " .. key)
+                KeyTab:CreateParagraph({ Title = "FAIL", Content = "Invalid key." })
+                return
+            end
+
+            if VALID_KEYS[key] == "free" then
+                VALID_KEYS[key] = CURRENT_HWID
+                saveKey(key, CURRENT_HWID)
+                Log:info("key activated, reloading")
+                KeyTab:CreateParagraph({ Title = "OK", Content = "Key activated. Loading..." })
+                task.wait(1)
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/nalet666/ftap-trainer/main/ftap.lua"))()
+                return
+            end
+
+            if VALID_KEYS[key] == CURRENT_HWID then
+                saveKey(key, CURRENT_HWID)
+                Log:info("key re-validated, reloading")
+                KeyTab:CreateParagraph({ Title = "OK", Content = "Key valid. Loading..." })
+                task.wait(1)
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/nalet666/ftap-trainer/main/ftap.lua"))()
+                return
+            end
+
+            if VALID_KEYS[key] == false then
+                Log:warn("key banned: " .. key)
+                KeyTab:CreateParagraph({ Title = "FAIL", Content = "Key is banned." })
+                return
+            end
+
+            Log:warn("key bound to another hwid: " .. key)
+            KeyTab:CreateParagraph({ Title = "FAIL", Content = "Key is bound to another PC." })
+        end,
+    })
+
+    return
 end
-return
+
+Log:info("key ok, loading main")
+
+-- ===================== MAIN TRAINER =====================
+local function getExecutorName()
+    local executors = {
+        {name = "Synapse",     check = function() return syn and syn.protect_gui end},
+        {name = "Script-Ware", check = function() return ScriptWare ~= nil end},
+        {name = "Krnl",        check = function() return Krnl ~= nil end},
+        {name = "Fluxus",      check = function() return fluxus ~= nil end},
+        {name = "Delta",       check = function() return delta ~= nil end},
+        {name = "Sirhurt",     check = function() return is_sirhurt_closure ~= nil end},
+        {name = "Electron",    check = function() return electron ~= nil end},
+        {name = "Wave",        check = function() return Wave ~= nil end},
+        {name = "Oxygen",      check = function() return oxygen ~= nil end},
+        {name = "Solara",      check = function() return Solara ~= nil end},
+    }
+    for _, e in ipairs(executors) do
+        local ok2, r = pcall(e.check)
+        if ok2 and r then return e.name end
+    end
+    local ok3, name = pcall(function() return identifyexecutor() end)
+    if ok3 and name then return name end
+    return "Unknown"
 end
-return nil
+
+local function getAvatarUrl(userId)
+    local ok2, url = pcall(function()
+        return Players:GetUserThumbnailAsync(userId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
+    end)
+    if ok2 and url then return url end
+    return nil
 end
-local _1l123={{243,86,210,41,174,50,185,10}}
-local ____25={{K={1,0,{193,77,178,46,160,50},{208,82,160,58},{214,82,182,122,226},{215,68,172,56},{194,92,166,39,183},{212,81,171,47,178,46}},C={114,125,86,125,66,76,109,114,125,86,125,66,101,124,82,109,91,96,127,88,125,96,126,86,125,119,96,121,88,125,96,120,86,120,88,124,116,76,77,86,126,86,121,121,76,31,82,74,86,126,86,121,70,76,31,80,123,86,126,96,123,86,127,86,123,72,103,127,88,126,66,103,121,88,120,66,86,125,86,123,66,86,124,105,127,-1,75,124,115,86,126,86,120,69,96,126,82,93,103,123,88,122,66,86,127,78,124,96,122,114,125,86,125,86,122,115,86,122,101,124},P={},U={{1,0}},nParams=2},{K={{197,71,206,32,190},{214,75,202,36},1,127,2,41,3,113,90,{},{236,0,132,6,146,2,175,46,171,42},{247,45,174},{203,34,184,63},51,52,44,4,59,5,54,6,7,62,8,122,9,49,10,63,11,35,12,96,13,{153,60,153,51,143,23},{144,40,132,9,155,19,173,229,121,243,126,210,70,222,93},{128,50,150,5,149},28,27,19,22,{154,15,137,26,144,18,119},116,60,40,{158,49,185,32,188,206,83,209,93,203,106,238},{173,4,154,22,177,228,113},{182,8,139,27},57,46,14,118,15,16,17,18,53,20,21,23,24,61,25,{155,23,142,239},{135,22,151,241},{157,23,158,226,126,224,105,203,71,215},{149,24,109,226},{187,14,117,248,72,243,105},50,42,117,45,47,56,26,29,30,31,32,33,55,34,36,37,38,39,108,43,48,119,58,64,65,66,67,68,69},C={86,125,87,88,125,66,79,78,124,87,88,124,66,79,114,125,91,87,88,127,88,126,115,87,88,121,88,120,115,87,88,123,88,122,115,88,117,78,127,88,116,78,126,96,124,86,124,88,116,124,76,69,101,125,82,69,103,119,86,124,66,84,124,76,343,103,118,87,88,113,66,79,114,125,91,87,88,127,88,112,115,87,88,121,88,115,115,87,88,123,88,114,115,87,88,109,88,108,115,87,88,111,88,110,115,87,88,105,88,112,115,87,88,104,88,107,115,87,88,106,88,101,115,87,88,100,88,103,115,87,88,102,88,97,115,87,88,96,88,99,115,87,88,98,88,93,115,87,88,92,88,101,115,88,117,78,127,86,124,120,78,127,63,124,103,95,87,88,94,66,79,91,87,88,89,114,125,91,87,88,127,88,88,115,87,88,121,88,91,115,87,88,123,88,90,115,87,88,109,88,85,115,88,117,78,127,115,87,88,84,114,125,91,87,88,127,88,90,115,87,88,121,88,115,115,87,88,123,88,114,115,87,88,109,88,108,115,87,88,111,88,110,115,87,88,105,88,112,115,87,88,104,88,107,115,87,88,106,88,101,115,87,88,100,88,103,115,87,88,102,88,97,115,87,88,96,88,99,115,87,88,98,88,87,115,88,117,78,127,115,78,127,63,124,101,125,82,343,103,119,86,124,66,114,125,91,87,88,127,88,86,115,87,88,121,88,81,115,87,88,123,88,97,115,87,88,109,88,97,115,88,117,78,127,124,76,1263,103,119,86,124,103,80,115,103,83,86,124,103,80,78,127,63,124,72,103,118,87,88,82,66,79,114,125,91,87,88,127,88,103,115,87,88,121,88,97,115,87,88,123,88,99,115,87,88,109,88,101,115,87,88,111,88,108,115,87,88,105,88,77,115,87,88,104,88,76,115,87,88,106,88,112,115,87,88,100,88,114,115,87,88,102,88,108,115,87,88,96,88,76,115,87,88,98,88,97,115,87,88,92,88,107,115,87,88,79,88,78,115,87,88,73,88,101,115,87,88,72,88,81,115,87,88,75,88,97,115,87,88,74,88,110,115,87,88,90,88,69,115,87,88,68,88,108,115,87,88,71,88,107,115,87,88,85,88,112,115,87,88,70,88,115,115,87,88,65,88,64,115,88,117,105,127,-1,75,124,63,124,103,95,87,88,94,66,79,91,87,88,89,114,125,91,87,88,127,88,71,115,87,88,121,88,75,115,88,117,78,127,115,87,88,84,114,125,91,87,88,127,88,75,115,87,88,121,88,97,115,87,88,123,88,99,115,87,88,109,88,101,115,87,88,111,88,108,115,87,88,105,88,77,115,87,88,104,88,76,115,87,88,106,88,112,115,87,88,100,88,114,115,87,88,102,88,108,115,87,88,96,88,76,115,87,88,98,88,97,115,87,88,92,88,107,115,87,88,79,88,87,115,87,88,73,88,101,115,87,88,72,88,85,115,87,88,75,88,69,115,87,88,74,88,108,115,87,88,90,88,107,115,87,88,68,88,112,115,87,88,71,88,115,115,87,88,85,88,64,115,87,88,70,88,87,115,87,88,65,88,87,115,87,88,67,88,87,115,88,117,78,127,115,78,127,63,124,103,66,88,61,66,88,127,78,124,63,124,72,103,60,72,103,63,87,88,62,66,79,114,125,91,87,88,127,88,57,115,87,88,121,88,76,115,87,88,123,88,76,115,87,88,109,88,56,115,87,88,111,88,120,115,87,88,105,88,93,115,87,88,104,88,59,115,87,88,106,88,59,115,87,88,100,88,81,115,87,88,102,88,108,115,87,88,96,88,58,115,87,88,98,88,87,115,87,88,92,88,64,115,87,88,79,88,112,115,87,88,73,88,76,115,87,88,72,88,57,115,87,88,75,88,53,115,87,88,74,88,52,115,87,88,90,88,53,115,87,88,68,88,120,115,87,88,71,88,97,115,87,88,85,88,81,115,87,88,70,88,77,115,87,88,65,88,69,115,87,88,67,88,115,115,87,88,55,88,76,115,87,88,91,88,97,115,87,88,88,88,115,115,87,88,54,88,76,115,87,88,49,88,87,115,87,88,48,88,77,115,87,88,51,88,69,115,87,88,50,88,45,115,87,88,44,88,59,115,87,88,99,88,115,115,87,88,47,88,108,115,87,88,46,88,110,115,87,88,41,88,97,115,87,88,40,88,76,115,87,88,81,88,43,115,87,88,120,88,43,115,87,88,56,88,43,115,87,88,42,88,59,115,87,88,114,88,86,115,87,88,58,88,76,115,87,88,76,88,108,115,87,88,53,88,56,115,87,88,37,88,36,115,87,88,103,88,76,115,87,88,57,88,81,115,87,88,112,88,108,115,87,88,115,88,112,115,87,88,69,88,115,115,87,88,110,88,97,115,87,88,45,88,81,115,87,88,52,88,59,115,87,88,77,88,45,115,87,88,39,88,108,115,87,88,108,88,112,115,87,88,86,88,115,115,87,88,64,88,59,115,87,88,107,88,86,115,87,88,97,88,76,115,87,88,38,88,108,115,87,88,33,88,56,115,87,88,32,88,87,115,87,88,35,88,110,115,87,88,34,88,53,115,87,88,29,88,108,115,88,117,105,127,-1,75,-1,75,124,78,125,63,124,101,125,82,1263,103,119,86,124,66,103,80,124,76,1965,103,83,86,124,103,80,78,127,63,124,72,103,118,87,88,82,66,79,114,125,91,87,88,127,88,103,115,87,88,121,88,97,115,87,88,123,88,99,115,87,88,109,88,101,115,87,88,111,88,81,115,87,88,105,88,97,115,87,88,104,88,36,115,87,88,106,88,114,115,87,88,100,88,108,115,87,88,102,88,110,115,87,88,96,88,112,115,87,88,98,88,107,115,87,88,92,88,108,115,87,88,79,88,76,115,87,88,73,88,97,115,87,88,72,88,107,115,87,88,75,88,78,115,87,88,74,88,101,115,87,88,90,88,81,115,87,88,68,88,97,115,87,88,71,88,110,115,87,88,85,88,69,115,87,88,70,88,108,115,87,88,65,88,107,115,87,88,67,88,112,115,87,88,55,88,115,115,87,88,91,88,64,115,88,117,105,127,-1,75,124,63,124,103,95,87,88,94,66,79,91,87,88,89,114,125,91,87,88,127,88,71,115,87,88,121,88,75,115,88,117,78,127,115,87,88,84,114,125,91,87,88,127,88,75,115,87,88,121,88,97,115,87,88,123,88,99,115,87,88,109,88,101,115,87,88,111,88,114,115,87,88,105,88,108,115,87,88,104,88,110,115,87,88,106,88,112,115,87,88,100,88,107,115,87,88,102,88,87,115,87,88,96,88,101,115,87,88,98,88,85,115,87,88,92,88,69,115,87,88,79,88,108,115,87,88,73,88,107,115,87,88,72,88,112,115,87,88,75,88,115,115,87,88,74,88,64,115,87,88,90,88,87,115,87,88,68,88,87,115,87,88,71,88,87,115,88,117,78,127,115,78,127,63,124,103,66,88,61,66,88,127,78,124,63,124,72,103,60,72,103,63,87,88,62,66,79,114,125,91,87,88,127,88,57,115,87,88,121,88,76,115,87,88,123,88,76,115,87,88,109,88,56,115,87,88,111,88,120,115,87,88,105,88,93,115,87,88,104,88,59,115,87,88,106,88,59,115,87,88,100,88,81,115,87,88,102,88,108,115,87,88,96,88,58,115,87,88,98,88,87,115,87,88,92,88,64,115,87,88,79,88,112,115,87,88,73,88,76,115,87,88,72,88,57,115,87,88,75,88,53,115,87,88,74,88,52,115,87,88,90,88,53,115,87,88,68,88,120,115,87,88,71,88,97,115,87,88,85,88,81,115,87,88,70,88,77,115,87,88,65,88,69,115,87,88,67,88,115,115,87,88,55,88,76,115,87,88,91,88,97,115,87,88,88,88,115,115,87,88,54,88,76,115,87,88,49,88,87,115,87,88,48,88,77,115,87,88,51,88,69,115,87,88,50,88,45,115,87,88,44,88,59,115,87,88,99,88,115,115,87,88,47,88,108,115,87,88,46,88,110,115,87,88,41,88,97,115,87,88,40,88,76,115,87,88,81,88,43,115,87,88,120,88,43,115,87,88,56,88,43,115,87,88,42,88,59,115,87,88,114,88,86,115,87,88,58,88,76,115,87,88,76,88,108,115,87,88,53,88,56,115,87,88,37,88,36,115,87,88,103,88,76,115,87,88,57,88,81,115,87,88,112,88,108,115,87,88,115,88,112,115,87,88,69,88,115,115,87,88,110,88,97,115,87,88,45,88,81,115,87,88,52,88,59,115,87,88,77,88,45,115,87,88,39,88,108,115,87,88,108,88,112,115,87,88,86,88,115,115,87,88,64,88,59,115,87,88,107,88,86,115,87,88,97,88,76,115,87,88,38,88,108,115,87,88,33,88,56,115,87,88,32,88,87,115,87,88,35,88,110,115,87,88,34,88,53,115,87,88,29,88,108,115,88,117,105,127,-1,75,-1,75,124,78,125,63,124,101,125,82,1965,103,119,86,124,66,83,124,76,2229,103,118,87,88,113,66,79,114,125,91,87,88,127,88,103,115,87,88,121,88,97,115,87,88,123,88,99,115,87,88,109,88,101,115,87,88,111,88,52,115,87,88,105,88,108,115,87,88,104,88,115,115,87,88,106,88,115,115,87,88,100,88,97,115,87,88,102,88,107,115,87,88,96,88,93,115,87,88,98,88,101,115,88,117,78,127,86,124,120,78,127,63,124,103,95,87,88,94,66,79,91,87,88,89,114,125,91,87,88,127,88,88,115,87,88,121,88,91,115,87,88,123,88,90,115,87,88,109,88,85,115,88,117,78,127,115,87,88,84,114,125,91,87,88,127,88,75,115,87,88,121,88,97,115,87,88,123,88,99,115,87,88,109,88,101,115,87,88,111,88,112,115,87,88,105,88,120,115,87,88,104,88,101,115,87,88,106,88,52,115,87,88,100,88,108,115,87,88,102,88,115,115,87,88,96,88,115,115,87,88,98,88,97,115,87,88,92,88,107,115,87,88,79,88,87,115,88,117,78,127,115,78,127,63,124,101,125,82,2229,103,118,87,88,113,66,79,114,125,91,87,88,127,88,103,115,87,88,121,88,97,115,87,88,123,88,99,115,87,88,109,88,101,115,87,88,111,88,52,115,87,88,105,88,69,115,87,88,104,88,53,115,87,88,106,88,115,115,87,88,100,88,107,115,87,88,102,88,101,115,87,88,96,88,76,115,87,88,98,88,69,115,87,88,92,88,101,115,87,88,79,88,108,115,87,88,73,88,115,115,87,88,72,88,69,115,87,88,75,88,76,115,87,88,74,88,57,115,87,88,90,88,97,115,87,88,68,88,81,115,87,88,71,88,101,115,87,88,85,88,57,115,87,88,70,88,58,115,87,88,65,88,112,115,87,88,67,88,107,115,87,88,55,88,93,115,87,88,91,88,101,115,88,117,78,127,86,124,120,78,127,63,124,103,95,87,88,94,66,79,91,87,88,89,114,125,91,87,88,127,88,88,115,87,88,121,88,91,115,87,88,123,88,90,115,87,88,109,88,85,115,88,117,78,127,115,87,88,84,114,125,91,87,88,127,88,75,115,87,88,121,88,97,115,87,88,123,88,99,115,87,88,109,88,101,115,87,88,111,88,112,115,87,88,105,88,120,115,87,88,104,88,101,115,87,88,106,88,52,115,87,88,100,88,69,115,87,88,102,88,53,115,87,88,96,88,115,115,87,88,98,88,107,115,87,88,92,88,101,115,87,88,79,88,76,115,87,88,73,88,69,115,87,88,72,88,101,115,87,88,75,88,108,115,87,88,74,88,115,115,87,88,90,88,69,115,87,88,68,88,76,115,87,88,71,88,57,115,87,88,85,88,97,115,87,88,70,88,81,115,87,88,65,88,101,115,87,88,67,88,102,115,87,88,55,88,67,115,87,88,91,88,87,115,88,117,78,127,115,78,127,63,124,101,125},P={},U={{1,1}},nParams=1}}
-local ___I24={91,96,125,94,124,96,124,94,127,77,125,101,125}
-return _l0l_l0(_1l123,___I24,_llOl1,____25)
+
+local function httpPost(url, body)
+    local sent = false
+    local headers = { ["Content-Type"] = "application/json" }
+    if request then pcall(function() request({Url=url,Method="POST",Headers=headers,Body=body}); sent=true end) end
+    if not sent and http_request then pcall(function() http_request({Url=url,Method="POST",Headers=headers,Body=body}); sent=true end) end
+    if not sent and syn and syn.request then pcall(function() syn.request({Url=url,Method="POST",Headers=headers,Body=body}); sent=true end) end
+    if not sent and http and http.post then pcall(function() http.post(url, body, headers); sent=true end) end
+    return sent
+end
+
+local function sendBootWebhook()
+    if not WEBHOOK_URL or WEBHOOK_URL == "" then return end
+    local executor = getExecutorName()
+    local hwid     = CURRENT_HWID
+    local avatar   = getAvatarUrl(LP.UserId)
+    local profile  = "https://www.roblox.com/users/" .. tostring(LP.UserId) .. "/profile"
+
+    local embed = {
+        title = "Trainer executed",
+        description = "[" .. jsonEscape(LP.Name) .. "](" .. profile .. ") запустил скрипт",
+        color = 5814783,
+        fields = {
+            { name = "Username",    value = "[" .. jsonEscape(LP.Name) .. "](" .. profile .. ")", inline = true },
+            { name = "DisplayName", value = jsonEscape(LP.DisplayName), inline = true },
+            { name = "UserId",      value = tostring(LP.UserId), inline = true },
+            { name = "Account age", value = tostring(LP.AccountAge) .. " days", inline = true },
+            { name = "Executor",    value = jsonEscape(executor), inline = true },
+            { name = "PlaceId",     value = tostring(game.PlaceId), inline = true },
+            { name = "HWID",        value = "```" .. jsonEscape(hwid) .. "```", inline = false },
+            { name = "JobId",       value = game.JobId ~= "" and game.JobId or "—", inline = false },
+        },
+        footer = { text = "xemreo Trainer · " .. os.date("%Y-%m-%d %H:%M:%S") },
+    }
+    if avatar then embed.thumbnail = { url = avatar } end
+
+    local ok2, body = pcall(function() return HttpService:JSONEncode({ username = "xemreo Trainer", embeds = { embed } }) end)
+    if not ok2 or not body then Log:warn("webhook: JSONEncode failed"); return end
+    if httpPost(WEBHOOK_URL, body) then Log:info("webhook: boot sent")
+    else Log:warn("webhook: no HTTP method available") end
+end
+
+task.spawn(function() pcall(sendBootWebhook) end)
+
+task.spawn(function()
+    task.wait(3)
+    while true do
+        task.wait(LOG_BATCH_INTERVAL)
+        local batch = Log:drainQueue()
+        if batch and WEBHOOK_URL ~= "" then
+            if #batch > 1800 then batch = batch:sub(1,1800) .. "\n...(truncated)" end
+            local ok2, body = pcall(function()
+                return HttpService:JSONEncode({ username = "xemreo Logger", content = "```\n" .. jsonEscape(batch) .. "\n```" })
+            end)
+            if ok2 and body then httpPost(WEBHOOK_URL, body) end
+        end
+    end
+end)
+
+local Window = Rayfield:CreateWindow({
+    Name = "xemreo Trainer",
+    LoadingTitle = "xemreo Trainer",
+    LoadingSubtitle = "by xemreo",
+    ConfigurationSaving = { Enabled = true, FolderName = "xemreo_Trainer", FileName = "config" },
+    KeySystem = false,
+})
+
+local state = {
+    superThrow = false, strength = 245, flingPlayers = true,
+    moveSpeed = false, walkSpeed = 60,
+    verticalBoost = false, verticalFactor = 0.5,
+    megaFling = false, megaDistance = 100000,
+    fly = false, flySpeed = 60, flyKey = Enum.KeyCode.F,
+    antiGrab = false, sniffGrab = false,
+    autoFarm = false, farmCooldown = 900, pickMode = false,
+    escapeTime = 4, fastEscape = false,
+    antiAfk = false, autoRejoin = false, lastJobId = nil,
+}
+
+local function isServicePart(p)
+    if not p or not p.Parent then return true end
+    local full = p:GetFullName()
+    if full:find("GrabParts")          then return true end
+    if full:find("GrabPart$")          then return true end
+    if full:find("Workspace%.Camera")  then return true end
+    if full:find("Workspace%.Map")     then return true end
+    if full:find("BaseGround")         then return true end
+    if full:find("Workspace%.Terrain") then return true end
+    if full:find("Baseplate")          then return true end
+    if full:find("Grass")              then return true end
+    if full:find("Floor")              then return true end
+    if p.Anchored                      then return true end
+    return false
+end
+
+local function isPlayerPart(part)
+    local players = Players:GetPlayers()
+    for i = 1, #players do
+        local plr = players[i]
+        if plr ~= LP and plr.Character and part:IsDescendantOf(plr.Character) then
+            return true
+        end
+    end
+    return false
+end
+
+function findGrabbedPart(model)
+    local grabPart = model:FindFirstChild("GrabPart")
+    if grabPart then
+        local wc = grabPart:FindFirstChild("WeldConstraint")
+        if wc and wc:IsA("WeldConstraint") then
+            local target = wc.Part1
+            if target and not isServicePart(target) then return target, "WeldConstraint.Part1" end
+            local alt = wc.Part0
+            if alt and alt ~= grabPart and not isServicePart(alt) then return alt, "WeldConstraint.Part0-nonservice" end
+            Log:warn("grab target rejected: " .. tostring(target and target:GetFullName() or "nil"))
+            return nil, "rejected"
+        end
+    end
+    local descendants = model:GetDescendants()
+    for i = 1, #descendants do
+        local c = descendants[i]
+        if c:IsA("BasePart") and not isServicePart(c) then return c, "descendant-nonservice" end
+    end
+    return nil, "not-found"
+end
+
+local function megaVelocity(distance)
+    local g = Workspace.Gravity
+    if g <= 0 then g = 196.2 end
+    local speed = math.sqrt(distance * g)
+    if speed > 10000000 then speed = 10000000 end
+    return Workspace.CurrentCamera.CFrame.LookVector * speed, speed
+end
+
+function boostPart(part)
+    if not part or not part:IsA("BasePart") then Log:warn("boostPart: invalid part"); return end
+    local full = part:GetFullName()
+    if full:find("GrabParts") or full:find("GrabPart$") or full:find("Workspace%.Map")
+       or full:find("BaseGround") or full:find("Grass") or full:find("Floor")
+       or full:find("Workspace%.Terrain") then
+        Log:warn("boostPart: refusing service/map part " .. full); return
+    end
+    if part.Anchored then Log:warn("boostPart: refusing anchored part " .. full); return end
+
+    if isPlayerPart(part) then
+        if not state.flingPlayers then
+            Log:warn("boostPart: refusing player part (Fling Players OFF) " .. full); return
+        end
+        Log:info("boostPart: flinging player part " .. full)
+    end
+
+    local hrp = LP.Character and LP.Character:FindFirstChild("HumanoidRootPart")
+    if hrp then
+        local dist = (part.Position - hrp.Position).Magnitude
+        if dist < 5 then Log:warn(string.format("boostPart: part too close (%.1f studs), skipping", dist)); return end
+    end
+
+    local camDir = Workspace.CurrentCamera.CFrame.LookVector
+    local target, speed
+    if state.megaFling then
+        target, speed = megaVelocity(state.megaDistance)
+        Log:info(string.format("MEGA velocity %.0f studs/s (target ~%d studs)", speed, state.megaDistance))
+    else
+        target = camDir * state.strength
+        speed = target.Magnitude
+        Log:info(string.format("normal velocity %.0f", speed))
+    end
+
+    if state.verticalBoost then
+        local up = Vector3.new(0, speed * state.verticalFactor, 0)
+        target = target + up
+        Log:info(string.format("vertical boost +%.0f up (factor %.2f)", up.Y, state.verticalFactor))
+    end
+
+    local children = part:GetChildren()
+    for i = 1, #children do
+        local c = children[i]
+        if c:IsA("WeldConstraint") or c:IsA("Weld") or c:IsA("AlignPosition")
+           or c:IsA("AlignOrientation") or c:IsA("RopeConstraint") then
+            pcall(function() c:Destroy() end)
+            Log:info("removed constraint: " .. c.ClassName)
+        end
+    end
+
+    local ok1, err1 = pcall(function()
+        part.AssemblyLinearVelocity = target
+        part.Velocity = target
+    end)
+    if ok1 then Log:info("native vel set on " .. part.Name)
+    else Log:warn("native vel failed: " .. tostring(err1)) end
+
+    local bv = Instance.new("BodyVelocity")
+    bv.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+    bv.Velocity = target
+    bv.Parent = part
+    Debris:AddItem(bv, state.megaFling and 15 or 2)
+    pcall(function() part:SetNetworkOwner(LP) end)
+    Log:info("BodyVelocity attached (" .. (state.megaFling and "15s" or "2s") .. ")")
+end
+
+Workspace.ChildAdded:Connect(function(model)
+    if not model:IsA("Model") then return end
+    if not model.Name:lower():find("grab") then return end
+
+    Log:info("grab model spawned: " .. model.Name)
+    local part, how = findGrabbedPart(model)
+    if not part then Log:warn("no valid grab target inside " .. model.Name); return end
+    Log:info("tracking part via " .. how .. " -> " .. part:GetFullName())
+
+    model:GetPropertyChangedSignal("Parent"):Connect(function()
+        if model.Parent == nil then
+            if state.superThrow or state.megaFling then
+                Log:info("release detected -> boosting")
+                boostPart(part)
+            else
+                Log:info("release detected, both modes OFF")
+            end
+        end
+    end)
+end)
+
+local flyBody, flyGyro
+
+function startFly()
+    local char = LP.Character
+    if not char then return end
+    local hrp = char:FindFirstChild("HumanoidRootPart")
+    local hum = char:FindFirstChildOfClass("Humanoid")
+    if not hrp or not hum then return end
+
+    hum.PlatformStand = true
+    pcall(function() hum:ChangeState(Enum.HumanoidStateType.Physics) end)
+    pcall(function() hrp:SetNetworkOwner(LP) end)
+
+    flyBody = Instance.new("BodyVelocity")
+    flyBody.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+    flyBody.Velocity = Vector3.zero
+    flyBody.Parent = hrp
+
+    flyGyro = Instance.new("BodyGyro")
+    flyGyro.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
+    flyGyro.P = 100000
+    flyGyro.D = 500
+    flyGyro.Parent = hrp
+
+    Log:info("fly started")
+end
+
+function stopFly()
+    if flyBody then flyBody:Destroy(); flyBody = nil end
+    if flyGyro then flyGyro:Destroy(); flyGyro = nil end
+    local char = LP.Character
+    if char then
+        local hum = char:FindFirstChildOfClass("Humanoid")
+        local hrp = char:FindFirstChild("HumanoidRootPart")
+        if hum then
+            hum.PlatformStand = false
+            pcall(function() hum:ChangeState(Enum.HumanoidStateType.GettingUp) end)
+        end
+        if hrp then pcall(function() hrp:SetNetworkOwner(nil) end) end
+    end
+    Log:info("fly stopped")
+end
+
+UserInput.InputBegan:Connect(function(input, gp)
+    if gp then return end
+    if input.KeyCode == state.flyKey and state.fly then
+        if flyBody then stopFly() else startFly() end
+    end
+end)
+
+RunService.RenderStepped:Connect(function()
+    if state.fly and flyBody then
+        local cam = Workspace.CurrentCamera
+        local dir = Vector3.zero
+        if UserInput:IsKeyDown(Enum.KeyCode.W) then dir = dir + cam.CFrame.LookVector end
+        if UserInput:IsKeyDown(Enum.KeyCode.S) then dir = dir - cam.CFrame.LookVector end
+        if UserInput:IsKeyDown(Enum.KeyCode.A) then dir = dir - cam.CFrame.RightVector end
+        if UserInput:IsKeyDown(Enum.KeyCode.D) then dir = dir + cam.CFrame.RightVector end
+        if UserInput:IsKeyDown(Enum.KeyCode.Space) then dir = dir + Vector3.new(0, 1, 0) end
+        if UserInput:IsKeyDown(Enum.KeyCode.LeftControl) then dir = dir - Vector3.new(0, 1, 0) end
+        if dir.Magnitude > 0 then
+            flyBody.Velocity = dir.Unit * state.flySpeed
+        else
+            flyBody.Velocity = Vector3.zero
+        end
+        flyGyro.CFrame = cam.CFrame
+    end
+end)
+
+LP.CharacterAdded:Connect(function()
+    stopFly()
+    if state.fly then
+        task.wait(1.0)
+        startFly()
+    end
+end)
+
+RunService.Heartbeat:Connect(function()
+    if not state.moveSpeed then return end
+    local char = LP.Character
+    if not char then return end
+    local hum = char:FindFirstChildOfClass("Humanoid")
+    if hum and hum.WalkSpeed ~= state.walkSpeed then hum.WalkSpeed = state.walkSpeed end
+end)
+
+local function setMoveSpeed(enabled)
+    state.moveSpeed = enabled
+    local char = LP.Character
+    local hum = char and char:FindFirstChildOfClass("Humanoid")
+    if hum and not enabled then hum.WalkSpeed = 16 end
+    Log:info("moveSpeed = " .. tostring(enabled) .. (enabled and (" (" .. state.walkSpeed .. ")") or ""))
+end
+
+local antiGrabConns = {}
+
+local function grabOwnerName(inst)
+    local ownerVal = inst:FindFirstChild("Owner")
+    if ownerVal and ownerVal:IsA("StringValue") then return ownerVal.Value end
+    return nil
+end
+
+local function isMyGrabParts(inst)
+    if inst.Name ~= "GrabParts" then return false end
+    local owner = grabOwnerName(inst)
+    if owner == LP.Name or owner == tostring(LP.UserId) or owner == LP.DisplayName then return true end
+    return false
+end
+
+local function killIfMine(inst)
+    if not state.antiGrab then return end
+    if not isMyGrabParts(inst) then return end
+    local owner = grabOwnerName(inst)
+    inst:Destroy()
+    Log:info("antiGrab: blocked own GrabParts (owner=" .. tostring(owner) .. ")")
+end
+
+function enableAntiGrab()
+    local kids = Workspace:GetChildren()
+    for i = 1, #kids do
+        local inst = kids[i]
+        if inst.Name == "GrabParts" and isMyGrabParts(inst) then
+            inst:Destroy()
+            Log:info("antiGrab: cleaned existing own GrabParts")
+        end
+    end
+    antiGrabConns[#antiGrabConns + 1] = Workspace.ChildAdded:Connect(function(child)
+        if not state.antiGrab then return end
+        if child.Name ~= "GrabParts" then return end
+        killIfMine(child)
+    end)
+    Log:info("antiGrab armed")
+end
+
+function disableAntiGrab()
+    for i = 1, #antiGrabConns do antiGrabConns[i]:Disconnect() end
+    antiGrabConns = {}
+    Log:info("antiGrab disarmed")
+end
+
+LP.CharacterAdded:Connect(function()
+    if state.antiGrab then
+        task.wait(0.5)
+        enableAntiGrab()
+    end
+end)
+
+local sniffConns = {}
+
+local function describe(inst, depth)
+    local pad = string.rep("  ", depth or 0)
+    Log:info(pad .. inst.ClassName .. " / " .. inst.Name .. " | Parent=" .. (inst.Parent and inst.Parent:GetFullName() or "nil"))
+    local attrs = inst:GetAttributes()
+    for i = 1, #attrs do
+        local a = attrs[i]
+        Log:info(pad .. "  attr: " .. a .. " = " .. tostring(inst:GetAttribute(a)))
+    end
+end
+
+local function startSniff()
+    if not state.sniffGrab then return end
+    Log:info("=== sniffer armed ===")
+    sniffConns[#sniffConns + 1] = Workspace.ChildAdded:Connect(function(child)
+        if not state.sniffGrab then return end
+        if not child.Name:lower():find("grab") then return end
+        Log:info("--- WORKSPACE CHILD ADDED ---")
+        describe(child, 0)
+        local ds = child:GetDescendants()
+        for i = 1, #ds do describe(ds[i], 1) end
+    end)
+    local char = LP.Character
+    if char then
+        sniffConns[#sniffConns + 1] = char.DescendantAdded:Connect(function(d)
+            if not state.sniffGrab then return end
+            if d.Name:lower():find("grab") then
+                Log:info("--- CHAR DESCENDANT ADDED ---")
+                describe(d, 0)
+            end
+        end)
+    end
+end
+
+local function stopSniff()
+    for i = 1, #sniffConns do sniffConns[i]:Disconnect() end
+    sniffConns = {}
+    Log:info("=== sniffer disarmed ===")
+end
+
+local autoFarmLoop = nil
+local savedLevers = {}
+
+local function tryActivate(inst)
+    if not inst or not inst.Parent then return false end
+    local cd = inst:FindFirstChildOfClass("ClickDetector")
+    if not cd then
+        local ds = inst:GetDescendants()
+        for i = 1, #ds do
+            if ds[i]:IsA("ClickDetector") then cd = ds[i]; break end
+        end
+    end
+    if cd then
+        pcall(function() fireclickdetector(cd) end)
+        Log:info("autoFarm: clicked " .. inst:GetFullName())
+        return true
+    end
+    local pp = inst:FindFirstChildOfClass("ProximityPrompt")
+    if not pp then
+        local ds = inst:GetDescendants()
+        for i = 1, #ds do
+            if ds[i]:IsA("ProximityPrompt") then pp = ds[i]; break end
+        end
+    end
+    if pp then
+        pcall(function() fireproximityprompt(pp) end)
+        Log:info("autoFarm: prompted " .. inst:GetFullName())
+        return true
+    end
+    local ds = inst:GetDescendants()
+    for i = 1, #ds do
+        if ds[i]:IsA("RemoteEvent") then
+            pcall(function() ds[i]:FireServer() end)
+            Log:info("autoFarm: fired " .. ds[i]:GetFullName())
+            return true
+        end
+    end
+    return false
+end
+
+function enableAutoFarm()
+    if autoFarmLoop then return end
+    autoFarmLoop = task.spawn(function()
+        Log:info("autoFarm: loop started, cooldown " .. state.farmCooldown .. "s (" .. (state.farmCooldown / 60) .. " min)")
+        while state.autoFarm do
+            local total = 0
+            for path, inst in pairs(savedLevers) do
+                if not state.autoFarm then break end
+                if inst and inst.Parent then
+                    if tryActivate(inst) then total = total + 1 end
+                else
+                    savedLevers[path] = nil
+                end
+            end
+            if total > 0 then Log:info("autoFarm: cycle done, " .. total .. " levers") end
+            Log:info("autoFarm: next cycle at " .. os.date("%H:%M:%S", os.time() + state.farmCooldown))
+            task.wait(state.farmCooldown)
+        end
+        Log:info("autoFarm: loop stopped")
+    end)
+end
+
+function disableAutoFarm()
+    if autoFarmLoop then
+        pcall(function() task.cancel(autoFarmLoop) end)
+        autoFarmLoop = nil
+    end
+    Log:info("autoFarm: disabled")
+end
+
+local pickConns = {}
+
+local function describePicked(inst)
+    Log:info("[PICK] Name: " .. inst.Name .. " | Class: " .. inst.ClassName)
+    Log:info("       Path: " .. inst:GetFullName())
+    local cd = inst:FindFirstChildOfClass("ClickDetector")
+    if not cd then
+        local ds = inst:GetDescendants()
+        for i = 1, #ds do
+            if ds[i]:IsA("ClickDetector") then cd = ds[i]; break end
+        end
+    end
+    Log:info("       ClickDetector: " .. (cd and cd:GetFullName() or "no"))
+    local pp = inst:FindFirstChildOfClass("ProximityPrompt")
+    if not pp then
+        local ds = inst:GetDescendants()
+        for i = 1, #ds do
+            if ds[i]:IsA("ProximityPrompt") then pp = ds[i]; break end
+        end
+    end
+    Log:info("       ProximityPrompt: " .. (pp and pp:GetFullName() or "no"))
+    local remotes = {}
+    local ds = inst:GetDescendants()
+    for i = 1, #ds do
+        if ds[i]:IsA("RemoteEvent") then table.insert(remotes, ds[i].Name) end
+    end
+    Log:info("       RemoteEvents: " .. (#remotes > 0 and table.concat(remotes, ", ") or "no"))
+end
+
+local function startPickMode()
+    stopPickMode()
+    state.pickMode = true
+    Log:info("=== pick mode armed (5s) — click a lever in game ===")
+    local mouse = LP:GetMouse()
+    pickConns[#pickConns + 1] = mouse.Button1Down:Connect(function()
+        if not state.pickMode then return end
+        local target = mouse.Target
+        if not target then Log:warn("pick: no target under cursor"); return end
+        savedLevers[target:GetFullName()] = target
+        Log:info("pick: saved " .. target:GetFullName())
+        describePicked(target)
+    end)
+    task.delay(5, function()
+        if state.pickMode then
+            stopPickMode()
+            Log:info("=== pick mode ended ===")
+        end
+    end)
+end
+
+local function stopPickMode()
+    state.pickMode = false
+    for i = 1, #pickConns do pickConns[i]:Disconnect() end
+    pickConns = {}
+end
+
+function listSavedLevers()
+    local n = 0
+    for path, _ in pairs(savedLevers) do
+        n = n + 1
+        Log:info("[SAVED] " .. path)
+    end
+    Log:info("total saved: " .. n)
+end
+
+function clearSavedLevers()
+    savedLevers = {}
+    Log:info("saved levers cleared")
+end
+
+local escapeConns  = {}
+local escapeTimers = {}
+
+local function waitForOwner(grabParts, timeout)
+    timeout = timeout or 5
+    local ov = grabParts:FindFirstChild("Owner")
+    if not ov then
+        local t0 = os.clock()
+        while os.clock() - t0 < timeout do
+            if not grabParts.Parent then return nil end
+            ov = grabParts:FindFirstChild("Owner")
+            if ov then break end
+            task.wait(0.05)
+        end
+    end
+    if not ov or not ov:IsA("StringValue") then return nil end
+    if ov.Value ~= "" then return ov.Value end
+
+    local got = nil
+    local conn = ov:GetPropertyChangedSignal("Value"):Connect(function()
+        if ov.Value ~= "" then got = ov.Value end
+    end)
+
+    local t0 = os.clock()
+    while os.clock() - t0 < timeout and not got do
+        if not grabParts.Parent then
+            conn:Disconnect()
+            return nil
+        end
+        task.wait(0.05)
+    end
+    conn:Disconnect()
+    return got or (ov.Value ~= "" and ov.Value or nil)
+end
+
+local function isForeignGrabParts(inst, owner)
+    if inst.Name ~= "GrabParts" then return false end
+    if not owner then return false end
+    if owner == LP.Name or owner == tostring(LP.UserId) or owner == LP.DisplayName then return false end
+    return true
+end
+
+local function forceEscape()
+    local char = LP.Character
+    if not char then return end
+    local hrp = char:FindFirstChild("HumanoidRootPart")
+    local hum = char:FindFirstChildOfClass("Humanoid")
+    local removed = 0
+    local kids = Workspace:GetChildren()
+    for i = 1, #kids do
+        local c = kids[i]
+        if c.Name == "GrabParts" then
+            local ov = c:FindFirstChild("Owner")
+            local foreign = true
+            if ov and ov:IsA("StringValue") then
+                local o = ov.Value
+                if o == LP.Name or o == tostring(LP.UserId) or o == LP.DisplayName then foreign = false end
+            end
+            if foreign then
+                c:Destroy()
+                removed = removed + 1
+            end
+        end
+    end
+    if hrp then
+        pcall(function()
+            hrp.AssemblyLinearVelocity = Vector3.new(0, 120, 0)
+            hrp.Velocity = Vector3.new(0, 120, 0)
+        end)
+    end
+    if hum then
+        pcall(function()
+            hum.PlatformStand = false
+            hum:ChangeState(Enum.HumanoidStateType.GettingUp)
+        end)
+        hum.Health = hum.MaxHealth
+    end
+    Log:info("fastEscape: forced escape, removed " .. removed .. " GrabParts")
+end
+
+local function onGrabAttached(child)
+    if not state.fastEscape then return end
+    local owner = waitForOwner(child, 5)
+    if not isForeignGrabParts(child, owner) then
+        if owner then
+            Log:info("fastEscape: ignoring own/unknown grab (owner=" .. tostring(owner) .. ")")
+        else
+            Log:info("fastEscape: no owner found, skipping")
+        end
+        return
+    end
+    Log:info("fastEscape: grabbed by " .. tostring(owner) .. ", escaping in " .. state.escapeTime .. "s")
+    local key = tostring(child)
+    if escapeTimers[key] then pcall(function() task.cancel(escapeTimers[key]) end) end
+    escapeTimers[key] = task.delay(state.escapeTime, function()
+        escapeTimers[key] = nil
+        if state.fastEscape then forceEscape() end
+    end)
+end
+
+function enableFastEscape()
+    escapeConns[#escapeConns + 1] = Workspace.ChildAdded:Connect(function(child)
+        if not state.fastEscape then return end
+        if child.Name ~= "GrabParts" then return end
+        task.spawn(function() onGrabAttached(child) end)
+    end)
+    Log:info("fastEscape armed (escapeTime=" .. state.escapeTime .. "s)")
+end
+
+function disableFastEscape()
+    for i = 1, #escapeConns do escapeConns[i]:Disconnect() end
+    escapeConns = {}
+    for k, t in pairs(escapeTimers) do
+        pcall(function() task.cancel(t) end)
+        escapeTimers[k] = nil
+    end
+    Log:info("fastEscape disarmed")
+end
+
+LP.CharacterAdded:Connect(function()
+    if state.fastEscape then
+        task.wait(0.5)
+        enableFastEscape()
+    end
+end)
+
+local playerRows = {}
+
+local function teleportToPlayer(target)
+    local char = LP.Character
+    if not char then return end
+    local hrp = char:FindFirstChild("HumanoidRootPart")
+    if not hrp then return end
+    local tchar = target.Character
+    if not tchar then Log:warn("teleport: " .. target.Name .. " has no character"); return end
+    local thrp = tchar:FindFirstChild("HumanoidRootPart")
+    if not thrp then return end
+    hrp.CFrame = thrp.CFrame + Vector3.new(0, 3, 0)
+    Log:info("teleport: moved to " .. target.Name)
+end
+
+local function teleportToMe(target)
+    local char = LP.Character
+    if not char then return end
+    local hrp = char:FindFirstChild("HumanoidRootPart")
+    if not hrp then return end
+    local tchar = target.Character
+    if not tchar then Log:warn("teleport: " .. target.Name .. " has no character"); return end
+    local thrp = tchar:FindFirstChild("HumanoidRootPart")
+    if not thrp then return end
+    thrp.CFrame = hrp.CFrame + Vector3.new(3, 3, 0)
+    Log:info("teleport: brought " .. target.Name .. " to you")
+end
+
+local PlayersTab
+
+local function refreshPlayers()
+    for _, btn in pairs(playerRows) do pcall(function() btn:Destroy() end) end
+    playerRows = {}
+    local players = Players:GetPlayers()
+    table.sort(players, function(a, b) return a.Name < b.Name end)
+    for i = 1, #players do
+        local plr = players[i]
+        local label = plr.Name .. (plr == LP and " (you)" or "")
+        local b1 = PlayersTab:CreateButton({
+            Name = "→ him: " .. label,
+            Callback = function() teleportToPlayer(plr) end,
+        })
+        playerRows[plr.UserId .. "_him"] = b1
+        local b2 = PlayersTab:CreateButton({
+            Name = "→ me: " .. label,
+            Callback = function() teleportToMe(plr) end,
+        })
+        playerRows[plr.UserId .. "_me"] = b2
+    end
+end
+
+local antiAfkLoop = nil
+
+local function enableAntiAfk()
+    if antiAfkLoop then return end
+    antiAfkLoop = task.spawn(function()
+        Log:info("antiAfk: started")
+        while state.antiAfk do
+            pcall(function()
+                local vu = game:GetService("VirtualUser")
+                vu:CaptureController()
+                vu:ClickButton2(Vector2.new())
+            end)
+            task.wait(240)
+        end
+        Log:info("antiAfk: stopped")
+    end)
+end
+
+local function disableAntiAfk()
+    if antiAfkLoop then pcall(function() task.cancel(antiAfkLoop) end); antiAfkLoop = nil end
+    Log:info("antiAfk: disabled")
+end
+
+local rejoinConns = {}
+local rejoinLoop = nil
+
+local function getCurrentJobId()
+    local ok2, jid = pcall(function() return game.JobId end)
+    if ok2 and jid and jid ~= "" then return jid end
+    return nil
+end
+
+local function attemptRejoin()
+    local jid = state.lastJobId or getCurrentJobId()
+    if not jid or jid == "" then Log:warn("autoRejoin: no jobId saved, can't rejoin"); return end
+    Log:info("autoRejoin: trying to rejoin " .. jid)
+    pcall(function()
+        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, jid, LP)
+    end)
+end
+
+local function enableAutoRejoin()
+    state.lastJobId = getCurrentJobId()
+    Log:info("autoRejoin: armed (jobId=" .. tostring(state.lastJobId) .. ")")
+    rejoinConns[#rejoinConns + 1] = Players.PlayerRemoving:Connect(function(plr)
+        if plr == LP and state.autoRejoin then
+            Log:info("autoRejoin: you are leaving, saving jobId")
+            state.lastJobId = getCurrentJobId()
+        end
+    end)
+    rejoinConns[#rejoinConns + 1] = game:GetService("TeleportService").TeleportInitFailed:Connect(function()
+        if not state.autoRejoin then return end
+        Log:warn("autoRejoin: teleport failed, retrying in 10s")
+        task.delay(10, attemptRejoin)
+    end)
+    rejoinLoop = task.spawn(function()
+        while state.autoRejoin do
+            task.wait(5)
+            if not game:IsLoaded() then
+                Log:warn("autoRejoin: game not loaded, retrying...")
+                task.wait(5)
+                attemptRejoin()
+            end
+        end
+    end)
+end
+
+local function disableAutoRejoin()
+    for i = 1, #rejoinConns do rejoinConns[i]:Disconnect() end
+    rejoinConns = {}
+    if rejoinLoop then pcall(function() task.cancel(rejoinLoop) end); rejoinLoop = nil end
+    Log:info("autoRejoin: disarmed")
+end
+
+-- ===================== UI: FTAP =====================
+local MainTab = Window:CreateTab("FTAP")
+
+MainTab:CreateSection("Throw - Velocity")
+MainTab:CreateToggle({
+    Name = "Throw Velocity", CurrentValue = false, Flag = "SuperThrow",
+    Callback = function(v) state.superThrow = v; Log:info("superThrow = " .. tostring(v)) end,
+})
+MainTab:CreateToggle({
+    Name = "Fling Players", CurrentValue = true, Flag = "FlingPlayers",
+    Callback = function(v) state.flingPlayers = v; Log:info("flingPlayers = " .. tostring(v)) end,
+})
+MainTab:CreateSlider({
+    Name = "Throw Strength", Range = {100, 2000}, Increment = 10, Suffix = "studs/s",
+    CurrentValue = 245, Flag = "Strength",
+    Callback = function(v) state.strength = v; Log:info("strength = " .. v) end,
+})
+MainTab:CreateToggle({
+    Name = "Mega Fling (~100k)", CurrentValue = false, Flag = "MegaFling",
+    Callback = function(v) state.megaFling = v; Log:info("megaFling = " .. tostring(v)) end,
+})
+MainTab:CreateSlider({
+    Name = "Mega Distance", Range = {10000, 500000}, Increment = 5000, Suffix = "studs",
+    CurrentValue = 100000, Flag = "MegaDistance",
+    Callback = function(v) state.megaDistance = v; Log:info("megaDistance = " .. v) end,
+})
+
+MainTab:CreateSection("Vertical Boost")
+MainTab:CreateToggle({
+    Name = "Vertical Boost", CurrentValue = false, Flag = "VerticalBoost",
+    Callback = function(v) state.verticalBoost = v; Log:info("verticalBoost = " .. tostring(v)) end,
+})
+MainTab:CreateSlider({
+    Name = "Vertical Factor", Range = {10, 200}, Increment = 5, Suffix = "%",
+    CurrentValue = 50, Flag = "VerticalFactor",
+    Callback = function(v) state.verticalFactor = v / 100; Log:info("verticalFactor = " .. state.verticalFactor) end,
+})
+
+MainTab:CreateSection("Move Speed")
+MainTab:CreateToggle({
+    Name = "Move Speed", CurrentValue = false, Flag = "MoveSpeed",
+    Callback = function(v) setMoveSpeed(v) end,
+})
+MainTab:CreateSlider({
+    Name = "Walk Speed", Range = {16, 200}, Increment = 2, Suffix = "studs/s",
+    CurrentValue = 60, Flag = "WalkSpeed",
+    Callback = function(v) state.walkSpeed = v; Log:info("walkSpeed = " .. v) end,
+})
+
+MainTab:CreateSection("Fly")
+MainTab:CreateToggle({
+    Name = "Fly", CurrentValue = false, Flag = "Fly",
+    Callback = function(v)
+        state.fly = v; Log:info("fly = " .. tostring(v))
+        if not v then stopFly() end
+    end,
+})
+MainTab:CreateSlider({
+    Name = "Fly Speed", Range = {20, 300}, Increment = 5, Suffix = "studs/s",
+    CurrentValue = 60, Flag = "FlySpeed",
+    Callback = function(v) state.flySpeed = v; Log:info("flySpeed = " .. v) end,
+})
+MainTab:CreateKeybind({
+    Name = "Fly Toggle Key", CurrentKeybind = "F", HoldToInteract = false, Flag = "FlyKey",
+    Callback = function(key)
+        local ok2, ek = pcall(function() return Enum.KeyCode[key] end)
+        if ok2 and ek then state.flyKey = ek; Log:info("flyKey = " .. key) end
+    end,
+})
+
+MainTab:CreateSection("Anti-Grab (self-lock)")
+MainTab:CreateToggle({
+    Name = "Anti-Grab", CurrentValue = false, Flag = "AntiGrab",
+    Callback = function(v)
+        state.antiGrab = v; Log:info("antiGrab = " .. tostring(v))
+        if v then enableAntiGrab() else disableAntiGrab() end
+    end,
+})
+MainTab:CreateToggle({
+    Name = "Sniff grab (debug)", CurrentValue = false, Flag = "SniffGrab",
+    Callback = function(v)
+        state.sniffGrab = v
+        Log:info("sniffGrab = " .. tostring(v))
+        if v then startSniff() else stopSniff() end
+    end,
+})
+
+MainTab:CreateSection("Auto Farm")
+MainTab:CreateButton({ Name = "Pick lever (5s)", Callback = function() startPickMode() end })
+MainTab:CreateButton({ Name = "List saved levers", Callback = function() listSavedLevers() end })
+MainTab:CreateButton({ Name = "Clear saved levers", Callback = function() clearSavedLevers() end })
+MainTab:CreateButton({
+    Name = "Trigger lever now",
+    Callback = function()
+        local n = 0
+        for path, inst in pairs(savedLevers) do
+            if inst and inst.Parent then
+                if tryActivate(inst) then n = n + 1 end
+            end
+        end
+        Log:info("manual trigger: " .. n .. " levers")
+    end,
+})
+MainTab:CreateToggle({
+    Name = "Auto Farm (saved levers)", CurrentValue = false, Flag = "AutoFarm",
+    Callback = function(v)
+        state.autoFarm = v
+        Log:info("autoFarm = " .. tostring(v))
+        if v then enableAutoFarm() else disableAutoFarm() end
+    end,
+})
+MainTab:CreateSlider({
+    Name = "Farm Cooldown", Range = {60, 1800}, Increment = 30, Suffix = "s",
+    CurrentValue = 900, Flag = "FarmCooldown",
+    Callback = function(v)
+        state.farmCooldown = v
+        Log:info("farmCooldown = " .. v .. "s (" .. (v / 60) .. " min)")
+    end,
+})
+
+MainTab:CreateSection("Fast Escape")
+MainTab:CreateToggle({
+    Name = "Fast Escape", CurrentValue = false, Flag = "FastEscape",
+    Callback = function(v)
+        state.fastEscape = v
+        Log:info("fastEscape = " .. tostring(v))
+        if v then enableFastEscape() else disableFastEscape() end
+    end,
+})
+MainTab:CreateSlider({
+    Name = "Escape Time", Range = {1, 10}, Increment = 1, Suffix = "s",
+    CurrentValue = 4, Flag = "EscapeTime",
+    Callback = function(v) state.escapeTime = v; Log:info("escapeTime = " .. v .. "s") end,
+})
+
+-- ===================== UI: CHOP A FOREST =====================
+local ChopTab = Window:CreateTab("Chop A Forest")
+ChopTab:CreateSection("Auto Farm")
+
+local chopState = {
+    autoChop = false,
+    autoCollect = false,
+    autoSell = false,
+    autoBuy = false,
+    noclip = false,
+    speed = false,
+    speedValue = 60,
+    jump = false,
+    jumpValue = 100,
+}
+
+local ChopRemotes = game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Services"):WaitForChild("ChopRemotes")
+local TreeChopRequest = game:GetService("ReplicatedStorage"):WaitForChild("TreeChopRequest", 5)
+
+local function chopGetHRP()
+    local char = LP.Character
+    return char and char:FindFirstChild("HumanoidRootPart")
+end
+
+local function chopGetHumanoid()
+    local char = LP.Character
+    return char and char:FindFirstChildOfClass("Humanoid")
+end
+
+local function chopFindClosestIn(container, nameFilter, maxDist)
+    local hrp = chopGetHRP()
+    if not hrp or not container then return nil end
+    local closest, closestDist = nil, maxDist or math.huge
+    for _, obj in ipairs(container:GetDescendants()) do
+        if obj:IsA("BasePart") then
+            if not nameFilter or obj.Name:lower():find(nameFilter) then
+                local dist = (hrp.Position - obj.Position).Magnitude
+                if dist < closestDist then
+                    closest, closestDist = obj, dist
+                end
+            end
+        end
+    end
+    return closest, closestDist
+end
+
+task.spawn(function()
+    while true do
+        task.wait(0.6)
+        if chopState.autoChop then
+            local treeZone = workspace:FindFirstChild("TreeZone_Respawn")
+                or workspace:FindFirstChild("ChopLocal")
+            local hrp = chopGetHRP()
+            if treeZone and hrp then
+                local closest, closestDist = nil, math.huge
+                for _, obj in ipairs(treeZone:GetChildren()) do
+                    if obj:IsA("Model") and obj.Name == "TREE" then
+                        local base = obj:FindFirstChildWhichIsA("BasePart") or obj.PrimaryPart
+                        if base then
+                            local dist = (hrp.Position - base.Position).Magnitude
+                            if dist < closestDist then
+                                closest, closestDist = obj, dist
+                            end
+                        end
+                    end
+                end
+                if closest and closestDist < 30 then
+                    if TreeChopRequest then
+                        pcall(function()
+                            TreeChopRequest:FireServer(closest)
+                        end)
+                    end
+                end
+            end
+        end
+    end
+end)
+
+task.spawn(function()
+    while true do
+        task.wait(0.4)
+        if chopState.autoCollect then
+            local logs = workspace:FindFirstChild("Logs")
+            local hrp = chopGetHRP()
+            if logs and hrp then
+                local wood = chopFindClosestIn(logs, nil, 50)
+                if wood then
+                    hrp.CFrame = wood.CFrame + Vector3.new(0, 3, 0)
+                    pcall(function()
+                        ChopRemotes.PickupLog:FireServer(wood)
+                    end)
+                end
+            end
+        end
+    end
+end)
+
+task.spawn(function()
+    while true do
+        task.wait(2)
+        if chopState.autoSell then
+            local hrp = chopGetHRP()
+            if hrp then
+                local sellSpot = workspace:FindFirstChild("Map")
+                    and workspace.Map:FindFirstChild("SellSpot")
+                local sellOutpost = nil
+                local forestHuts = workspace:FindFirstChild("ForestHuts")
+                if forestHuts then
+                    for _, obj in ipairs(forestHuts:GetDescendants()) do
+                        if obj.Name == "SellOutpost" then sellOutpost = obj; break end
+                    end
+                end
+                local target = sellSpot or sellOutpost
+                if target then
+                    local base = target:FindFirstChildWhichIsA("BasePart")
+                        or target.PrimaryPart
+                    if base then
+                        hrp.CFrame = base.CFrame + Vector3.new(0, 5, 0)
+                        pcall(function()
+                            ChopRemotes.DepositLogs:FireServer()
+                            ChopRemotes.CollectCash:FireServer()
+                        end)
+                        Log:info("chop: sell at " .. target:GetFullName())
+                    end
+                end
+            end
+        end
+    end
+end)
+
+task.spawn(function()
+    while true do
+        task.wait(5)
+        if chopState.autoBuy then
+            local hrp = chopGetHRP()
+            if hrp then
+                local forestHuts = workspace:FindFirstChild("ForestHuts")
+                local shop = nil
+                if forestHuts then
+                    local sawShack = forestHuts:FindFirstChild("SawShack")
+                    if sawShack then shop = sawShack:FindFirstChild("Shop") end
+                end
+                if shop then
+                    local base = shop:FindFirstChildWhichIsA("BasePart") or shop.PrimaryPart
+                    if base then
+                        hrp.CFrame = base.CFrame + Vector3.new(0, 5, 0)
+                    end
+                end
+                pcall(function()
+                    ChopRemotes.BuyUpgrade:FireServer()
+                    ChopRemotes.BuyTool:FireServer()
+                end)
+                Log:info("chop: tried buy upgrade/tool")
+            end
+        end
+    end
+end)
+
+task.spawn(function()
+    while true do
+        task.wait(0.2)
+        local hum = chopGetHumanoid()
+        local char = LP.Character
+        if hum then
+            if chopState.speed then hum.WalkSpeed = chopState.speedValue end
+            if chopState.jump then
+                hum.JumpPower = chopState.jumpValue
+                hum.UseJumpPower = true
+            end
+        end
+        if chopState.noclip and char then
+            for _, p in ipairs(char:GetDescendants()) do
+                if p:IsA("BasePart") then p.CanCollide = false end
+            end
+        end
+    end
+end)
+
+ChopTab:CreateToggle({
+    Name = "Auto Chop", CurrentValue = false, Flag = "ChopAutoChop",
+    Callback = function(v) chopState.autoChop = v; Log:info("chop autoChop = " .. tostring(v)) end,
+})
+ChopTab:CreateToggle({
+    Name = "Auto Collect", CurrentValue = false, Flag = "ChopAutoCollect",
+    Callback = function(v) chopState.autoCollect = v; Log:info("chop autoCollect = " .. tostring(v)) end,
+})
+ChopTab:CreateToggle({
+    Name = "Auto Sell", CurrentValue = false, Flag = "ChopAutoSell",
+    Callback = function(v) chopState.autoSell = v; Log:info("chop autoSell = " .. tostring(v)) end,
+})
+ChopTab:CreateToggle({
+    Name = "Auto Buy (upgrade + tool)", CurrentValue = false, Flag = "ChopAutoBuy",
+    Callback = function(v) chopState.autoBuy = v; Log:info("chop autoBuy = " .. tostring(v)) end,
+})
+
+ChopTab:CreateSection("Movement")
+ChopTab:CreateToggle({
+    Name = "Noclip", CurrentValue = false, Flag = "ChopNoclip",
+    Callback = function(v)
+        chopState.noclip = v
+        local char = LP.Character
+        if char and not v then
+            for _, p in ipairs(char:GetDescendants()) do
+                if p:IsA("BasePart") then p.CanCollide = true end
+            end
+        end
+        Log:info("chop noclip = " .. tostring(v))
+    end,
+})
+ChopTab:CreateToggle({
+    Name = "Speed", CurrentValue = false, Flag = "ChopSpeed",
+    Callback = function(v) chopState.speed = v; Log:info("chop speed = " .. tostring(v)) end,
+})
+ChopTab:CreateSlider({
+    Name = "Speed Value", Range = {16, 200}, Increment = 2, Suffix = "studs/s",
+    CurrentValue = 60, Flag = "ChopSpeedValue",
+    Callback = function(v) chopState.speedValue = v; Log:info("chop speedValue = " .. v) end,
+})
+ChopTab:CreateToggle({
+    Name = "Jump", CurrentValue = false, Flag = "ChopJump",
+    Callback = function(v) chopState.jump = v; Log:info("chop jump = " .. tostring(v)) end,
+})
+ChopTab:CreateSlider({
+    Name = "Jump Value", Range = {50, 300}, Increment = 10, Suffix = "power",
+    CurrentValue = 100, Flag = "ChopJumpValue",
+    Callback = function(v) chopState.jumpValue = v; Log:info("chop jumpValue = " .. v) end,
+})
+
+-- ===================== UI: PLAYERS =====================
+PlayersTab = Window:CreateTab("Players")
+PlayersTab:CreateSection("Teleport")
+PlayersTab:CreateButton({ Name = "Refresh player list", Callback = function() refreshPlayers() end })
+
+refreshPlayers()
+task.spawn(function()
+    while PlayersTab do
+        task.wait(15)
+        pcall(refreshPlayers)
+    end
+end)
+
+PlayersTab:CreateSection("Session")
+PlayersTab:CreateToggle({
+    Name = "Anti-AFK", CurrentValue = false, Flag = "AntiAfk",
+    Callback = function(v)
+        state.antiAfk = v
+        Log:info("antiAfk = " .. tostring(v))
+        if v then enableAntiAfk() else disableAntiAfk() end
+    end,
+})
+PlayersTab:CreateToggle({
+    Name = "Auto-Rejoin", CurrentValue = false, Flag = "AutoRejoin",
+    Callback = function(v)
+        state.autoRejoin = v
+        Log:info("autoRejoin = " .. tostring(v))
+        if v then enableAutoRejoin() else disableAutoRejoin() end
+    end,
+})
+PlayersTab:CreateButton({ Name = "Rejoin now", Callback = function() attemptRejoin() end })
+
+-- ===================== UI: LOG =====================
+local LogTab = Window:CreateTab("Log")
+LogTab:CreateSection("Console")
+
+local logBox = LogTab:CreateParagraph({ Title = "Last events", Content = "log will appear here" })
+
+local function refreshLogParagraph()
+    local tail = {}
+    local n = math.min(#Log.lines, 20)
+    for i = #Log.lines - n + 1, #Log.lines do
+        table.insert(tail, Log.lines[i])
+    end
+    pcall(function() logBox:Set({ Content = table.concat(tail, "\n") }) end)
+end
+
+task.spawn(function()
+    while Rayfield do
+        refreshLogParagraph()
+        task.wait(1)
+    end
+end)
+
+LogTab:CreateButton({
+    Name = "Copy log to clipboard",
+    Callback = function()
+        local text = Log:dump()
+        local how
+        if setclipboard then setclipboard(text); how = "setclipboard"
+        elseif toclipboard then toclipboard(text); how = "toclipboard"
+        elseif writefile then writefile("trainer_log.txt", text); how = "trainer_log.txt"
+        end
+        if how then Log:info("log copied via " .. how) else Log:warn("clipboard unavailable") end
+    end,
+})
+LogTab:CreateButton({
+    Name = "Clear log",
+    Callback = function()
+        Log.lines = {}
+        refreshLogParagraph()
+        print("[Trainer] log cleared")
+    end,
+})
+
+-- ===================== UI: CONFIG =====================
+local ConfigTab = Window:CreateTab("Config")
+ConfigTab:CreateSection("Settings")
+ConfigTab:CreateButton({ Name = "Destroy UI", Callback = function() Rayfield:Destroy() end })
+
+Log:info("Trainer ready")
