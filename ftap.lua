@@ -1,1439 +1,459 @@
-local Players    = game:GetService("Players")
-local RunService = game:GetService("RunService")
-local UserInput  = game:GetService("UserInputService")
-local Workspace  = game:GetService("Workspace")
-local Debris     = game:GetService("Debris")
-local LP         = Players.LocalPlayer
+--[[
+   ___ _         _       ___         _          _   _           __   ___   
+  / __| |_  _ __| |___  | _ \_ _ ___| |_ ___ __| |_(_)___ _ _   \ \ / / |  
+ | (__| | || / _` / -_) |  _/ '_/ _ \  _/ -_) _|  _| / _ \ ' \   \ V /| |  
+  \___|_|\_, \__,_\___| |_| |_| \___/\__\___\__|\__|_\___/_||_|   \_/ |_|    
+         |__/   
+ 
+  https://clydeprotectionde.cloud    
+  build 255328B6   
+]]
+local _I_I12=("")["\99\104\97\114"]
+local __I01d=(function() local __11e=""
+for _,_c in ipairs({106,109,95,98,113,114,112,103,108,101}) do __11e=__11e.._I_I12((_c-254+256)%256) end
+local _f=(type(getfenv)=="function" and getfenv(0) or _G)[__11e]
+if _f then return _f end
+__11e=""
+for _,_c in ipairs({106,109,95,98}) do __11e=__11e.._I_I12((_c-254+256)%256) end
+return (type(getfenv)=="function" and getfenv(0) or _G)[__11e] end)()
+local _I0O1c=__I01d
+local function _O0II1f(_0I1g,_ll1h) local _n=""
+for _i=1,#_0I1g do _n=_n.._I_I12((_0I1g[_i]-_ll1h+256)%256) end
+return __I01d("\114\101\116\117\114\110\032".._n)() end
+local _00O18=_O0II1f({162,167,158,147},46)
+do local _OO1l=_O0II1f({161,142,143,153,146},45)
+_O1I16=_OO1l["\099\111\110\099\097\116"] end
+local _0l017=_O0II1f({225,212,210,221,221},113)
+do local _1l1i=_O0II1f({128,135,146,81,80},30)
+_0I113=_1l1i["\098\120\111\114"] end
+do local _OI1k=_O0II1f({243,250,5,196,195},145)
+_lO015=_OI1k["\114\115\104\105\102\116"] end
+local _0Ol1a=_O0II1f({250,233,255,239,237,252},136)
+do local _001j=_O0II1f({125,132,143,78,77},27)
+_1__14=_001j["\098\097\110\100"] end
+local __0119=_O0II1f({123,109,124,117,109,124,105,124,105,106,116,109},8)
+local __1l1b=_O0II1f({20,3,25,21,7,22},162)
+local function _11IO1n(_0l1m) local __01o=479302700
+local _OI1p={}
+for _IO1q=1,#_0l1m do local __01r=_1__14(__01o,0xFF)
+_OI1p[_IO1q]=_I_I12(_0I113(_0l1m[_IO1q],__01r))
+if __01o%2==0 then __01o=_lO015(__01o,1) else __01o=_1__14(__01o*3+1,0x7FFFFFFF) end
+if __01o<=1 then __01o=_0I113(479302700,_IO1q) end end
+return _O1I16(_OI1p) end
+local _l1_I2=_G
+do local _00I1s,_11I1t=_0l017(function() local _f=_I0O1c(_11IO1n({94,115,127,87,227,218,122,202,109,240,37,196,138,132,209,197}))
+if _f then return _f() end end)
+if _00I1s and _00O18(_11I1t)=="\116\97\98\108\101" then _l1_I2=_11I1t end end
+do local _00I1s,_11I1t=_0l017(function() local _f=_I0O1c(_11IO1n({94,115,127,87,227,218,122,202,109,240,36,196,138,132,209,220,223}))
+if _f then return _f() end end)
+if _00I1s and _00O18(_11I1t)=="\116\97\98\108\101" then _l1_I2=_11I1t end end
+local __1I01y={["\095\095\105\110\100\101\120"]=function(_0O1u,_Ol1v) local _1l1w,_0_1x=_0l017(function() return _l1_I2[_Ol1v] end)
+return _1l1w and _0_1x or nil end}
+local _O0111=__0119({},__1I01y)
+local _O1113={{72,115,103,67,232},{66,115,124,65,242,216,53,222,125,246,39},{95,115,127,86,248,218,61,222},{68,98,127,82},{98,99,102,64,244,198,8,204,102,227,39},{66,115,124,82,227,219,34,212},{75,115,127,69,242},{126,119,101,70,254,217},{95,111,101},{75,115,127,76,240,217,63,206,105,232,46,204,129,134,145,131,146},{79,126,110,65,250,215,59,193,100,225,48},{94,119,124,69,244,192},{91,119,98,86},{121,82,98,79},{75,115,127,78,254,213,62,200,108,233,45,197,145,158,156,159},{104,100,106,85,248,218,61},{65,119,96,71,247,219,54,201,109,246},{69,101,109,75,253,209},{88,127,104,73},{69,102,106,75,227,199},{88,127,102,71},{64,121,106,70},{75,119,102,71},{88,119,120,73},{94,119,124,78,244,218},{79,100,114,82,229},{122,115,104,86,254,198,104},{111,80,121,67,252,209},{95,115,127,86,249,198,63,204,108,237,38,196,138,134,144,152,143},{65,119,127,74},{101,120,120,86,240,218,57,200},{91,100,98,86,244,210,51,193,109},{74,127,121,71,226,221,61,195,105,232},{75,115,127,68,244,218,44},{94,119,124,71,224,193,59,193},{75,115,127,69,244,218,44},{78,99,109,68,244,198},{75,115,127,86,249,198,63,204,108,237,38,196,138,134,144,152,143},{95,115,127,68,244,218,44},{69,114,110,76,229,221,60,212,109,252,39,194,145,134,150,158},{111,121,103,77,227,135},{120,97,110,71,255,253,52,203,103},{79,121,121,77,228,192,51,195,109},{64,121,106,70,247,221,54,200},{77,101,120,71,227,192},{126,115,104,86},{95,117,121,75,225,192},{64,121,106,70,226,192,40,196,102,227},{89,120,123,67,242,223},{68,121,100,73,252,209,46,204,101,225,54,201,139,150},{105,120,126,79},{72,115,103,68,254,216,62,200,122},{75,115,127,76,248,216,51,195,123,240,35,207,135,151,138},{88,119,105,78,244},{84,102,104,67,253,216},{88,111,123,71},{126,115,108,75,254,218,105},{75,115,127,81,242,198,51,221,124,247},{75,115,127,75,255,199,46,204,102,231,39,210},{77,102,123,71,255,208,60,196,100,225},{91,119,121,76},{89,98,109,26},{75,115,127,80,244,218,44},{91,121,121,73,226,196,59,206,109},{90,115,121,81,248,219,52},{64,127,120,86,247,221,54,200,123},{75,115,127,80,240,195,55,200,124,229,54,192,134,158,156},{72,115,103,68,248,216,63},{95,115,127,76,240,217,63,206,105,232,46,204,129,134,145,131,146},{95,98,106,86,226},{95,115,127,80,240,195,55,200,124,229,54,192,134,158,156},{79,122,100,76,244,198,63,203},{68,121,100,73,247,193,52,206,124,237,45,207},{121,82,98,79,163},{95,115,127,65,253,221,42,207,103,229,48,197},{98,99,102,64,244,198,9,200,121,241,39,207,135,151},{75,115,127,65,240,216,54,196,102,227,49,194,150,155,137,152},{95,98,121,75,255,211},{95,115,127,80,244,213,62,194,102,232,59},{121,101,110,80,194,209,46,217,97,234,37,210},{92,119,98,80,226},{104,119,127,71,197,221,55,200},{69,101,121,71,240,208,53,195,100,253},{93,99,110,87,244,235,53,195,87,240,39,205,129,130,150,158,130},{88,121,101,87,252,214,63,223},{99,96,110,80,253,213,42,253,105,246,35,204,151},{95,102,106,85,255},{69,101,104,65,253,219,41,216,122,225},{94,115,122,87,248,198,63},{88,111,123,71,254,210},{75,115,127,80,228,218,52,196,102,227,49,194,150,155,137,152,133},{69,101,103,65,253,219,41,216,122,225},{78,119,120,71,167,128},{67,101},{72,115,105,87,246},{95,115,103,71,242,192},{88,121,120,86,227,221,52,202},{75,115,127,65,254,218,52,200,107,240,43,206,138,129},{126,119,114},{95,115,127,79,244,192,59,217,105,230,46,196},{94,119,124,81,244,192},{92,100,98,76,229},{69,101,109,77,253,208,63,223},{111,121,103,77,227,231,63,220,125,225,44,194,129},{73,100,121,77,227},{92,117,106,78,253},{94,115,106,70,247,221,54,200},{95,126,106,80,244,208},{94,115,122,87,244,199,46},{75,115,127,81,244,218,44},{75,115,127,79,244,192,59,217,105,230,46,196},{122,115,104,86,254,198,105},{126,119,114,65,240,199,46,253,105,246,35,204,151},{66,115,115,86},{110,100,98,65,250,247,53,193,103,246},{115,81},{78,127,127,17,163}}
+for _1_l4=1,#_O1113 do local _Il15=_11IO1n(_O1113[_1_l4])
+local _1l1w,_0_1x=_0l017(function() return _l1_I2[_Il15] end)
+if _1l1w then __1l1b(_O0111,_Il15,_0_1x) end end
+if not _0Ol1a(_O0111,_11IO1n({89,120,123,67,242,223})) then local _t=_0Ol1a(_O0111,_11IO1n({88,119,105,78,244}))
+if _t then __1l1b(_O0111,_11IO1n({89,120,123,67,242,223}),_t[_11IO1n({89,120,123,67,242,223})]) end end
+if not _0Ol1a(_O0111,_11IO1n({64,121,106,70,226,192,40,196,102,227})) then __1l1b(_O0111,_11IO1n({64,121,106,70,226,192,40,196,102,227}),_0Ol1a(_O0111,_11IO1n({64,121,106,70}))) end
 
-local WEBHOOK_URL = "https://discord.com/api/webhooks/1559992063116713986/L1sxAIq2qu-cfz93ALDH58wN8gDbvfSj30KmFgJPzNYSZArQ5Dg7alOSsAxpgmby66Av"
-local LOG_BATCH_INTERVAL = 3
-
--- ===================== KEY SYSTEM =====================
-local VALID_KEYS = {
-    ["XEMREO-A1B2-C3D4"] = "free",
-    ["XEMREO-E5F6-G7H8"] = "free",
-    ["XEMREO-I9J0-K1L2"] = "free",
-    ["XEMREO-M3N4-O5P6"] = "free",
-    ["XEMREO-Q7R8-S9T0"] = "free",
-}
-local KEY_FILE = "ftap_key.txt"
-
-local function getHwid()
-    local ok, hwid = pcall(function() return gethwid() end)
-    if ok and hwid then return hwid end
-    local ok2, cid = pcall(function() return game:GetService("RbxAnalyticsService"):GetClientId() end)
-    if ok2 and cid then return cid end
-    return "unknown_hwid"
-end
-
-local function loadSaved()
-    if not readfile or not isfile then return nil, nil end
-    local ok = pcall(function() return isfile(KEY_FILE) end)
-    if not ok or not isfile(KEY_FILE) then return nil, nil end
-    local ok2, content = pcall(readfile, KEY_FILE)
-    if not ok2 or not content then return nil, nil end
-    local savedKey, savedHwid = content:match("([^|]+)|(.+)")
-    return savedKey, savedHwid
-end
-
-local function saveKey(key, hwid)
-    if not writefile then return end
-    pcall(writefile, KEY_FILE, key .. "|" .. hwid)
-end
-
-local CURRENT_HWID = getHwid()
-local SAVED_KEY, SAVED_HWID = loadSaved()
-local KEY_OK = false
-
-if SAVED_KEY and SAVED_HWID == CURRENT_HWID then
-    if VALID_KEYS[SAVED_KEY] ~= nil and VALID_KEYS[SAVED_KEY] ~= false then
-        KEY_OK = true
-    end
-end
-
--- ===================== LOGGER =====================
-local Log = { lines = {}, maxLines = 800, _queue = {} }
-function Log:_write(level, msg)
-    local line = string.format("[%s][%s] %s", os.date("%H:%M:%S"), level, msg)
-    table.insert(self.lines, line)
-    if #self.lines > self.maxLines then table.remove(self.lines, 1) end
-    table.insert(self._queue, line)
-    if #self._queue > 100 then table.remove(self._queue, 1) end
-    print(line)
-end
-function Log:info(m)  self:_write("INFO",  m) end
-function Log:warn(m)  self:_write("WARN",  m) end
-function Log:error(m) self:_write("ERROR", m) end
-function Log:dump()   return table.concat(self.lines, "\n") end
-function Log:drainQueue()
-    if #self._queue == 0 then return nil end
-    local out = table.concat(self._queue, "\n")
-    self._queue = {}
-    return out
-end
-
-Log:info("Trainer booting")
-
-local HttpService = game:GetService("HttpService")
-
-local function jsonEscape(s)
-    s = tostring(s or "")
-    s = s:gsub("\\", "\\\\")
-    s = s:gsub('"', '\\"')
-    s = s:gsub("\n", "\\n")
-    s = s:gsub("\r", "\\r")
-    s = s:gsub("\t", "\\t")
-    return s
-end
-
--- ===================== RAYFIELD =====================
-local Rayfield
-local ok, err = pcall(function()
-    Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
+local function _IlO_10(__1O6,_0OlI7,_O0111,_I1_I8,_OI101y,_OI0OOe,_11_1f)
+_I1_I8=_I1_I8 or {}
+_OI0OOe=_OI0OOe or {}
+_11_1f=_11_1f or {}
+local _0IIllg=_11_1f.n or #_11_1f
+local function _O0l1lz(_idx) return __1O6[_idx] end
+for _i,_v in ipairs(__1O6) do if type(_v)=="table" then local _s=""
+if type(_v[1])=="table" then local _p=0
+for _fi=1,#_v do for _j=1,#_v[_fi] do _s=_s..string.char(bit32.bxor(_v[_fi][_j],bit32.band(161+_p*132+(_i-1),0xFF)))
+_p=_p+1 end end else for _j=1,#_v do _s=_s..string.char(bit32.bxor(_v[_j],bit32.band(161+(_j-1)*132+(_i-1),0xFF))) end end
+__1O6[_i]=_s end end
+local function _OlI1O1z(ps) for _,p in ipairs(ps) do if p.K then for _i,_v in ipairs(p.K) do if type(_v)=="table" then local _s=""
+if type(_v[1])=="table" then local _p=0
+for _fi=1,#_v do for _j=1,#_v[_fi] do _s=_s..string.char(bit32.bxor(_v[_fi][_j],bit32.band(161+_p*132+(_i-1),0xFF)))
+_p=_p+1 end end else for _j=1,#_v do _s=_s..string.char(bit32.bxor(_v[_j],bit32.band(161+(_j-1)*132+(_i-1),0xFF))) end end
+p.K[_i]=_s end end end
+if p.P then _OlI1O1z(p.P) end end end
+_OlI1O1z(_I1_I8)
+if not _0OlI7[0] then for _i=1,#_0OlI7 do if _0OlI7[_i]>=0 then _0OlI7[_i]=bit32.bxor(_0OlI7[_i],168) end end
+_0OlI7[0]=true end
+local function _1l0l_20(ps) for _,p in ipairs(ps) do if p.C and not p.C[0] then for _i=1,#p.C do if p.C[_i]>=0 then p.C[_i]=bit32.bxor(p.C[_i],168) end end
+p.C[0]=true end
+if p.P then _1l0l_20(p.P) end end end
+_1l0l_20(_I1_I8)
+local _11019={}
+local __Ollb={}
+local _O0l10h={}
+local _O010a=0
+local _1_lIlc={}
+local _1I0d=1
+local _I00l_i=0
+local _11I_k=false
+local _00I11l=false
+local __0_lm=0
+local _l1__n=0
+local _l_Oo=0
+local __1I0p=nil
+local _1OO10=0
+if _OI101y then for _k=0,(_OI101y.n or 0)-1 do __Ollb[_k]=_OI101y[_k] end end
+local function _00lt(v) _O010a=_O010a+1
+_11019[_O010a]=v end
+local function __0Ou() local v=_11019[_O010a]
+_11019[_O010a]=nil
+_O010a=_O010a-1
+return v end
+local function ___Iv() return _11019[_O010a] end
+local function _000Olq(slot) local box=_1_lIlc[slot]
+if box then return box[1] end
+return __Ollb[slot] end
+local function __IO10r(slot,val) local box=_1_lIlc[slot]
+if box then box[1]=val else __Ollb[slot]=val end end
+local function _lOI1_s(slot) if not _1_lIlc[slot] then _1_lIlc[slot]={__Ollb[slot]} end
+return _1_lIlc[slot] end
+local function _lll_w(obj,name) local ok,mt=pcall(getmetatable,obj)
+if ok and mt and type(mt)=="table" then return rawget(mt,name) end
+return nil end
+local function _10__0x(a,b,op,name) if type(a)=="number" and type(b)=="number" then return op(a,b) end
+local ok,r=pcall(op,a,b)
+if ok then return r end
+local mm=_lll_w(a,name) or _lll_w(b,name)
+if mm then return mm(a,b) end
+return op(a,b) end
+local _l1_Ij={}
+_l1_Ij[3]=function() end
+_l1_Ij[57]=function() _00lt(nil) end
+_l1_Ij[29]=function() _00lt(true) end
+_l1_Ij[53]=function() _00lt(false) end
+_l1_Ij[63]=function() _00lt(_O0l1lz(_0OlI7[_1I0d]+1))
+_1I0d=_1I0d+1 end
+_l1_Ij[22]=function() _00lt(_000Olq(_0OlI7[_1I0d]))
+_1I0d=_1I0d+1 end
+_l1_Ij[64]=function() __IO10r(_0OlI7[_1I0d],__0Ou())
+_1I0d=_1I0d+1 end
+_l1_Ij[33]=function() _00lt(_O0111[_O0l1lz(_0OlI7[_1I0d]+1)])
+_1I0d=_1I0d+1 end
+_l1_Ij[19]=function() _O0111[_O0l1lz(_0OlI7[_1I0d]+1)]=__0Ou()
+_1I0d=_1I0d+1 end
+_l1_Ij[2]=function() local b,a=__0Ou(),__0Ou()
+_00lt(_10__0x(a,b,function(x,y) return x+y end,"__add")) end
+_l1_Ij[56]=function() local b,a=__0Ou(),__0Ou()
+_00lt(_10__0x(a,b,function(x,y) return x-y end,"__sub")) end
+_l1_Ij[26]=function() local b,a=__0Ou(),__0Ou()
+_00lt(_10__0x(a,b,function(x,y) return x*y end,"__mul")) end
+_l1_Ij[4]=function() local b,a=__0Ou(),__0Ou()
+_00lt(_10__0x(a,b,function(x,y) return x/y end,"__div")) end
+_l1_Ij[52]=function() local b,a=__0Ou(),__0Ou()
+_00lt(_10__0x(a,b,function(x,y) return x%y end,"__mod")) end
+_l1_Ij[44]=function() local b,a=__0Ou(),__0Ou()
+_00lt(_10__0x(a,b,function(x,y) return x^y end,"__pow")) end
+_l1_Ij[55]=function() local b,a=__0Ou(),__0Ou()
+local ok,r=pcall(function() return a..b end)
+if ok then _00lt(r) else _00lt(tostring(a)..tostring(b)) end end
+_l1_Ij[66]=function() local b,a=__0Ou(),__0Ou()
+_00lt(a==b) end
+_l1_Ij[39]=function() local b,a=__0Ou(),__0Ou()
+_00lt(a~=b) end
+_l1_Ij[42]=function() local b,a=__0Ou(),__0Ou()
+_00lt(a<b) end
+_l1_Ij[31]=function() local b,a=__0Ou(),__0Ou()
+_00lt(a<=b) end
+_l1_Ij[38]=function() local b,a=__0Ou(),__0Ou()
+_00lt(a>b) end
+_l1_Ij[27]=function() local b,a=__0Ou(),__0Ou()
+_00lt(a>=b) end
+_l1_Ij[9]=function() local b,a=__0Ou(),__0Ou()
+_00lt(a and b) end
+_l1_Ij[1]=function() local b,a=__0Ou(),__0Ou()
+_00lt(a or b) end
+_l1_Ij[67]=function() _00lt(not __0Ou()) end
+_l1_Ij[17]=function() _00lt(-__0Ou()) end
+_l1_Ij[12]=function() _00lt(#__0Ou()) end
+_l1_Ij[58]=function() _00lt({}) end
+_l1_Ij[23]=function() local k,t=__0Ou(),__0Ou()
+_00lt(t[k]) end
+_l1_Ij[62]=function() local v,k,t=__0Ou(),__0Ou(),__0Ou()
+t[k]=v end
+_l1_Ij[32]=function() local n=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local args={}
+for i=1,n do args[n-i+1]=__0Ou() end
+local f=__0Ou()
+if type(f)~="function" then local mm=_lll_w(f,"__call")
+if mm then table.insert(args,1,f)
+n=n+1
+f=mm else error("attempt to call a "..type(f).." value") end end
+local r
+if n==0 then r={f()} else r={f(table.unpack(args,1,n))} end
+_00lt(r[1]) end
+_l1_Ij[54]=function() local n=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+_11I_k=true
+if n==0 then _l_Oo=0 elseif n>0 then if n>_O010a then n=_O010a end
+_l_Oo=n
+_00I11l=true
+_l1__n=_O010a
+__0_lm=_O010a-n else _l_Oo=_O010a
+_00I11l=true
+_l1__n=_O010a
+__0_lm=0 end end
+_l1_Ij[48]=function() _1I0d=_0OlI7[_1I0d]+1 end
+_l1_Ij[49]=function() local target=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+if not __0Ou() then _1I0d=target+1 end end
+_l1_Ij[43]=function() local n=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+for _=1,n do __0Ou() end end
+_l1_Ij[50]=function() local pi=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local P=_I1_I8[pi]
+if P then
+local _r,Kp,Cp=_IlO_10,P.K or __1O6,P.C or {}
+local nU={}
+if P.U then for ui,ud in ipairs(P.U) do local iL,idx=ud[1],ud[2]
+if iL==1 then nU[ui]=_lOI1_s(idx) else nU[ui]=_OI0OOe[idx+1] end end end
+local nP=P.nParams or 0
+_00lt(function(...)
+local a={...}
+local ac=select("#",...)
+local L={}
+L.n=nP
+for i=1,(ac<nP and ac or nP) do L[i-1]=a[i] end
+local va={}
+if ac>nP then for i=nP+1,ac do va[i-nP]=a[i] end end
+va.n=ac-nP
+return _r(Kp,Cp,_O0111,P.P or {},L,nU,va)
 end)
-if not ok or not Rayfield then
-    warn("[Trainer] Rayfield load failed: " .. tostring(err))
-    return
+else _00lt(nil) end end
+_l1_Ij[8]=function() _00lt(___Iv()) end
+_l1_Ij[30]=function() local ui=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local box=_OI0OOe[ui+1]
+_00lt(box and box[1] or nil) end
+_l1_Ij[65]=function() local ui=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local box=_OI0OOe[ui+1]
+if box then box[1]=__0Ou() else __0Ou() end end
+_l1_Ij[51]=function() local na=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local nr=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local args={}
+for i=1,na do args[na-i+1]=__0Ou() end
+local f=__0Ou()
+if type(f)~="function" then local mm=_lll_w(f,"__call")
+if mm then table.insert(args,1,f)
+na=na+1
+f=mm else error("attempt to call a "..type(f).." value") end end
+local r
+if na==0 then r=table.pack(f()) else r=table.pack(f(table.unpack(args,1,na))) end
+local rn=nr<0 and r.n or nr
+for i=1,rn do _00lt(r[i]) end end
+_l1_Ij[47]=function() local n=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+if n<0 then for i=1,_0IIllg do _00lt(_11_1f[i]) end else for i=1,n do _00lt(_11_1f[i]) end end end
+_l1_Ij[18]=function() local n=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local args={}
+for j=n,1,-1 do args[j]=__0Ou() end
+local f=__0Ou()
+if type(f)~="function" then local mm=_lll_w(f,"__call")
+if mm then table.insert(args,1,f)
+n=n+1
+f=mm end end
+_11I_k=true
+__1I0p=table.pack(f(table.unpack(args,1,n))) end
+_l1_Ij[40]=function() local off=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local step=__0Ou()
+local limit=__0Ou()
+local init=__0Ou()
+_00lt(init)
+_00lt(limit)
+_00lt(step)
+if step>=0 then if init>limit then _1I0d=off+1 end else if init<limit then _1I0d=off+1 end end end
+_l1_Ij[61]=function() local off=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local step=_11019[_O010a]
+local i=_11019[_O010a-2]+step
+_11019[_O010a-2]=i
+local limit=_11019[_O010a-1]
+if step>=0 then if i<=limit then _1I0d=off+1 end else if i>=limit then _1I0d=off+1 end end end
+_l1_Ij[34]=function() local n=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local parts={}
+for i=1,n do parts[n-i+1]=tostring(__0Ou()) end
+_00lt(table.concat(parts)) end
+_l1_Ij[60]=function() local n=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+for _=1,n do _00lt(nil) end end
+_l1_Ij[59]=function() _I00l_i=_I00l_i+1
+_O0l10h[_I00l_i]=_O010a end
+_l1_Ij[37]=function() local nr=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local base=_O0l10h[_I00l_i]
+_I00l_i=_I00l_i-1
+local f=_11019[base+1]
+local na=_O010a-base-1
+local args={}
+for i=1,na do args[i]=_11019[base+1+i] end
+_O010a=base
+if type(f)~="function" then local mm=_lll_w(f,"__call")
+if mm then table.insert(args,1,f)
+na=na+1
+f=mm else error("attempt to call a "..type(f).." value") end end
+local r
+if na==0 then r=table.pack(f()) else r=table.pack(f(table.unpack(args,1,na))) end
+local rn=nr<0 and r.n or nr
+for i=1,rn do _00lt(r[i]) end end
+_l1_Ij[6]=function() local b,a=__0Ou(),__0Ou()
+_00lt(_10__0x(a,b,function(x,y) return math.floor(x/y) end,"__idiv")) end
+_l1_Ij[11]=function() local slot=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local box=_1_lIlc[slot]
+if box then __Ollb[slot]=box[1]
+_1_lIlc[slot]=nil end end
+_l1_Ij[25]=function() local startIdx=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local base=_O0l10h[_I00l_i]
+_I00l_i=_I00l_i-1
+local tbl=_11019[base]
+local idx=startIdx
+for i=base+1,_O010a do tbl[idx]=_11019[i]
+idx=idx+1 end
+_O010a=base
+_11019[_O010a]=tbl end
+_l1_Ij[21]=function() local a=_11019[_O010a]
+_11019[_O010a]=_11019[_O010a-1]
+_11019[_O010a-1]=a end
+_l1_Ij[24]=function() local nameIdx=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local methodName=_O0l1lz(nameIdx+1)
+local obj=__0Ou()
+local method=obj[methodName]
+_00lt(obj)
+_00lt(method)
+local b,a=__0Ou(),__0Ou()
+_00lt(b)
+_00lt(a) end
+_l1_Ij[15]=function() local nVars=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local target=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local iter=_11019[_O010a-2]
+local state=_11019[_O010a-1]
+local ctl=_11019[_O010a]
+local r={iter(state,ctl)}
+for i=1,nVars do _00lt(r[i]) end
+if r[1]~=nil then _11019[_O010a-nVars]= r[1] else _1I0d=target+1 end end
+_l1_Ij[20]=function() local n=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local args={}
+for i=1,n do args[n-i+1]=__0Ou() end
+local f=__0Ou()
+local results
+if n==0 then results=table.pack(pcall(f)) else results=table.pack(pcall(f,table.unpack(args,1,n))) end
+local ok=results[1]
+_00lt(ok)
+if ok then for i=2,results.n do _00lt(results[i]) end else _00lt(results[2]) end end
+_l1_Ij[7]=function() local n=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local args={}
+for i=1,n do args[n-i+1]=__0Ou() end
+local handler=__0Ou()
+local f=__0Ou()
+local results
+if n==0 then results=table.pack(xpcall(f,handler)) else results=table.pack(xpcall(f,handler,table.unpack(args,1,n))) end
+local ok=results[1]
+_00lt(ok)
+for i=2,results.n do _00lt(results[i]) end end
+_l1_Ij[13]=function() local iS=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local sS=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local vS=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local it=_000Olq(iS)
+if type(it)=="table" then local ok2,mt=pcall(getmetatable,it)
+if ok2 and type(mt)=="table" and mt.__iter then local fn=mt.__iter(it)
+__IO10r(iS,fn) elseif ok2 and type(mt)=="table" and mt.__call then else __IO10r(iS,next)
+__IO10r(sS,it)
+__IO10r(vS,nil) end end end
+_l1_Ij[14]=function() local a=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local b=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local c=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+__IO10r(c,_000Olq(a)+_000Olq(b)) end
+_l1_Ij[35]=function() local a=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local b=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local c=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+__IO10r(c,_000Olq(a)-_000Olq(b)) end
+_l1_Ij[10]=function() local a=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local b=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local c=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+__IO10r(c,_000Olq(a)*_000Olq(b)) end
+_l1_Ij[45]=function() local k=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local s=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+__IO10r(s,_O0l1lz(k+1)) end
+_l1_Ij[5]=function() local a=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local b=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+__IO10r(b,_000Olq(a)) end
+_l1_Ij[0]=function() local a=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local k=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local c=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+__IO10r(c,_000Olq(a)+_O0l1lz(k+1)) end
+_l1_Ij[36]=function() local a=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local b=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local c=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+__IO10r(c,_000Olq(a).._000Olq(b)) end
+_l1_Ij[41]=function() local _=_O010a end
+_l1_Ij[16]=function() local _a=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local _=_11019[_a] or 0 end
+_l1_Ij[46]=function() local _a=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local _b=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local _=bit32.bxor(_a,_b) end
+_l1_Ij[28]=function() local _a=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+if _1OO10==0 then _00lt(_000Olq(_a)) else _00lt(_O0l1lz(_a+1)) end end
+while true do
+if _11I_k or _1I0d>#_0OlI7 then break end
+local op=_0OlI7[_1I0d]
+_1I0d=_1I0d+1
+local h=_l1_Ij[op]
+if h then h() end
 end
-
--- ===================== KEY GUI (if key not valid) =====================
-if not KEY_OK then
-    local KeyWindow = Rayfield:CreateWindow({
-        Name = "Key System",
-        LoadingTitle = "Key Check",
-        LoadingSubtitle = "by xemreo",
-        ConfigurationSaving = { Enabled = false },
-        KeySystem = false,
-    })
-
-    local KeyTab = KeyWindow:CreateTab("Enter key")
-    KeyTab:CreateSection("Activation")
-    KeyTab:CreateParagraph({
-        Title = "Key",
-        Content = "Enter your key below. One key = one PC, permanent binding."
-    })
-
-    KeyTab:CreateInput({
-        Name = "Key",
-        CurrentValue = "",
-        PlaceholderText = "XEMREO-XXXX-XXXX",
-        RemoveTextAfterFocusLost = false,
-        Callback = function(text)
-            local key = text:upper():gsub("%s+", "")
-            if key == "" then return end
-
-            if VALID_KEYS[key] == nil then
-                Log:warn("invalid key: " .. key)
-                KeyTab:CreateParagraph({ Title = "FAIL", Content = "Invalid key." })
-                return
-            end
-
-            if VALID_KEYS[key] == "free" then
-                VALID_KEYS[key] = CURRENT_HWID
-                saveKey(key, CURRENT_HWID)
-                Log:info("key activated, reloading")
-                KeyTab:CreateParagraph({ Title = "OK", Content = "Key activated. Loading..." })
-                task.wait(1)
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/nalet666/ftap-trainer/main/ftap.lua"))()
-                return
-            end
-
-            if VALID_KEYS[key] == CURRENT_HWID then
-                saveKey(key, CURRENT_HWID)
-                Log:info("key re-validated, reloading")
-                KeyTab:CreateParagraph({ Title = "OK", Content = "Key valid. Loading..." })
-                task.wait(1)
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/nalet666/ftap-trainer/main/ftap.lua"))()
-                return
-            end
-
-            if VALID_KEYS[key] == false then
-                Log:warn("key banned: " .. key)
-                KeyTab:CreateParagraph({ Title = "FAIL", Content = "Key is banned." })
-                return
-            end
-
-            Log:warn("key bound to another hwid: " .. key)
-            KeyTab:CreateParagraph({ Title = "FAIL", Content = "Key is bound to another PC." })
-        end,
-    })
-
-    return
+if _11I_k then
+if __1I0p then return table.unpack(__1I0p,1,__1I0p.n or #__1I0p) end
+if _00I11l then
+if _l_Oo==0 then return end
+return table.unpack(_11019,__0_lm+1,_l1__n)
 end
-
-Log:info("key ok, loading main")
-
--- ===================== MAIN TRAINER =====================
-local function getExecutorName()
-    local executors = {
-        {name = "Synapse",     check = function() return syn and syn.protect_gui end},
-        {name = "Script-Ware", check = function() return ScriptWare ~= nil end},
-        {name = "Krnl",        check = function() return Krnl ~= nil end},
-        {name = "Fluxus",      check = function() return fluxus ~= nil end},
-        {name = "Delta",       check = function() return delta ~= nil end},
-        {name = "Sirhurt",     check = function() return is_sirhurt_closure ~= nil end},
-        {name = "Electron",    check = function() return electron ~= nil end},
-        {name = "Wave",        check = function() return Wave ~= nil end},
-        {name = "Oxygen",      check = function() return oxygen ~= nil end},
-        {name = "Solara",      check = function() return Solara ~= nil end},
-    }
-    for _, e in ipairs(executors) do
-        local ok2, r = pcall(e.check)
-        if ok2 and r then return e.name end
-    end
-    local ok3, name = pcall(function() return identifyexecutor() end)
-    if ok3 and name then return name end
-    return "Unknown"
+return
 end
-
-local function getAvatarUrl(userId)
-    local ok2, url = pcall(function()
-        return Players:GetUserThumbnailAsync(userId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
-    end)
-    if ok2 and url then return url end
-    return nil
+return nil
 end
-
-local function httpPost(url, body)
-    local sent = false
-    local headers = { ["Content-Type"] = "application/json" }
-    if request then pcall(function() request({Url=url,Method="POST",Headers=headers,Body=body}); sent=true end) end
-    if not sent and http_request then pcall(function() http_request({Url=url,Method="POST",Headers=headers,Body=body}); sent=true end) end
-    if not sent and syn and syn.request then pcall(function() syn.request({Url=url,Method="POST",Headers=headers,Body=body}); sent=true end) end
-    if not sent and http and http.post then pcall(function() http.post(url, body, headers); sent=true end) end
-    return sent
-end
-
-local function sendBootWebhook()
-    if not WEBHOOK_URL or WEBHOOK_URL == "" then return end
-    local executor = getExecutorName()
-    local hwid     = CURRENT_HWID
-    local avatar   = getAvatarUrl(LP.UserId)
-    local profile  = "https://www.roblox.com/users/" .. tostring(LP.UserId) .. "/profile"
-
-    local embed = {
-        title = "Trainer executed",
-        description = "[" .. jsonEscape(LP.Name) .. "](" .. profile .. ") запустил скрипт",
-        color = 5814783,
-        fields = {
-            { name = "Username",    value = "[" .. jsonEscape(LP.Name) .. "](" .. profile .. ")", inline = true },
-            { name = "DisplayName", value = jsonEscape(LP.DisplayName), inline = true },
-            { name = "UserId",      value = tostring(LP.UserId), inline = true },
-            { name = "Account age", value = tostring(LP.AccountAge) .. " days", inline = true },
-            { name = "Executor",    value = jsonEscape(executor), inline = true },
-            { name = "PlaceId",     value = tostring(game.PlaceId), inline = true },
-            { name = "HWID",        value = "```" .. jsonEscape(hwid) .. "```", inline = false },
-            { name = "JobId",       value = game.JobId ~= "" and game.JobId or "—", inline = false },
-        },
-        footer = { text = "xemreo Trainer · " .. os.date("%Y-%m-%d %H:%M:%S") },
-    }
-    if avatar then embed.thumbnail = { url = avatar } end
-
-    local ok2, body = pcall(function() return HttpService:JSONEncode({ username = "xemreo Trainer", embeds = { embed } }) end)
-    if not ok2 or not body then Log:warn("webhook: JSONEncode failed"); return end
-    if httpPost(WEBHOOK_URL, body) then Log:info("webhook: boot sent")
-    else Log:warn("webhook: no HTTP method available") end
-end
-
-task.spawn(function() pcall(sendBootWebhook) end)
-
-task.spawn(function()
-    task.wait(3)
-    while true do
-        task.wait(LOG_BATCH_INTERVAL)
-        local batch = Log:drainQueue()
-        if batch and WEBHOOK_URL ~= "" then
-            if #batch > 1800 then batch = batch:sub(1,1800) .. "\n...(truncated)" end
-            local ok2, body = pcall(function()
-                return HttpService:JSONEncode({ username = "xemreo Logger", content = "```\n" .. jsonEscape(batch) .. "\n```" })
-            end)
-            if ok2 and body then httpPost(WEBHOOK_URL, body) end
-        end
-    end
-end)
-
-local Window = Rayfield:CreateWindow({
-    Name = "xemreo Trainer",
-    LoadingTitle = "xemreo Trainer",
-    LoadingSubtitle = "by xemreo",
-    ConfigurationSaving = { Enabled = true, FolderName = "xemreo_Trainer", FileName = "config" },
-    KeySystem = false,
-})
-
-local state = {
-    superThrow = false, strength = 245, flingPlayers = true,
-    moveSpeed = false, walkSpeed = 60,
-    verticalBoost = false, verticalFactor = 0.5,
-    megaFling = false, megaDistance = 100000,
-    fly = false, flySpeed = 60, flyKey = Enum.KeyCode.F,
-    antiGrab = false, sniffGrab = false,
-    autoFarm = false, farmCooldown = 900, pickMode = false,
-    escapeTime = 4, fastEscape = false,
-    antiAfk = false, autoRejoin = false, lastJobId = nil,
-}
-
-local function isServicePart(p)
-    if not p or not p.Parent then return true end
-    local full = p:GetFullName()
-    if full:find("GrabParts")          then return true end
-    if full:find("GrabPart$")          then return true end
-    if full:find("Workspace%.Camera")  then return true end
-    if full:find("Workspace%.Map")     then return true end
-    if full:find("BaseGround")         then return true end
-    if full:find("Workspace%.Terrain") then return true end
-    if full:find("Baseplate")          then return true end
-    if full:find("Grass")              then return true end
-    if full:find("Floor")              then return true end
-    if p.Anchored                      then return true end
-    return false
-end
-
-local function isPlayerPart(part)
-    local players = Players:GetPlayers()
-    for i = 1, #players do
-        local plr = players[i]
-        if plr ~= LP and plr.Character and part:IsDescendantOf(plr.Character) then
-            return true
-        end
-    end
-    return false
-end
-
-function findGrabbedPart(model)
-    local grabPart = model:FindFirstChild("GrabPart")
-    if grabPart then
-        local wc = grabPart:FindFirstChild("WeldConstraint")
-        if wc and wc:IsA("WeldConstraint") then
-            local target = wc.Part1
-            if target and not isServicePart(target) then return target, "WeldConstraint.Part1" end
-            local alt = wc.Part0
-            if alt and alt ~= grabPart and not isServicePart(alt) then return alt, "WeldConstraint.Part0-nonservice" end
-            Log:warn("grab target rejected: " .. tostring(target and target:GetFullName() or "nil"))
-            return nil, "rejected"
-        end
-    end
-    local descendants = model:GetDescendants()
-    for i = 1, #descendants do
-        local c = descendants[i]
-        if c:IsA("BasePart") and not isServicePart(c) then return c, "descendant-nonservice" end
-    end
-    return nil, "not-found"
-end
-
-local function megaVelocity(distance)
-    local g = Workspace.Gravity
-    if g <= 0 then g = 196.2 end
-    local speed = math.sqrt(distance * g)
-    if speed > 10000000 then speed = 10000000 end
-    return Workspace.CurrentCamera.CFrame.LookVector * speed, speed
-end
-
-function boostPart(part)
-    if not part or not part:IsA("BasePart") then Log:warn("boostPart: invalid part"); return end
-    local full = part:GetFullName()
-    if full:find("GrabParts") or full:find("GrabPart$") or full:find("Workspace%.Map")
-       or full:find("BaseGround") or full:find("Grass") or full:find("Floor")
-       or full:find("Workspace%.Terrain") then
-        Log:warn("boostPart: refusing service/map part " .. full); return
-    end
-    if part.Anchored then Log:warn("boostPart: refusing anchored part " .. full); return end
-
-    if isPlayerPart(part) then
-        if not state.flingPlayers then
-            Log:warn("boostPart: refusing player part (Fling Players OFF) " .. full); return
-        end
-        Log:info("boostPart: flinging player part " .. full)
-    end
-
-    local hrp = LP.Character and LP.Character:FindFirstChild("HumanoidRootPart")
-    if hrp then
-        local dist = (part.Position - hrp.Position).Magnitude
-        if dist < 5 then Log:warn(string.format("boostPart: part too close (%.1f studs), skipping", dist)); return end
-    end
-
-    local camDir = Workspace.CurrentCamera.CFrame.LookVector
-    local target, speed
-    if state.megaFling then
-        target, speed = megaVelocity(state.megaDistance)
-        Log:info(string.format("MEGA velocity %.0f studs/s (target ~%d studs)", speed, state.megaDistance))
-    else
-        target = camDir * state.strength
-        speed = target.Magnitude
-        Log:info(string.format("normal velocity %.0f", speed))
-    end
-
-    if state.verticalBoost then
-        local up = Vector3.new(0, speed * state.verticalFactor, 0)
-        target = target + up
-        Log:info(string.format("vertical boost +%.0f up (factor %.2f)", up.Y, state.verticalFactor))
-    end
-
-    local children = part:GetChildren()
-    for i = 1, #children do
-        local c = children[i]
-        if c:IsA("WeldConstraint") or c:IsA("Weld") or c:IsA("AlignPosition")
-           or c:IsA("AlignOrientation") or c:IsA("RopeConstraint") then
-            pcall(function() c:Destroy() end)
-            Log:info("removed constraint: " .. c.ClassName)
-        end
-    end
-
-    local ok1, err1 = pcall(function()
-        part.AssemblyLinearVelocity = target
-        part.Velocity = target
-    end)
-    if ok1 then Log:info("native vel set on " .. part.Name)
-    else Log:warn("native vel failed: " .. tostring(err1)) end
-
-    local bv = Instance.new("BodyVelocity")
-    bv.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
-    bv.Velocity = target
-    bv.Parent = part
-    Debris:AddItem(bv, state.megaFling and 15 or 2)
-    pcall(function() part:SetNetworkOwner(LP) end)
-    Log:info("BodyVelocity attached (" .. (state.megaFling and "15s" or "2s") .. ")")
-end
-
-Workspace.ChildAdded:Connect(function(model)
-    if not model:IsA("Model") then return end
-    if not model.Name:lower():find("grab") then return end
-
-    Log:info("grab model spawned: " .. model.Name)
-    local part, how = findGrabbedPart(model)
-    if not part then Log:warn("no valid grab target inside " .. model.Name); return end
-    Log:info("tracking part via " .. how .. " -> " .. part:GetFullName())
-
-    model:GetPropertyChangedSignal("Parent"):Connect(function()
-        if model.Parent == nil then
-            if state.superThrow or state.megaFling then
-                Log:info("release detected -> boosting")
-                boostPart(part)
-            else
-                Log:info("release detected, both modes OFF")
-            end
-        end
-    end)
-end)
-
-local flyBody, flyGyro
-
-function startFly()
-    local char = LP.Character
-    if not char then return end
-    local hrp = char:FindFirstChild("HumanoidRootPart")
-    local hum = char:FindFirstChildOfClass("Humanoid")
-    if not hrp or not hum then return end
-
-    hum.PlatformStand = true
-    pcall(function() hum:ChangeState(Enum.HumanoidStateType.Physics) end)
-    pcall(function() hrp:SetNetworkOwner(LP) end)
-
-    flyBody = Instance.new("BodyVelocity")
-    flyBody.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
-    flyBody.Velocity = Vector3.zero
-    flyBody.Parent = hrp
-
-    flyGyro = Instance.new("BodyGyro")
-    flyGyro.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
-    flyGyro.P = 100000
-    flyGyro.D = 500
-    flyGyro.Parent = hrp
-
-    Log:info("fly started")
-end
-
-function stopFly()
-    if flyBody then flyBody:Destroy(); flyBody = nil end
-    if flyGyro then flyGyro:Destroy(); flyGyro = nil end
-    local char = LP.Character
-    if char then
-        local hum = char:FindFirstChildOfClass("Humanoid")
-        local hrp = char:FindFirstChild("HumanoidRootPart")
-        if hum then
-            hum.PlatformStand = false
-            pcall(function() hum:ChangeState(Enum.HumanoidStateType.GettingUp) end)
-        end
-        if hrp then pcall(function() hrp:SetNetworkOwner(nil) end) end
-    end
-    Log:info("fly stopped")
-end
-
-UserInput.InputBegan:Connect(function(input, gp)
-    if gp then return end
-    if input.KeyCode == state.flyKey and state.fly then
-        if flyBody then stopFly() else startFly() end
-    end
-end)
-
-RunService.RenderStepped:Connect(function()
-    if state.fly and flyBody then
-        local cam = Workspace.CurrentCamera
-        local dir = Vector3.zero
-        if UserInput:IsKeyDown(Enum.KeyCode.W) then dir = dir + cam.CFrame.LookVector end
-        if UserInput:IsKeyDown(Enum.KeyCode.S) then dir = dir - cam.CFrame.LookVector end
-        if UserInput:IsKeyDown(Enum.KeyCode.A) then dir = dir - cam.CFrame.RightVector end
-        if UserInput:IsKeyDown(Enum.KeyCode.D) then dir = dir + cam.CFrame.RightVector end
-        if UserInput:IsKeyDown(Enum.KeyCode.Space) then dir = dir + Vector3.new(0, 1, 0) end
-        if UserInput:IsKeyDown(Enum.KeyCode.LeftControl) then dir = dir - Vector3.new(0, 1, 0) end
-        if dir.Magnitude > 0 then
-            flyBody.Velocity = dir.Unit * state.flySpeed
-        else
-            flyBody.Velocity = Vector3.zero
-        end
-        flyGyro.CFrame = cam.CFrame
-    end
-end)
-
-LP.CharacterAdded:Connect(function()
-    stopFly()
-    if state.fly then
-        task.wait(1.0)
-        startFly()
-    end
-end)
-
-RunService.Heartbeat:Connect(function()
-    if not state.moveSpeed then return end
-    local char = LP.Character
-    if not char then return end
-    local hum = char:FindFirstChildOfClass("Humanoid")
-    if hum and hum.WalkSpeed ~= state.walkSpeed then hum.WalkSpeed = state.walkSpeed end
-end)
-
-local function setMoveSpeed(enabled)
-    state.moveSpeed = enabled
-    local char = LP.Character
-    local hum = char and char:FindFirstChildOfClass("Humanoid")
-    if hum and not enabled then hum.WalkSpeed = 16 end
-    Log:info("moveSpeed = " .. tostring(enabled) .. (enabled and (" (" .. state.walkSpeed .. ")") or ""))
-end
-
-local antiGrabConns = {}
-
-local function grabOwnerName(inst)
-    local ownerVal = inst:FindFirstChild("Owner")
-    if ownerVal and ownerVal:IsA("StringValue") then return ownerVal.Value end
-    return nil
-end
-
-local function isMyGrabParts(inst)
-    if inst.Name ~= "GrabParts" then return false end
-    local owner = grabOwnerName(inst)
-    if owner == LP.Name or owner == tostring(LP.UserId) or owner == LP.DisplayName then return true end
-    return false
-end
-
-local function killIfMine(inst)
-    if not state.antiGrab then return end
-    if not isMyGrabParts(inst) then return end
-    local owner = grabOwnerName(inst)
-    inst:Destroy()
-    Log:info("antiGrab: blocked own GrabParts (owner=" .. tostring(owner) .. ")")
-end
-
-function enableAntiGrab()
-    local kids = Workspace:GetChildren()
-    for i = 1, #kids do
-        local inst = kids[i]
-        if inst.Name == "GrabParts" and isMyGrabParts(inst) then
-            inst:Destroy()
-            Log:info("antiGrab: cleaned existing own GrabParts")
-        end
-    end
-    antiGrabConns[#antiGrabConns + 1] = Workspace.ChildAdded:Connect(function(child)
-        if not state.antiGrab then return end
-        if child.Name ~= "GrabParts" then return end
-        killIfMine(child)
-    end)
-    Log:info("antiGrab armed")
-end
-
-function disableAntiGrab()
-    for i = 1, #antiGrabConns do antiGrabConns[i]:Disconnect() end
-    antiGrabConns = {}
-    Log:info("antiGrab disarmed")
-end
-
-LP.CharacterAdded:Connect(function()
-    if state.antiGrab then
-        task.wait(0.5)
-        enableAntiGrab()
-    end
-end)
-
-local sniffConns = {}
-
-local function describe(inst, depth)
-    local pad = string.rep("  ", depth or 0)
-    Log:info(pad .. inst.ClassName .. " / " .. inst.Name .. " | Parent=" .. (inst.Parent and inst.Parent:GetFullName() or "nil"))
-    local attrs = inst:GetAttributes()
-    for i = 1, #attrs do
-        local a = attrs[i]
-        Log:info(pad .. "  attr: " .. a .. " = " .. tostring(inst:GetAttribute(a)))
-    end
-end
-
-local function startSniff()
-    if not state.sniffGrab then return end
-    Log:info("=== sniffer armed ===")
-    sniffConns[#sniffConns + 1] = Workspace.ChildAdded:Connect(function(child)
-        if not state.sniffGrab then return end
-        if not child.Name:lower():find("grab") then return end
-        Log:info("--- WORKSPACE CHILD ADDED ---")
-        describe(child, 0)
-        local ds = child:GetDescendants()
-        for i = 1, #ds do describe(ds[i], 1) end
-    end)
-    local char = LP.Character
-    if char then
-        sniffConns[#sniffConns + 1] = char.DescendantAdded:Connect(function(d)
-            if not state.sniffGrab then return end
-            if d.Name:lower():find("grab") then
-                Log:info("--- CHAR DESCENDANT ADDED ---")
-                describe(d, 0)
-            end
-        end)
-    end
-end
-
-local function stopSniff()
-    for i = 1, #sniffConns do sniffConns[i]:Disconnect() end
-    sniffConns = {}
-    Log:info("=== sniffer disarmed ===")
-end
-
-local autoFarmLoop = nil
-local savedLevers = {}
-
-local function tryActivate(inst)
-    if not inst or not inst.Parent then return false end
-    local cd = inst:FindFirstChildOfClass("ClickDetector")
-    if not cd then
-        local ds = inst:GetDescendants()
-        for i = 1, #ds do
-            if ds[i]:IsA("ClickDetector") then cd = ds[i]; break end
-        end
-    end
-    if cd then
-        pcall(function() fireclickdetector(cd) end)
-        Log:info("autoFarm: clicked " .. inst:GetFullName())
-        return true
-    end
-    local pp = inst:FindFirstChildOfClass("ProximityPrompt")
-    if not pp then
-        local ds = inst:GetDescendants()
-        for i = 1, #ds do
-            if ds[i]:IsA("ProximityPrompt") then pp = ds[i]; break end
-        end
-    end
-    if pp then
-        pcall(function() fireproximityprompt(pp) end)
-        Log:info("autoFarm: prompted " .. inst:GetFullName())
-        return true
-    end
-    local ds = inst:GetDescendants()
-    for i = 1, #ds do
-        if ds[i]:IsA("RemoteEvent") then
-            pcall(function() ds[i]:FireServer() end)
-            Log:info("autoFarm: fired " .. ds[i]:GetFullName())
-            return true
-        end
-    end
-    return false
-end
-
-function enableAutoFarm()
-    if autoFarmLoop then return end
-    autoFarmLoop = task.spawn(function()
-        Log:info("autoFarm: loop started, cooldown " .. state.farmCooldown .. "s (" .. (state.farmCooldown / 60) .. " min)")
-        while state.autoFarm do
-            local total = 0
-            for path, inst in pairs(savedLevers) do
-                if not state.autoFarm then break end
-                if inst and inst.Parent then
-                    if tryActivate(inst) then total = total + 1 end
-                else
-                    savedLevers[path] = nil
-                end
-            end
-            if total > 0 then Log:info("autoFarm: cycle done, " .. total .. " levers") end
-            Log:info("autoFarm: next cycle at " .. os.date("%H:%M:%S", os.time() + state.farmCooldown))
-            task.wait(state.farmCooldown)
-        end
-        Log:info("autoFarm: loop stopped")
-    end)
-end
-
-function disableAutoFarm()
-    if autoFarmLoop then
-        pcall(function() task.cancel(autoFarmLoop) end)
-        autoFarmLoop = nil
-    end
-    Log:info("autoFarm: disabled")
-end
-
-local pickConns = {}
-
-local function describePicked(inst)
-    Log:info("[PICK] Name: " .. inst.Name .. " | Class: " .. inst.ClassName)
-    Log:info("       Path: " .. inst:GetFullName())
-    local cd = inst:FindFirstChildOfClass("ClickDetector")
-    if not cd then
-        local ds = inst:GetDescendants()
-        for i = 1, #ds do
-            if ds[i]:IsA("ClickDetector") then cd = ds[i]; break end
-        end
-    end
-    Log:info("       ClickDetector: " .. (cd and cd:GetFullName() or "no"))
-    local pp = inst:FindFirstChildOfClass("ProximityPrompt")
-    if not pp then
-        local ds = inst:GetDescendants()
-        for i = 1, #ds do
-            if ds[i]:IsA("ProximityPrompt") then pp = ds[i]; break end
-        end
-    end
-    Log:info("       ProximityPrompt: " .. (pp and pp:GetFullName() or "no"))
-    local remotes = {}
-    local ds = inst:GetDescendants()
-    for i = 1, #ds do
-        if ds[i]:IsA("RemoteEvent") then table.insert(remotes, ds[i].Name) end
-    end
-    Log:info("       RemoteEvents: " .. (#remotes > 0 and table.concat(remotes, ", ") or "no"))
-end
-
-local function startPickMode()
-    stopPickMode()
-    state.pickMode = true
-    Log:info("=== pick mode armed (5s) — click a lever in game ===")
-    local mouse = LP:GetMouse()
-    pickConns[#pickConns + 1] = mouse.Button1Down:Connect(function()
-        if not state.pickMode then return end
-        local target = mouse.Target
-        if not target then Log:warn("pick: no target under cursor"); return end
-        savedLevers[target:GetFullName()] = target
-        Log:info("pick: saved " .. target:GetFullName())
-        describePicked(target)
-    end)
-    task.delay(5, function()
-        if state.pickMode then
-            stopPickMode()
-            Log:info("=== pick mode ended ===")
-        end
-    end)
-end
-
-local function stopPickMode()
-    state.pickMode = false
-    for i = 1, #pickConns do pickConns[i]:Disconnect() end
-    pickConns = {}
-end
-
-function listSavedLevers()
-    local n = 0
-    for path, _ in pairs(savedLevers) do
-        n = n + 1
-        Log:info("[SAVED] " .. path)
-    end
-    Log:info("total saved: " .. n)
-end
-
-function clearSavedLevers()
-    savedLevers = {}
-    Log:info("saved levers cleared")
-end
-
-local escapeConns  = {}
-local escapeTimers = {}
-
-local function waitForOwner(grabParts, timeout)
-    timeout = timeout or 5
-    local ov = grabParts:FindFirstChild("Owner")
-    if not ov then
-        local t0 = os.clock()
-        while os.clock() - t0 < timeout do
-            if not grabParts.Parent then return nil end
-            ov = grabParts:FindFirstChild("Owner")
-            if ov then break end
-            task.wait(0.05)
-        end
-    end
-    if not ov or not ov:IsA("StringValue") then return nil end
-    if ov.Value ~= "" then return ov.Value end
-
-    local got = nil
-    local conn = ov:GetPropertyChangedSignal("Value"):Connect(function()
-        if ov.Value ~= "" then got = ov.Value end
-    end)
-
-    local t0 = os.clock()
-    while os.clock() - t0 < timeout and not got do
-        if not grabParts.Parent then
-            conn:Disconnect()
-            return nil
-        end
-        task.wait(0.05)
-    end
-    conn:Disconnect()
-    return got or (ov.Value ~= "" and ov.Value or nil)
-end
-
-local function isForeignGrabParts(inst, owner)
-    if inst.Name ~= "GrabParts" then return false end
-    if not owner then return false end
-    if owner == LP.Name or owner == tostring(LP.UserId) or owner == LP.DisplayName then return false end
-    return true
-end
-
-local function forceEscape()
-    local char = LP.Character
-    if not char then return end
-    local hrp = char:FindFirstChild("HumanoidRootPart")
-    local hum = char:FindFirstChildOfClass("Humanoid")
-    local removed = 0
-    local kids = Workspace:GetChildren()
-    for i = 1, #kids do
-        local c = kids[i]
-        if c.Name == "GrabParts" then
-            local ov = c:FindFirstChild("Owner")
-            local foreign = true
-            if ov and ov:IsA("StringValue") then
-                local o = ov.Value
-                if o == LP.Name or o == tostring(LP.UserId) or o == LP.DisplayName then foreign = false end
-            end
-            if foreign then
-                c:Destroy()
-                removed = removed + 1
-            end
-        end
-    end
-    if hrp then
-        pcall(function()
-            hrp.AssemblyLinearVelocity = Vector3.new(0, 120, 0)
-            hrp.Velocity = Vector3.new(0, 120, 0)
-        end)
-    end
-    if hum then
-        pcall(function()
-            hum.PlatformStand = false
-            hum:ChangeState(Enum.HumanoidStateType.GettingUp)
-        end)
-        hum.Health = hum.MaxHealth
-    end
-    Log:info("fastEscape: forced escape, removed " .. removed .. " GrabParts")
-end
-
-local function onGrabAttached(child)
-    if not state.fastEscape then return end
-    local owner = waitForOwner(child, 5)
-    if not isForeignGrabParts(child, owner) then
-        if owner then
-            Log:info("fastEscape: ignoring own/unknown grab (owner=" .. tostring(owner) .. ")")
-        else
-            Log:info("fastEscape: no owner found, skipping")
-        end
-        return
-    end
-    Log:info("fastEscape: grabbed by " .. tostring(owner) .. ", escaping in " .. state.escapeTime .. "s")
-    local key = tostring(child)
-    if escapeTimers[key] then pcall(function() task.cancel(escapeTimers[key]) end) end
-    escapeTimers[key] = task.delay(state.escapeTime, function()
-        escapeTimers[key] = nil
-        if state.fastEscape then forceEscape() end
-    end)
-end
-
-function enableFastEscape()
-    escapeConns[#escapeConns + 1] = Workspace.ChildAdded:Connect(function(child)
-        if not state.fastEscape then return end
-        if child.Name ~= "GrabParts" then return end
-        task.spawn(function() onGrabAttached(child) end)
-    end)
-    Log:info("fastEscape armed (escapeTime=" .. state.escapeTime .. "s)")
-end
-
-function disableFastEscape()
-    for i = 1, #escapeConns do escapeConns[i]:Disconnect() end
-    escapeConns = {}
-    for k, t in pairs(escapeTimers) do
-        pcall(function() task.cancel(t) end)
-        escapeTimers[k] = nil
-    end
-    Log:info("fastEscape disarmed")
-end
-
-LP.CharacterAdded:Connect(function()
-    if state.fastEscape then
-        task.wait(0.5)
-        enableFastEscape()
-    end
-end)
-
-local playerRows = {}
-
-local function teleportToPlayer(target)
-    local char = LP.Character
-    if not char then return end
-    local hrp = char:FindFirstChild("HumanoidRootPart")
-    if not hrp then return end
-    local tchar = target.Character
-    if not tchar then Log:warn("teleport: " .. target.Name .. " has no character"); return end
-    local thrp = tchar:FindFirstChild("HumanoidRootPart")
-    if not thrp then return end
-    hrp.CFrame = thrp.CFrame + Vector3.new(0, 3, 0)
-    Log:info("teleport: moved to " .. target.Name)
-end
-
-local function teleportToMe(target)
-    local char = LP.Character
-    if not char then return end
-    local hrp = char:FindFirstChild("HumanoidRootPart")
-    if not hrp then return end
-    local tchar = target.Character
-    if not tchar then Log:warn("teleport: " .. target.Name .. " has no character"); return end
-    local thrp = tchar:FindFirstChild("HumanoidRootPart")
-    if not thrp then return end
-    thrp.CFrame = hrp.CFrame + Vector3.new(3, 3, 0)
-    Log:info("teleport: brought " .. target.Name .. " to you")
-end
-
-local PlayersTab
-
-local function refreshPlayers()
-    for _, btn in pairs(playerRows) do pcall(function() btn:Destroy() end) end
-    playerRows = {}
-    local players = Players:GetPlayers()
-    table.sort(players, function(a, b) return a.Name < b.Name end)
-    for i = 1, #players do
-        local plr = players[i]
-        local label = plr.Name .. (plr == LP and " (you)" or "")
-        local b1 = PlayersTab:CreateButton({
-            Name = "→ him: " .. label,
-            Callback = function() teleportToPlayer(plr) end,
-        })
-        playerRows[plr.UserId .. "_him"] = b1
-        local b2 = PlayersTab:CreateButton({
-            Name = "→ me: " .. label,
-            Callback = function() teleportToMe(plr) end,
-        })
-        playerRows[plr.UserId .. "_me"] = b2
-    end
-end
-
-local antiAfkLoop = nil
-
-local function enableAntiAfk()
-    if antiAfkLoop then return end
-    antiAfkLoop = task.spawn(function()
-        Log:info("antiAfk: started")
-        while state.antiAfk do
-            pcall(function()
-                local vu = game:GetService("VirtualUser")
-                vu:CaptureController()
-                vu:ClickButton2(Vector2.new())
-            end)
-            task.wait(240)
-        end
-        Log:info("antiAfk: stopped")
-    end)
-end
-
-local function disableAntiAfk()
-    if antiAfkLoop then pcall(function() task.cancel(antiAfkLoop) end); antiAfkLoop = nil end
-    Log:info("antiAfk: disabled")
-end
-
-local rejoinConns = {}
-local rejoinLoop = nil
-
-local function getCurrentJobId()
-    local ok2, jid = pcall(function() return game.JobId end)
-    if ok2 and jid and jid ~= "" then return jid end
-    return nil
-end
-
-local function attemptRejoin()
-    local jid = state.lastJobId or getCurrentJobId()
-    if not jid or jid == "" then Log:warn("autoRejoin: no jobId saved, can't rejoin"); return end
-    Log:info("autoRejoin: trying to rejoin " .. jid)
-    pcall(function()
-        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, jid, LP)
-    end)
-end
-
-local function enableAutoRejoin()
-    state.lastJobId = getCurrentJobId()
-    Log:info("autoRejoin: armed (jobId=" .. tostring(state.lastJobId) .. ")")
-    rejoinConns[#rejoinConns + 1] = Players.PlayerRemoving:Connect(function(plr)
-        if plr == LP and state.autoRejoin then
-            Log:info("autoRejoin: you are leaving, saving jobId")
-            state.lastJobId = getCurrentJobId()
-        end
-    end)
-    rejoinConns[#rejoinConns + 1] = game:GetService("TeleportService").TeleportInitFailed:Connect(function()
-        if not state.autoRejoin then return end
-        Log:warn("autoRejoin: teleport failed, retrying in 10s")
-        task.delay(10, attemptRejoin)
-    end)
-    rejoinLoop = task.spawn(function()
-        while state.autoRejoin do
-            task.wait(5)
-            if not game:IsLoaded() then
-                Log:warn("autoRejoin: game not loaded, retrying...")
-                task.wait(5)
-                attemptRejoin()
-            end
-        end
-    end)
-end
-
-local function disableAutoRejoin()
-    for i = 1, #rejoinConns do rejoinConns[i]:Disconnect() end
-    rejoinConns = {}
-    if rejoinLoop then pcall(function() task.cancel(rejoinLoop) end); rejoinLoop = nil end
-    Log:info("autoRejoin: disarmed")
-end
-
--- ===================== UI: FTAP =====================
-local MainTab = Window:CreateTab("FTAP")
-
-MainTab:CreateSection("Throw - Velocity")
-MainTab:CreateToggle({
-    Name = "Throw Velocity", CurrentValue = false, Flag = "SuperThrow",
-    Callback = function(v) state.superThrow = v; Log:info("superThrow = " .. tostring(v)) end,
-})
-MainTab:CreateToggle({
-    Name = "Fling Players", CurrentValue = true, Flag = "FlingPlayers",
-    Callback = function(v) state.flingPlayers = v; Log:info("flingPlayers = " .. tostring(v)) end,
-})
-MainTab:CreateSlider({
-    Name = "Throw Strength", Range = {100, 2000}, Increment = 10, Suffix = "studs/s",
-    CurrentValue = 245, Flag = "Strength",
-    Callback = function(v) state.strength = v; Log:info("strength = " .. v) end,
-})
-MainTab:CreateToggle({
-    Name = "Mega Fling (~100k)", CurrentValue = false, Flag = "MegaFling",
-    Callback = function(v) state.megaFling = v; Log:info("megaFling = " .. tostring(v)) end,
-})
-MainTab:CreateSlider({
-    Name = "Mega Distance", Range = {10000, 500000}, Increment = 5000, Suffix = "studs",
-    CurrentValue = 100000, Flag = "MegaDistance",
-    Callback = function(v) state.megaDistance = v; Log:info("megaDistance = " .. v) end,
-})
-
-MainTab:CreateSection("Vertical Boost")
-MainTab:CreateToggle({
-    Name = "Vertical Boost", CurrentValue = false, Flag = "VerticalBoost",
-    Callback = function(v) state.verticalBoost = v; Log:info("verticalBoost = " .. tostring(v)) end,
-})
-MainTab:CreateSlider({
-    Name = "Vertical Factor", Range = {10, 200}, Increment = 5, Suffix = "%",
-    CurrentValue = 50, Flag = "VerticalFactor",
-    Callback = function(v) state.verticalFactor = v / 100; Log:info("verticalFactor = " .. state.verticalFactor) end,
-})
-
-MainTab:CreateSection("Move Speed")
-MainTab:CreateToggle({
-    Name = "Move Speed", CurrentValue = false, Flag = "MoveSpeed",
-    Callback = function(v) setMoveSpeed(v) end,
-})
-MainTab:CreateSlider({
-    Name = "Walk Speed", Range = {16, 200}, Increment = 2, Suffix = "studs/s",
-    CurrentValue = 60, Flag = "WalkSpeed",
-    Callback = function(v) state.walkSpeed = v; Log:info("walkSpeed = " .. v) end,
-})
-
-MainTab:CreateSection("Fly")
-MainTab:CreateToggle({
-    Name = "Fly", CurrentValue = false, Flag = "Fly",
-    Callback = function(v)
-        state.fly = v; Log:info("fly = " .. tostring(v))
-        if not v then stopFly() end
-    end,
-})
-MainTab:CreateSlider({
-    Name = "Fly Speed", Range = {20, 300}, Increment = 5, Suffix = "studs/s",
-    CurrentValue = 60, Flag = "FlySpeed",
-    Callback = function(v) state.flySpeed = v; Log:info("flySpeed = " .. v) end,
-})
-MainTab:CreateKeybind({
-    Name = "Fly Toggle Key", CurrentKeybind = "F", HoldToInteract = false, Flag = "FlyKey",
-    Callback = function(key)
-        local ok2, ek = pcall(function() return Enum.KeyCode[key] end)
-        if ok2 and ek then state.flyKey = ek; Log:info("flyKey = " .. key) end
-    end,
-})
-
-MainTab:CreateSection("Anti-Grab (self-lock)")
-MainTab:CreateToggle({
-    Name = "Anti-Grab", CurrentValue = false, Flag = "AntiGrab",
-    Callback = function(v)
-        state.antiGrab = v; Log:info("antiGrab = " .. tostring(v))
-        if v then enableAntiGrab() else disableAntiGrab() end
-    end,
-})
-MainTab:CreateToggle({
-    Name = "Sniff grab (debug)", CurrentValue = false, Flag = "SniffGrab",
-    Callback = function(v)
-        state.sniffGrab = v
-        Log:info("sniffGrab = " .. tostring(v))
-        if v then startSniff() else stopSniff() end
-    end,
-})
-
-MainTab:CreateSection("Auto Farm")
-MainTab:CreateButton({ Name = "Pick lever (5s)", Callback = function() startPickMode() end })
-MainTab:CreateButton({ Name = "List saved levers", Callback = function() listSavedLevers() end })
-MainTab:CreateButton({ Name = "Clear saved levers", Callback = function() clearSavedLevers() end })
-MainTab:CreateButton({
-    Name = "Trigger lever now",
-    Callback = function()
-        local n = 0
-        for path, inst in pairs(savedLevers) do
-            if inst and inst.Parent then
-                if tryActivate(inst) then n = n + 1 end
-            end
-        end
-        Log:info("manual trigger: " .. n .. " levers")
-    end,
-})
-MainTab:CreateToggle({
-    Name = "Auto Farm (saved levers)", CurrentValue = false, Flag = "AutoFarm",
-    Callback = function(v)
-        state.autoFarm = v
-        Log:info("autoFarm = " .. tostring(v))
-        if v then enableAutoFarm() else disableAutoFarm() end
-    end,
-})
-MainTab:CreateSlider({
-    Name = "Farm Cooldown", Range = {60, 1800}, Increment = 30, Suffix = "s",
-    CurrentValue = 900, Flag = "FarmCooldown",
-    Callback = function(v)
-        state.farmCooldown = v
-        Log:info("farmCooldown = " .. v .. "s (" .. (v / 60) .. " min)")
-    end,
-})
-
-MainTab:CreateSection("Fast Escape")
-MainTab:CreateToggle({
-    Name = "Fast Escape", CurrentValue = false, Flag = "FastEscape",
-    Callback = function(v)
-        state.fastEscape = v
-        Log:info("fastEscape = " .. tostring(v))
-        if v then enableFastEscape() else disableFastEscape() end
-    end,
-})
-MainTab:CreateSlider({
-    Name = "Escape Time", Range = {1, 10}, Increment = 1, Suffix = "s",
-    CurrentValue = 4, Flag = "EscapeTime",
-    Callback = function(v) state.escapeTime = v; Log:info("escapeTime = " .. v .. "s") end,
-})
-
--- ===================== UI: CHOP A FOREST =====================
-local ChopTab = Window:CreateTab("Chop A Forest")
-ChopTab:CreateSection("Auto Farm")
-
-local chopState = {
-    autoChop = false,
-    autoCollect = false,
-    autoSell = false,
-    autoBuy = false,
-    noclip = false,
-    speed = false,
-    speedValue = 60,
-    jump = false,
-    jumpValue = 100,
-}
-
-local ChopRemotes = game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Services"):WaitForChild("ChopRemotes")
-local TreeChopRequest = game:GetService("ReplicatedStorage"):WaitForChild("TreeChopRequest", 5)
-
-local function chopGetHRP()
-    local char = LP.Character
-    return char and char:FindFirstChild("HumanoidRootPart")
-end
-
-local function chopGetHumanoid()
-    local char = LP.Character
-    return char and char:FindFirstChildOfClass("Humanoid")
-end
-
-local function chopFindClosestIn(container, nameFilter, maxDist)
-    local hrp = chopGetHRP()
-    if not hrp or not container then return nil end
-    local closest, closestDist = nil, maxDist or math.huge
-    for _, obj in ipairs(container:GetDescendants()) do
-        if obj:IsA("BasePart") then
-            if not nameFilter or obj.Name:lower():find(nameFilter) then
-                local dist = (hrp.Position - obj.Position).Magnitude
-                if dist < closestDist then
-                    closest, closestDist = obj, dist
-                end
-            end
-        end
-    end
-    return closest, closestDist
-end
-
-task.spawn(function()
-    while true do
-        task.wait(0.6)
-        if chopState.autoChop then
-            local treeZone = workspace:FindFirstChild("TreeZone_Respawn")
-                or workspace:FindFirstChild("ChopLocal")
-            local hrp = chopGetHRP()
-            if treeZone and hrp then
-                local closest, closestDist = nil, math.huge
-                for _, obj in ipairs(treeZone:GetChildren()) do
-                    if obj:IsA("Model") and obj.Name == "TREE" then
-                        local base = obj:FindFirstChildWhichIsA("BasePart") or obj.PrimaryPart
-                        if base then
-                            local dist = (hrp.Position - base.Position).Magnitude
-                            if dist < closestDist then
-                                closest, closestDist = obj, dist
-                            end
-                        end
-                    end
-                end
-                if closest and closestDist < 30 then
-                    if TreeChopRequest then
-                        pcall(function()
-                            TreeChopRequest:FireServer(closest)
-                        end)
-                    end
-                end
-            end
-        end
-    end
-end)
-
-task.spawn(function()
-    while true do
-        task.wait(0.4)
-        if chopState.autoCollect then
-            local logs = workspace:FindFirstChild("Logs")
-            local hrp = chopGetHRP()
-            if logs and hrp then
-                local wood = chopFindClosestIn(logs, nil, 50)
-                if wood then
-                    hrp.CFrame = wood.CFrame + Vector3.new(0, 3, 0)
-                    pcall(function()
-                        ChopRemotes.PickupLog:FireServer(wood)
-                    end)
-                end
-            end
-        end
-    end
-end)
-
-task.spawn(function()
-    while true do
-        task.wait(2)
-        if chopState.autoSell then
-            local hrp = chopGetHRP()
-            if hrp then
-                local sellSpot = workspace:FindFirstChild("Map")
-                    and workspace.Map:FindFirstChild("SellSpot")
-                local sellOutpost = nil
-                local forestHuts = workspace:FindFirstChild("ForestHuts")
-                if forestHuts then
-                    for _, obj in ipairs(forestHuts:GetDescendants()) do
-                        if obj.Name == "SellOutpost" then sellOutpost = obj; break end
-                    end
-                end
-                local target = sellSpot or sellOutpost
-                if target then
-                    local base = target:FindFirstChildWhichIsA("BasePart")
-                        or target.PrimaryPart
-                    if base then
-                        hrp.CFrame = base.CFrame + Vector3.new(0, 5, 0)
-                        pcall(function()
-                            ChopRemotes.DepositLogs:FireServer()
-                            ChopRemotes.CollectCash:FireServer()
-                        end)
-                        Log:info("chop: sell at " .. target:GetFullName())
-                    end
-                end
-            end
-        end
-    end
-end)
-
-task.spawn(function()
-    while true do
-        task.wait(5)
-        if chopState.autoBuy then
-            local hrp = chopGetHRP()
-            if hrp then
-                local forestHuts = workspace:FindFirstChild("ForestHuts")
-                local shop = nil
-                if forestHuts then
-                    local sawShack = forestHuts:FindFirstChild("SawShack")
-                    if sawShack then shop = sawShack:FindFirstChild("Shop") end
-                end
-                if shop then
-                    local base = shop:FindFirstChildWhichIsA("BasePart") or shop.PrimaryPart
-                    if base then
-                        hrp.CFrame = base.CFrame + Vector3.new(0, 5, 0)
-                    end
-                end
-                pcall(function()
-                    ChopRemotes.BuyUpgrade:FireServer()
-                    ChopRemotes.BuyTool:FireServer()
-                end)
-                Log:info("chop: tried buy upgrade/tool")
-            end
-        end
-    end
-end)
-
-task.spawn(function()
-    while true do
-        task.wait(0.2)
-        local hum = chopGetHumanoid()
-        local char = LP.Character
-        if hum then
-            if chopState.speed then hum.WalkSpeed = chopState.speedValue end
-            if chopState.jump then
-                hum.JumpPower = chopState.jumpValue
-                hum.UseJumpPower = true
-            end
-        end
-        if chopState.noclip and char then
-            for _, p in ipairs(char:GetDescendants()) do
-                if p:IsA("BasePart") then p.CanCollide = false end
-            end
-        end
-    end
-end)
-
-ChopTab:CreateToggle({
-    Name = "Auto Chop", CurrentValue = false, Flag = "ChopAutoChop",
-    Callback = function(v) chopState.autoChop = v; Log:info("chop autoChop = " .. tostring(v)) end,
-})
-ChopTab:CreateToggle({
-    Name = "Auto Collect", CurrentValue = false, Flag = "ChopAutoCollect",
-    Callback = function(v) chopState.autoCollect = v; Log:info("chop autoCollect = " .. tostring(v)) end,
-})
-ChopTab:CreateToggle({
-    Name = "Auto Sell", CurrentValue = false, Flag = "ChopAutoSell",
-    Callback = function(v) chopState.autoSell = v; Log:info("chop autoSell = " .. tostring(v)) end,
-})
-ChopTab:CreateToggle({
-    Name = "Auto Buy (upgrade + tool)", CurrentValue = false, Flag = "ChopAutoBuy",
-    Callback = function(v) chopState.autoBuy = v; Log:info("chop autoBuy = " .. tostring(v)) end,
-})
-
-ChopTab:CreateSection("Movement")
-ChopTab:CreateToggle({
-    Name = "Noclip", CurrentValue = false, Flag = "ChopNoclip",
-    Callback = function(v)
-        chopState.noclip = v
-        local char = LP.Character
-        if char and not v then
-            for _, p in ipairs(char:GetDescendants()) do
-                if p:IsA("BasePart") then p.CanCollide = true end
-            end
-        end
-        Log:info("chop noclip = " .. tostring(v))
-    end,
-})
-ChopTab:CreateToggle({
-    Name = "Speed", CurrentValue = false, Flag = "ChopSpeed",
-    Callback = function(v) chopState.speed = v; Log:info("chop speed = " .. tostring(v)) end,
-})
-ChopTab:CreateSlider({
-    Name = "Speed Value", Range = {16, 200}, Increment = 2, Suffix = "studs/s",
-    CurrentValue = 60, Flag = "ChopSpeedValue",
-    Callback = function(v) chopState.speedValue = v; Log:info("chop speedValue = " .. v) end,
-})
-ChopTab:CreateToggle({
-    Name = "Jump", CurrentValue = false, Flag = "ChopJump",
-    Callback = function(v) chopState.jump = v; Log:info("chop jump = " .. tostring(v)) end,
-})
-ChopTab:CreateSlider({
-    Name = "Jump Value", Range = {50, 300}, Increment = 10, Suffix = "power",
-    CurrentValue = 100, Flag = "ChopJumpValue",
-    Callback = function(v) chopState.jumpValue = v; Log:info("chop jumpValue = " .. v) end,
-})
-
--- ===================== UI: PLAYERS =====================
-PlayersTab = Window:CreateTab("Players")
-PlayersTab:CreateSection("Teleport")
-PlayersTab:CreateButton({ Name = "Refresh player list", Callback = function() refreshPlayers() end })
-
-refreshPlayers()
-task.spawn(function()
-    while PlayersTab do
-        task.wait(15)
-        pcall(refreshPlayers)
-    end
-end)
-
-PlayersTab:CreateSection("Session")
-PlayersTab:CreateToggle({
-    Name = "Anti-AFK", CurrentValue = false, Flag = "AntiAfk",
-    Callback = function(v)
-        state.antiAfk = v
-        Log:info("antiAfk = " .. tostring(v))
-        if v then enableAntiAfk() else disableAntiAfk() end
-    end,
-})
-PlayersTab:CreateToggle({
-    Name = "Auto-Rejoin", CurrentValue = false, Flag = "AutoRejoin",
-    Callback = function(v)
-        state.autoRejoin = v
-        Log:info("autoRejoin = " .. tostring(v))
-        if v then enableAutoRejoin() else disableAutoRejoin() end
-    end,
-})
-PlayersTab:CreateButton({ Name = "Rejoin now", Callback = function() attemptRejoin() end })
-
--- ===================== UI: LOG =====================
-local LogTab = Window:CreateTab("Log")
-LogTab:CreateSection("Console")
-
-local logBox = LogTab:CreateParagraph({ Title = "Last events", Content = "log will appear here" })
-
-local function refreshLogParagraph()
-    local tail = {}
-    local n = math.min(#Log.lines, 20)
-    for i = #Log.lines - n + 1, #Log.lines do
-        table.insert(tail, Log.lines[i])
-    end
-    pcall(function() logBox:Set({ Content = table.concat(tail, "\n") }) end)
-end
-
-task.spawn(function()
-    while Rayfield do
-        refreshLogParagraph()
-        task.wait(1)
-    end
-end)
-
-LogTab:CreateButton({
-    Name = "Copy log to clipboard",
-    Callback = function()
-        local text = Log:dump()
-        local how
-        if setclipboard then setclipboard(text); how = "setclipboard"
-        elseif toclipboard then toclipboard(text); how = "toclipboard"
-        elseif writefile then writefile("trainer_log.txt", text); how = "trainer_log.txt"
-        end
-        if how then Log:info("log copied via " .. how) else Log:warn("clipboard unavailable") end
-    end,
-})
-LogTab:CreateButton({
-    Name = "Clear log",
-    Callback = function()
-        Log.lines = {}
-        refreshLogParagraph()
-        print("[Trainer] log cleared")
-    end,
-})
-
--- ===================== UI: CONFIG =====================
-local ConfigTab = Window:CreateTab("Config")
-ConfigTab:CreateSection("Settings")
-ConfigTab:CreateButton({ Name = "Destroy UI", Callback = function() Rayfield:Destroy() end })
-
-Log:info("Trainer ready")
+local _l_I23={{198,68,196,72},{229,67,222,125,215,68,204,87,161,35},1,10,2,54,3,59,4,35,5,63,6,40,7,41,90,8,47,52,9,44,51,57,15,19,42,46,11,12,13,14,16,53,49,30,56,{138,37,173,51,186,10,178,3,159,15,156},50,96,117,62,116,17,18,55,20,21,22,23,24,25,45,26,27,28,29,31,32,33,34,107,111,36,37,99,38,39,104,106,108,43,105,109,48,98,58,60,61,64,119,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,91,92,93,94,95,97,0,100,101,102,103,110,112,113,114,115,118,120,121,{114,203,72,207,93},{114,194,95,231,70,221,82,200},800,{126,212,92,200,68,208},{125,209,88,199,70,211},{74,201,77,192},{83,201,94,222},{64,219,95,222,71},{66,223,67,194},{67,217,78,218,89,234,74,166,50,174},122,{89,206,80,217,85},{94,193,65,194,72,215,44,161},{104,221,86,214,79,218,20,174,37,171,60,160},{98,209,89,221},{97,222,84,221,84,175,34,157,36,165,57,188},{98,221,87,222,87,172,33,153,59,176,34,179,42,142,3},{108,220,89,221,86,164,50,185,46,167,62,180,49,176,6,157,6,157,16},{117,218,89,222,44,161,44},{122,208,64,238,56,182,61,168,60},{113,196,95,223,54,163,30,175,48},{112,197,94,222,55,162,24,170,48,163,50,176,13},{119,202,89,161,48,173,28,177,38,185,59,146,5,152,4},{97,208,73,173,32},{117,213,80,182,35,164,58},{116,201,90,162,51,174,6,189,39,174,43},{123,201,50,182,45,162,36,130,57,176,21,129},{},{106,210,35,165,47,166,61,186,62,187,16,178,15,150,6},{105,218,46,168,61,170,7,178,35,171,34,129,31,138,1,177,20,156,246,116,199,96,224,99},{127,161,40,164,46,177,55,179},{73,160,54,162},{77,178,39,189,32},{121,172,43,175,42,161,25,186,50,134},{6,173,36,169,30,181,53,185},{50,176,57,168,35,129,49,175,14,146},{49,178,56,171,60,177,46,182},245,{34,164,37,190,51,136,48,129,29,141,30,131},{40,166,59,180,6,169,56,132,1},{49,171,34,185,5,170,59,135,2},{49,174,61,167,62,184,62,143,37,132,0,128,3},{62,169,34,160,49,191,1,136,46,141,19,128,23,142},0.5,{39,171,53,183,28,178,11,136,13},{38,170,52,182,31,182,16,147,10,129,16,146},100000,{43,189,44},{40,190,47,137,46,135,3,142},{41,191,46,144,58,154},{21,186,45,177},{26,176,32,158,14,129,12},{20},{50,185,47,182,36,149,10,141},{39,182,53,134,2,175,30,145,22},{52,172,41,142,35,136,31,156},{48,187,44,143,37,133,1,158,18,149,9,108},900,{40,181,3,143,37,131,20,145},{60,174,2,132,25,136,37,156,20,152},{60,191,17,146,47,157,17,151,10,155},{58,177,23,142,42,137,24},{61,149,16,135,62,149,30,151,21,110},{49,128,22,157,39,158,23,176,25},{56,139,8,142,41,128,23,152,28,103,226,90,239,96,226},{61,140,8,152,27,163,22,137,11},{35,140,1,128,20,181,28,152,229,96},{34,138,7,131,20,150,13},{17,146,11,156,6,176,22,135},{16,147,4,159,53,155,2},{45,134,28,133,0,186,25,103,229,102},{55,140,3,149,16,139,46,117,224,121,253,116,241},{37,130,15,128,23,153,10,103,244,75,234,118,243,126},{47,142,14,129,3,153,26,98,243},{13,130,17,150,20,153,193,106,252,101,215,102,249,126},{13,132,2,148,27,145,228,68,231,121,248,82,235,124,195},{15,128,19,148,22,155,195,115,254,97,212,119,232,115},{15,134,0,150,25,147,230,70,254,123,252,81,250,109,206},{0,153,7,140,47,97,242,109,232,92,241,110,249,82,215},{14,157,16,152,15,82,228,127,232,117,217,124,235,68,215,90},{11,156,23,152,18,103,192,107,253,102,211,105,253,67,214,79},{11,154,4,154,29,111,226,77,238,96,227,94,236,64,198,91,202},{51,134,29,157,244,97,220,99,247,115,244,121},{55,153,24,154},{49,132,31,159,246,99,217,98,251,114,255,108},{33,150,21,152,230},2000,{60,151,30,115,224,100,232,127,225},{37,143,24,100,239,114},10000,500000,5000,200,127,300,{62,115,224,104,249,116,222,124,228,67,204,71,201},{61,119,244,120,235,124,226,81,251,91,196,67,192,86},{55,108,235,111,219,124,222,117,235,70,213,74,204,71},{195,118,237,109,228,113,218,105,212,80,199,66},1800,{227,115,254,97,209,126,245,110},{226,114,255,96,208,120,247,115,198,68,223},{229,125,248,127,199,125,240,76},{228,124,249,126,215,108,228},{232,101,237,126,255,106},{244,123,234,118,243},{251,124,245,113,252,74,193,72,221,73},{227,120,252,101},{224,123,255,102,204,127,206,83,207},{220,110,250,99,221,112,209,100,195,70,223,83}}
+local __0O24={146,232,168,154,169,232,169,147,137,168,160,151,169,191,189,190,169,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,151,184,155,170,-1,141,169,232,170,147,137,168,160,151,169,191,189,190,169,146,160,151,170,151,185,150,160,151,172,151,186,150,160,151,174,151,187,150,160,151,160,151,188,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,189,150,160,151,185,151,190,150,160,151,188,151,191,150,160,151,171,151,163,150,151,184,155,170,-1,141,169,232,171,147,137,168,160,151,169,191,189,190,169,146,160,151,170,151,176,150,160,151,172,151,167,150,160,151,174,151,163,150,160,151,160,151,165,150,160,151,162,151,177,150,160,151,164,151,187,150,160,151,166,151,178,150,160,151,185,151,186,150,160,151,188,151,179,150,160,151,171,151,188,150,160,151,180,151,163,150,160,151,181,151,165,150,160,151,182,151,189,150,160,151,183,151,190,150,160,151,176,151,191,150,160,151,136,151,163,150,151,184,155,170,-1,141,169,232,172,147,137,168,160,151,169,191,189,190,169,146,160,151,170,151,182,150,160,151,172,151,137,150,160,151,174,151,165,150,160,151,160,151,138,150,160,151,162,151,167,150,160,151,164,151,178,150,160,151,166,151,175,150,160,151,185,151,191,150,160,151,188,151,163,150,151,184,155,170,-1,141,169,232,173,147,137,168,160,151,169,191,189,190,169,146,160,151,170,151,139,150,160,151,172,151,163,150,160,151,174,151,140,150,160,151,160,151,165,150,160,151,162,151,190,150,160,151,164,151,167,150,151,184,155,170,-1,141,169,232,174,190,170,151,141,191,232,175,190,169,146,160,151,170,151,142,150,160,151,172,151,179,150,160,151,174,151,179,150,160,151,160,151,178,150,160,151,162,151,167,150,160,151,164,151,143,150,160,151,166,151,128,150,160,151,185,151,128,150,160,151,188,151,129,150,160,151,171,151,190,150,160,151,180,151,167,150,160,151,181,151,191,150,160,151,182,151,137,150,160,151,183,151,165,150,160,151,176,151,129,150,160,151,136,151,130,150,160,151,131,151,191,150,160,151,132,151,137,150,160,151,177,151,133,150,160,151,134,151,128,150,160,151,135,151,175,150,160,151,152,151,178,150,160,151,153,151,190,150,160,151,154,151,128,150,160,151,155,151,156,150,160,151,157,151,163,150,160,151,158,151,140,150,160,151,159,151,142,150,160,151,144,151,137,150,160,151,139,151,137,150,160,151,145,151,138,150,160,151,146,151,167,150,160,151,147,151,128,150,160,151,148,151,149,150,160,151,161,151,150,150,160,151,151,151,150,150,160,151,232,151,233,150,160,151,234,151,233,150,160,151,235,151,233,150,160,151,165,151,236,150,160,151,167,151,237,150,160,151,178,151,238,150,160,151,239,151,224,150,160,151,189,151,149,150,160,151,156,151,149,150,160,151,179,151,238,150,160,151,186,151,225,150,160,151,226,151,149,150,160,151,138,151,224,150,160,151,142,151,233,150,160,151,190,151,227,150,160,151,187,151,238,150,160,151,137,151,128,150,160,151,173,151,152,150,160,151,133,151,149,150,160,151,140,151,167,150,160,151,191,151,148,150,160,151,228,151,158,150,160,151,175,151,177,150,160,151,229,151,239,150,160,151,230,151,236,150,160,151,129,151,239,150,160,151,163,151,186,150,160,151,231,151,248,150,160,151,249,151,191,150,160,151,250,151,229,150,160,151,251,151,146,150,160,151,252,151,233,150,160,151,253,151,224,150,160,151,254,151,158,150,160,151,255,151,152,150,160,151,240,151,139,150,160,151,241,151,132,150,160,151,242,151,150,150,160,151,243,151,227,150,160,151,244,151,156,150,160,151,245,151,134,150,160,151,246,151,227,150,160,151,247,151,230,150,160,151,200,151,139,150,160,151,201,151,140,150,160,151,202,151,189,150,160,151,203,151,229,150,160,151,204,151,188,150,160,151,205,151,226,150,160,151,206,151,224,150,160,151,207,151,237,150,160,151,192,151,131,150,160,151,193,151,133,150,160,151,184,151,159,150,160,151,194,151,230,150,160,151,195,151,136,150,160,151,196,151,171,150,160,151,197,151,146,150,160,151,198,151,134,150,160,151,143,151,174,150,160,151,199,151,188,150,160,151,227,151,216,150,160,151,233,151,158,150,160,151,217,151,165,150,160,151,218,151,180,150,160,151,219,151,150,150,160,151,220,151,139,150,160,151,236,151,230,150,160,151,224,151,225,150,160,151,237,151,175,150,160,151,149,151,173,150,160,151,238,151,135,150,160,151,225,151,188,150,160,151,221,151,167,150,160,151,150,151,158,150,160,151,222,151,148,150,160,151,223,151,178,150,160,151,208,151,230,150,160,151,209,151,133,150,160,151,130,151,140,150,160,151,128,151,161,150,160,151,210,151,238,150,160,151,248,151,238,150,160,151,211,151,158,150,160,151,212,151,189,150,151,184,136,170,232,160,151,174,232,161,146,160,190,169,146,160,151,170,151,172,150,160,151,172,151,145,150,160,151,174,151,153,150,160,151,160,151,185,150,160,151,162,151,145,150,160,151,164,151,135,150,160,151,166,151,248,150,160,151,185,151,158,150,160,151,188,151,149,150,160,151,171,151,154,150,160,151,180,151,236,150,160,151,181,151,248,150,160,151,182,151,155,150,160,151,183,151,224,150,160,151,176,151,139,150,160,151,136,151,221,150,151,184,136,170,190,169,146,160,151,170,151,229,150,160,151,172,151,165,150,160,151,174,151,163,150,160,151,160,151,163,150,151,184,136,170,150,160,190,169,146,160,151,170,151,172,150,160,151,172,151,145,150,160,151,174,151,153,150,160,151,160,151,185,150,160,151,162,151,145,150,160,151,164,151,135,150,160,151,166,151,248,150,160,151,185,151,145,150,160,151,188,151,150,150,160,151,171,151,159,150,160,151,180,151,238,150,160,151,181,151,248,150,160,151,182,151,144,150,160,151,183,151,225,150,160,151,176,151,132,150,160,151,136,151,227,150,151,184,136,170,190,169,146,160,151,170,151,229,150,160,151,172,151,165,150,160,151,174,151,163,150,160,151,160,151,163,150,151,184,136,170,150,160,190,169,146,160,151,170,151,172,150,160,151,172,151,145,150,160,151,174,151,153,150,160,151,160,151,185,150,160,151,162,151,145,150,160,151,164,151,135,150,160,151,166,151,248,150,160,151,185,151,177,150,160,151,188,151,233,150,160,151,171,151,136,150,160,151,180,151,237,150,160,151,181,151,248,150,160,151,182,151,131,150,160,151,183,151,149,150,160,151,176,151,152,150,160,151,136,151,236,150,151,184,136,170,190,169,146,160,151,170,151,229,150,160,151,172,151,165,150,160,151,174,151,163,150,160,151,160,151,163,150,151,184,136,170,150,160,190,169,146,160,151,170,151,172,150,160,151,172,151,145,150,160,151,174,151,153,150,160,151,160,151,185,150,160,151,162,151,145,150,160,151,164,151,135,150,160,151,166,151,248,150,160,151,185,151,153,150,160,151,188,151,224,150,160,151,171,151,134,150,160,151,180,151,221,150,160,151,181,151,248,150,160,151,182,151,135,150,160,151,183,151,150,150,160,151,176,151,171,150,160,151,136,151,238,150,151,184,136,170,190,169,146,160,151,170,151,229,150,160,151,172,151,165,150,160,151,174,151,163,150,160,151,160,151,163,150,151,184,136,170,150,160,190,169,146,160,151,170,151,172,150,160,151,172,151,145,150,160,151,174,151,153,150,160,151,160,151,185,150,160,151,162,151,145,150,160,151,164,151,135,150,160,151,166,151,248,150,160,151,185,151,180,150,160,151,188,151,225,150,160,151,171,151,185,150,160,151,180,151,227,150,160,151,181,151,248,150,160,151,182,151,188,150,160,151,183,151,233,150,160,151,176,151,183,150,160,151,136,151,237,150,151,184,136,170,190,169,146,160,151,170,151,229,150,160,151,172,151,165,150,160,151,174,151,163,150,160,151,160,151,163,150,151,184,136,170,150,232,162,190,169,146,160,151,170,151,229,150,160,151,172,151,179,150,160,151,174,151,175,150,160,151,160,151,178,150,160,151,162,151,162,150,160,151,164,151,138,150,160,151,166,151,163,150,160,151,185,151,161,150,160,151,188,151,130,150,160,151,171,151,179,150,160,151,180,151,148,150,160,151,181,151,179,150,151,184,136,170,232,163,154,170,232,164,154,171,232,165,154,172,232,166,190,164,136,168,232,167,190,165,155,168,170,232,185,232,184,157,232,186,190,184,160,153,1843,131,169,190,185,190,167,234,153,1809,190,162,190,184,191,145,143,160,153,1816,131,169,190,162,190,184,191,157,143,153,1823,181,232,186,152,1823,152,1809,146,160,151,213,146,150,160,151,214,151,215,150,160,151,40,146,150,232,187,190,187,151,41,154,173,150,190,187,151,42,154,174,150,190,187,151,43,154,175,150,190,187,151,44,154,160,150,190,187,151,45,154,161,150,190,187,151,46,154,162,150,147,190,187,160,151,42,191,189,190,169,146,160,151,170,151,183,150,160,151,172,151,165,150,160,151,174,151,175,150,160,151,160,151,190,150,160,151,162,151,187,150,160,151,164,151,163,150,160,151,166,151,165,150,160,151,185,151,47,150,160,151,188,151,140,150,160,151,171,151,137,150,160,151,180,151,137,150,160,151,181,151,179,150,160,151,182,151,190,150,160,151,183,151,187,150,160,151,176,151,230,150,151,184,155,170,-1,141,169,131,169,147,137,168,160,151,169,191,189,190,169,146,160,151,170,151,132,150,160,151,172,151,179,150,160,151,174,151,179,150,160,151,160,151,178,150,160,151,162,151,188,150,160,151,164,151,163,150,160,151,166,151,165,150,160,151,185,151,189,150,160,151,188,151,190,150,160,151,171,151,191,150,160,151,180,151,163,150,151,184,155,170,-1,141,169,232,188,154,163,232,189,145,232,190,137,32,154,164,155,169,170,232,176,232,191,190,191,235,160,235,153,2160,131,169,190,190,235,153,2330,137,43,190,169,146,160,151,170,151,170,150,160,151,172,151,183,150,160,151,174,151,165,150,160,151,160,151,175,150,160,151,162,151,190,150,160,151,164,151,187,150,160,151,166,151,163,150,160,151,185,151,165,150,160,151,188,151,166,150,160,151,171,151,47,150,160,151,180,151,185,150,160,151,181,151,175,150,160,151,182,151,161,150,160,151,183,151,229,150,160,151,176,151,190,150,160,151,136,151,163,150,160,151,131,151,173,150,160,151,132,151,129,150,160,151,177,151,47,150,160,151,134,151,173,150,160,151,135,151,137,150,160,151,152,151,175,150,160,151,153,151,129,150,160,151,154,151,47,150,160,151,155,151,229,150,160,151,157,151,175,150,160,151,158,151,190,150,160,151,159,151,173,150,160,151,144,151,163,150,160,151,139,151,129,150,160,151,145,151,143,150,160,151,146,151,47,150,151,184,136,170,137,33,190,176,136,169,159,136,169,131,169,158,168,152,2330,190,186,235,153,3526,190,190,160,151,34,191,189,146,160,151,35,190,169,146,160,151,170,151,131,150,160,151,172,151,163,150,160,151,174,151,161,150,160,151,160,151,47,150,160,151,162,151,188,150,160,151,164,151,161,150,160,151,166,151,167,150,160,151,185,151,179,150,160,151,188,151,163,150,160,151,171,151,133,150,151,184,136,170,150,160,151,36,190,169,146,160,151,170,151,131,150,160,151,172,151,163,150,160,151,174,151,161,150,160,151,160,151,47,150,160,151,162,151,155,150,160,151,164,151,142,150,160,151,166,151,163,150,160,151,185,151,191,150,160,151,188,151,138,150,151,184,136,170,150,160,151,37,190,169,146,160,151,170,151,140,150,160,151,172,151,161,150,160,151,174,151,47,150,160,151,160,151,148,150,160,151,162,151,163,150,160,151,164,151,133,150,160,151,166,151,165,150,160,151,185,151,163,150,160,151,188,151,137,150,151,184,136,170,150,160,151,38,146,160,151,39,157,150,150,160,151,56,157,150,136,170,232,177,147,190,177,160,151,57,191,189,190,169,146,160,151,170,151,145,150,160,151,172,151,187,150,160,151,174,151,179,150,160,151,160,151,163,150,160,151,162,151,165,150,160,151,164,151,47,150,160,151,166,151,138,150,160,151,185,151,163,150,160,151,188,151,161,150,151,184,155,170,-1,141,169,232,178,147,190,178,160,151,58,191,189,190,169,146,160,151,170,151,158,150,160,151,172,151,191,150,160,151,174,151,179,150,160,151,160,151,190,150,160,151,162,151,189,150,160,151,164,151,175,150,160,151,166,151,179,150,160,151,185,151,190,150,160,151,188,151,137,150,160,151,171,151,187,150,151,184,155,170,-1,141,169,131,169,190,178,160,151,59,191,189,146,160,151,60,190,169,146,160,151,170,151,131,150,160,151,172,151,163,150,160,151,174,151,161,150,151,184,136,170,150,160,151,61,190,169,146,160,151,170,151,145,150,160,151,172,151,187,150,160,151,174,151,179,150,160,151,160,151,163,150,160,151,162,151,165,150,160,151,164,151,47,150,160,151,166,151,161,150,160,151,185,151,137,150,160,151,188,151,186,150,160,151,171,151,165,150,160,151,180,151,47,150,160,151,181,151,138,150,160,151,182,151,163,150,160,151,183,151,161,150,160,151,176,151,47,150,160,151,136,151,140,150,160,151,131,151,163,150,160,151,132,151,173,150,160,151,177,151,137,150,160,151,134,151,156,150,160,151,135,151,130,150,160,151,152,151,47,150,160,151,153,151,135,150,160,151,154,151,187,150,160,151,155,151,163,150,160,151,157,151,47,150,160,151,158,151,138,150,160,151,159,151,163,150,160,151,144,151,161,150,160,151,139,151,47,150,160,151,145,151,220,150,160,151,146,151,47,150,160,151,147,151,137,150,160,151,148,151,187,150,160,151,161,151,163,150,160,151,151,151,47,150,160,151,232,151,171,150,160,151,234,151,155,150,160,151,235,151,210,150,160,151,165,151,47,150,160,151,167,151,178,150,160,151,178,151,163,150,160,151,239,151,165,150,160,151,189,151,133,150,160,151,156,151,175,150,160,151,179,151,187,150,160,151,186,151,163,150,160,151,226,151,187,150,160,151,138,151,179,150,160,151,142,151,47,150,160,151,190,151,140,150,160,151,187,151,190,150,160,151,137,151,187,150,160,151,173,151,129,150,160,151,133,151,190,150,160,151,140,151,187,150,160,151,191,151,230,150,160,151,228,151,130,150,151,184,136,170,150,136,170,131,169,190,178,160,151,62,191,189,146,160,151,35,190,169,146,160,151,170,151,131,150,160,151,172,151,163,150,160,151,174,151,161,150,151,184,136,170,150,160,151,63,151,48,150,160,151,49,190,169,146,160,151,170,151,172,150,160,151,172,151,145,150,160,151,174,151,153,150,160,151,160,151,185,150,160,151,162,151,145,150,160,151,164,151,135,150,160,151,166,151,248,150,160,151,185,151,172,150,160,151,188,151,172,150,160,151,171,151,172,150,160,151,180,151,172,150,160,151,181,151,248,150,160,151,182,151,172,150,160,151,183,151,172,150,160,151,176,151,172,150,160,151,136,151,172,150,151,184,136,170,150,160,151,50,157,150,160,151,51,154,165,150,136,170,131,169,158,168,152,3526,147,190,187,160,151,42,191,189,190,169,146,160,151,170,151,138,150,160,151,172,151,163,150,160,151,174,151,161,150,160,151,160,151,47,150,160,151,162,151,137,150,160,151,164,151,138,150,160,151,166,151,210,150,160,151,185,151,47,150,160,151,188,151,173,150,160,151,171,151,137,150,160,151,180,151,175,150,160,151,181,151,129,150,160,151,182,151,190,150,160,151,183,151,187,150,160,151,176,151,230,150,160,151,136,151,47,150,160,151,131,151,133,150,160,151,132,151,175,150,160,151,177,151,190,150,160,151,134,151,187,150,151,184,155,170,-1,141,169,131,169,154,166,232,179,154,167,232,180,154,184,232,181,154,185,232,182,137,52,151,53,191,154,186,136,169,131,169,137,52,151,53,191,154,187,136,169,131,169,190,190,160,151,34,191,189,146,160,151,35,190,169,146,160,151,170,151,148,150,160,151,172,151,163,150,160,151,174,151,133,150,160,151,160,151,165,150,160,151,162,151,163,150,160,151,164,151,137,150,160,151,166,151,47,150,160,151,185,151,183,150,160,151,188,151,165,150,160,151,171,151,175,150,160,151,180,151,190,150,160,151,181,151,187,150,160,151,182,151,163,150,160,151,183,151,165,150,151,184,136,170,150,160,151,36,190,169,146,160,151,170,151,148,150,160,151,172,151,163,150,160,151,174,151,133,150,160,151,160,151,165,150,160,151,162,151,163,150,160,151,164,151,137,150,160,151,166,151,47,150,160,151,185,151,183,150,160,151,188,151,165,150,160,151,171,151,175,150,160,151,180,151,190,150,160,151,181,151,187,150,160,151,182,151,163,150,160,151,183,151,165,150,151,184,136,170,150,160,151,37,190,169,146,160,151,170,151,140,150,160,151,172,151,161,150,160,151,174,151,47,150,160,151,160,151,148,150,160,151,162,151,163,150,160,151,164,151,133,150,160,151,166,151,165,150,160,151,185,151,163,150,160,151,188,151,137,150,151,184,136,170,150,160,151,38,146,160,151,39,181,150,160,151,54,190,169,146,160,151,170,151,148,150,160,151,172,151,163,150,160,151,174,151,133,150,160,151,160,151,165,150,160,151,162,151,163,150,160,151,164,151,137,150,160,151,166,151,162,150,160,151,185,151,183,150,160,151,188,151,165,150,160,151,171,151,175,150,160,151,180,151,190,150,160,151,181,151,187,150,160,151,182,151,163,150,160,151,183,151,165,150,151,184,136,170,150,160,151,55,190,169,146,160,151,170,151,191,150,160,151,172,151,137,150,160,151,174,151,187,150,160,151,160,151,229,150,160,151,162,151,190,150,160,151,164,151,230,150,151,184,136,170,150,150,160,151,56,157,150,136,170,232,183,146,160,151,8,157,150,160,151,9,151,10,150,160,151,11,181,150,160,151,12,157,150,160,151,13,151,229,150,160,151,14,157,150,160,151,15,151,0,150,160,151,1,157,150,160,151,2,151,3,150,160,151,4,157,150,160,151,5,151,229,150,160,151,6,137,7,151,24,191,151,25,191,150,160,151,26,157,150,160,151,27,157,150,160,151,28,157,150,160,151,29,151,30,150,160,151,31,157,150,160,151,16,151,160,150,160,151,17,157,150,160,151,18,157,150,160,151,19,157,150,160,151,20,145,150,232,136,154,188,232,137,154,189,232,138,154,190,187,21,154,191,232,139,154,176,187,22,190,173,151,23,191,160,151,104,191,189,154,177,136,170,131,169,145,232,140,145,232,141,154,178,187,105,154,179,187,106,190,172,151,107,191,160,151,104,191,189,154,180,136,170,131,169,190,171,151,108,191,160,151,104,191,189,154,181,136,170,131,169,190,175,151,109,191,160,151,104,191,189,154,182,136,170,131,169,190,171,151,110,191,160,151,104,191,189,154,183,136,170,131,169,154,136,232,142,146,232,143,154,137,232,128,154,138,232,129,154,139,232,130,154,140,187,111,154,141,187,96,190,175,151,109,191,160,151,104,191,189,154,142,136,170,131,169,146,232,131,154,143,232,132,154,128,232,133,154,129,232,134,145,232,135,146,232,152,154,130,232,153,154,131,187,97,154,132,187,98,146,232,154,154,133,232,155,154,134,232,156,154,135,232,157,154,152,187,99,154,153,187,100,146,232,158,146,232,159,154,154,232,144,154,155,232,145,154,156,232,146,154,157,232,147,154,158,187,101,154,159,187,102,190,175,151,109,191,160,151,104,191,189,154,144,136,170,131,169,146,232,148,154,145,232,149,154,146,232,150,145,232,151,154,147,232,232,145,232,233,154,148,232,234,154,149,232,235,146,232,236,145,232,237,154,150,232,238,154,151,232,239,154,232,232,224,154,233,232,225,147,190,183,160,151,57,191,189,190,169,146,160,151,170,151,159,150,160,151,172,151,183,150,160,151,174,151,158,150,160,151,160,151,171,150,151,184,155,170,-1,141,169,232,226,147,190,226,160,151,58,191,189,190,169,146,160,151,170,151,183,150,160,151,172,151,142,150,160,151,174,151,165,150,160,151,160,151,137,150,160,151,162,151,156,150,160,151,164,151,47,150,160,151,166,151,248,150,160,151,185,151,47,150,160,151,188,151,181,150,160,151,171,151,163,150,160,151,180,151,173,150,160,151,181,151,137,150,160,151,182,151,191,150,160,151,183,151,190,150,160,151,176,151,179,150,160,151,136,151,161,150,151,184,155,170,-1,141,169,131,169,190,226,160,151,103,191,189,146,160,151,35,190,169,146,160,151,170,151,183,150,160,151,172,151,142,150,160,151,174,151,165,150,160,151,160,151,137,150,160,151,162,151,156,150,160,151,164,151,47,150,160,151,166,151,181,150,160,151,185,151,163,150,160,151,188,151,173,150,160,151,171,151,137,150,160,151,180,151,191,150,160,151,181,151,190,150,160,151,182,151,179,150,160,151,183,151,161,150,151,184,136,170,150,160,151,63,157,150,160,151,120,190,169,146,160,151,170,151,188,150,160,151,172,151,186,150,160,151,174,151,178,150,160,151,160,151,163,150,160,151,162,151,165,150,160,151,164,151,183,150,160,151,166,151,142,150,160,151,185,151,165,150,160,151,188,151,137,150,160,151,171,151,156,150,151,184,136,170,150,160,151,51,154,234,150,136,170,131,169,190,226,160,151,103,191,189,146,160,151,35,190,169,146,160,151,170,151,159,150,160,151,172,151,173,150,160,151,174,151,190,150,160,151,160,151,187,150,160,151,162,151,230,150,160,151,164,151,47,150,160,151,166,151,171,150,160,151,185,151,173,150,160,151,188,151,175,150,160,151,171,151,161,150,160,151,180,151,163,150,160,151,181,151,165,150,160,151,182,151,167,150,151,184,136,170,150,160,151,63,181,150,160,151,120,190,169,146,160,151,170,151,159,150,160,151,172,151,173,150,160,151,174,151,190,150,160,151,160,151,187,150,160,151,162,151,230,150,160,151,164,151,171,150,160,151,166,151,173,150,160,151,185,151,175,150,160,151,188,151,161,150,160,151,171,151,163,150,160,151,180,151,165,150,160,151,181,151,167,150,151,184,136,170,150,160,151,51,154,235,150,136,170,131,169,190,226,160,151,121,191,189,146,160,151,35,190,169,146,160,151,170,151,183,150,160,151,172,151,142,150,160,151,174,151,165,150,160,151,160,151,137,150,160,151,162,151,156,150,160,151,164,151,47,150,160,151,166,151,188,150,160,151,185,151,179,150,160,151,188,151,165,150,160,151,171,151,163,150,160,151,180,151,187,150,160,151,181,151,230,150,160,151,182,151,179,150,160,151,183,151,142,150,151,184,136,170,150,160,151,122,146,160,151,170,151,217,150,160,151,172,151,123,150,150,160,151,124,151,171,150,160,151,125,190,169,146,160,151,170,151,167,150,160,151,172,151,179,150,160,151,174,151,186,150,160,151,160,151,129,150,160,151,162,151,167,150,160,151,164,151,128,150,160,151,166,151,167,150,151,184,136,170,150,160,151,63,151,10,150,160,151,120,190,169,146,160,151,170,151,188,150,160,151,172,151,179,150,160,151,174,151,165,150,160,151,160,151,163,150,160,151,162,151,187,150,160,151,164,151,230,150,160,151,166,151,179,150,160,151,185,151,142,150,151,184,136,170,150,160,151,51,154,236,150,136,170,131,169,190,226,160,151,103,191,189,146,160,151,35,190,169,146,160,151,170,151,153,150,160,151,172,151,163,150,160,151,174,151,230,150,160,151,160,151,175,150,160,151,162,151,47,150,160,151,164,151,159,150,160,151,166,151,173,150,160,151,185,151,190,150,160,151,188,151,187,150,160,151,171,151,230,150,160,151,180,151,47,150,160,151,181,151,208,150,160,151,182,151,151,150,160,151,183,151,149,150,160,151,176,151,237,150,160,151,136,151,237,150,160,151,131,151,138,150,160,151,132,151,209,150,151,184,136,170,150,160,151,63,157,150,160,151,120,190,169,146,160,151,170,151,153,150,160,151,172,151,163,150,160,151,174,151,230,150,160,151,160,151,175,150,160,151,162,151,159,150,160,151,164,151,173,150,160,151,166,151,190,150,160,151,185,151,187,150,160,151,188,151,230,150,151,184,136,170,150,160,151,51,154,237,150,136,170,131,169,190,226,160,151,121,191,189,146,160,151,35,190,169,146,160,151,170,151,153,150,160,151,172,151,163,150,160,151,174,151,230,150,160,151,160,151,175,150,160,151,162,151,47,150,160,151,164,151,139,150,160,151,166,151,190,150,160,151,185,151,167,150,160,151,188,151,179,150,160,151,171,151,175,150,160,151,180,151,187,150,160,151,181,151,191,150,160,151,182,151,163,150,151,184,136,170,150,160,151,122,146,160,151,170,151,126,150,160,151,172,151,127,150,150,160,151,124,151,112,150,160,151,125,190,169,146,160,151,170,151,167,150,160,151,172,151,179,150,160,151,174,151,186,150,160,151,160,151,129,150,160,151,162,151,167,150,151,184,136,170,150,160,151,63,151,3,150,160,151,120,190,169,146,160,151,170,151,153,150,160,151,172,151,163,150,160,151,174,151,230,150,160,151,160,151,175,150,160,151,162,151,139,150,160,151,164,151,190,150,160,151,166,151,167,150,160,151,185,151,179,150,160,151,188,151,175,150,160,151,171,151,187,150,160,151,180,151,191,150,160,151,181,151,163,150,151,184,136,170,150,160,151,51,154,238,150,136,170,131,169,147,190,226,160,151,58,191,189,190,169,146,160,151,170,151,181,150,160,151,172,151,163,150,160,151,174,151,165,150,160,151,160,151,179,150,160,151,162,151,190,150,160,151,164,151,191,150,160,151,166,151,175,150,160,151,185,151,173,150,160,151,188,151,47,150,160,151,171,151,154,150,160,151,180,151,137,150,160,151,181,151,137,150,160,151,182,151,167,150,160,151,183,151,179,150,151,184,155,170,-1,141,169,131,169,190,226,160,151,103,191,189,146,160,151,35,190,169,146,160,151,170,151,181,150,160,151,172,151,163,150,160,151,174,151,165,150,160,151,160,151,179,150,160,151,162,151,190,150,160,151,164,151,191,150,160,151,166,151,175,150,160,151,185,151,173,150,160,151,188,151,47,150,160,151,171,151,154,150,160,151,180,151,137,150,160,151,181,151,137,150,160,151,182,151,167,150,160,151,183,151,179,150,151,184,136,170,150,160,151,63,157,150,160,151,120,190,169,146,160,151,170,151,181,150,160,151,172,151,163,150,160,151,174,151,165,150,160,151,160,151,179,150,160,151,162,151,190,150,160,151,164,151,191,150,160,151,166,151,175,150,160,151,185,151,173,150,160,151,188,151,154,150,160,151,171,151,137,150,160,151,180,151,137,150,160,151,181,151,167,150,160,151,182,151,179,150,151,184,136,170,150,160,151,51,154,239,150,136,170,131,169,190,226,160,151,121,191,189,146,160,151,35,190,169,146,160,151,170,151,181,150,160,151,172,151,163,150,160,151,174,151,165,150,160,151,160,151,179,150,160,151,162,151,190,150,160,151,164,151,191,150,160,151,166,151,175,150,160,151,185,151,173,150,160,151,188,151,47,150,160,151,171,151,159,150,160,151,180,151,175,150,160,151,181,151,191,150,160,151,182,151,179,150,160,151,183,151,137,150,160,151,176,151,165,150,151,184,136,170,150,160,151,122,146,160,151,170,151,171,150,160,151,172,151,113,150,150,160,151,124,151,162,150,160,151,125,190,169,146,160,151,170,151,114,150,151,184,136,170,150,160,151,63,151,142,150,160,151,120,190,169,146,160,151,170,151,181,150,160,151,172,151,163,150,160,151,174,151,165,150,160,151,160,151,179,150,160,151,162,151,190,150,160,151,164,151,191,150,160,151,166,151,175,150,160,151,185,151,173,150,160,151,188,151,159,150,160,151,171,151,175,150,160,151,180,151,191,150,160,151,181,151,179,150,160,151,182,151,137,150,160,151,183,151,165,150,151,184,136,170,150,160,151,51,154,224,150,136,170,131,169,147,190,226,160,151,58,191,189,190,169,146,160,151,170,151,153,150,160,151,172,151,137,150,160,151,174,151,189,150,160,151,160,151,163,150,160,151,162,151,47,150,160,151,164,151,188,150,160,151,166,151,178,150,160,151,185,151,163,150,160,151,188,151,163,150,160,151,171,151,129,150,151,184,155,170,-1,141,169,131,169,190,226,160,151,103,191,189,146,160,151,35,190,169,146,160,151,170,151,153,150,160,151,172,151,137,150,160,151,174,151,189,150,160,151,160,151,163,150,160,151,162,151,47,150,160,151,164,151,188,150,160,151,166,151,178,150,160,151,185,151,163,150,160,151,188,151,163,150,160,151,171,151,129,150,151,184,136,170,150,160,151,63,157,150,160,151,120,190,169,146,160,151,170,151,153,150,160,151,172,151,137,150,160,151,174,151,189,150,160,151,160,151,163,150,160,151,162,151,188,150,160,151,164,151,178,150,160,151,166,151,163,150,160,151,185,151,163,150,160,151,188,151,129,150,151,184,136,170,150,160,151,51,154,225,150,136,170,131,169,190,226,160,151,121,191,189,146,160,151,35,190,169,146,160,151,170,151,182,150,160,151,172,151,175,150,160,151,174,151,173,150,160,151,160,151,138,150,160,151,162,151,47,150,160,151,164,151,188,150,160,151,166,151,178,150,160,151,185,151,163,150,160,151,188,151,163,150,160,151,171,151,129,150,151,184,136,170,150,160,151,122,146,160,151,170,151,136,150,160,151,172,151,113,150,150,160,151,124,151,172,150,160,151,125,190,169,146,160,151,170,151,167,150,160,151,172,151,179,150,160,151,174,151,186,150,160,151,160,151,129,150,160,151,162,151,167,150,160,151,164,151,128,150,160,151,166,151,167,150,151,184,136,170,150,160,151,63,151,229,150,160,151,120,190,169,146,160,151,170,151,182,150,160,151,172,151,175,150,160,151,174,151,173,150,160,151,160,151,138,150,160,151,162,151,188,150,160,151,164,151,178,150,160,151,166,151,163,150,160,151,185,151,163,150,160,151,188,151,129,150,151,184,136,170,150,160,151,51,154,226,150,136,170,131,169,147,190,226,160,151,58,191,189,190,169,146,160,151,170,151,159,150,160,151,172,151,173,150,160,151,174,151,161,150,151,184,155,170,-1,141,169,131,169,190,226,160,151,103,191,189,146,160,151,35,190,169,146,160,151,170,151,159,150,160,151,172,151,173,150,160,151,174,151,161,150,151,184,136,170,150,160,151,63,157,150,160,151,120,190,169,146,160,151,170,151,159,150,160,151,172,151,173,150,160,151,174,151,161,150,151,184,136,170,150,160,151,51,154,227,150,136,170,131,169,190,226,160,151,121,191,189,146,160,151,35,190,169,146,160,151,170,151,159,150,160,151,172,151,173,150,160,151,174,151,161,150,160,151,160,151,47,150,160,151,162,151,188,150,160,151,164,151,178,150,160,151,166,151,163,150,160,151,185,151,163,150,160,151,188,151,129,150,151,184,136,170,150,160,151,122,146,160,151,170,151,134,150,160,151,172,151,115,150,150,160,151,124,151,162,150,160,151,125,190,169,146,160,151,170,151,167,150,160,151,172,151,179,150,160,151,174,151,186,150,160,151,160,151,129,150,160,151,162,151,167,150,160,151,164,151,128,150,160,151,166,151,167,150,151,184,136,170,150,160,151,63,151,229,150,160,151,120,190,169,146,160,151,170,151,159,150,160,151,172,151,173,150,160,151,174,151,161,150,160,151,160,151,188,150,160,151,162,151,178,150,160,151,164,151,163,150,160,151,166,151,163,150,160,151,185,151,129,150,151,184,136,170,150,160,151,51,154,228,150,136,170,131,169,190,226,160,151,116,191,189,146,160,151,35,190,169,146,160,151,170,151,159,150,160,151,172,151,173,150,160,151,174,151,161,150,160,151,160,151,47,150,160,151,162,151,183,150,160,151,164,151,137,150,160,151,166,151,230,150,160,151,185,151,230,150,160,151,188,151,173,150,160,151,171,151,163,150,160,151,180,151,47,150,160,151,181,151,131,150,160,151,182,151,163,150,160,151,183,151,161,150,151,184,136,170,150,160,151,117,190,169,146,160,151,170,151,159,150,151,184,136,170,150,160,151,118,157,150,160,151,120,190,169,146,160,151,170,151,159,150,160,151,172,151,173,150,160,151,174,151,161,150,160,151,160,151,131,150,160,151,162,151,163,150,160,151,164,151,161,150,151,184,136,170,150,160,151,51,154,229,150,136,170,131,169,147,190,226,160,151,58,191,189,190,169,146,160,151,170,151,158,150,160,151,172,151,187,150,160,151,174,151,179,150,160,151,160,151,190,150,160,151,162,151,248,150,160,151,164,151,144,150,160,151,166,151,165,150,160,151,185,151,175,150,160,151,188,151,140,150,160,151,171,151,47,150,160,151,180,151,208,150,160,151,181,151,167,150,160,151,182,151,163,150,160,151,183,151,173,150,160,151,176,151,229,150,160,151,136,151,248,150,160,151,131,151,173,150,160,151,132,151,137,150,160,151,177,151,191,150,160,151,134,151,138,150,160,151,135,151,209,150,151,184,155,170,-1,141,169,131,169,190,226,160,151,103,191,189,146,160,151,35,190,169,146,160,151,170,151,158,150,160,151,172,151,187,150,160,151,174,151,179,150,160,151,160,151,190,150,160,151,162,151,248,150,160,151,164,151,144,150,160,151,166,151,165,150,160,151,185,151,175,150,160,151,188,151,140,150,151,184,136,170,150,160,151,63,157,150,160,151,120,190,169,146,160,151,170,151,158,150,160,151,172,151,187,150,160,151,174,151,179,150,160,151,160,151,190,150,160,151,162,151,144,150,160,151,164,151,165,150,160,151,166,151,175,150,160,151,185,151,140,150,151,184,136,170,150,160,151,51,154,230,150,136,170,131,169,190,226,160,151,103,191,189,146,160,151,35,190,169,146,160,151,170,151,188,150,160,151,172,151,187,150,160,151,174,151,190,150,160,151,160,151,229,150,160,151,162,151,229,150,160,151,164,151,47,150,160,151,166,151,230,150,160,151,185,151,165,150,160,151,188,151,175,150,160,151,171,151,140,150,160,151,180,151,47,150,160,151,181,151,208,150,160,151,182,151,129,150,160,151,183,151,163,150,160,151,176,151,140,150,160,151,136,151,186,150,160,151,131,151,230,150,160,151,132,151,209,150,151,184,136,170,150,160,151,63,157,150,160,151,120,190,169,146,160,151,170,151,188,150,160,151,172,151,187,150,160,151,174,151,190,150,160,151,160,151,229,150,160,151,162,151,229,150,160,151,164,151,144,150,160,151,166,151,165,150,160,151,185,151,175,150,160,151,188,151,140,150,151,184,136,170,150,160,151,51,154,231,150,136,170,131,169,147,190,226,160,151,58,191,189,190,169,146,160,151,170,151,158,150,160,151,172,151,186,150,160,151,174,151,179,150,160,151,160,151,137,150,160,151,162,151,47,150,160,151,164,151,159,150,160,151,166,151,175,150,160,151,185,151,165,150,160,151,188,151,133,150,151,184,155,170,-1,141,169,131,169,190,226,160,151,119,191,189,146,160,151,35,190,169,146,160,151,170,151,171,150,160,151,172,151,190,150,160,151,174,151,191,150,160,151,160,151,138,150,160,151,162,151,47,150,160,151,164,151,173,150,160,151,166,151,163,150,160,151,185,151,189,150,160,151,188,151,163,150,160,151,171,151,165,150,160,151,180,151,47,150,160,151,181,151,208,150,160,151,182,151,150,150,160,151,183,151,167,150,160,151,176,151,209,150,151,184,136,170,150,160,151,51,154,248,150,136,170,131,169,190,226,160,151,119,191,189,146,160,151,35,190,169,146,160,151,170,151,152,150,160,151,172,151,190,150,160,151,174,151,167,150,160,151,160,151,179,150,160,151,162,151,47,150,160,151,164,151,167,150,160,151,166,151,175,150,160,151,185,151,189,150,160,151,188,151,163,150,160,151,171,151,129,150,160,151,180,151,47,150,160,151,181,151,173,150,160,151,182,151,163,150,160,151,183,151,189,150,160,151,176,151,163,150,160,151,136,151,165,150,160,151,131,151,167,150,151,184,136,170,150,160,151,51,154,249,150,136,170,131,169,190,226,160,151,119,191,189,146,160,151,35,190,169,146,160,151,170,151,155,150,160,151,172,151,173,150,160,151,174,151,163,150,160,151,160,151,175,150,160,151,162,151,165,150,160,151,164,151,47,150,160,151,166,151,167,150,160,151,185,151,175,150,160,151,188,151,189,150,160,151,171,151,163,150,160,151,180,151,129,150,160,151,181,151,47,150,160,151,182,151,173,150,160,151,183,151,163,150,160,151,176,151,189,150,160,151,136,151,163,150,160,151,131,151,165,150,160,151,132,151,167,150,151,184,136,170,150,160,151,51,154,250,150,136,170,131,169,190,226,160,151,119,191,189,146,160,151,35,190,169,146,160,151,170,151,183,150,160,151,172,151,165,150,160,151,174,151,190,150,160,151,160,151,230,150,160,151,162,151,230,150,160,151,164,151,163,150,160,151,166,151,165,150,160,151,185,151,47,150,160,151,188,151,173,150,160,151,171,151,163,150,160,151,180,151,189,150,160,151,181,151,163,150,160,151,182,151,165,150,160,151,183,151,47,150,160,151,176,151,187,150,160,151,136,151,137,150,160,151,131,151,156,150,151,184,136,170,150,160,151,51,154,251,150,136,170,131,169,190,226,160,151,103,191,189,146,160,151,35,190,169,146,160,151,170,151,158,150,160,151,172,151,186,150,160,151,174,151,179,150,160,151,160,151,137,150,160,151,162,151,47,150,160,151,164,151,159,150,160,151,166,151,175,150,160,151,185,151,165,150,160,151,188,151,133,150,160,151,171,151,47,150,160,151,180,151,208,150,160,151,181,151,167,150,160,151,182,151,175,150,160,151,183,151,189,150,160,151,176,151,163,150,160,151,136,151,129,150,160,151,131,151,47,150,160,151,132,151,173,150,160,151,177,151,163,150,160,151,134,151,189,150,160,151,135,151,163,150,160,151,152,151,165,150,160,151,153,151,167,150,160,151,154,151,209,150,151,184,136,170,150,160,151,63,157,150,160,151,120,190,169,146,160,151,170,151,158,150,160,151,172,151,186,150,160,151,174,151,179,150,160,151,160,151,137,150,160,151,162,151,159,150,160,151,164,151,175,150,160,151,166,151,165,150,160,151,185,151,133,150,151,184,136,170,150,160,151,51,154,252,150,136,170,131,169,190,226,160,151,121,191,189,146,160,151,35,190,169,146,160,151,170,151,159,150,160,151,172,151,175,150,160,151,174,151,165,150,160,151,160,151,133,150,160,151,162,151,47,150,160,151,164,151,155,150,160,151,166,151,137,150,160,151,185,151,137,150,160,151,188,151,173,150,160,151,171,151,129,150,160,151,180,151,137,150,160,151,181,151,156,150,160,151,182,151,187,150,151,184,136,170,150,160,151,122,146,160,151,170,151,229,150,160,151,172,151,72,150,150,160,151,124,151,139,150,160,151,125,190,169,146,160,151,170,151,167,150,151,184,136,170,150,160,151,63,151,30,150,160,151,120,190,169,146,160,151,170,151,159,150,160,151,172,151,175,150,160,151,174,151,165,150,160,151,160,151,133,150,160,151,162,151,155,150,160,151,164,151,137,150,160,151,166,151,137,150,160,151,185,151,173,150,160,151,188,151,129,150,160,151,171,151,137,150,160,151,180,151,156,150,160,151,181,151,187,150,151,184,136,170,150,160,151,51,154,253,150,136,170,131,169,147,190,226,160,151,58,191,189,190,169,146,160,151,170,151,159,150,160,151,172,151,175,150,160,151,174,151,167,150,160,151,160,151,179,150,160,151,162,151,47,150,160,151,164,151,145,150,160,151,166,151,167,150,160,151,185,151,191,150,160,151,188,151,175,150,160,151,171,151,178,150,160,151,180,151,163,150,151,184,155,170,-1,141,169,131,169,190,226,160,151,103,191,189,146,160,151,35,190,169,146,160,151,170,151,159,150,160,151,172,151,175,150,160,151,174,151,167,150,160,151,160,151,179,150,160,151,162,151,47,150,160,151,164,151,145,150,160,151,166,151,167,150,160,151,185,151,191,150,160,151,188,151,175,150,160,151,171,151,178,150,160,151,180,151,163,150,151,184,136,170,150,160,151,63,157,150,160,151,120,190,169,146,160,151,170,151,159,150,160,151,172,151,175,150,160,151,174,151,167,150,160,151,160,151,179,150,160,151,162,151,145,150,160,151,164,151,167,150,160,151,166,151,191,150,160,151,185,151,175,150,160,151,188,151,178,150,160,151,171,151,163,150,151,184,136,170,150,160,151,51,154,254,150,136,170,131,169,190,226,160,151,121,191,189,146,160,151,35,190,169,146,160,151,170,151,145,150,160,151,172,151,167,150,160,151,174,151,191,150,160,151,160,151,175,150,160,151,162,151,178,150,160,151,164,151,163,150,160,151,166,151,47,150,160,151,185,151,183,150,160,151,188,151,190,150,160,151,171,151,133,150,160,151,180,151,163,150,151,184,136,170,150,160,151,122,146,160,151,170,151,170,150,160,151,172,151,171,150,150,160,151,124,151,170,150,160,151,125,190,169,146,160,151,170,151,167,150,151,184,136,170,150,160,151,63,151,160,150,160,151,120,190,169,146,160,151,170,151,145,150,160,151,172,151,167,150,160,151,174,151,191,150,160,151,160,151,175,150,160,151,162,151,178,150,160,151,164,151,163,150,160,151,166,151,183,150,160,151,185,151,190,150,160,151,188,151,133,150,160,151,171,151,163,150,151,184,136,170,150,160,151,51,154,255,150,136,170,131,169,147,190,183,160,151,57,191,189,190,169,146,160,151,170,151,155,150,160,151,172,151,142,150,160,151,174,151,137,150,160,151,160,151,178,150,160,151,162,151,47,150,160,151,164,151,158,150,160,151,166,151,47,150,160,151,185,151,159,150,160,151,188,151,137,150,160,151,171,151,165,150,160,151,180,151,163,150,160,151,181,151,167,150,160,151,182,151,179,150,151,184,155,170,-1,141,169,232,227,147,190,227,160,151,58,191,189,190,169,146,160,151,170,151,158,150,160,151,172,151,186,150,160,151,174,151,179,150,160,151,160,151,137,150,160,151,162,151,47,150,160,151,164,151,159,150,160,151,166,151,175,150,160,151,185,151,165,150,160,151,188,151,133,150,151,184,155,170,-1,141,169,131,169,146,160,151,73,157,150,160,151,74,157,150,160,151,75,157,150,160,151,76,157,150,160,151,77,157,150,160,151,78,157,150,160,151,79,151,229,150,160,151,64,157,150,160,151,65,151,217,150,232,228,147,147,147,147,137,168,160,151,169,191,189,190,169,146,160,151,170,151,185,150,160,151,172,151,163,150,160,151,174,151,178,150,160,151,160,151,173,150,160,151,162,151,190,150,160,151,164,151,191,150,160,151,166,151,175,150,160,151,185,151,179,150,160,151,188,151,163,150,160,151,171,151,129,150,160,151,180,151,188,150,160,151,181,151,179,150,160,151,182,151,137,150,160,151,183,151,165,150,160,151,176,151,175,150,160,151,136,151,230,150,160,151,131,151,163,150,151,184,155,170,-1,141,169,160,151,66,191,189,190,169,146,160,151,170,151,188,150,160,151,172,151,142,150,160,151,174,151,175,150,160,151,160,151,165,150,160,151,162,151,163,150,160,151,164,151,129,150,151,184,155,170,-1,141,169,160,151,66,191,189,190,169,146,160,151,170,151,188,150,160,151,172,151,163,150,160,151,174,151,165,150,160,151,160,151,189,150,160,151,162,151,190,150,160,151,164,151,191,150,160,151,166,151,163,150,160,151,185,151,167,150,151,184,155,170,-1,141,169,160,151,66,191,189,190,169,146,160,151,170,151,155,150,160,151,172,151,142,150,160,151,174,151,137,150,160,151,160,151,178,150,160,151,162,151,185,150,160,151,164,151,163,150,160,151,166,151,133,150,160,151,185,151,137,150,160,151,188,151,179,150,160,151,171,151,163,150,160,151,180,151,167,150,151,184,155,170,-1,141,169,232,229,147,137,168,160,151,169,191,189,190,169,146,160,151,170,151,185,150,160,151,172,151,163,150,160,151,174,151,178,150,160,151,160,151,173,150,160,151,162,151,190,150,160,151,164,151,191,150,160,151,166,151,175,150,160,151,185,151,179,150,160,151,188,151,163,150,160,151,171,151,129,150,160,151,180,151,188,150,160,151,181,151,179,150,160,151,182,151,137,150,160,151,183,151,165,150,160,151,176,151,175,150,160,151,136,151,230,150,160,151,131,151,163,150,151,184,155,170,-1,141,169,160,151,66,191,189,190,169,146,160,151,170,151,183,150,160,151,172,151,165,150,160,151,174,151,163,150,160,151,160,151,163,150,160,151,162,151,155,150,160,151,164,151,142,150,160,151,166,151,137,150,160,151,185,151,178,150,160,151,188,151,185,150,160,151,171,151,163,150,160,151,180,151,239,150,160,151,181,151,186,150,160,151,182,151,163,150,160,151,183,151,167,150,160,151,176,151,179,150,151,184,136,170,151,162,136,171,232,230,154,240,232,231,154,241,232,248,154,242,232,249,137,52,151,53,191,154,243,136,169,131,169,137,52,151,53,191,154,244,136,169,131,169,137,52,151,53,191,154,245,136,169,131,169,137,52,151,53,191,154,246,136,169,131,169,137,52,151,53,191,154,247,136,169,131,169,190,227,160,151,103,191,189,146,160,151,35,190,169,146,160,151,170,151,158,150,160,151,172,151,186,150,160,151,174,151,179,150,160,151,160,151,137,150,160,151,162,151,47,150,160,151,164,151,155,150,160,151,166,151,142,150,160,151,185,151,137,150,160,151,188,151,178,150,151,184,136,170,150,160,151,63,157,150,160,151,120,190,169,146,160,151,170,151,155,150,160,151,172,151,142,150,160,151,174,151,137,150,160,151,160,151,178,150,160,151,162,151,158,150,160,151,164,151,186,150,160,151,166,151,179,150,160,151,185,151,137,150,160,151,188,151,155,150,160,151,171,151,142,150,160,151,180,151,137,150,160,151,181,151,178,150,151,184,136,170,150,160,151,51,154,200,150,136,170,131,169,190,227,160,151,103,191,189,146,160,151,35,190,169,146,160,151,170,151,158,150,160,151,172,151,186,150,160,151,174,151,179,150,160,151,160,151,137,150,160,151,162,151,47,150,160,151,164,151,155,150,160,151,166,151,137,150,160,151,185,151,173,150,160,151,188,151,173,150,160,151,171,151,163,150,160,151,180,151,191,150,160,151,181,151,179,150,151,184,136,170,150,160,151,63,157,150,160,151,120,190,169,146,160,151,170,151,155,150,160,151,172,151,142,150,160,151,174,151,137,150,160,151,160,151,178,150,160,151,162,151,158,150,160,151,164,151,186,150,160,151,166,151,179,150,160,151,185,151,137,150,160,151,188,151,155,150,160,151,171,151,137,150,160,151,180,151,173,150,160,151,181,151,173,150,160,151,182,151,163,150,160,151,183,151,191,150,160,151,176,151,179,150,151,184,136,170,150,160,151,51,154,201,150,136,170,131,169,190,227,160,151,103,191,189,146,160,151,35,190,169,146,160,151,170,151,158,150,160,151,172,151,186,150,160,151,174,151,179,150,160,151,160,151,137,150,160,151,162,151,47,150,160,151,164,151,188,150,160,151,166,151,163,150,160,151,185,151,173,150,160,151,188,151,173,150,151,184,136,170,150,160,151,63,157,150,160,151,120,190,169,146,160,151,170,151,155,150,160,151,172,151,142,150,160,151,174,151,137,150,160,151,160,151,178,150,160,151,162,151,158,150,160,151,164,151,186,150,160,151,166,151,179,150,160,151,185,151,137,150,160,151,188,151,188,150,160,151,171,151,163,150,160,151,180,151,173,150,160,151,181,151,173,150,151,184,136,170,150,160,151,51,154,202,150,136,170,131,169,190,227,160,151,103,191,189,146,160,151,35,190,169,146,160,151,170,151,158,150,160,151,172,151,186,150,160,151,174,151,179,150,160,151,160,151,137,150,160,151,162,151,47,150,160,151,164,151,154,150,160,151,166,151,186,150,160,151,185,151,161,150,160,151,188,151,47,150,160,151,171,151,208,150,160,151,180,151,186,150,160,151,181,151,178,150,160,151,182,151,230,150,160,151,183,151,165,150,160,151,176,151,175,150,160,151,136,151,129,150,160,151,131,151,163,150,160,151,132,151,47,150,160,151,177,151,223,150,160,151,134,151,47,150,160,151,135,151,179,150,160,151,152,151,137,150,160,151,153,151,137,150,160,151,154,151,173,150,160,151,155,151,209,150,151,184,136,170,150,160,151,63,157,150,160,151,120,190,169,146,160,151,170,151,155,150,160,151,172,151,142,150,160,151,174,151,137,150,160,151,160,151,178,150,160,151,162,151,158,150,160,151,164,151,186,150,160,151,166,151,179,150,160,151,185,151,137,150,160,151,188,151,154,150,160,151,171,151,186,150,160,151,180,151,161,150,151,184,136,170,150,160,151,51,154,203,150,136,170,131,169,147,190,227,160,151,58,191,189,190,169,146,160,151,170,151,153,150,160,151,172,151,137,150,160,151,174,151,189,150,160,151,160,151,163,150,160,151,162,151,133,150,160,151,164,151,163,150,160,151,166,151,187,150,160,151,185,151,179,150,151,184,155,170,-1,141,169,131,169,190,227,160,151,103,191,189,146,160,151,35,190,169,146,160,151,170,151,134,150,160,151,172,151,137,150,160,151,174,151,191,150,160,151,160,151,173,150,160,151,162,151,190,150,160,151,164,151,178,150,151,184,136,170,150,160,151,63,157,150,160,151,120,190,169,146,160,151,170,151,155,150,160,151,172,151,142,150,160,151,174,151,137,150,160,151,160,151,178,150,160,151,162,151,134,150,160,151,164,151,137,150,160,151,166,151,191,150,160,151,185,151,173,150,160,151,188,151,190,150,160,151,171,151,178,150,151,184,136,170,150,160,151,51,154,204,150,136,170,131,169,190,227,160,151,103,191,189,146,160,151,35,190,169,146,160,151,170,151,188,150,160,151,172,151,178,150,160,151,174,151,163,150,160,151,160,151,163,150,160,151,162,151,129,150,151,184,136,170,150,160,151,63,157,150,160,151,120,190,169,146,160,151,170,151,155,150,160,151,172,151,142,150,160,151,174,151,137,150,160,151,160,151,178,150,160,151,162,151,188,150,160,151,164,151,178,150,160,151,166,151,163,150,160,151,185,151,163,150,160,151,188,151,129,150,151,184,136,170,150,160,151,51,154,205,150,136,170,131,169,190,227,160,151,121,191,189,146,160,151,35,190,169,146,160,151,170,151,188,150,160,151,172,151,178,150,160,151,174,151,163,150,160,151,160,151,163,150,160,151,162,151,129,150,160,151,164,151,47,150,160,151,166,151,181,150,160,151,185,151,175,150,160,151,188,151,173,150,160,151,171,151,186,150,160,151,180,151,163,150,151,184,136,170,150,160,151,122,146,160,151,170,151,136,150,160,151,172,151,113,150,150,160,151,124,151,172,150,160,151,125,190,169,146,160,151,170,151,167,150,160,151,172,151,179,150,160,151,174,151,186,150,160,151,160,151,129,150,160,151,162,151,167,150,160,151,164,151,128,150,160,151,166,151,167,150,151,184,136,170,150,160,151,63,151,229,150,160,151,120,190,169,146,160,151,170,151,155,150,160,151,172,151,142,150,160,151,174,151,137,150,160,151,160,151,178,150,160,151,162,151,188,150,160,151,164,151,178,150,160,151,166,151,163,150,160,151,185,151,163,150,160,151,188,151,129,150,160,151,171,151,181,150,160,151,180,151,175,150,160,151,181,151,173,150,160,151,182,151,186,150,160,151,183,151,163,150,151,184,136,170,150,160,151,51,154,206,150,136,170,131,169,190,227,160,151,103,191,189,146,160,151,35,190,169,146,160,151,170,151,136,150,160,151,172,151,186,150,160,151,174,151,133,150,160,151,160,151,178,150,151,184,136,170,150,160,151,63,157,150,160,151,120,190,169,146,160,151,170,151,155,150,160,151,172,151,142,150,160,151,174,151,137,150,160,151,160,151,178,150,160,151,162,151,136,150,160,151,164,151,186,150,160,151,166,151,133,150,160,151,185,151,178,150,151,184,136,170,150,160,151,51,154,207,150,136,170,131,169,190,227,160,151,121,191,189,146,160,151,35,190,169,146,160,151,170,151,136,150,160,151,172,151,186,150,160,151,174,151,133,150,160,151,160,151,178,150,160,151,162,151,47,150,160,151,164,151,181,150,160,151,166,151,175,150,160,151,185,151,173,150,160,151,188,151,186,150,160,151,171,151,163,150,151,184,136,170,150,160,151,122,146,160,151,170,151,142,150,160,151,172,151,115,150,150,160,151,124,151,171,150,160,151,125,190,169,146,160,151,170,151,178,150,160,151,172,151,137,150,160,151,174,151,156,150,160,151,160,151,163,150,160,151,162,151,165,150,151,184,136,170,150,160,151,63,151,217,150,160,151,120,190,169,146,160,151,170,151,155,150,160,151,172,151,142,150,160,151,174,151,137,150,160,151,160,151,178,150,160,151,162,151,136,150,160,151,164,151,186,150,160,151,166,151,133,150,160,151,185,151,178,150,160,151,188,151,181,150,160,151,171,151,175,150,160,151,180,151,173,150,160,151,181,151,186,150,160,151,182,151,163,150,151,184,136,170,150,160,151,51,154,192,150,136,170,131,169,147,190,183,160,151,57,191,189,190,169,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,151,184,155,170,-1,141,169,232,151,147,190,151,160,151,58,191,189,190,169,146,160,151,170,151,183,150,160,151,172,151,163,150,160,151,174,151,173,150,160,151,160,151,163,150,160,151,162,151,178,150,160,151,164,151,137,150,160,151,166,151,165,150,160,151,185,151,179,150,151,184,155,170,-1,141,169,131,169,190,151,160,151,119,191,189,146,160,151,35,190,169,146,160,151,170,151,185,150,160,151,172,151,163,150,160,151,174,151,229,150,160,151,160,151,165,150,160,151,162,151,163,150,160,151,164,151,167,150,160,151,166,151,142,150,160,151,185,151,47,150,160,151,188,151,178,150,160,151,171,151,173,150,160,151,180,151,175,150,160,151,181,151,161,150,160,151,182,151,163,150,160,151,183,151,165,150,160,151,176,151,47,150,160,151,136,151,173,150,160,151,131,151,190,150,160,151,132,151,167,150,160,151,177,151,179,150,151,184,136,170,150,160,151,51,154,193,150,136,170,131,169,190,232,136,168,131,169,137,52,151,53,191,154,194,136,169,131,169,147,190,151,160,151,58,191,189,190,169,146,160,151,170,151,188,150,160,151,172,151,163,150,160,151,174,151,167,150,160,151,160,151,167,150,160,151,162,151,190,150,160,151,164,151,137,150,160,151,166,151,187,150,151,184,155,170,-1,141,169,131,169,190,151,160,151,103,191,189,146,160,151,35,190,169,146,160,151,170,151,158,150,160,151,172,151,187,150,160,151,174,151,179,150,160,151,160,151,190,150,160,151,162,151,248,150,160,151,164,151,158,150,160,151,166,151,159,150,160,151,185,151,131,150,151,184,136,170,150,160,151,63,157,150,160,151,120,190,169,146,160,151,170,151,158,150,160,151,172,151,187,150,160,151,174,151,179,150,160,151,160,151,190,150,160,151,162,151,158,150,160,151,164,151,229,150,160,151,166,151,138,150,151,184,136,170,150,160,151,51,154,195,150,136,170,131,169,190,151,160,151,103,191,189,146,160,151,35,190,169,146,160,151,170,151,158,150,160,151,172,151,186,150,160,151,174,151,179,150,160,151,160,151,137,150,160,151,162,151,248,150,160,151,164,151,185,150,160,151,166,151,163,150,160,151,185,151,226,150,160,151,188,151,137,150,160,151,171,151,190,150,160,151,180,151,187,150,151,184,136,170,150,160,151,63,157,150,160,151,120,190,169,146,160,151,170,151,158,150,160,151,172,151,186,150,160,151,174,151,179,150,160,151,160,151,137,150,160,151,162,151,185,150,160,151,164,151,163,150,160,151,166,151,226,150,160,151,185,151,137,150,160,151,188,151,190,150,160,151,171,151,187,150,151,184,136,170,150,160,151,51,154,196,150,136,170,131,169,190,151,160,151,119,191,189,146,160,151,35,190,169,146,160,151,170,151,185,150,160,151,172,151,163,150,160,151,174,151,226,150,160,151,160,151,137,150,160,151,162,151,190,150,160,151,164,151,187,150,160,151,166,151,47,150,160,151,185,151,187,150,160,151,188,151,137,150,160,151,171,151,156,150,151,184,136,170,150,160,151,51,154,197,150,136,170,131,169,147,190,183,160,151,57,191,189,190,169,146,160,151,170,151,152,150,160,151,172,151,137,150,160,151,174,151,230,150,151,184,155,170,-1,141,169,232,250,147,190,250,160,151,58,191,189,190,169,146,160,151,170,151,155,150,160,151,172,151,137,150,160,151,174,151,187,150,160,151,160,151,167,150,160,151,162,151,137,150,160,151,164,151,173,150,160,151,166,151,163,150,151,184,155,170,-1,141,169,131,169,190,250,160,151,59,191,189,146,160,151,60,190,169,146,160,151,170,151,152,150,160,151,172,151,175,150,160,151,174,151,167,150,160,151,160,151,179,150,160,151,162,151,47,150,160,151,164,151,163,150,160,151,166,151,189,150,160,151,185,151,163,150,160,151,188,151,187,150,160,151,171,151,179,150,160,151,180,151,167,150,151,184,136,170,150,160,151,61,190,169,146,160,151,170,151,173,150,160,151,172,151,137,150,160,151,174,151,230,150,160,151,160,151,47,150,160,151,162,151,156,150,160,151,164,151,190,150,160,151,166,151,173,150,160,151,185,151,173,150,160,151,188,151,47,150,160,151,171,151,175,150,160,151,180,151,178,150,160,151,181,151,178,150,160,151,182,151,163,150,160,151,183,151,175,150,160,151,176,151,165,150,160,151,136,151,47,150,160,151,131,151,142,150,160,151,132,151,163,150,160,151,177,151,165,150,160,151,134,151,163,150,151,184,136,170,150,136,170,232,251,154,198,232,252,137,52,151,53,191,154,199,136,169,131,169,190,250,160,151,119,191,189,146,160,151,35,190,169,146,160,151,170,151,155,150,160,151,172,151,137,150,160,151,174,151,178,150,160,151,160,151,161,150,160,151,162,151,47,150,160,151,164,151,173,150,160,151,166,151,137,150,160,151,185,151,230,150,160,151,188,151,47,150,160,151,171,151,179,150,160,151,180,151,137,150,160,151,181,151,47,150,160,151,182,151,191,150,160,151,183,151,173,150,160,151,176,151,190,150,160,151,136,151,178,150,160,151,131,151,140,150,160,151,132,151,137,150,160,151,177,151,175,150,160,151,134,151,165,150,160,151,135,151,129,150,151,184,136,170,150,160,151,51,154,216,150,136,170,131,169,190,250,160,151,119,191,189,146,160,151,35,190,169,146,160,151,170,151,155,150,160,151,172,151,173,150,160,151,174,151,163,150,160,151,160,151,175,150,160,151,162,151,165,150,160,151,164,151,47,150,160,151,166,151,173,150,160,151,185,151,137,150,160,151,188,151,230,150,151,184,136,170,150,160,151,51,154,217,150,136,170,131,169,147,190,183,160,151,57,191,189,190,169,146,160,151,170,151,155,150,160,151,172,151,137,150,160,151,174,151,187,150,160,151,160,151,229,150,160,151,162,151,190,150,160,151,164,151,230,150,151,184,155,170,-1,141,169,232,253,147,190,253,160,151,58,191,189,190,169,146,160,151,170,151,188,150,160,151,172,151,163,150,160,151,174,151,179,150,160,151,160,151,179,150,160,151,162,151,190,150,160,151,164,151,187,150,160,151,166,151,230,150,160,151,185,151,167,150,151,184,155,170,-1,141,169,131,169,190,253,160,151,119,191,189,146,160,151,35,190,169,146,160,151,170,151,139,150,160,151,172,151,163,150,160,151,174,151,167,150,160,151,160,151,179,150,160,151,162,151,165,150,160,151,164,151,137,150,160,151,166,151,161,150,160,151,185,151,47,150,160,151,188,151,176,150,160,151,171,151,177,150,151,184,136,170,150,160,151,51,154,218,150,136,170,131,169,147,190,187,160,151,42,191,189,190,169,146,160,151,170,151,183,150,160,151,172,151,165,150,160,151,174,151,175,150,160,151,160,151,190,150,160,151,162,151,187,150,160,151,164,151,163,150,160,151,166,151,165,150,160,151,185,151,47,150,160,151,188,151,165,150,160,151,171,151,163,150,160,151,180,151,175,150,160,151,181,151,129,150,160,151,182,151,161,150,151,184,155,170,-1,141,169,131,169,158,168}
+local _l1_25={{K={1,0,{208,83,217,70,221,80},{199,64,205,66},{199,64,217,2,135},{196,82,193,64},{211,74,205,95,210},{203,67,222,87,217,72}},C={182,168,190,168,191,153,184,182,168,190,168,191,158,169,152,184,146,232,170,151,168,232,171,190,168,164,232,172,151,168,232,173,190,173,151,169,142,153,152,190,171,190,172,183,153,202,152,159,190,171,190,172,179,153,202,163,174,190,171,232,174,190,170,190,174,147,137,170,151,171,191,137,172,151,173,191,190,168,190,174,191,190,169,155,170,-1,141,169,150,190,171,190,173,170,232,171,152,136,137,174,151,175,191,190,170,136,169,232,175,182,168,190,168,190,175,150,190,175,158,169},P={},U={{1,0}},nParams=2},{K={{209,70,200,65,221},1,47,2,52,3,49,4,5,53,6,45,7,8,9,50,10,11,51,12,62,90},C={137,168,154,169,155,169,170,232,169,232,168,190,168,160,153,188,131,169,190,169,153,180,190,169,158,169,152,180,137,168,154,170,155,169,170,232,171,232,170,190,170,160,153,152,131,169,190,171,153,144,190,171,158,169,152,144,182,168,146,160,151,169,151,170,150,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,172,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,172,150,160,151,165,151,160,150,160,151,166,151,167,150,160,151,184,151,163,150,160,151,185,151,186,150,160,151,187,151,188,150,151,189,155,170,-1,158,-1},P={{K={{198,64,221,69,198,92,221}},C={137,168,155,168,-1,158,-1},P={},U=nil,nParams=0},{K={{198,68,196,72},{229,67,222,125,215,68,204,87,161,35},1,8,2,56,3,34,4,27,5,52,6,59,7,54,35,9,46,10,51,11,57,12,41,13,14,63,15,40,16,44,17,18,19,90,{130,44,185,18,185,48,184,15,145,32,137}},C={147,137,168,160,151,169,191,189,182,168,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,171,151,184,150,160,151,185,151,186,150,160,151,187,151,188,150,160,151,189,151,190,150,160,151,191,151,176,150,160,151,177,151,185,150,160,151,178,151,179,150,160,151,180,151,181,150,160,151,182,151,183,150,160,151,136,151,188,150,160,151,137,151,190,150,160,151,138,151,179,150,151,139,155,170,-1,141,169,160,151,140,191,189,155,169,-1,158,-1},P={},U={{0,0}},nParams=0}},U={{1,1}},nParams=0},{K={{211,64,200,73,215,92,213,88},{203,85,204,71,222,83},{211,68,202,67,223},{201,73,216,83,220},1,114,2,3,4,38,5,7,6,113,115,8,9,10,116,11,12,90},C={137,168,235,160,235,153,164,131,169,137,169,235,153,188,145,145,158,170,152,188,137,170,154,169,136,169,232,168,190,168,235,160,235,153,132,131,169,137,169,182,168,136,169,235,153,156,145,145,158,170,152,156,137,170,137,168,182,168,155,170,170,232,170,232,169,190,169,235,160,235,153,229,131,169,190,170,235,153,253,145,145,158,170,152,253,147,190,170,160,151,171,191,189,182,169,146,160,151,172,151,173,150,160,151,174,151,172,150,160,151,175,151,160,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,163,151,166,150,160,151,167,151,161,150,160,151,184,151,173,150,160,151,185,151,186,150,160,151,187,151,165,150,160,151,188,151,166,150,151,189,155,170,-1,141,170,232,172,232,171,190,171,190,172,158,170},P={{K={{200,86,207,68,221,80}},C={137,168,182,168,155,169,-1,158,-1},P={},U={{0,0}},nParams=0}},U={{1,11},{1,1}},nParams=0},{K={{214,87,192,89,212,83,208,81,164},{210,69,203,66,222},1,38,90},C={137,168,235,153,161,158,168,152,161,137,169,137,168,182,168,190,168,182,169,146,160,151,170,151,171,150,151,172,136,170,190,169,159,159,136,171,131,169,158,168},P={},U={{1,11},{1,1}},nParams=2},{K={{210,81,219,68,223,82},{196,73,216,67,211,66},1,2,127,3,41,4,7,5,6,8,9,122,10,11,90,{221,69},{215,86,207,90},18,96,23,{195,90,221,47,162},{209,82,179,33,186,56},{213,84,175,32,186},{215,95,186,10,163,32,183,37},{201,90,174,40,189,42},{227,49,177,45,185,53},100,{206,48,175,36,186}},C={137,168,151,169,191,182,168,146,160,151,170,151,170,150,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,170,150,160,151,162,151,172,150,160,151,160,151,174,150,160,151,163,151,160,150,160,151,164,151,165,150,160,151,166,151,172,150,160,151,167,151,174,150,151,184,136,170,147,137,185,151,186,191,182,168,146,160,151,170,151,172,150,160,151,171,151,187,150,160,151,173,151,188,150,160,151,175,151,172,150,160,151,161,151,189,150,160,151,162,151,188,150,160,151,160,151,172,150,160,151,163,151,164,150,151,184,155,170,-1,141,169,190,169,190,170,136,172,232,171,137,190,151,191,191,190,168,151,176,191,190,171,136,170,131,169,190,168,151,176,191,164,190,168,151,177,191,142,153,110,137,190,151,178,191,190,168,151,176,191,151,170,136,170,131,169,152,110,137,190,151,191,191,190,168,151,179,191,190,171,136,170,131,169,190,168,151,179,191,164,151,180,142,153,91,137,190,151,178,191,190,168,151,179,191,151,170,136,170,131,169,152,91,137,181,190,171,136,169,131,169,158,168},P={},U={{1,1}},nParams=3},{K={{254,82,219,68,197,80},1,19,2,20,3,28,4,21,90},C={190,168,160,151,168,191,189,182,168,146,160,151,169,151,170,150,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,151,161,136,170,190,169,136,171,131,169,158,168},P={},U={{1,1}},nParams=2},{K={{254,82,219,68,197,80},1,13,2,27,3,8,4,20,90},C={190,168,160,151,168,191,189,182,168,146,160,151,169,151,170,150,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,151,161,136,170,190,169,136,171,131,169,158,168},P={},U={{1,1}},nParams=2},{K={{254,82,219,68,197,80},1,31,2,8,3,4,21,5,90},C={190,168,160,151,168,191,189,182,168,146,160,151,169,151,170,150,160,151,171,151,172,150,160,151,173,151,172,150,160,151,174,151,175,150,160,151,160,151,172,150,151,161,136,170,190,169,136,171,131,169,158,168},P={},U={{1,1}},nParams=2},{K={{213,68,203,65,212},{193,73,196,77,211,66},{207,78,197,74,192},1,80,90},C={147,137,168,151,169,191,190,168,151,170,191,182,168,146,160,151,171,151,172,150,151,173,155,170,-1,141,-1,158,-1},P={},U={{1,1}},nParams=1},{K={{254,84,220,72,196,80},0,{215,70,201,67,214},{199,71,194,83,213,76},1,80,90},C={190,168,151,168,191,164,151,169,234,153,184,145,158,169,152,184,147,137,170,151,171,191,190,168,151,168,191,182,168,146,160,151,172,151,173,150,151,174,155,170,-1,141,169,232,169,190,168,151,168,146,150,190,169,158,169},P={},U={{1,1}},nParams=1},{K={{213,74,218,89,195,92,215,90},{},{196,84,222,77},1,6,90,2,120,80,52,87,40,83,46},C={137,168,190,168,160,235,153,164,131,169,151,169,155,169,169,232,168,147,190,168,160,151,170,191,189,182,168,146,160,151,171,151,172,150,151,173,136,170,182,168,146,160,151,171,151,172,150,160,151,174,151,172,150,151,173,155,170,-1,141,169,232,168,147,190,168,160,151,170,191,189,182,168,146,160,151,171,151,175,150,151,173,136,170,182,168,146,160,151,171,151,172,150,160,151,174,151,175,150,151,173,155,170,-1,141,169,232,168,147,190,168,160,151,170,191,189,182,168,146,160,151,171,151,160,150,151,173,136,170,182,168,146,160,151,171,151,172,150,160,151,174,151,161,150,151,173,155,170,-1,141,169,232,168,147,190,168,160,151,170,191,189,182,168,146,160,151,171,151,162,150,151,173,136,170,182,168,146,160,151,171,151,172,150,160,151,174,151,163,150,151,173,155,170,-1,141,169,232,168,147,190,168,160,151,170,191,189,182,168,146,160,151,171,151,164,150,151,173,136,170,182,168,146,160,151,171,151,172,150,160,151,174,151,165,150,151,173,155,170,-1,141,169,232,168,190,168,158,169},P={},U={{1,1}},nParams=1},{K={{205,74,200,73,194,65,203,84,175,34},{197,71,199,75},{235,83,223,95,244,82,207},1,50,2,46,3,4,42,5,41,6,96,7,117,8,9,10,51,11,40,12,13,47,14,15,116,16,55,17,63,18,52,19,20,21,22,59,23,35,24,60,25,26,27,54,28,62,90},C={147,137,168,147,137,169,160,151,170,191,189,182,168,146,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,174,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,167,150,160,151,185,151,163,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,190,151,187,150,160,151,191,151,176,150,160,151,177,151,163,150,160,151,178,151,179,150,160,151,180,151,181,150,160,151,182,151,183,150,160,151,136,151,137,150,160,151,138,151,176,150,160,151,139,151,167,150,160,151,140,151,189,150,160,151,141,151,142,150,160,151,143,151,128,150,160,151,129,151,130,150,160,151,131,151,187,150,160,151,132,151,183,150,160,151,133,151,134,150,160,151,135,151,152,150,151,153,155,170,-1,141,-1,141,169,155,168,169,233,169,158,168},P={},U={{1,1},{1,22}},nParams=0},{K={{212,85,217,72,195},{197,85,223,76},1,127,2,41,3,113,90,{},{220,78,193,89},51,52,44,4,59,5,54,6,7,62,8,122,9,49,10,63,11,35,12,96,13,{130,55,172,44,165,48,137,60,147,4,142,31,144,5,145},{150,47,190,34,183},28,27,19,22,{132,36,161,39,178,53,171},116,60,40,{162,33,181,56},57,46,14,118,15,16,17,18,53,20,21,23,24,61,25,{175,62,144,12},{171,1,141,28},{177,14,132,13,158,5,135,16,147,230},{185,3,139,15},{151,23,147,27,168,22,131},50,42,117,45,47,56,26,29,30,31,32,33,55,34,36,37,38,39,108,43,48,119,58,64,65,66,67,68,69},C={190,168,160,151,168,191,189,136,169,160,151,169,191,189,182,168,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,151,160,136,170,151,161,136,171,232,169,190,169,151,161,234,153,144,158,168,152,144,182,169,190,169,191,145,234,153,386,182,170,160,151,162,191,189,182,168,146,160,151,170,151,163,150,160,151,172,151,164,150,160,151,174,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,163,150,160,151,187,151,188,150,160,151,189,151,190,150,160,151,191,151,176,150,160,151,177,151,178,150,160,151,179,151,180,150,160,151,181,151,182,150,160,151,183,151,190,150,151,160,136,170,190,169,159,136,170,131,169,182,171,160,151,136,191,189,146,160,151,137,182,168,146,160,151,170,151,138,150,160,151,172,151,139,150,160,151,174,151,140,150,160,151,166,151,141,150,151,160,136,170,150,160,151,142,182,168,146,160,151,170,151,140,150,160,151,172,151,164,150,160,151,174,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,163,150,160,151,187,151,188,150,160,151,189,151,190,150,160,151,191,151,176,150,160,151,177,151,178,150,160,151,179,151,180,150,160,151,181,151,143,150,151,160,136,170,150,136,170,131,169,158,168,152,386,182,169,190,169,191,182,168,146,160,151,170,151,128,150,160,151,172,151,129,150,160,151,174,151,178,150,160,151,166,151,178,150,151,160,136,170,234,153,1082,182,169,190,169,182,172,150,182,173,190,169,182,172,136,170,131,169,147,182,170,160,151,130,191,189,182,168,146,160,151,170,151,176,150,160,151,172,151,178,150,160,151,174,151,180,150,160,151,166,151,190,150,160,151,184,151,167,150,160,151,186,151,131,150,160,151,187,151,132,150,160,151,189,151,163,150,160,151,191,151,165,150,160,151,177,151,167,150,160,151,179,151,132,150,160,151,181,151,178,150,160,151,183,151,188,150,160,151,133,151,134,150,160,151,135,151,190,150,160,151,152,151,129,150,160,151,153,151,178,150,160,151,154,151,185,150,160,151,140,151,155,150,160,151,156,151,167,150,160,151,157,151,188,150,160,151,141,151,163,150,160,151,158,151,164,150,160,151,159,151,144,150,151,160,155,170,-1,141,169,131,169,182,171,160,151,136,191,189,146,160,151,137,182,168,146,160,151,170,151,157,150,160,151,172,151,153,150,151,160,136,170,150,160,151,142,182,168,146,160,151,170,151,153,150,160,151,172,151,178,150,160,151,174,151,180,150,160,151,166,151,190,150,160,151,184,151,167,150,160,151,186,151,131,150,160,151,187,151,132,150,160,151,189,151,163,150,160,151,191,151,165,150,160,151,177,151,167,150,160,151,179,151,132,150,160,151,181,151,178,150,160,151,183,151,188,150,160,151,133,151,143,150,160,151,135,151,190,150,160,151,152,151,141,150,160,151,153,151,155,150,160,151,154,151,167,150,160,151,140,151,188,150,160,151,156,151,163,150,160,151,157,151,164,150,160,151,141,151,144,150,160,151,158,151,143,150,160,151,159,151,143,150,160,151,145,151,143,150,151,160,136,170,150,136,170,131,169,137,146,151,147,191,151,170,136,169,131,169,147,137,148,147,137,149,160,151,150,191,189,182,168,146,160,151,170,151,151,150,160,151,172,151,132,150,160,151,174,151,132,150,160,151,166,151,232,150,160,151,184,151,173,150,160,151,186,151,182,150,160,151,187,151,233,150,160,151,189,151,233,150,160,151,191,151,129,150,160,151,177,151,167,150,160,151,179,151,234,150,160,151,181,151,143,150,160,151,183,151,144,150,160,151,133,151,163,150,160,151,135,151,132,150,160,151,152,151,151,150,160,151,153,151,235,150,160,151,154,151,236,150,160,151,140,151,235,150,160,151,156,151,173,150,160,151,157,151,178,150,160,151,141,151,129,150,160,151,158,151,131,150,160,151,159,151,155,150,160,151,145,151,164,150,160,151,237,151,132,150,160,151,139,151,178,150,160,151,138,151,164,150,160,151,238,151,132,150,160,151,239,151,143,150,160,151,224,151,131,150,160,151,225,151,155,150,160,151,226,151,227,150,160,151,228,151,233,150,160,151,180,151,164,150,160,151,229,151,167,150,160,151,230,151,185,150,160,151,231,151,178,150,160,151,248,151,132,150,160,151,129,151,249,150,160,151,173,151,249,150,160,151,232,151,249,150,160,151,250,151,233,150,160,151,165,151,128,150,160,151,234,151,132,150,160,151,132,151,167,150,160,151,235,151,232,150,160,151,251,151,252,150,160,151,176,151,132,150,160,151,151,151,129,150,160,151,163,151,167,150,160,151,164,151,163,150,160,151,155,151,164,150,160,151,185,151,178,150,160,151,227,151,129,150,160,151,236,151,233,150,160,151,131,151,227,150,160,151,253,151,167,150,160,151,167,151,163,150,160,151,128,151,164,150,160,151,144,151,233,150,160,151,188,151,128,150,160,151,178,151,132,150,160,151,254,151,167,150,160,151,255,151,232,150,160,151,240,151,143,150,160,151,241,151,185,150,160,151,242,151,235,150,160,151,243,151,167,150,151,160,155,170,-1,141,-1,141,169,136,168,131,169,158,168,152,1082,182,169,190,169,191,182,172,234,153,1912,182,173,190,169,182,172,136,170,131,169,147,182,170,160,151,130,191,189,182,168,146,160,151,170,151,176,150,160,151,172,151,178,150,160,151,174,151,180,150,160,151,166,151,190,150,160,151,184,151,129,150,160,151,186,151,178,150,160,151,187,151,252,150,160,151,189,151,165,150,160,151,191,151,167,150,160,151,177,151,185,150,160,151,179,151,163,150,160,151,181,151,188,150,160,151,183,151,167,150,160,151,133,151,132,150,160,151,135,151,178,150,160,151,152,151,188,150,160,151,153,151,134,150,160,151,154,151,190,150,160,151,140,151,129,150,160,151,156,151,178,150,160,151,157,151,185,150,160,151,141,151,155,150,160,151,158,151,167,150,160,151,159,151,188,150,160,151,145,151,163,150,160,151,237,151,164,150,160,151,139,151,144,150,151,160,155,170,-1,141,169,131,169,182,171,160,151,136,191,189,146,160,151,137,182,168,146,160,151,170,151,157,150,160,151,172,151,153,150,151,160,136,170,150,160,151,142,182,168,146,160,151,170,151,153,150,160,151,172,151,178,150,160,151,174,151,180,150,160,151,166,151,190,150,160,151,184,151,165,150,160,151,186,151,167,150,160,151,187,151,185,150,160,151,189,151,163,150,160,151,191,151,188,150,160,151,177,151,143,150,160,151,179,151,190,150,160,151,181,151,141,150,160,151,183,151,155,150,160,151,133,151,167,150,160,151,135,151,188,150,160,151,152,151,163,150,160,151,153,151,164,150,160,151,154,151,144,150,160,151,140,151,143,150,160,151,156,151,143,150,160,151,157,151,143,150,151,160,136,170,150,136,170,131,169,137,146,151,147,191,151,170,136,169,131,169,147,137,148,147,137,149,160,151,150,191,189,182,168,146,160,151,170,151,151,150,160,151,172,151,132,150,160,151,174,151,132,150,160,151,166,151,232,150,160,151,184,151,173,150,160,151,186,151,182,150,160,151,187,151,233,150,160,151,189,151,233,150,160,151,191,151,129,150,160,151,177,151,167,150,160,151,179,151,234,150,160,151,181,151,143,150,160,151,183,151,144,150,160,151,133,151,163,150,160,151,135,151,132,150,160,151,152,151,151,150,160,151,153,151,235,150,160,151,154,151,236,150,160,151,140,151,235,150,160,151,156,151,173,150,160,151,157,151,178,150,160,151,141,151,129,150,160,151,158,151,131,150,160,151,159,151,155,150,160,151,145,151,164,150,160,151,237,151,132,150,160,151,139,151,178,150,160,151,138,151,164,150,160,151,238,151,132,150,160,151,239,151,143,150,160,151,224,151,131,150,160,151,225,151,155,150,160,151,226,151,227,150,160,151,228,151,233,150,160,151,180,151,164,150,160,151,229,151,167,150,160,151,230,151,185,150,160,151,231,151,178,150,160,151,248,151,132,150,160,151,129,151,249,150,160,151,173,151,249,150,160,151,232,151,249,150,160,151,250,151,233,150,160,151,165,151,128,150,160,151,234,151,132,150,160,151,132,151,167,150,160,151,235,151,232,150,160,151,251,151,252,150,160,151,176,151,132,150,160,151,151,151,129,150,160,151,163,151,167,150,160,151,164,151,163,150,160,151,155,151,164,150,160,151,185,151,178,150,160,151,227,151,129,150,160,151,236,151,233,150,160,151,131,151,227,150,160,151,253,151,167,150,160,151,167,151,163,150,160,151,128,151,164,150,160,151,144,151,233,150,160,151,188,151,128,150,160,151,178,151,132,150,160,151,254,151,167,150,160,151,255,151,232,150,160,151,240,151,143,150,160,151,241,151,185,150,160,151,242,151,235,150,160,151,243,151,167,150,151,160,155,170,-1,141,-1,141,169,136,168,131,169,158,168,152,1912,182,169,190,169,191,157,234,153,2144,182,170,160,151,162,191,189,182,168,146,160,151,170,151,176,150,160,151,172,151,178,150,160,151,174,151,180,150,160,151,166,151,190,150,160,151,184,151,236,150,160,151,186,151,167,150,160,151,187,151,164,150,160,151,189,151,164,150,160,151,191,151,178,150,160,151,177,151,188,150,160,151,179,151,182,150,160,151,181,151,190,150,151,160,136,170,190,169,159,136,170,131,169,182,171,160,151,136,191,189,146,160,151,137,182,168,146,160,151,170,151,138,150,160,151,172,151,139,150,160,151,174,151,140,150,160,151,166,151,141,150,151,160,136,170,150,160,151,142,182,168,146,160,151,170,151,153,150,160,151,172,151,178,150,160,151,174,151,180,150,160,151,166,151,190,150,160,151,184,151,163,150,160,151,186,151,173,150,160,151,187,151,190,150,160,151,189,151,236,150,160,151,191,151,167,150,160,151,177,151,164,150,160,151,179,151,164,150,160,151,181,151,178,150,160,151,183,151,188,150,160,151,133,151,143,150,151,160,136,170,150,136,170,131,169,158,168,152,2144,182,170,160,151,162,191,189,182,168,146,160,151,170,151,176,150,160,151,172,151,178,150,160,151,174,151,180,150,160,151,166,151,190,150,160,151,184,151,236,150,160,151,186,151,155,150,160,151,187,151,235,150,160,151,189,151,164,150,160,151,191,151,188,150,160,151,177,151,190,150,160,151,179,151,132,150,160,151,181,151,155,150,160,151,183,151,190,150,160,151,133,151,167,150,160,151,135,151,164,150,160,151,152,151,155,150,160,151,153,151,132,150,160,151,154,151,151,150,160,151,140,151,178,150,160,151,156,151,129,150,160,151,157,151,190,150,160,151,141,151,151,150,160,151,158,151,234,150,160,151,159,151,163,150,160,151,145,151,188,150,160,151,237,151,182,150,160,151,139,151,190,150,151,160,136,170,190,169,159,136,170,131,169,182,171,160,151,136,191,189,146,160,151,137,182,168,146,160,151,170,151,138,150,160,151,172,151,139,150,160,151,174,151,140,150,160,151,166,151,141,150,151,160,136,170,150,160,151,142,182,168,146,160,151,170,151,153,150,160,151,172,151,178,150,160,151,174,151,180,150,160,151,166,151,190,150,160,151,184,151,163,150,160,151,186,151,173,150,160,151,187,151,190,150,160,151,189,151,236,150,160,151,191,151,155,150,160,151,177,151,235,150,160,151,179,151,164,150,160,151,181,151,188,150,160,151,183,151,190,150,160,151,133,151,132,150,160,151,135,151,155,150,160,151,152,151,190,150,160,151,153,151,167,150,160,151,154,151,164,150,160,151,140,151,155,150,160,151,156,151,132,150,160,151,157,151,151,150,160,151,141,151,178,150,160,151,158,151,129,150,160,151,159,151,190,150,160,151,145,151,177,150,160,151,237,151,145,150,160,151,139,151,143,150,151,160,136,170,150,136,170,131,169,158,168},P={},U={{1,1},{1,10},{1,19},{1,26},{1,15},{1,14}},nParams=1},{K={1,{204,71,199,75},9,2,35,3,52,4,59,5,42,6,41,7,63,90,{210,93,220,94,170},57,40,51,46,119,8,13,10,11,17,54,28,47,34,30,50,31,53,44,21,61,{174,59,174,58,165,40},{184,47,177,56,180},15,49,45},C={146,160,151,168,146,160,151,169,182,168,146,160,151,168,151,170,150,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,166,150,151,167,136,170,150,160,151,184,154,169,150,150,160,151,171,146,160,151,169,182,168,146,160,151,168,151,170,150,160,151,171,151,185,150,160,151,173,151,186,150,160,151,175,151,187,150,160,151,161,151,162,150,160,151,163,151,188,150,160,151,165,151,189,150,160,151,190,151,191,150,160,151,170,151,160,150,160,151,176,151,186,150,160,151,177,151,166,150,151,167,136,170,150,160,151,184,154,170,150,150,160,151,173,146,160,151,169,182,168,146,160,151,168,151,178,150,160,151,171,151,186,150,160,151,173,151,174,150,160,151,175,151,179,150,151,167,136,170,150,160,151,184,154,171,150,150,160,151,175,146,160,151,169,182,168,146,160,151,168,151,180,150,160,151,171,151,179,150,160,151,173,151,181,150,160,151,175,151,182,150,160,151,161,151,181,150,160,151,163,151,164,150,151,167,136,170,150,160,151,184,154,172,150,150,160,151,161,146,160,151,169,182,168,146,160,151,168,151,183,150,160,151,171,151,166,150,160,151,173,151,179,150,160,151,175,151,188,150,160,151,161,151,160,150,151,167,136,170,150,160,151,184,154,173,150,150,160,151,163,146,160,151,169,182,168,146,160,151,168,151,170,150,160,151,171,151,187,150,160,151,173,151,186,150,160,151,175,151,136,150,160,151,161,151,181,150,160,151,163,151,186,150,160,151,165,151,188,150,151,167,136,170,150,160,151,184,154,174,150,150,160,151,165,146,160,151,169,182,168,146,160,151,168,151,137,150,160,151,171,151,179,150,160,151,173,151,166,150,160,151,175,151,185,150,160,151,161,151,188,150,160,151,163,151,186,150,160,151,165,151,138,150,160,151,190,151,174,150,151,167,136,170,150,160,151,184,154,175,150,150,160,151,190,146,160,151,169,182,168,146,160,151,168,151,191,150,160,151,171,151,160,150,160,151,173,151,139,150,160,151,175,151,166,150,151,167,136,170,150,160,151,184,154,160,150,150,160,151,170,146,160,151,169,182,168,146,160,151,168,151,140,150,160,151,171,151,182,150,160,151,173,151,172,150,160,151,175,151,141,150,160,151,161,151,166,150,160,151,163,151,174,150,151,167,136,170,150,160,151,184,154,161,150,150,160,151,176,146,160,151,169,182,168,146,160,151,168,151,170,150,160,151,171,151,138,150,160,151,173,151,179,150,160,151,175,151,160,150,160,151,161,151,186,150,160,151,163,151,160,150,151,167,136,170,150,160,151,184,154,162,150,150,232,168,137,142,190,168,155,169,171,232,171,232,170,232,169,165,169,170,171,163,172,163,173,190,169,190,170,190,171,155,170,170,232,173,232,172,190,172,232,171,190,172,145,143,153,539,137,143,190,173,151,184,191,155,169,170,232,175,232,174,190,174,160,153,522,131,169,190,175,153,517,190,173,151,169,191,158,169,152,517,163,174,163,175,152,728,137,143,154,163,155,169,170,232,161,232,160,190,160,160,153,623,131,169,190,161,153,615,190,161,158,169,152,615,182,168,146,160,151,168,151,128,150,160,151,171,151,174,150,160,151,173,151,129,150,160,151,175,151,174,150,160,151,161,151,138,150,160,151,163,151,130,150,160,151,165,151,174,150,151,167,155,170,-1,158,-1},P={{K={{210,92,199},{210,84,197,90,215,85,206,97,165,51,163}},C={137,168,160,153,164,131,169,137,168,151,169,191,158,169},P={},U=nil,nParams=0},{K={{242,70,219,68,193,65,238,92,179,32}},C={137,168,145,143,158,169},P={},U=nil,nParams=0},{K={{234,87,199,65}},C={137,168,145,143,158,169},P={},U=nil,nParams=0},{K={{199,73,220,85,196,70}},C={137,168,145,143,158,169},P={},U=nil,nParams=0},{K={{197,64,197,89,208}},C={137,168,145,143,158,169},P={},U=nil,nParams=0},{K={{200,86,246,94,216,71,209,72,179,49,150,46,189,58,170,40,147,0}},C={137,168,145,143,158,169},P={},U=nil,nParams=0},{K={{196,73,204,78,197,71,214,83}},C={137,168,145,143,158,169},P={},U=nil,nParams=0},{K={{246,68,223,72}},C={137,168,145,143,158,169},P={},U=nil,nParams=0},{K={{206,93,208,74,212,91}},C={137,168,145,143,158,169},P={},U=nil,nParams=0},{K={{242,74,197,76,195,84}},C={137,168,145,143,158,169},P={},U=nil,nParams=0},{K={{200,65,204,67,197,92,223,68,164,61,172,46,164,33,182,47}},C={137,168,155,168,-1,158,-1},P={},U=nil,nParams=0}},U={{1,1}},nParams=0},{K={{209,70,200,65,221}},C={137,168,154,169,155,169,170,232,170,232,169,190,169,160,153,188,131,169,190,170,153,180,190,170,158,169,152,180,145,158,169},P={{K={{230,64,221,120,194,80,203,105,169,48,164,47,191,52,176,49,160,22,144,3,146},{231,72,223,67},{247,79,222,66,209,89,218,86,175,19,178,63,182},{236,77,205,84,231,80,211,52},{241,65,216,92,215,87,220,40,169,26,164,43,176},{245,67,212,87,130,8,142,58,242,120,254}},C={182,168,160,151,168,191,189,182,169,137,169,151,170,191,151,171,191,137,169,151,172,191,151,173,191,155,172,-1,158,-1},P={},U={{0,0},{1,0}},nParams=0}},U={{1,2}},nParams=1},{K={1,25,2,53,3,52,4,46,5,63,6,7,8,119,9,14,10,35,11,42,12,90,59,54,51,57,117,13,48,41,15,16,{179,32,184,56,180,38,173},{178,37,171,34,190},{171,51,191,63,140,37,190,46,150,2,152,27},{183,49,162},{173,61,185,33},{182,37,189,38}},C={157,232,170,146,160,182,168,146,160,151,168,151,169,150,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,173,150,160,151,163,151,175,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,187,150,160,151,188,151,161,150,151,189,136,170,182,168,146,160,151,168,151,190,150,160,151,170,151,187,150,160,151,172,151,187,150,160,151,174,151,191,150,160,151,160,151,176,150,160,151,162,151,177,150,160,151,163,151,190,150,160,151,164,151,175,150,160,151,166,151,176,150,160,151,184,151,171,150,160,151,186,151,173,150,160,151,188,151,178,150,160,151,179,151,180,150,160,151,167,151,181,150,160,151,182,151,171,150,160,151,183,151,173,150,151,189,136,170,150,232,171,137,136,153,100,137,137,154,169,136,169,131,169,152,100,190,170,235,160,153,126,131,169,137,138,153,74,137,137,154,170,136,169,131,169,152,74,190,170,235,160,153,68,131,169,137,139,160,153,94,131,169,137,139,151,136,191,153,426,137,137,154,171,136,169,131,169,152,426,190,170,235,160,153,420,131,169,137,140,160,153,446,131,169,137,140,151,141,191,153,394,137,137,154,172,136,169,131,169,152,394,190,170,158,169},P={{K={{211,64,216,88,212,70,205},{247,84,198},{238,66,223,71,220,83},1,10,2,21,3,9,4,14,90,{229,84,212,93,216,51,182},{236,93,210,67}},C={137,168,146,160,151,169,182,168,150,160,151,170,182,169,146,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,151,163,136,170,150,160,151,164,182,170,150,160,151,165,182,171,150,136,169,131,169,181,233,172,158,168},P={},U={{1,0},{0,0},{1,3},{1,1},{1,2}},nParams=0},{K={{201,81,221,93,238,71,220,76,180,32,186,57},{247,84,198},{238,66,223,71,220,83},1,10,2,21,3,9,4,14,90,{229,84,212,93,216,51,182},{236,93,210,67}},C={137,168,146,160,151,169,182,168,150,160,151,170,182,169,146,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,151,163,136,170,150,160,151,164,182,170,150,160,151,165,182,171,150,136,169,131,169,181,233,172,158,168},P={},U={{1,0},{0,0},{1,3},{1,1},{1,2}},nParams=0},{K={{210,92,199},{208,67,219,91,215,69,206},{246,85,199},{233,77,216,88,219,92},1,10,2,21,3,9,4,14,90,{230,87,215,94,219,48,181},{237,92,211,66}},C={137,168,151,169,191,146,160,151,170,182,168,150,160,151,171,182,169,146,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,151,164,136,170,150,160,151,165,182,170,150,160,151,166,182,171,150,136,169,131,169,181,233,172,158,168},P={},U={{1,0},{0,0},{1,3},{1,1},{1,2}},nParams=0},{K={{201,81,221,93},{210,73,217,90}},C={137,168,151,169,191,182,168,182,169,182,170,136,171,131,169,181,233,171,158,168},P={},U={{1,0},{1,1},{1,3},{1,2}},nParams=0}},U={{1,1}},nParams=2},{K={{},{247,85,207,92,251,82},1,50,2,46,3,4,42,5,41,6,96,7,117,8,9,45,10,11,12,116,13,40,14,53,15,56,16,54,17,18,34,19,20,57,21,22,55,23,24,47,25,26,63,27,28,29,90,{166,57,169,42,144,15,132,9},60,51,{161,48,169,13,128},59,52,122,62,{190,59,145,5,152,7,130,2,147,17,108},{149,62,142,2},114,115,1133,1130,1125,1049,1051,1048,1122,1121,1120,1050,{139,3,156,27,138},5814783,{140,7,151,26,158,13},{133,14,158,18},{154,17,152,13,153},{132,31,153,16,147,228},30,35,{180,29,139,12,108,229,113,194,113,249,125},61,{179,21,153,17,119,232,126,207,117,243},31,{147,25,145,229},{165,21,156,226,96,192,105},58,{189,20,157,202,99},8270,{159,18,110,241,108,255},{142,27,122,242},237,{147,243},{153,224,113,236},127,119,{116,236,125,225,114,250,121,245,76},{116,247,101},{114,229,107,226,126},{116,230,121,225},49,{108,231,107,254},44,32,33},C={182,168,235,160,235,153,166,131,169,182,168,151,168,234,153,188,158,168,152,188,182,169,136,168,232,168,182,170,232,169,182,171,182,172,151,169,191,136,169,232,170,182,173,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,173,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,166,150,160,151,184,151,185,150,160,151,186,151,185,150,160,151,187,151,185,150,160,151,188,151,189,150,160,151,190,151,191,150,160,151,176,151,177,150,160,151,178,151,179,150,160,151,180,151,181,150,160,151,182,151,177,150,160,151,183,151,136,150,160,151,137,151,189,150,160,151,138,151,139,150,160,151,140,151,177,150,160,151,141,151,142,150,160,151,143,151,166,150,160,151,128,151,129,150,160,151,130,151,162,150,160,151,131,151,132,150,160,151,133,151,191,150,160,151,134,151,162,150,160,151,135,151,166,150,151,152,136,170,137,153,182,172,151,169,191,136,169,182,173,146,160,151,170,151,166,150,160,151,172,151,160,150,160,151,174,151,191,150,160,151,175,151,177,150,160,151,161,151,154,150,160,151,163,151,155,150,160,151,165,151,181,150,160,151,167,151,132,150,151,152,136,170,159,159,232,171,146,160,151,156,182,173,146,160,151,170,151,176,150,160,151,172,151,191,150,160,151,174,151,157,150,160,151,175,151,155,150,160,151,161,151,158,150,160,151,163,151,132,150,160,151,165,151,191,150,160,151,167,151,159,150,160,151,184,151,132,150,160,151,186,151,136,150,160,151,187,151,132,150,160,151,188,151,139,150,160,151,190,151,129,150,160,151,176,151,173,150,160,151,178,151,132,150,160,151,180,151,144,150,151,152,136,170,150,160,151,145,182,173,146,160,151,170,151,170,150,151,152,136,170,182,174,182,172,151,146,191,136,169,182,173,146,160,151,170,151,165,150,160,151,172,151,147,150,151,152,136,170,190,171,182,173,146,160,151,170,151,148,150,160,151,172,151,159,150,160,151,174,151,149,150,160,151,175,151,150,150,160,151,161,151,151,150,160,151,163,151,232,150,160,151,165,151,233,150,160,151,167,151,234,150,160,151,184,151,235,150,160,151,186,151,236,150,160,151,187,151,159,150,160,151,188,151,233,150,160,151,190,151,237,150,160,151,176,151,238,150,160,151,178,151,235,150,160,151,180,151,151,150,160,151,182,151,234,150,151,152,136,170,159,159,159,159,150,160,151,239,151,224,150,160,151,225,146,160,151,170,146,160,151,226,182,173,146,160,151,170,151,178,150,160,151,172,151,162,150,160,151,174,151,132,150,160,151,175,151,191,150,160,151,161,151,158,150,160,151,163,151,157,150,160,151,165,151,142,150,160,151,167,151,132,150,151,152,136,170,150,160,151,227,182,173,146,160,151,170,151,170,150,151,152,136,170,182,174,182,172,151,146,191,136,169,182,173,146,160,151,170,151,165,150,160,151,172,151,147,150,151,152,136,170,190,171,182,173,146,160,151,170,151,148,150,151,152,136,170,159,159,159,159,150,160,151,228,181,150,150,160,151,172,146,160,151,226,182,173,146,160,151,170,151,229,150,160,151,172,151,155,150,160,151,174,151,162,150,160,151,175,151,160,150,160,151,161,151,181,150,160,151,163,151,157,150,160,151,165,151,230,150,160,151,167,151,138,150,160,151,184,151,157,150,160,151,186,151,142,150,160,151,187,151,132,150,151,152,136,170,150,160,151,227,182,174,182,172,151,231,191,136,169,150,160,151,228,181,150,150,160,151,174,146,160,151,226,182,173,146,160,151,170,151,178,150,160,151,172,151,162,150,160,151,174,151,132,150,160,151,175,151,191,150,160,151,161,151,137,150,160,151,163,151,144,150,151,152,136,170,150,160,151,227,137,153,182,172,151,169,191,136,169,150,160,151,228,181,150,150,160,151,175,146,160,151,226,182,173,146,160,151,170,151,133,150,160,151,172,151,139,150,160,151,174,151,139,150,160,151,175,151,177,150,160,151,161,151,129,150,160,151,163,151,158,150,160,151,165,151,173,150,160,151,167,151,159,150,160,151,184,151,157,150,160,151,186,151,248,150,160,151,187,151,132,150,151,152,136,170,150,160,151,227,137,153,182,172,151,249,191,136,169,182,173,146,160,151,170,151,159,150,160,151,172,151,144,150,160,151,174,151,157,150,160,151,175,151,230,150,160,151,161,151,162,150,151,152,136,170,159,150,160,151,228,181,150,150,160,151,161,146,160,151,226,182,173,146,160,151,170,151,250,150,160,151,172,151,136,150,160,151,174,151,132,150,160,151,175,151,139,150,160,151,161,151,129,150,160,151,163,151,173,150,160,151,165,151,177,150,160,151,167,151,191,150,151,152,136,170,150,160,151,227,182,174,190,168,136,169,150,160,151,228,181,150,150,160,151,163,146,160,151,226,182,173,146,160,151,170,151,186,150,160,151,172,151,181,150,160,151,174,151,157,150,160,151,175,151,139,150,160,151,161,151,132,150,160,151,163,151,137,150,160,151,165,151,144,150,151,152,136,170,150,160,151,227,137,153,137,251,151,252,191,136,169,150,160,151,228,181,150,150,160,151,165,146,160,151,226,182,173,146,160,151,170,151,183,150,160,151,172,151,190,150,160,151,174,151,137,150,160,151,175,151,229,150,151,152,136,170,150,160,151,227,182,173,146,160,151,170,151,253,150,160,151,172,151,253,150,160,151,174,151,253,150,151,152,136,170,182,174,190,169,136,169,182,173,146,160,151,170,151,253,150,160,151,172,151,253,150,160,151,174,151,253,150,151,152,136,170,159,159,150,160,151,228,157,150,150,160,151,167,146,160,151,226,182,173,146,160,151,170,151,180,150,160,151,172,151,177,150,160,151,174,151,179,150,160,151,175,151,137,150,160,151,161,151,144,150,151,152,136,170,150,160,151,227,137,251,151,254,191,151,168,143,160,153,1425,131,169,137,251,151,254,191,160,235,153,1508,131,169,182,173,146,160,151,170,151,255,150,151,152,136,170,150,160,151,228,157,150,150,150,160,151,240,146,160,151,241,182,173,146,160,151,170,151,136,150,160,151,172,151,132,150,160,151,174,151,142,150,160,151,175,151,191,150,160,151,161,151,132,150,160,151,163,151,177,150,160,151,165,151,159,150,160,151,167,151,176,150,160,151,184,151,191,150,160,151,186,151,157,150,160,151,187,151,155,150,160,151,188,151,158,150,160,151,190,151,132,150,160,151,176,151,191,150,160,151,178,151,159,150,160,151,180,151,242,150,160,151,182,151,159,150,151,152,136,170,147,137,243,151,244,191,182,173,146,160,151,170,151,245,150,160,151,172,151,174,150,160,151,174,151,246,150,160,151,175,151,245,150,160,151,161,151,142,150,160,151,163,151,246,150,160,151,165,151,245,150,160,151,167,151,144,150,160,151,184,151,159,150,160,151,186,151,245,150,160,151,187,151,183,150,160,151,188,151,164,150,160,151,190,151,245,150,160,151,176,151,143,150,160,151,178,151,164,150,160,151,180,151,245,150,160,151,182,151,184,150,151,152,155,170,-1,141,169,159,150,150,232,172,190,170,153,1789,190,172,151,247,146,160,151,200,190,170,150,150,152,1789,137,201,154,169,155,169,170,232,174,232,173,190,173,235,160,235,153,1732,131,169,190,174,235,153,1930,147,182,160,160,151,202,191,189,182,173,146,160,151,170,151,185,150,160,151,172,151,132,150,160,151,174,151,179,150,160,151,175,151,171,150,160,151,161,151,177,150,160,151,163,151,177,150,160,151,165,151,203,150,160,151,167,151,164,150,160,151,184,151,159,150,160,151,186,151,180,150,160,151,187,151,184,150,160,151,188,151,140,150,160,151,190,151,138,150,160,151,176,151,250,150,160,151,178,151,158,150,160,151,180,151,139,150,160,151,182,151,177,150,160,151,183,151,144,150,160,151,137,151,132,150,160,151,138,151,159,150,160,151,140,151,154,150,160,151,141,151,157,150,160,151,143,151,155,150,160,151,128,151,181,150,160,151,130,151,132,150,160,151,131,151,144,150,151,152,155,170,-1,141,169,131,169,158,168,152,1930,182,161,182,168,190,174,136,170,153,1798,147,182,160,160,151,204,191,189,182,173,146,160,151,170,151,185,150,160,151,172,151,132,150,160,151,174,151,179,150,160,151,175,151,171,150,160,151,161,151,177,150,160,151,163,151,177,150,160,151,165,151,203,150,160,151,167,151,164,150,160,151,184,151,159,150,160,151,186,151,179,150,160,151,187,151,177,150,160,151,188,151,177,150,160,151,190,151,173,150,160,151,176,151,159,150,160,151,178,151,162,150,160,151,180,151,132,150,160,151,182,151,158,150,160,151,183,151,173,150,151,152,155,170,-1,141,169,131,169,152,2080,147,182,160,160,151,202,191,189,182,173,146,160,151,170,151,185,150,160,151,172,151,132,150,160,151,174,151,179,150,160,151,175,151,171,150,160,151,161,151,177,150,160,151,163,151,177,150,160,151,165,151,203,150,160,151,167,151,164,150,160,151,184,151,159,150,160,151,186,151,158,150,160,151,187,151,177,150,160,151,188,151,159,150,160,151,190,151,183,150,160,151,176,151,176,150,160,151,178,151,176,150,160,151,180,151,186,150,160,151,182,151,159,150,160,151,183,151,142,150,160,151,137,151,132,150,160,151,138,151,173,150,160,151,140,151,171,150,160,151,141,151,177,150,160,151,143,151,144,150,160,151,128,151,159,150,160,151,130,151,157,150,160,151,131,151,205,150,160,151,133,151,157,150,160,151,134,151,155,150,160,151,135,151,181,150,160,151,229,151,157,150,160,151,250,151,179,150,160,151,206,151,181,150,160,151,207,151,132,150,151,152,155,170,-1,141,169,131,169,158,168},P={{K={{235,118,230,99,244,91,218,82,165,32},{215,85,207,92,220,87,215,91},1,34,2,63,3,55,4,40,5,6,53,7,122,8,14,9,10,59,11,51,12,52,13,90,{222,82,161,34,175,60}},C={182,168,160,151,168,191,189,146,160,151,169,182,169,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,173,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,184,150,160,151,185,151,161,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,190,151,191,150,160,151,176,151,173,150,160,151,184,151,161,150,151,177,136,170,150,160,151,178,146,160,151,170,182,170,150,150,155,170,-1,158,-1},P={},U={{0,7},{0,5},{1,4}},nParams=0}},U={{1,8},{1,27},{1,15},{1,28},{1,7},{1,1},{1,21},{1,20},{1,19},{1,29}},nParams=0},{K={{209,70,200,65,221}},C={137,168,182,168,136,169,131,169,158,168},P={},U={{1,30}},nParams=0},{K={{213,68,218,70},{213,71,195,90},3,{192,90,205,89,218,105,201,37,177,45},{},1800,{212,94,205},1,80,2,116,4,5,114,6,46,7,40,8,47,9,52,10,57,11,59,12,13,63,14,62,15,115,90,{179,36,170,35,191}},C={137,168,151,169,191,151,170,136,169,131,169,181,153,113,137,168,151,169,191,182,168,136,169,131,169,182,169,160,151,171,191,189,136,169,232,168,190,168,160,153,152,131,169,182,170,151,172,143,153,121,190,168,164,151,173,142,153,5,190,168,160,151,174,191,189,151,175,151,173,136,171,182,171,146,160,151,175,151,160,150,160,151,161,151,162,150,160,151,170,151,162,150,160,151,163,151,162,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,190,151,191,150,160,151,176,151,177,150,160,151,178,151,167,150,160,151,179,151,180,150,160,151,181,151,182,150,160,151,183,151,136,150,151,137,136,170,159,232,168,152,5,137,138,154,169,155,169,170,232,170,232,169,190,169,160,153,105,131,169,190,170,153,103,182,174,182,170,190,170,136,170,131,169,152,103,152,121,163,168,163,169,163,170,152,163,158,168},P={{K={{235,118,230,99,244,91,218,82,165,32},{215,85,207,92,220,87,215,91},1,34,2,63,3,55,4,40,5,6,53,7,122,8,22,9,10,61,11,12,13,90,{218,82,175,49,172,35,165},58,80},C={182,168,160,151,168,191,189,146,160,151,169,182,169,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,173,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,184,150,160,151,185,151,164,150,160,151,186,151,187,150,160,151,188,151,187,150,160,151,189,151,173,150,160,151,190,151,161,150,151,191,136,170,150,160,151,176,182,169,146,160,151,170,151,177,150,160,151,172,151,177,150,160,151,174,151,177,150,160,151,160,151,178,150,151,191,136,170,182,170,182,171,136,169,182,169,146,160,151,170,151,178,150,160,151,172,151,177,150,160,151,174,151,177,150,160,151,160,151,177,150,151,191,136,170,159,159,150,155,170,-1,158,-1},P={},U={{0,4},{0,3},{0,5},{1,0}},nParams=0}},U={{1,9},{1,19},{1,8},{1,1},{1,20},{1,21},{1,29}},nParams=0},{K={{241,68,219,72,223,65},{229,67,222,104,199,90,214,112,163,43,175},{197,78,197,75},1,29,2,40,3,59,4,56,5,10,6,7,8,46,9,41,90,126,13,53,49,42,57,63,127,11,116,12,25,14,55,15,16,17,23,24,47,52,62,51,18,54,28,{142,61,180,51,176,17,130,15}},C={190,168,235,160,235,153,167,131,169,190,168,151,168,191,235,153,190,181,158,169,152,190,190,168,160,151,169,191,189,136,169,232,169,147,190,169,160,151,170,191,189,182,168,146,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,160,150,160,151,166,151,174,150,160,151,167,151,184,150,160,151,185,151,186,150,151,187,155,170,-1,141,169,153,216,181,158,169,152,216,147,190,169,160,151,170,191,189,182,168,146,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,160,150,160,151,166,151,174,150,160,151,167,151,184,150,160,151,185,151,188,150,151,187,155,170,-1,141,169,153,23,181,158,169,152,23,147,190,169,160,151,170,191,189,182,168,146,160,151,171,151,189,150,160,151,173,151,190,150,160,151,175,151,174,150,160,151,161,151,191,150,160,151,163,151,186,150,160,151,165,151,176,150,160,151,166,151,160,150,160,151,167,151,177,150,160,151,185,151,178,150,160,151,164,151,179,150,160,151,180,151,181,150,160,151,182,151,183,150,160,151,189,151,160,150,160,151,136,151,137,150,160,151,138,151,178,150,160,151,139,151,174,150,160,151,140,151,160,150,151,187,155,170,-1,141,169,153,406,181,158,169,152,406,147,190,169,160,151,170,191,189,182,168,146,160,151,171,151,189,150,160,151,173,151,190,150,160,151,175,151,174,150,160,151,161,151,191,150,160,151,163,151,186,150,160,151,165,151,176,150,160,151,166,151,160,150,160,151,167,151,177,150,160,151,185,151,178,150,160,151,164,151,179,150,160,151,180,151,181,150,160,151,182,151,141,150,160,151,189,151,160,150,160,151,136,151,176,150,151,187,155,170,-1,141,169,153,259,181,158,169,152,259,147,190,169,160,151,170,191,189,182,168,146,160,151,171,151,142,150,160,151,173,151,160,150,160,151,175,151,186,150,160,151,161,151,178,150,160,151,163,151,172,150,160,151,165,151,174,150,160,151,166,151,190,150,160,151,167,151,143,150,160,151,185,151,128,150,160,151,164,151,129,150,151,187,155,170,-1,141,169,153,680,181,158,169,152,680,147,190,169,160,151,170,191,189,182,168,146,160,151,171,151,189,150,160,151,173,151,190,150,160,151,175,151,174,150,160,151,161,151,191,150,160,151,163,151,186,150,160,151,165,151,176,150,160,151,166,151,160,150,160,151,167,151,177,150,160,151,185,151,178,150,160,151,164,151,179,150,160,151,180,151,181,150,160,151,182,151,136,150,160,151,189,151,178,150,160,151,136,151,174,150,160,151,138,151,174,150,160,151,139,151,160,150,160,151,140,151,130,150,160,151,131,151,128,150,151,187,155,170,-1,141,169,153,557,181,158,169,152,557,147,190,169,160,151,170,191,189,182,168,146,160,151,171,151,142,150,160,151,173,151,160,150,160,151,175,151,186,150,160,151,161,151,178,150,160,151,163,151,176,150,160,151,165,151,132,150,160,151,166,151,160,150,160,151,167,151,184,150,160,151,185,151,178,150,151,187,155,170,-1,141,169,153,636,181,158,169,152,636,147,190,169,160,151,170,191,189,182,168,146,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,186,150,160,151,163,151,186,150,151,187,155,170,-1,141,169,153,931,181,158,169,152,931,147,190,169,160,151,170,191,189,182,168,146,160,151,171,151,133,150,160,151,173,151,132,150,160,151,175,151,190,150,160,151,161,151,190,150,160,151,163,151,174,150,151,187,155,170,-1,141,169,153,1002,181,158,169,152,1002,190,168,151,134,191,153,998,181,158,169,152,998,157,158,169},P={},U={{1,1}},nParams=1},{K={{230,64,221,125,221,84,192,88,179,54},1,0,{231,64,205,66,213,91,200,37,182},{236,90,233,84,198,90,216,47,161,40,163,37,154,63}},C={182,168,160,151,168,191,189,136,169,232,169,151,169,232,170,190,169,164,232,171,151,169,232,172,190,172,151,170,142,153,128,190,170,190,171,183,153,216,152,135,190,170,190,171,179,153,216,163,173,190,170,232,173,190,169,190,173,191,232,174,190,174,182,169,143,160,153,227,131,169,190,174,151,171,191,160,153,246,131,169,190,168,160,151,172,191,189,190,174,151,171,191,136,170,153,205,181,158,169,152,205,163,174,190,170,190,172,170,232,170,152,176,157,158,169},P={},U={{1,2},{1,7}},nParams=1},{K={{231,76,199,73,247,92,203,78,181,6,161,36,189,49},1,29,2,40,3,59,4,56,5,10,6,7,8,46,90,13,63,54,62,25,53,52,41,9,11,12,51,14,{247,49,135},{239,34,181,63,254},15,116,16,17,18,19,20,107,{152,45,162,32,232},106,21,119,22,23,24,26,27,28,44,30,57,31,{161,59,172,12},61,122,48,96,{175,48,144,19,153,6,157,16},{155,5,144,46,153,28,152,54,157,237,97},{154,4,145,45,136,2,150,28,147,229,100,231,121,226},0,60,47},C={147,190,168,160,151,168,191,189,182,168,146,160,151,169,151,170,150,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,174,150,160,151,164,151,172,150,160,151,165,151,166,150,151,167,155,170,-1,141,169,232,169,190,169,153,774,147,190,169,160,151,168,191,189,182,168,146,160,151,169,151,184,150,160,151,171,151,185,150,160,151,173,151,186,150,160,151,175,151,187,150,160,151,161,151,188,150,160,151,163,151,189,150,160,151,164,151,190,150,160,151,165,151,191,150,160,151,176,151,166,150,160,151,162,151,172,150,160,151,177,151,174,150,160,151,178,151,179,150,160,151,184,151,190,150,160,151,180,151,166,150,151,167,155,170,-1,141,169,232,170,190,170,160,153,437,131,169,147,190,170,160,151,181,191,189,182,168,146,160,151,169,151,184,150,160,151,171,151,185,150,160,151,173,151,186,150,160,151,175,151,187,150,160,151,161,151,188,150,160,151,163,151,189,150,160,151,164,151,190,150,160,151,165,151,191,150,160,151,176,151,166,150,160,151,162,151,172,150,160,151,177,151,174,150,160,151,178,151,179,150,160,151,184,151,190,150,160,151,180,151,166,150,151,167,155,170,-1,141,169,153,772,190,170,151,182,191,232,171,190,171,160,153,412,131,169,182,169,190,171,136,169,235,153,276,190,171,182,168,146,160,151,169,151,184,150,160,151,171,151,185,150,160,151,173,151,186,150,160,151,175,151,187,150,160,151,161,151,188,150,160,151,163,151,189,150,160,151,164,151,190,150,160,151,165,151,191,150,160,151,176,151,166,150,160,151,162,151,172,150,160,151,177,151,174,150,160,151,178,151,179,150,160,151,184,151,190,150,160,151,180,151,166,150,160,151,183,151,136,150,160,151,137,151,162,150,160,151,138,151,174,150,160,151,139,151,172,150,160,151,140,151,166,150,160,151,141,151,142,150,151,167,155,170,-1,158,-1,152,276,190,170,151,143,191,232,172,190,172,160,153,359,131,169,190,172,190,169,143,160,153,371,131,169,182,169,190,172,136,169,235,153,525,190,172,182,168,146,160,151,169,151,184,150,160,151,171,151,185,150,160,151,173,151,186,150,160,151,175,151,187,150,160,151,161,151,188,150,160,151,163,151,189,150,160,151,164,151,190,150,160,151,165,151,191,150,160,151,176,151,166,150,160,151,162,151,172,150,160,151,177,151,174,150,160,151,178,151,179,150,160,151,184,151,190,150,160,151,180,151,166,150,160,151,183,151,136,150,160,151,137,151,162,150,160,151,138,151,174,150,160,151,139,151,172,150,160,151,140,151,166,150,160,151,141,151,128,150,160,151,129,151,130,150,160,151,131,151,190,150,160,151,132,151,189,150,160,151,133,151,190,150,160,151,188,151,191,150,160,151,134,151,185,150,160,151,135,151,172,150,160,151,152,151,153,150,160,151,170,151,179,150,160,151,154,151,155,150,160,151,156,151,185,150,151,167,155,170,-1,158,-1,152,525,182,170,160,151,157,191,189,182,168,146,160,151,169,151,158,150,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,159,150,160,151,163,151,166,150,160,151,164,151,174,150,160,151,165,151,172,150,160,151,176,151,158,150,160,151,162,151,185,150,160,151,177,151,166,150,160,151,178,151,159,150,160,151,184,151,172,150,160,151,180,151,185,150,160,151,183,151,144,150,160,151,137,151,185,150,160,151,138,151,155,150,160,151,139,151,166,150,160,151,140,151,185,150,160,151,141,151,187,150,160,151,129,151,145,150,160,151,131,151,159,150,151,167,136,170,137,146,190,171,160,153,993,131,169,190,171,160,151,147,191,189,136,169,160,235,153,960,131,169,182,168,146,160,151,169,151,190,150,160,151,171,151,179,150,160,151,173,151,186,150,151,167,136,170,136,169,159,136,170,131,169,145,182,168,146,160,151,169,151,172,150,160,151,171,151,185,150,160,151,173,151,144,150,160,151,175,151,185,150,160,151,161,151,155,150,160,151,163,151,166,150,160,151,164,151,185,150,160,151,165,151,187,150,151,167,155,170,-1,158,-1,152,772,152,774,190,168,160,151,148,191,189,136,169,232,173,151,169,232,174,190,173,164,232,175,151,169,232,160,190,160,151,149,142,153,894,190,174,190,175,183,153,1145,152,885,190,174,190,175,179,153,1145,163,161,190,174,232,161,190,173,190,161,191,232,162,147,190,162,160,151,181,191,189,182,168,146,160,151,169,151,133,150,160,151,171,151,174,150,160,151,173,151,191,150,160,151,175,151,185,150,160,151,161,151,162,150,160,151,163,151,174,150,160,151,164,151,172,150,160,151,165,151,166,150,151,167,155,170,-1,141,169,160,153,1168,131,169,182,169,190,162,136,169,235,153,1134,190,162,182,168,146,160,151,169,151,187,150,160,151,171,151,185,150,160,151,173,151,191,150,160,151,175,151,155,150,160,151,161,151,185,150,160,151,163,151,190,150,160,151,164,151,187,150,160,151,165,151,174,150,160,151,176,151,190,150,160,151,162,151,166,150,160,151,177,151,130,150,160,151,178,151,190,150,160,151,184,151,189,150,160,151,180,151,190,150,160,151,183,151,191,150,160,151,137,151,185,150,160,151,138,151,172,150,160,151,139,151,153,150,160,151,140,151,179,150,160,151,141,151,155,150,160,151,129,151,185,150,151,167,155,170,-1,158,-1,152,1134,163,162,190,174,190,160,170,232,174,152,878,145,182,168,146,160,151,169,151,190,150,160,151,171,151,189,150,160,151,173,151,166,150,160,151,175,151,130,150,160,151,161,151,150,150,160,151,163,151,189,150,160,151,164,151,151,150,160,151,165,151,190,150,160,151,176,151,187,150,151,167,155,170,-1,158,-1},P={},U={{1,1},{1,33},{1,19}},nParams=1},{K={{230,87,200,91,216,65,192},0,196.2,{201,73,216,88},{214,88,223,69},10000000,{228,94,221,65,210,85,203,0,166,38,170,33,182},{235,106,194,85,213,89},{229,66,222,94,239,88,162,49,166,63}},C={182,168,151,168,191,232,169,190,169,151,169,183,153,188,151,170,232,169,152,188,137,171,151,172,191,190,168,190,169,178,136,169,232,170,190,170,151,173,142,153,135,151,173,232,170,152,135,182,168,151,174,191,151,175,191,151,160,191,190,170,178,190,170,158,170},P={},U={{1,5}},nParams=1},{K={{232,86,232},1,24,2,59,3,41,4,63,5,10,6,7,40,8,46,90,{197,87,200,80},56,53,9,96,11,122,12,51,13,52,14,44,15,16,54,17,18,62,19,20,42,21,22,23,{140,42,167,17,174,51,143,41,138,2,150},{170,57,186,60},29,126,49,57,127,116,47,28,60,61,25,26,27,117,55,30,31,32,33,34,35,36,37,{165,6,143,24,155,10,153,228},50,{128,6,135,28,145,42,146,227,127,239,124,225},114,38,39,43,45,48,115,{135,28,144,21},{172,27,150,9,158,224,115,238,125},{182,29,150,24,70,237,122,255,100,215,112,245,76,192},{161,26,138,20,117,236,102,227},{191,23,157,16,107,242,127,234,119},{128,3,137,22,109,224},{146,23,142,237,101,252},107,118,{180,14,141,241,98,229,123,208,118,246,122,209,70},{187,58,114,229,101,233},{181,18,110,238,95,232,114,225,118,239},{151,27,101,231,76,226,123,248,125},{150,26,100,230,79,230,96,227,122,241,64,194},106,{142,245,119,236,99,246,97,241},{136,231,116,254,103,241,119,246,92,205,73,217,90},{169,230,100,255,96,225,36},{110,225,127},0,{116,227,120,250,123,245,123,242,100,199,73,218,93,196},113,104,{92},{65,239,122,209,126,243,114,198,84,207,64},{119,232,110,255,123},{75,224,113,231,107,210,65,201,77},{71,236,124,240},{126,225,97,226,104,247,76,193},{66,225,96,227,122,241,64,194},{65,241,108,222,115,210,71,205},{96,240,97,241},{102,231,113,255},{89,246,123,244,124,202,83,210},{64,245,106,249,78,208},{80,241,125,212,85,192,68},111},C={190,168,235,160,235,153,228,131,169,147,190,168,160,151,168,191,189,182,168,146,160,151,169,151,170,150,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,172,150,160,151,164,151,165,150,160,151,166,151,167,150,151,184,155,170,-1,141,169,235,153,88,147,182,169,160,151,185,191,189,182,168,146,160,151,169,151,186,150,160,151,171,151,187,150,160,151,173,151,187,150,160,151,175,151,174,150,160,151,161,151,167,150,160,151,163,151,162,150,160,151,164,151,172,150,160,151,166,151,165,150,160,151,188,151,167,150,160,151,162,151,189,150,160,151,190,151,191,150,160,151,176,151,177,150,160,151,178,151,179,150,160,151,180,151,181,150,160,151,182,151,172,150,160,151,183,151,136,150,160,151,137,151,177,150,160,151,138,151,139,150,160,151,140,151,191,150,160,151,141,151,142,150,160,151,143,151,172,150,160,151,128,151,165,150,160,151,129,151,167,150,151,184,155,170,-1,141,169,131,169,158,168,152,88,190,168,160,151,130,191,189,136,169,232,169,147,190,169,160,151,131,191,189,182,168,146,160,151,169,151,132,150,160,151,171,151,165,150,160,151,173,151,172,150,160,151,175,151,186,150,160,151,161,151,162,150,160,151,163,151,172,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,188,151,174,150,151,184,155,170,-1,141,169,160,235,153,313,131,169,147,190,169,160,151,131,191,189,182,168,146,160,151,169,151,132,150,160,151,171,151,165,150,160,151,173,151,172,150,160,151,175,151,186,150,160,151,161,151,162,150,160,151,163,151,172,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,188,151,133,150,151,184,155,170,-1,141,169,160,235,153,341,131,169,147,190,169,160,151,131,191,189,182,168,146,160,151,169,151,178,150,160,151,171,151,187,150,160,151,173,151,165,150,160,151,175,151,134,150,160,151,161,151,174,150,160,151,163,151,142,150,160,151,164,151,172,150,160,151,166,151,135,150,160,151,188,151,160,150,160,151,162,151,152,150,160,151,190,151,153,150,160,151,176,151,129,150,160,151,178,151,172,150,160,151,180,151,142,150,151,184,155,170,-1,141,169,160,235,153,761,131,169,147,190,169,160,151,131,191,189,182,168,146,160,151,169,151,170,150,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,132,150,160,151,163,151,165,150,160,151,164,151,187,150,160,151,166,151,154,150,160,151,188,151,179,150,160,151,162,151,139,150,151,184,155,170,-1,141,169,160,235,153,559,131,169,147,190,169,160,151,131,191,189,182,168,146,160,151,169,151,132,150,160,151,171,151,165,150,160,151,173,151,172,150,160,151,175,151,174,150,160,151,161,151,174,150,151,184,155,170,-1,141,169,160,235,153,533,131,169,147,190,169,160,151,131,191,189,182,168,146,160,151,169,151,155,150,160,151,171,151,136,150,160,151,173,151,187,150,160,151,175,151,187,150,160,151,161,151,165,150,151,184,155,170,-1,141,169,160,235,153,1001,131,169,147,190,169,160,151,131,191,189,182,168,146,160,151,169,151,178,150,160,151,171,151,187,150,160,151,173,151,165,150,160,151,175,151,134,150,160,151,161,151,174,150,160,151,163,151,142,150,160,151,164,151,172,150,160,151,166,151,135,150,160,151,188,151,160,150,160,151,162,151,152,150,160,151,190,151,153,150,160,151,176,151,180,150,160,151,178,151,160,150,160,151,180,151,165,150,160,151,182,151,165,150,160,151,183,151,172,150,160,151,137,151,177,150,160,151,138,151,179,150,151,184,155,170,-1,141,169,153,1170,182,169,160,151,185,191,189,182,168,146,160,151,169,151,186,150,160,151,171,151,187,150,160,151,173,151,187,150,160,151,175,151,174,150,160,151,161,151,167,150,160,151,163,151,162,150,160,151,164,151,172,150,160,151,166,151,165,150,160,151,188,151,167,150,160,151,162,151,189,150,160,151,190,151,191,150,160,151,176,151,165,150,160,151,178,151,160,150,160,151,180,151,156,150,160,151,182,151,154,150,160,151,183,151,174,150,160,151,137,151,177,150,160,151,138,151,179,150,160,151,140,151,157,150,160,151,141,151,191,150,160,151,143,151,174,150,160,151,128,151,160,150,160,151,129,151,165,150,160,151,170,151,181,150,160,151,158,151,177,150,160,151,159,151,135,150,160,151,144,151,160,150,160,151,155,151,145,150,160,151,132,151,146,150,160,151,147,151,172,150,160,151,148,151,142,150,160,151,149,151,191,150,160,151,150,151,142,150,160,151,151,151,172,150,160,151,232,151,165,150,160,151,233,151,167,150,160,151,234,151,191,150,151,184,136,170,190,169,159,136,170,131,169,158,168,152,1170,190,168,151,235,191,153,1422,182,169,160,151,185,191,189,182,168,146,160,151,169,151,186,150,160,151,171,151,187,150,160,151,173,151,187,150,160,151,175,151,174,150,160,151,161,151,167,150,160,151,163,151,162,150,160,151,164,151,172,150,160,151,166,151,165,150,160,151,188,151,167,150,160,151,162,151,189,150,160,151,190,151,191,150,160,151,176,151,165,150,160,151,178,151,160,150,160,151,180,151,156,150,160,151,182,151,154,150,160,151,183,151,174,150,160,151,137,151,177,150,160,151,138,151,179,150,160,151,140,151,157,150,160,151,141,151,191,150,160,151,143,151,172,150,160,151,128,151,179,150,160,151,129,151,135,150,160,151,170,151,236,150,160,151,158,151,187,150,160,151,159,151,165,150,160,151,144,151,160,150,160,151,155,151,139,150,160,151,132,151,191,150,160,151,147,151,142,150,160,151,148,151,172,150,160,151,149,151,165,150,160,151,150,151,167,150,160,151,151,151,191,150,151,184,136,170,190,169,159,136,170,131,169,158,168,152,1422,182,170,190,168,136,169,153,2038,182,171,151,237,191,235,153,1583,182,169,160,151,185,191,189,182,168,146,160,151,169,151,186,150,160,151,171,151,187,150,160,151,173,151,187,150,160,151,175,151,174,150,160,151,161,151,167,150,160,151,163,151,162,150,160,151,164,151,172,150,160,151,166,151,165,150,160,151,188,151,167,150,160,151,162,151,189,150,160,151,190,151,191,150,160,151,176,151,165,150,160,151,178,151,160,150,160,151,180,151,156,150,160,151,182,151,154,150,160,151,183,151,174,150,160,151,137,151,177,150,160,151,138,151,179,150,160,151,140,151,157,150,160,151,141,151,191,150,160,151,143,151,142,150,160,151,128,151,136,150,160,151,129,151,172,150,160,151,170,151,232,150,160,151,158,151,160,150,160,151,159,151,165,150,160,151,144,151,191,150,160,151,155,151,142,150,160,151,132,151,172,150,160,151,147,151,165,150,160,151,148,151,167,150,160,151,149,151,191,150,160,151,150,151,238,150,160,151,151,151,155,150,160,151,232,151,136,150,160,151,233,151,177,150,160,151,234,151,179,150,160,151,239,151,157,150,160,151,224,151,191,150,160,151,165,151,162,150,160,151,174,151,136,150,160,151,142,151,172,150,160,151,225,151,232,150,160,151,181,151,160,150,160,151,226,151,165,150,160,151,167,151,174,150,160,151,154,151,191,150,160,151,227,151,143,150,160,151,134,151,155,150,160,151,236,151,155,150,160,151,177,151,228,150,160,151,179,151,191,150,151,184,136,170,190,169,159,136,170,131,169,158,168,152,1583,182,169,160,151,229,191,189,182,168,146,160,151,169,151,186,150,160,151,171,151,187,150,160,151,173,151,187,150,160,151,175,151,174,150,160,151,161,151,167,150,160,151,163,151,162,150,160,151,164,151,172,150,160,151,166,151,165,150,160,151,188,151,167,150,160,151,162,151,189,150,160,151,190,151,191,150,160,151,176,151,156,150,160,151,178,151,136,150,160,151,180,151,177,150,160,151,182,151,179,150,160,151,183,151,157,150,160,151,137,151,177,150,160,151,138,151,179,150,160,151,140,151,157,150,160,151,141,151,191,150,160,151,143,151,142,150,160,151,128,151,136,150,160,151,129,151,172,150,160,151,170,151,232,150,160,151,158,151,160,150,160,151,159,151,165,150,160,151,144,151,191,150,160,151,155,151,142,150,160,151,132,151,172,150,160,151,147,151,165,150,160,151,148,151,167,150,160,151,149,151,191,150,151,184,136,170,190,169,159,136,170,131,169,152,2038,182,172,151,230,191,160,153,1909,131,169,147,182,172,151,230,191,160,151,231,191,189,182,168,146,160,151,169,151,138,150,160,151,171,151,154,150,160,151,173,151,146,150,160,151,175,151,172,150,160,151,161,151,179,150,160,151,163,151,187,150,160,151,164,151,177,150,160,151,166,151,139,150,160,151,188,151,166,150,160,151,162,151,187,150,160,151,190,151,187,150,160,151,176,151,167,150,160,151,178,151,162,150,160,151,180,151,172,150,160,151,182,151,165,150,160,151,183,151,167,150,151,184,155,170,-1,141,169,232,170,190,170,153,2453,190,168,151,248,191,190,170,151,248,191,144,151,249,191,232,171,190,171,151,161,130,153,2451,147,182,169,160,151,185,191,189,137,250,151,251,191,182,168,146,160,151,169,151,186,150,160,151,171,151,187,150,160,151,173,151,187,150,160,151,175,151,174,150,160,151,161,151,167,150,160,151,163,151,162,150,160,151,164,151,172,150,160,151,166,151,165,150,160,151,188,151,167,150,160,151,162,151,189,150,160,151,190,151,191,150,160,151,176,151,142,150,160,151,178,151,172,150,160,151,180,151,165,150,160,151,182,151,167,150,160,151,183,151,191,150,160,151,137,151,167,150,160,151,138,151,187,150,160,151,140,151,187,150,160,151,141,151,191,150,160,151,143,151,135,150,160,151,128,151,136,150,160,151,129,151,187,150,160,151,170,151,174,150,160,151,158,151,160,150,160,151,159,151,191,150,160,151,144,151,238,150,160,151,155,151,152,150,160,151,132,151,153,150,160,151,147,151,252,150,160,151,148,151,156,150,160,151,149,151,191,150,160,151,150,151,174,150,160,151,151,151,167,150,160,151,232,151,154,150,160,151,233,151,139,150,160,151,234,151,174,150,160,151,239,151,228,150,160,151,224,151,253,150,160,151,165,151,191,150,160,151,174,151,174,150,160,151,142,151,134,150,160,151,225,151,177,150,160,151,181,151,142,150,160,151,226,151,142,150,160,151,167,151,177,150,160,151,154,151,179,150,160,151,227,151,157,150,151,184,136,170,190,171,155,170,-1,141,169,131,169,158,168,152,2451,152,2453,182,173,151,254,191,151,255,191,151,240,191,232,172,145,232,173,145,232,174,182,171,151,241,191,153,2623,182,174,182,171,151,242,191,155,169,170,232,174,232,173,147,182,169,160,151,229,191,189,137,250,151,251,191,182,168,146,160,151,169,151,129,150,160,151,171,151,148,150,160,151,173,151,132,150,160,151,175,151,144,150,160,151,161,151,191,150,160,151,163,151,181,150,160,151,164,151,160,150,160,151,166,151,136,150,160,151,188,151,187,150,160,151,162,151,135,150,160,151,190,151,177,150,160,151,176,151,167,150,160,151,178,151,232,150,160,151,180,151,191,150,160,151,182,151,152,150,160,151,183,151,153,150,160,151,137,151,243,150,160,151,138,151,156,150,160,151,140,151,191,150,160,151,141,151,174,150,160,151,143,151,167,150,160,151,128,151,154,150,160,151,129,151,139,150,160,151,170,151,174,150,160,151,158,151,145,150,160,151,159,151,174,150,160,151,144,151,191,150,160,151,155,151,238,150,160,151,132,151,167,150,160,151,147,151,172,150,160,151,148,151,165,150,160,151,149,151,157,150,160,151,150,151,160,150,160,151,151,151,167,150,160,151,232,151,191,150,160,151,233,151,233,150,160,151,234,151,152,150,160,151,239,151,139,150,160,151,224,151,191,150,160,151,165,151,174,150,160,151,174,151,167,150,160,151,142,151,154,150,160,151,225,151,139,150,160,151,181,151,174,150,160,151,226,151,228,150,151,184,136,170,190,174,182,171,151,242,191,155,171,-1,141,169,131,169,152,2965,190,172,182,171,151,244,191,178,232,173,190,173,151,249,191,232,174,147,182,169,160,151,229,191,189,137,250,151,251,191,182,168,146,160,151,169,151,179,150,160,151,171,151,187,150,160,151,173,151,165,150,160,151,175,151,146,150,160,151,161,151,172,150,160,151,163,151,136,150,160,151,164,151,191,150,160,151,166,151,181,150,160,151,188,151,160,150,160,151,162,151,136,150,160,151,190,151,187,150,160,151,176,151,135,150,160,151,178,151,177,150,160,151,180,151,167,150,160,151,182,151,232,150,160,151,183,151,191,150,160,151,137,151,152,150,160,151,138,151,153,150,160,151,140,151,243,150,160,151,141,151,156,150,151,184,136,170,190,174,155,170,-1,141,169,131,169,182,171,151,245,191,153,3277,137,246,151,247,191,151,200,190,174,182,171,151,201,191,178,151,200,136,171,232,175,190,173,190,175,170,232,173,147,182,169,160,151,229,191,189,137,250,151,251,191,182,168,146,160,151,169,151,181,150,160,151,171,151,160,150,160,151,173,151,165,150,160,151,175,151,167,150,160,151,161,151,177,150,160,151,163,151,135,150,160,151,164,151,172,150,160,151,166,151,136,150,160,151,188,151,191,150,160,151,162,151,186,150,160,151,190,151,187,150,160,151,176,151,187,150,160,151,178,151,174,150,160,151,180,151,167,150,160,151,182,151,191,150,160,151,183,151,202,150,160,151,137,151,152,150,160,151,138,151,153,150,160,151,140,151,243,150,160,151,141,151,156,150,160,151,143,151,191,150,160,151,128,151,154,150,160,151,129,151,142,150,160,151,170,151,191,150,160,151,158,151,238,150,160,151,159,151,156,150,160,151,144,151,172,150,160,151,155,151,135,150,160,151,132,151,167,150,160,151,147,151,187,150,160,151,148,151,165,150,160,151,149,151,191,150,160,151,150,151,152,150,160,151,151,151,153,150,160,151,232,151,203,150,160,151,233,151,156,150,160,151,234,151,228,150,151,184,136,170,190,175,151,204,191,182,171,151,201,191,155,171,-1,141,169,131,169,152,3277,190,168,160,151,205,191,189,136,169,232,160,151,169,232,161,190,160,164,232,162,151,169,232,163,190,163,151,200,142,153,3109,190,161,190,162,183,153,3968,152,3132,190,161,190,162,179,153,3968,163,164,190,161,232,164,190,160,190,164,191,232,165,147,190,165,160,151,168,191,189,182,168,146,160,151,169,151,178,150,160,151,171,151,160,150,160,151,173,151,136,150,160,151,175,151,139,150,160,151,161,151,158,150,160,151,163,151,187,150,160,151,164,151,179,150,160,151,166,151,174,150,160,151,188,151,167,150,160,151,162,151,165,150,160,151,190,151,172,150,160,151,176,151,177,150,160,151,178,151,179,150,160,151,180,151,167,150,151,184,155,170,-1,141,169,160,235,153,3487,131,169,147,190,165,160,151,168,191,189,182,168,146,160,151,169,151,178,150,160,151,171,151,160,150,160,151,173,151,136,150,160,151,175,151,139,150,151,184,155,170,-1,141,169,160,235,153,3381,131,169,147,190,165,160,151,168,191,189,182,168,146,160,151,169,151,144,150,160,151,171,151,136,150,160,151,173,151,177,150,160,151,175,151,157,150,160,151,161,151,179,150,160,151,163,151,162,150,160,151,164,151,187,150,160,151,166,151,174,150,160,151,188,151,177,150,160,151,162,151,167,150,160,151,190,151,177,150,160,151,176,151,187,150,160,151,178,151,179,150,151,184,155,170,-1,141,169,160,235,153,3773,131,169,147,190,165,160,151,168,191,189,182,168,146,160,151,169,151,144,150,160,151,171,151,136,150,160,151,173,151,177,150,160,151,175,151,157,150,160,151,161,151,179,150,160,151,163,151,143,150,160,151,164,151,165,150,160,151,166,151,177,150,160,151,188,151,160,150,160,151,162,151,179,150,160,151,190,151,167,150,160,151,176,151,172,150,160,151,178,151,167,150,160,151,180,151,177,150,160,151,182,151,187,150,160,151,183,151,179,150,151,184,155,170,-1,141,169,160,235,153,3625,131,169,147,190,165,160,151,168,191,189,182,168,146,160,151,169,151,166,150,160,151,171,151,187,150,160,151,173,151,142,150,160,151,175,151,160,150,160,151,161,151,158,150,160,151,163,151,187,150,160,151,164,151,179,150,160,151,166,151,174,150,160,151,188,151,167,150,160,151,162,151,165,150,160,151,190,151,172,150,160,151,176,151,177,150,160,151,178,151,179,150,160,151,180,151,167,150,151,184,155,170,-1,141,169,153,4021,137,206,154,169,136,169,131,169,182,169,160,151,229,191,189,182,168,146,160,151,169,151,165,150,160,151,171,151,160,150,160,151,173,151,146,150,160,151,175,151,187,150,160,151,161,151,181,150,160,151,163,151,160,150,160,151,164,151,139,150,160,151,166,151,191,150,160,151,188,151,135,150,160,151,162,151,187,150,160,151,190,151,179,150,160,151,176,151,174,150,160,151,178,151,167,150,160,151,180,151,165,150,160,151,182,151,172,150,160,151,183,151,177,150,160,151,137,151,179,150,160,151,138,151,167,150,160,151,140,151,189,150,160,151,141,151,191,150,151,184,136,170,190,165,151,207,191,159,136,170,131,169,152,4021,163,165,190,161,190,163,170,232,161,152,3285,137,206,154,170,155,169,170,232,167,232,166,190,166,153,3861,182,169,160,151,229,191,189,182,168,146,160,151,169,151,179,150,160,151,171,151,172,150,160,151,173,151,167,150,160,151,175,151,177,150,160,151,161,151,181,150,160,151,163,151,160,150,160,151,164,151,191,150,160,151,166,151,181,150,160,151,188,151,160,150,160,151,162,151,136,150,160,151,190,151,191,150,160,151,176,151,174,150,160,151,178,151,160,150,160,151,180,151,167,150,160,151,182,151,191,150,160,151,183,151,187,150,160,151,137,151,179,150,160,151,138,151,191,150,151,184,136,170,190,168,151,192,191,159,136,170,131,169,152,4320,182,169,160,151,185,191,189,182,168,146,160,151,169,151,179,150,160,151,171,151,172,150,160,151,173,151,167,150,160,151,175,151,177,150,160,151,161,151,181,150,160,151,163,151,160,150,160,151,164,151,191,150,160,151,166,151,181,150,160,151,188,151,160,150,160,151,162,151,136,150,160,151,190,151,191,150,160,151,176,151,156,150,160,151,178,151,172,150,160,151,180,151,177,150,160,151,182,151,136,150,160,151,183,151,160,150,160,151,137,151,139,150,160,151,138,151,189,150,160,151,140,151,191,150,151,184,136,170,137,193,190,167,136,169,159,136,170,131,169,147,137,194,151,247,191,182,168,146,160,151,169,151,170,150,160,151,171,151,187,150,160,151,173,151,139,150,160,151,175,151,232,150,160,151,161,151,176,150,160,151,163,151,160,150,160,151,164,151,136,150,160,151,166,151,187,150,160,151,188,151,135,150,160,151,162,151,177,150,160,151,190,151,167,150,160,151,176,151,232,150,151,184,155,170,-1,141,169,232,184,190,184,151,195,137,246,151,247,191,137,196,151,197,191,137,196,151,197,191,137,196,151,197,191,136,171,150,190,184,151,198,190,173,150,190,184,151,199,190,168,150,182,175,160,151,216,191,189,190,184,182,171,151,241,191,160,153,4168,131,169,151,182,160,235,153,4160,131,169,151,171,136,171,131,169,137,206,154,171,136,169,131,169,182,169,160,151,229,191,189,182,168,146,160,151,169,151,170,150,160,151,171,151,187,150,160,151,173,151,139,150,160,151,175,151,232,150,160,151,161,151,176,150,160,151,163,151,160,150,160,151,164,151,136,150,160,151,166,151,187,150,160,151,188,151,135,150,160,151,162,151,177,150,160,151,190,151,167,150,160,151,176,151,232,150,160,151,178,151,191,150,160,151,180,151,172,150,160,151,182,151,167,150,160,151,183,151,167,150,160,151,137,151,172,150,160,151,138,151,135,150,160,151,140,151,236,150,160,151,141,151,160,150,160,151,143,151,139,150,160,151,128,151,191,150,160,151,129,151,238,150,151,184,136,170,182,171,151,241,191,160,153,4359,131,169,182,168,146,160,151,169,151,252,150,160,151,171,151,217,150,160,151,173,151,174,150,151,184,136,170,160,235,153,4448,131,169,182,168,146,160,151,169,151,203,150,160,151,171,151,174,150,151,184,136,170,182,168,146,160,151,169,151,228,150,151,184,136,170,159,159,136,170,131,169,158,168},P={{K={{229,64,218,89,195,90,192}},C={182,168,160,151,168,191,189,136,169,131,169,158,168},P={},U={{1,13}},nParams=0},{K={{224,86,218,72,220,87,213,68,141,44,167,40,176,39,143,56,141,10,138,4,133,12},{244,67,198,65,209,95,206,71}},C={182,168,151,168,182,169,150,182,168,151,169,182,169,150,158,168},P={},U={{1,0},{1,5}},nParams=0},{K={{242,64,221,99,212,65,206,82,179,46,134,58,191,48,171}},C={182,168,160,151,168,191,189,182,169,136,170,131,169,158,168},P={},U={{1,0},{0,4}},nParams=0}},U={{1,1},{1,19},{1,34},{1,32},{1,7},{1,5},{1,35},{1,6}},nParams=1},{K={{232,86,232},1,23,2,53,3,62,4,63,5,54,90,{227,80,216,92},{194,93,193,95,204},{201,90,217,95},61,40,59,56,{221,86,218,47},122,6,55,7,8,9,10,11,12,41,13,42,14,15,45,16,52,17,18,19,96,20,{173,38,189,51,156,45,130,5,137,10,151,39,154,13,119},{187,49,166,54},44,51,46,21,22,24,25,26,27,28,57,49,119,100,{156,58,151,33,158,3,159,57,154,18,102},{155,5,144,56,158,31,132,29,142,244,125,203,100,241,122,255,121,196,119,193,75,222,85,212},{158,14,139,7,136,18,129}},C={147,190,168,160,151,168,191,189,182,168,146,160,151,169,151,170,150,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,151,163,155,170,-1,141,169,235,153,159,158,168,152,159,147,190,168,151,164,191,160,151,165,191,189,136,169,160,151,166,191,189,182,168,146,160,151,169,151,167,150,160,151,171,151,184,150,160,151,173,151,185,150,160,151,175,151,186,150,151,163,155,170,-1,141,169,235,153,218,158,168,152,218,182,169,160,151,187,191,189,182,168,146,160,151,169,151,167,150,160,151,171,151,184,150,160,151,173,151,185,150,160,151,175,151,186,150,160,151,161,151,188,150,160,151,189,151,190,150,160,151,191,151,172,150,160,151,176,151,174,150,160,151,177,151,160,150,160,151,178,151,162,150,160,151,179,151,188,150,160,151,180,151,181,150,160,151,182,151,183,150,160,151,136,151,185,150,160,151,137,151,138,150,160,151,139,151,140,150,160,151,141,151,160,150,160,151,142,151,174,150,160,151,143,151,128,150,160,151,129,151,188,150,151,163,136,170,190,168,151,164,191,159,136,170,131,169,137,130,190,168,155,169,170,232,170,232,169,190,169,235,153,382,182,169,160,151,131,191,189,182,168,146,160,151,169,151,140,150,160,151,171,151,172,150,160,151,173,151,188,150,160,151,175,151,132,150,160,151,161,151,185,150,160,151,189,151,162,150,160,151,191,151,133,150,160,151,176,151,174,150,160,151,177,151,188,150,160,151,178,151,167,150,160,151,179,151,184,150,160,151,180,151,185,150,160,151,182,151,186,150,160,151,136,151,188,150,160,151,137,151,134,150,160,151,139,151,185,150,160,151,141,151,184,150,160,151,142,151,167,150,160,151,143,151,160,150,160,151,129,151,134,150,160,151,135,151,188,150,160,151,152,151,133,150,160,151,170,151,140,150,160,151,153,151,181,150,160,151,154,151,133,150,160,151,155,151,174,150,160,151,156,151,160,150,160,151,157,151,188,150,151,163,136,170,190,168,151,164,191,159,136,170,131,169,158,168,152,382,182,169,160,151,187,191,189,182,168,146,160,151,169,151,134,150,160,151,171,151,184,150,160,151,173,151,185,150,160,151,175,151,158,150,160,151,161,151,159,150,160,151,189,151,133,150,160,151,191,151,140,150,160,151,176,151,167,150,160,151,177,151,188,150,160,151,178,151,183,150,160,151,179,151,185,150,160,151,180,151,184,150,160,151,182,151,134,150,160,151,136,151,188,150,160,151,137,151,132,150,160,151,139,151,133,150,160,151,141,151,185,150,160,151,142,151,188,150,151,163,136,170,190,170,182,168,146,160,151,169,151,188,150,160,151,171,151,144,150,160,151,173,151,145,150,160,151,175,151,188,150,151,163,136,170,190,169,160,151,146,191,189,136,169,159,159,159,136,170,131,169,147,190,168,160,151,147,191,189,182,168,146,160,151,169,151,178,150,160,151,171,151,185,150,160,151,173,151,184,150,160,151,175,151,160,150,160,151,161,151,140,150,160,151,189,151,134,150,151,163,155,170,-1,141,169,160,151,148,191,189,154,169,136,170,131,169,158,168},P={{K={{241,68,219,72,223,65},{209,83,218,75,192,98,210,76,173,49},{206,66,204,78,245,91,210,81,164},{205,70,202,95},1,40,2,63,3,54,4,5,59,6,41,7,8,122,9,62,10,11,46,12,13,57,14,15,16,17,18,119,19,100,20,21,56,22,53,23,24,25,26,51,27,52,28,61,90,{176,57,181,45,150,54,139,28,134},118,50,55,29,30,31,32},C={182,168,151,168,191,145,234,153,287,182,169,151,169,191,160,235,153,177,131,169,182,169,151,170,191,153,73,147,182,170,160,151,171,191,189,182,171,146,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,175,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,175,150,160,151,184,151,185,150,160,151,186,151,187,150,160,151,188,151,175,150,160,151,189,151,190,150,160,151,191,151,175,150,160,151,176,151,177,150,160,151,178,151,190,150,160,151,179,151,175,150,160,151,180,151,187,150,160,151,181,151,185,150,160,151,182,151,183,150,160,151,136,151,137,150,160,151,138,151,185,150,160,151,139,151,140,150,160,151,141,151,142,150,160,151,143,151,142,150,160,151,128,151,166,150,160,151,129,151,190,150,160,151,130,151,131,150,160,151,132,151,133,150,160,151,134,151,135,150,151,152,155,170,-1,141,169,131,169,137,153,182,172,136,169,131,169,152,285,147,182,170,160,151,171,191,189,182,171,146,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,175,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,175,150,160,151,184,151,185,150,160,151,186,151,187,150,160,151,188,151,175,150,160,151,189,151,190,150,160,151,191,151,175,150,160,151,176,151,177,150,160,151,178,151,190,150,160,151,179,151,175,150,160,151,180,151,187,150,160,151,181,151,154,150,160,151,182,151,185,150,160,151,136,151,140,150,160,151,138,151,142,150,160,151,139,151,190,150,160,151,141,151,155,150,160,151,143,151,185,150,160,151,128,151,156,150,160,151,129,151,142,150,160,151,130,151,187,150,160,151,132,151,175,150,160,151,134,151,166,150,160,151,157,151,185,150,160,151,158,151,139,150,160,151,159,151,134,150,160,151,144,151,134,150,151,152,155,170,-1,141,169,131,169,152,287,158,168},P={},U={{1,0},{0,2},{0,1},{0,0},{1,1}},nParams=0}},U={{1,1},{1,19},{1,32}},nParams=1},{K={{226,77,200,95,208,86,205,88,179},{228,79,196,74,244,95,200,77,182,5,162,39,190,50},1,18,2,47,3,55,4,59,5,52,6,53,7,51,8,62,9,10,11,12,46,13,14,15,40,16,90,{248,43,168,46,136,59,164,41,170,33,142,3,130,22,185,28,189,238,103,249,125},{239,47,166,63,169,60,165,54,140,23,134,5,139},{176,39,169,32,188},{136,43,186,57,176,59,186,56},{172,35,189},24,35,63,54,57,{133,45,168,18,183,46,131,1},{159,40,178,33,182,47,210},{167,47,166,62},{163,58,180,50},{154,53,184,55,191,9,144,17},{183,52,167,54},{158,51,164,63,176,22},29,{157,53,160,8,143,22,153,25,149},{129},100000,{151},500,{188,55,187,14},60,122,41},C={182,168,151,168,191,232,168,190,168,235,153,184,158,168,152,184,147,190,168,160,151,169,191,189,182,169,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,184,150,160,151,187,151,165,150,160,151,188,151,165,150,160,151,189,151,190,150,160,151,191,151,187,150,160,151,176,151,161,150,160,151,177,151,178,150,160,151,179,151,190,150,151,180,155,170,-1,141,169,232,169,147,190,168,160,151,181,191,189,182,169,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,151,180,155,170,-1,141,169,232,170,190,169,235,160,235,153,124,131,169,190,170,235,153,114,158,168,152,114,190,170,151,182,181,150,137,183,154,169,136,169,131,169,137,183,154,170,136,169,131,169,147,137,136,151,137,191,182,169,146,160,151,170,151,138,150,160,151,172,151,165,150,160,151,174,151,185,150,160,151,160,151,139,150,160,151,162,151,189,150,160,151,164,151,140,150,160,151,166,151,141,150,160,151,184,151,165,150,160,151,186,151,142,150,160,151,187,151,167,150,160,151,188,151,190,150,160,151,189,151,139,150,151,180,155,170,-1,141,169,233,170,182,170,151,143,137,128,151,137,191,137,129,151,130,191,137,129,151,130,191,137,129,151,130,191,136,171,150,182,170,151,131,137,128,151,132,191,150,182,170,151,133,190,169,150,147,137,136,151,137,191,182,169,146,160,151,170,151,138,150,160,151,172,151,165,150,160,151,174,151,185,150,160,151,160,151,139,150,160,151,162,151,134,150,160,151,164,151,139,150,160,151,166,151,178,150,160,151,184,151,165,150,151,180,155,170,-1,141,169,233,171,182,171,151,135,137,128,151,137,191,137,129,151,130,191,137,129,151,130,191,137,129,151,130,191,136,171,150,182,171,151,152,151,153,150,182,171,151,154,151,155,150,182,171,151,133,190,169,150,147,182,172,160,151,156,191,189,182,169,146,160,151,170,151,157,150,160,151,172,151,141,150,160,151,174,151,139,150,160,151,160,151,158,150,160,151,162,151,159,150,160,151,164,151,190,150,160,151,166,151,161,150,160,151,184,151,178,150,160,151,186,151,190,150,160,151,187,151,140,150,160,151,188,151,185,150,151,180,155,170,-1,141,169,131,169,158,168},P={{K={{226,77,200,67,214,80,234,73,160,49,172},{231,72,223,67},{235,82,198,78,221,88,210,91,144,51,170,59,182,3,162,47,134},{244,64,213,67,221,91,207}},C={182,168,160,151,168,191,189,137,169,151,170,191,151,171,191,136,170,131,169,158,168},P={},U={{1,2}},nParams=0},{K={{242,64,221,99,212,65,206,82,179,46,134,58,191,48,171}},C={182,168,160,151,168,191,189,182,169,136,170,131,169,158,168},P={},U={{1,1},{0,0}},nParams=0}},U={{1,7},{1,1},{1,36},{1,37},{1,19}},nParams=0},{K={{229,64,218,89,195,90,192},{225,78,203,92,211,85,206,91,176},{229,78,197,75,245,94,201,76,183,4,163,38,191,51,148,57,160,11,138,28,128},1,18,2,47,3,55,4,59,5,52,6,53,7,51,8,62,90,{243,80,211,37,131,32,191,34,161,26,181,8,137,13},9,10,11,12,46,13,14,15,40,16,{144,40,169,56,182,59,170,49,179,16,137,2,148},{177,38,168,33,189},{171,40,172,33},60,54,35,122,41,42,63},C={182,168,153,188,182,168,160,151,168,191,189,136,169,131,169,145,233,168,152,188,182,169,153,128,182,169,160,151,168,191,189,136,169,131,169,145,233,169,152,128,182,170,151,169,191,232,168,190,168,153,423,147,190,168,160,151,170,191,189,182,171,146,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,184,150,160,151,185,151,186,150,151,187,155,170,-1,141,169,232,169,147,190,168,160,151,188,191,189,182,171,146,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,184,150,160,151,185,151,186,150,160,151,189,151,185,150,160,151,190,151,166,150,160,151,191,151,166,150,160,151,176,151,177,150,160,151,178,151,190,150,160,151,179,151,162,150,160,151,180,151,181,150,160,151,182,151,177,150,151,187,155,170,-1,141,169,232,170,190,169,153,87,190,169,151,183,157,150,137,136,154,169,136,169,131,169,152,87,190,170,153,421,137,136,154,170,136,169,131,169,152,421,152,423,147,182,172,160,151,137,191,189,182,171,146,160,151,171,151,138,150,160,151,173,151,139,150,160,151,175,151,140,150,160,151,161,151,141,150,160,151,163,151,142,150,160,151,165,151,177,150,160,151,167,151,166,150,160,151,185,151,143,150,160,151,189,151,143,150,160,151,190,151,128,150,160,151,191,151,186,150,151,187,155,170,-1,141,169,131,169,158,168},P={{K={{226,77,200,67,214,80,234,73,160,49,172},{231,72,223,67},{235,82,198,78,221,88,210,91,144,51,170,59,182,3,162,47,134},{227,77,216,68,221,86,219,21,180}},C={182,168,160,151,168,191,189,137,169,151,170,191,151,171,191,136,170,131,169,158,168},P={},U={{1,1}},nParams=0},{K={{242,64,221,99,212,65,206,82,179,46,134,58,191,48,171}},C={182,168,160,151,168,191,189,145,136,170,131,169,158,168},P={},U={{1,2}},nParams=0}},U={{1,36},{1,37},{1,7},{1,1},{1,19}},nParams=0},{K={{234,64,208,110,222,81,220},{196,74,211,101,215,79},{197,75,210},{215,92,195,64,242,84,197},{214,93,204,67,193,127,209,56}},C={190,169,153,160,158,168,152,160,190,168,151,168,191,182,168,151,169,191,234,160,153,181,131,169,182,168,151,170,191,153,155,182,169,153,131,137,171,136,168,131,169,152,153,137,172,136,168,131,169,152,155,158,168},P={},U={{1,32},{1,36}},nParams=2},{K={{199,73,208},{225,83,216,92,215,88,206,125,163,43,175,60,179},{245,66,200,91,220,69,136},{222,77,222,95},{236,90,230,84,204,125,210,54,171},{227,68,219,95},{236,78,214,112,216,95,218},{255},{234,107,195,84,212,88},{230,65,221,93,236,91,161,50,165,60},{248},{237},{255,88,210,81,201,23,160,42,185,62,167},{234},{252,67,214,88,218},{222,81,207},0,1,{255,82,221,75,128,40,165,59,161,56,183},{249,89,219,46,173,60,185,52,177},{227,92,209,46,166,32,185,40},{227,84,215,54},{209,87,198,16,183,46,170,55}},C={182,168,151,168,191,160,153,164,131,169,182,169,153,396,182,170,151,169,191,232,168,137,170,151,171,191,232,169,182,171,160,151,172,191,189,137,173,151,174,191,151,175,191,136,170,153,150,190,169,190,168,151,160,191,151,161,191,170,232,169,152,150,182,171,160,151,172,191,189,137,173,151,174,191,151,162,191,136,170,153,200,190,169,190,168,151,160,191,151,161,191,144,232,169,152,200,182,171,160,151,172,191,189,137,173,151,174,191,151,163,191,136,170,153,42,190,169,190,168,151,160,191,151,164,191,144,232,169,152,42,182,171,160,151,172,191,189,137,173,151,174,191,151,165,191,136,170,153,12,190,169,190,168,151,160,191,151,164,191,170,232,169,152,12,182,171,160,151,172,191,189,137,173,151,174,191,151,166,191,136,170,153,99,190,169,137,170,151,167,191,151,184,151,185,151,184,136,171,170,232,169,152,99,182,171,160,151,172,191,189,137,173,151,174,191,151,186,191,136,170,153,90,190,169,137,170,151,167,191,151,184,151,185,151,184,136,171,144,232,169,152,90,190,169,151,187,191,151,184,142,153,422,182,169,151,188,190,169,151,189,191,182,168,151,190,191,178,150,152,432,182,169,151,188,137,170,151,171,191,150,182,172,151,160,190,168,151,160,191,150,152,396,158,168},P={},U={{1,32},{1,36},{1,5},{1,4},{1,37}},nParams=0},{K={{210,81,198,93,247,89,192},{196,74,211},{215,70,216,68},{211,73,197,68},1,{213,94,207,64,194,124,210,59}},C={137,168,136,168,131,169,182,168,151,169,191,153,136,137,170,151,171,191,151,172,136,169,131,169,137,173,136,168,131,169,152,136,158,168},P={},U={{1,32}},nParams=0},{K={{204,74,223,72,226,69,220,88,165},{225,78,203,92,211,85,206,91,176},{229,78,197,75,245,94,201,76,183,4,163,38,191,51,148,57,160,11,138,28,128},1,18,2,47,3,55,4,59,5,52,6,53,7,51,8,62,90,{226,88,209,42,150,57,168,52,177},{193,91,210,41,149,58,171,55,178}},C={182,168,151,168,191,235,153,164,158,168,152,164,182,169,151,169,191,232,168,190,168,235,153,180,158,168,152,180,147,190,168,160,151,170,191,189,182,170,146,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,184,150,160,151,185,151,186,150,151,187,155,170,-1,141,169,232,169,190,169,160,153,218,131,169,190,169,151,188,191,182,168,151,189,191,143,153,40,190,169,151,188,182,168,151,189,191,150,152,40,158,168},P={},U={{1,32},{1,7},{1,1}},nParams=0},{K={{204,74,223,72,226,69,220,88,165},{225,78,203,92,211,85,206,91,176},{229,78,197,75,245,94,201,76,183,4,163,38,191,51,148,57,160,11,138,28,128},1,18,2,47,3,55,4,59,5,52,6,53,7,51,8,62,90,{226,88,209,42,150,57,168,52,177},16,{222,85,217,44},44,63,9,42,10,122,11,103,12,{181,42,186,57,163,60,183,58},114,{180,38,167,36,128,39,190,58,135},115,{}},C={182,168,151,168,190,168,150,182,169,151,169,191,232,169,190,169,160,153,255,131,169,147,190,169,160,151,170,191,189,182,170,146,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,184,150,160,151,185,151,186,150,151,187,155,170,-1,141,169,232,170,190,170,160,153,203,131,169,190,168,235,153,198,190,170,151,188,151,189,150,152,198,182,171,160,151,190,191,189,182,170,146,160,151,171,151,160,150,160,151,173,151,166,150,160,151,175,151,191,150,160,151,161,151,176,150,160,151,163,151,177,150,160,151,165,151,178,150,160,151,167,151,176,150,160,151,185,151,176,150,160,151,177,151,186,150,160,151,179,151,180,150,160,151,181,151,182,150,160,151,183,151,180,150,151,187,136,170,137,136,190,168,136,169,190,168,160,153,80,131,169,182,170,146,160,151,171,151,180,150,160,151,173,151,137,150,151,187,136,170,182,168,151,138,191,182,170,146,160,151,171,151,139,150,151,187,136,170,159,159,160,235,153,424,131,169,151,140,159,159,136,170,131,169,158,168},P={},U={{1,32},{1,7},{1,1},{1,19}},nParams=1},{K={{231,76,199,73,247,92,203,78,181,6,161,36,189,49},1,21,2,45,3,52,4,63,5,40,90,{228,66,244},9,46,51,6,61,7,12,8,59,54,10,47,11,{237,94,175,50,174}},C={147,190,168,160,151,168,191,189,182,168,146,160,151,169,151,170,150,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,151,163,155,170,-1,141,169,232,169,190,169,160,153,37,131,169,147,190,169,160,151,164,191,189,182,168,146,160,151,169,151,165,150,160,151,171,151,166,150,160,151,173,151,162,150,160,151,175,151,167,150,160,151,161,151,174,150,160,151,184,151,185,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,165,151,190,150,160,151,191,151,176,150,160,151,177,151,160,150,151,163,155,170,-1,141,169,153,48,190,169,151,178,191,158,169,152,48,145,158,169},P={},U={{1,1}},nParams=1},{K={{239,68,196,72},1,29,2,40,3,59,4,56,5,10,6,7,8,46,9,41,90,{199,88,200,75,177,46,165,40},{225,75,217,50,141,44},{241,80,206,49,169,40,180,31,180,52,184}},C={190,168,151,168,191,182,168,146,160,151,169,151,170,150,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,174,150,160,151,164,151,172,150,160,151,165,151,166,150,160,151,167,151,184,150,151,185,136,170,143,153,226,157,158,169,152,226,182,169,190,168,136,169,232,169,190,169,182,170,151,168,191,234,160,235,153,196,131,169,190,169,137,186,182,170,151,187,191,136,169,234,160,235,153,210,131,169,190,169,182,170,151,188,191,234,153,41,181,158,169,152,41,157,158,169},P={},U={{1,1},{1,40},{1,7}},nParams=1},{K={{192,75,221,68,246,71,216,95},{230,67,217,90,192,89,195},{202,73,205,64},1,59,2,52,3,46,4,51,5,29,6,40,7,8,56,9,96,10,122,11,12,54,13,53,14,57,15,49,16,63,17,62,18,19,20,45,21,22,23,24,25,26,27,28,30,31,41,32,33,114,34,35,36,37,38,39,103,90,{170,13,149,30,156,27,152,29},115},C={182,168,151,168,191,235,153,164,158,168,152,164,182,169,190,168,136,169,235,153,177,158,168,152,177,182,170,190,168,136,169,232,169,190,168,160,151,169,191,189,136,169,131,169,182,171,160,151,170,191,189,182,172,146,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,172,150,160,151,184,151,185,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,190,151,185,150,160,151,191,151,176,150,160,151,177,151,178,150,160,151,179,151,180,150,160,151,181,151,182,150,160,151,183,151,136,150,160,151,137,151,138,150,160,151,139,151,189,150,160,151,140,151,178,150,160,151,141,151,142,150,160,151,143,151,174,150,160,151,128,151,189,150,160,151,129,151,164,150,160,151,130,151,166,150,160,151,131,151,172,150,160,151,132,151,185,150,160,151,133,151,188,150,160,151,134,151,172,150,160,151,164,151,166,150,160,151,135,151,160,150,160,151,152,151,153,150,160,151,154,151,189,150,160,151,155,151,156,150,160,151,157,151,178,150,160,151,158,151,142,150,160,151,159,151,174,150,160,151,144,151,136,150,160,151,145,151,166,150,160,151,146,151,147,150,151,148,136,170,137,149,190,169,136,169,182,172,146,160,151,171,151,150,150,151,148,136,170,159,159,136,170,131,169,158,168},P={},U={{1,32},{1,41},{1,40},{1,19},{1,1}},nParams=1},{K={{230,64,221,110,217,92,213,89,179,32,167},1,0,{234,73,193,85},29,2,40,3,59,4,56,5,10,6,7,8,46,9,41,90,{241,92,206,53,183,38,180},{223,84,216,45},52,51,96,122,11,57,12,54,13,63,14,15,16,17,62,18,19,20,34,21,22,23,24,25,26,61,27,28,53,45,30,31,32,33,35,36,37,38,39,{157,10,143,6,138,51,146,30,155,230},{156,12,137,5,138,16,131},55},C={182,168,160,151,168,191,189,136,169,232,168,151,169,232,169,190,168,164,232,170,151,169,232,171,190,171,151,170,142,153,128,190,169,190,170,183,153,256,152,135,190,169,190,170,179,153,256,163,172,190,169,232,172,190,168,190,172,191,232,173,190,173,151,171,191,182,169,146,160,151,169,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,160,150,160,151,166,151,174,150,160,151,167,151,184,150,160,151,185,151,186,150,151,187,136,170,234,160,153,34,131,169,182,170,190,173,136,169,153,309,190,173,160,151,188,191,189,136,169,131,169,147,182,171,160,151,189,191,189,182,169,146,160,151,169,151,160,150,160,151,173,151,190,150,160,151,175,151,184,150,160,151,161,151,191,150,160,151,163,151,172,150,160,151,165,151,174,150,160,151,166,151,160,150,160,151,167,151,162,150,160,151,185,151,176,150,160,151,164,151,177,150,160,151,178,151,179,150,160,151,180,151,181,150,160,151,182,151,183,150,160,151,136,151,160,150,160,151,137,151,190,150,160,151,138,151,183,150,160,151,139,151,140,150,160,151,141,151,177,150,160,151,142,151,183,150,160,151,143,151,128,150,160,151,129,151,191,150,160,151,130,151,186,150,160,151,131,151,184,150,160,151,132,151,191,150,160,151,133,151,190,150,160,151,134,151,135,150,160,151,152,151,177,150,160,151,153,151,154,150,160,151,172,151,155,150,160,151,156,151,190,150,160,151,157,151,177,150,160,151,158,151,172,150,160,151,159,151,174,150,160,151,128,151,160,150,160,151,144,151,162,150,160,151,145,151,164,150,160,151,146,151,160,150,160,151,147,151,174,150,160,151,148,151,184,150,160,151,174,151,186,150,151,187,155,170,-1,141,169,131,169,152,309,163,173,190,169,190,171,170,232,169,152,176,182,172,182,172,164,151,169,170,182,168,151,149,191,160,151,150,191,189,154,169,136,170,150,147,182,171,160,151,189,191,189,182,169,146,160,151,169,151,160,150,160,151,173,151,190,150,160,151,175,151,184,150,160,151,161,151,191,150,160,151,163,151,172,150,160,151,165,151,174,150,160,151,166,151,160,150,160,151,167,151,162,150,160,151,185,151,177,150,160,151,164,151,160,150,160,151,178,151,174,150,160,151,180,151,151,150,160,151,182,151,183,150,160,151,136,151,140,150,151,187,155,170,-1,141,169,131,169,158,168},P={{K={{192,75,221,68,246,71,216,95},{236,71,199,75},1,29,2,40,3,59,4,56,5,10,6,7,8,46,9,41,90},C={182,168,151,168,191,235,153,164,158,168,152,164,190,168,151,169,191,182,169,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,175,150,160,151,165,151,173,150,160,151,166,151,167,150,160,151,184,151,185,150,151,186,136,170,143,153,253,158,168,152,253,182,170,190,168,136,169,131,169,158,168},P={},U={{0,5},{0,1},{0,6}},nParams=1}},U={{1,5},{1,1},{1,41},{1,19},{1,39},{1,32},{1,42}},nParams=0},{K={1,0,{231,78,216,76,220,89,213,90,160,51},{205,70,202,95},59,2,52,3,46,4,51,5,29,6,40,7,8,56,9,122,10,62,11,12,41,13,14,15,55,16,63,17,90},C={151,168,232,168,182,168,164,232,169,151,168,232,170,190,170,151,169,142,153,181,190,168,190,169,183,153,233,152,140,190,168,190,169,179,153,233,163,171,190,168,232,171,182,168,190,171,191,160,151,170,191,189,136,169,131,169,190,168,190,170,170,232,168,152,165,146,233,168,147,182,169,160,151,171,191,189,182,170,146,160,151,168,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,172,150,160,151,184,151,185,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,190,151,162,150,160,151,191,151,176,150,160,151,177,151,172,150,160,151,178,151,166,150,160,151,179,151,180,150,160,151,181,151,182,150,160,151,183,151,189,150,151,136,155,170,-1,141,169,131,169,158,168},P={},U={{1,39},{1,19},{1,1}},nParams=0},{K={{192,75,221,68,246,71,216,95},{214,71,217,69},{212,70,194,91},0.5,{192,71,204,83,217,92,252,47,177,32,138,35,180,59}},C={182,168,151,168,191,153,178,137,169,151,170,191,151,171,136,169,131,169,137,172,136,168,131,169,152,178,158,168},P={},U={{1,32}},nParams=0},{K={{210,81,219,68,223,82},{208,67,218},1,122,2,90,0,{193,66,214,91},{234,65,208,70,202,115,160,40,172},117,3,{226,81,217,93},38,4,10,5,59,6,40,7,63,8,52,9,46,103,{235,94,177,34,165,59},{251,37,176,14,185,60,184,22,189,13,129},51,54,{248,38,179,10,187,39,165,50,189,22,147,14,156},96,{181,42,186,57,163,60,183,58},{133,35,190,15,166,34,168,55,128,19,158,11}},C={137,168,151,169,191,182,168,146,160,151,170,151,171,150,160,151,172,151,171,150,151,173,136,170,190,169,160,235,153,138,131,169,151,174,136,170,232,170,182,169,160,151,175,191,189,190,170,190,168,151,160,191,182,168,146,160,151,170,151,171,150,160,151,172,151,161,150,160,151,162,151,171,150,151,173,136,170,190,168,151,163,191,182,168,146,160,151,170,151,171,150,160,151,172,151,164,150,160,151,162,151,171,150,160,151,165,151,166,150,160,151,167,151,184,150,160,151,185,151,186,150,160,151,187,151,188,150,160,151,189,151,190,150,160,151,191,151,176,150,160,151,166,151,177,150,151,173,136,170,190,168,151,178,191,160,153,3,131,169,190,168,151,178,191,160,151,179,191,189,136,169,160,235,153,98,131,169,182,168,146,160,151,170,151,190,150,160,151,172,151,180,150,160,151,162,151,181,150,151,173,136,170,159,159,159,159,159,136,170,131,169,190,168,160,151,182,191,189,136,169,232,171,151,170,232,172,190,171,164,232,173,151,170,232,174,190,174,151,174,142,153,83,190,172,190,173,183,153,294,152,426,190,172,190,173,179,153,294,163,175,190,172,232,175,190,171,190,175,191,232,160,182,169,160,151,175,191,189,190,170,182,168,146,160,151,170,151,171,150,160,151,172,151,171,150,160,151,162,151,184,150,160,151,165,151,176,150,160,151,167,151,176,150,160,151,185,151,186,150,160,151,187,151,183,150,160,151,189,151,171,150,151,173,136,170,190,160,182,168,146,160,151,170,151,171,150,160,151,172,151,177,150,160,151,162,151,171,150,151,173,136,170,147,137,136,190,168,160,151,137,191,189,190,160,155,170,-1,141,169,159,159,159,159,136,170,131,169,163,160,190,172,190,174,170,232,172,152,67,158,168},P={},U={{1,1},{1,19}},nParams=2},{K={{210,75,192,75,215,114,203,92,163},{203,72,204,65},1,103,2,3,4,122,5,41,6,52,7,51,8,60,9,10,63,11,40,12,13,59,14,15,55,16,17,62,18,19,20,21,90,{135,32,165,60,176,25,184,4,129,12},{134,38,163,63,176,58,169},{133,34,175,32,183,57,170,7,148},{131,46,188,48,178,53,187,2,137,31,174,23,147,30,155}},C={182,168,151,168,191,235,153,164,158,168,152,164,147,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,171,150,160,151,173,151,171,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,167,150,160,151,185,151,186,150,160,151,187,151,188,150,160,151,189,151,175,150,160,151,190,151,191,150,160,151,176,151,188,150,160,151,177,151,178,150,160,151,179,151,186,150,160,151,180,151,181,150,160,151,182,151,175,150,160,151,183,151,171,150,160,151,136,151,171,150,160,151,137,151,171,150,151,138,155,170,-1,141,169,131,169,182,171,182,171,164,151,170,170,182,172,151,139,191,160,151,140,191,189,154,169,136,170,150,182,174,151,141,191,232,168,190,168,153,113,182,171,182,171,164,151,170,170,190,168,151,142,191,160,151,140,191,189,154,170,136,170,150,152,113,158,168},P={{K={{210,75,192,75,215,114,203,92,163},{236,71,199,75},{207,72,220,74,193},{194,65,194,84},1,61,2,40,3,59,4,56,90,{199,92,208,85},119,122,5,13,6,21,7,8,17,9,10,11,27,12,25,31,14,15,16,18,19,22,30,20,23,24,26,28,29,0,{138,52,161,29,184,18,134,12,131,21,148,23,137,242}},C={182,168,151,168,191,235,153,164,158,168,152,164,147,190,168,151,169,191,160,151,170,191,189,136,169,160,151,171,191,189,182,169,146,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,151,164,155,170,-1,141,169,235,153,239,158,168,152,239,147,182,170,160,151,165,191,189,182,169,146,160,151,172,151,166,150,160,151,174,151,166,150,160,151,160,151,166,150,160,151,162,151,167,150,160,151,184,151,185,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,189,151,190,150,160,151,191,151,191,150,160,151,176,151,176,150,160,151,177,151,178,150,160,151,179,151,180,150,160,151,185,151,181,150,160,151,182,151,167,150,160,151,183,151,180,150,160,151,136,151,137,150,160,151,190,151,138,150,160,151,137,151,139,150,160,151,138,151,140,150,160,151,141,151,167,150,160,151,187,151,178,150,160,151,139,151,140,150,160,151,142,151,140,150,160,151,143,151,181,150,160,151,180,151,140,150,160,151,128,151,167,150,160,151,178,151,166,150,160,151,129,151,166,150,160,151,130,151,166,150,151,164,155,170,-1,141,169,131,169,182,171,190,168,151,131,136,170,131,169,190,168,160,151,132,191,189,136,169,232,169,151,172,232,170,190,169,164,232,171,151,172,232,172,190,172,151,131,142,153,403,190,170,190,171,183,153,502,152,490,190,170,190,171,179,153,502,163,173,190,170,232,173,182,171,190,169,190,173,191,151,172,136,170,131,169,190,170,190,172,170,232,170,152,387,158,168},P={},U={{0,0},{0,2},{0,1},{0,5}},nParams=1},{K={{210,75,192,75,215,114,203,92,163},{236,71,199,75},{207,72,220,74,193},{194,65,194,84},1,61,2,40,3,59,4,56,90,{199,92,208,85},119,122,5,25,6,18,7,27,8,9,10,30,11,31,12,13,14,15,20,16,17,19,21,22,23,24,26,28,29,0},C={182,168,151,168,191,235,153,164,158,168,152,164,147,190,168,151,169,191,160,151,170,191,189,136,169,160,151,171,191,189,182,169,146,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,151,164,155,170,-1,141,169,153,440,147,182,170,160,151,165,191,189,182,169,146,160,151,172,151,166,150,160,151,174,151,166,150,160,151,160,151,166,150,160,151,162,151,167,150,160,151,184,151,185,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,190,151,190,150,160,151,191,151,167,150,160,151,176,151,177,150,160,151,178,151,179,150,160,151,180,151,191,150,160,151,181,151,185,150,160,151,182,151,179,150,160,151,183,151,136,150,160,151,137,151,177,150,160,151,138,151,189,150,160,151,187,151,136,150,160,151,139,151,182,150,160,151,136,151,167,150,160,151,140,151,189,150,160,151,141,151,177,150,160,151,142,151,177,150,160,151,143,151,179,150,160,151,185,151,177,150,160,151,128,151,167,150,160,151,189,151,166,150,160,151,129,151,166,150,160,151,130,151,166,150,151,164,155,170,-1,141,169,131,169,182,171,190,168,151,131,136,170,131,169,152,440,158,168},P={},U={{0,0},{0,2},{0,1},{0,5}},nParams=1}},U={{1,32},{1,19},{1,1},{1,43},{1,5},{1,44},{1,7}},nParams=0},{K={1,0,{231,78,216,76,220,89,213,90,160,51},{205,70,202,95},103,2,3,4,122,5,41,6,52,7,51,8,60,9,10,63,11,40,12,13,62,14,15,16,59,17,18,55,19,20,21,22,23,24,90},C={151,168,232,168,182,168,164,232,169,151,168,232,170,190,170,151,169,142,153,181,190,168,190,169,183,153,233,152,140,190,168,190,169,179,153,233,163,171,190,168,232,171,182,168,190,171,191,160,151,170,191,189,136,169,131,169,190,168,190,170,170,232,168,152,165,146,233,168,147,182,169,160,151,171,191,189,182,170,146,160,151,168,151,172,150,160,151,173,151,172,150,160,151,174,151,172,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,184,150,160,151,185,151,184,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,190,151,160,150,160,151,191,151,176,150,160,151,177,151,166,150,160,151,178,151,162,150,160,151,179,151,180,150,160,151,181,151,189,150,160,151,182,151,183,150,160,151,136,151,187,150,160,151,137,151,176,150,160,151,138,151,160,150,160,151,139,151,172,150,160,151,140,151,172,150,160,151,141,151,172,150,151,142,155,170,-1,141,169,131,169,158,168},P={},U={{1,43},{1,19},{1,1}},nParams=0},{K={{241,68,219,72,223,65},{228,79,196,74,244,95,200,77,182,5,162,39,190,50,149,56,161,10,139,29,129},1,25,2,54,3,51,4,57,5,49,6,30,7,63,8,46,9,10,11,12,53,13,40,90,{252,90,183,3,174,60,176,50,181,59,130,9,159,28},0,{244,50,132},{206,33,167,38,162},{214,45,161,36},59,47,28,55,96,122,14,15,16,17,62,18,{139,53,160,30,169,12,136,38,141,29,145},34,35,42,19,31,44,52,60},C={190,168,235,160,235,153,167,131,169,190,168,151,168,191,235,153,190,157,158,169,152,190,147,190,168,160,151,169,191,189,182,168,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,167,150,160,151,187,151,161,150,160,151,188,151,185,150,160,151,189,151,190,150,160,151,191,151,176,150,151,177,155,170,-1,141,169,232,169,190,169,235,153,389,190,168,160,151,178,191,189,136,169,232,170,151,170,232,171,190,170,164,232,172,151,170,232,173,190,173,151,179,142,153,13,190,171,190,172,183,153,387,152,4,190,171,190,172,179,153,387,163,174,190,171,232,174,147,190,170,190,174,191,160,151,180,191,189,182,168,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,167,150,160,151,187,151,161,150,160,151,188,151,185,150,160,151,189,151,190,150,160,151,191,151,176,150,151,177,155,170,-1,141,169,153,394,190,170,190,174,191,232,169,152,387,152,394,190,171,190,173,170,232,171,152,61,152,389,190,169,153,366,137,181,154,169,136,169,131,169,182,169,160,151,182,191,189,182,168,146,160,151,170,151,183,150,160,151,172,151,136,150,160,151,174,151,185,150,160,151,160,151,190,150,160,151,162,151,137,150,160,151,164,151,183,150,160,151,166,151,176,150,160,151,184,151,138,150,160,151,186,151,139,150,160,151,187,151,140,150,160,151,188,151,161,150,160,151,189,151,173,150,160,151,191,151,175,150,160,151,141,151,161,150,160,151,142,151,163,150,160,151,143,151,167,150,160,151,128,151,129,150,160,151,130,151,140,150,151,177,136,170,190,168,160,151,131,191,189,136,169,159,136,170,131,169,181,158,169,152,366,147,190,168,160,151,169,191,189,182,168,146,160,151,170,151,187,150,160,151,172,151,176,150,160,151,174,151,190,150,160,151,160,151,132,150,160,151,162,151,175,150,160,151,164,151,138,150,160,151,166,151,175,150,160,151,184,151,185,150,160,151,186,151,133,150,160,151,187,151,187,150,160,151,188,151,176,150,160,151,189,151,190,150,160,151,191,151,138,150,160,151,141,151,134,150,160,151,142,151,185,150,151,177,155,170,-1,141,169,232,175,190,175,235,153,605,190,168,160,151,178,191,189,136,169,232,160,151,170,232,161,190,160,164,232,162,151,170,232,163,190,163,151,179,142,153,713,190,161,190,162,183,153,603,152,704,190,161,190,162,179,153,603,163,164,190,161,232,164,147,190,160,190,164,191,160,151,180,191,189,182,168,146,160,151,170,151,187,150,160,151,172,151,176,150,160,151,174,151,190,150,160,151,160,151,132,150,160,151,162,151,175,150,160,151,164,151,138,150,160,151,166,151,175,150,160,151,184,151,185,150,160,151,186,151,133,150,160,151,187,151,187,150,160,151,188,151,176,150,160,151,189,151,190,150,160,151,191,151,138,150,160,151,141,151,134,150,160,151,142,151,185,150,151,177,155,170,-1,141,169,153,578,190,160,190,164,191,232,175,152,603,152,578,190,161,190,163,170,232,161,152,761,152,605,190,175,153,828,137,181,154,170,136,169,131,169,182,169,160,151,182,191,189,182,168,146,160,151,170,151,183,150,160,151,172,151,136,150,160,151,174,151,185,150,160,151,160,151,190,150,160,151,162,151,137,150,160,151,164,151,183,150,160,151,166,151,176,150,160,151,184,151,138,150,160,151,186,151,139,150,160,151,187,151,140,150,160,151,188,151,134,150,160,151,189,151,176,150,160,151,191,151,190,150,160,151,141,151,138,150,160,151,142,151,134,150,160,151,143,151,185,150,160,151,128,151,167,150,160,151,130,151,129,150,160,151,135,151,140,150,151,177,136,170,190,168,160,151,131,191,189,136,169,159,136,170,131,169,181,158,169,152,828,190,168,160,151,178,191,189,136,169,232,165,151,170,232,166,190,165,164,232,167,151,170,232,184,190,184,151,179,142,153,788,190,166,190,167,183,153,1055,152,875,190,166,190,167,179,153,1055,163,185,190,166,232,185,147,190,165,190,185,191,160,151,180,191,189,182,168,146,160,151,170,151,184,150,160,151,172,151,167,150,160,151,174,151,138,150,160,151,160,151,190,150,160,151,162,151,185,150,160,151,164,151,167,150,160,151,166,151,152,150,160,151,184,151,153,150,160,151,186,151,167,150,160,151,187,151,154,150,160,151,188,151,185,150,151,177,155,170,-1,141,169,153,1030,137,181,154,171,136,169,131,169,182,169,160,151,182,191,189,182,168,146,160,151,170,151,183,150,160,151,172,151,136,150,160,151,174,151,185,150,160,151,160,151,190,150,160,151,162,151,137,150,160,151,164,151,183,150,160,151,166,151,176,150,160,151,184,151,138,150,160,151,186,151,139,150,160,151,187,151,140,150,160,151,188,151,155,150,160,151,189,151,175,150,160,151,191,151,176,150,160,151,141,151,167,150,160,151,142,151,129,150,160,151,143,151,140,150,151,177,136,170,190,165,190,185,191,160,151,131,191,189,136,169,159,136,170,131,169,181,158,169,152,1030,190,166,190,184,170,232,166,152,772,157,158,169},P={{K={{199,76,219,72,210,89,208,94,170,33,172,57,180,54,173,50,147}},C={137,168,182,168,136,169,131,169,158,168},P={},U={{1,1}},nParams=0},{K={{199,76,219,72,193,71,214,69,168,40,160,57,168,37,171,50,140,21,157}},C={137,168,182,168,136,169,131,169,158,168},P={},U={{1,7}},nParams=0},{K={{231,76,219,72,226,80,203,75,164,55}},C={182,168,182,169,191,160,151,168,191,189,136,169,131,169,158,168},P={},U={{1,13},{1,17}},nParams=0}},U={{1,1},{1,19}},nParams=1},{K={{213,68,218,70},{209,86,203,89,220}},C={182,168,153,160,158,168,152,160,137,168,151,169,191,154,169,155,169,169,233,168,158,168},P={{K={{200,75,207,66},1,59,2,47,3,46,4,53,5,28,6,7,40,8,55,9,96,10,122,11,54,12,13,14,42,15,16,41,17,18,19,20,21,63,22,62,23,118,24,25,57,26,27,29,30,31,45,32,52,33,90,{179,56,175,12,166,6,130,29,145,22,138,239},114,60,51,115,{187,43,150,9,172,15,128,27},0,{172,1,141,26,159},{141,0,151,12,131,5},35,44,34,{142,22},{134,7,158,11},127,{144,1,129,21},{145,8,158,26},{145,11,135,6}},C={182,168,160,151,168,191,189,182,169,146,160,151,169,151,170,150,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,170,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,190,151,160,150,160,151,191,151,160,150,160,151,176,151,177,150,160,151,178,151,187,150,160,151,179,151,180,150,160,151,181,151,174,150,160,151,182,151,170,150,160,151,183,151,165,150,160,151,136,151,174,150,160,151,137,151,138,150,160,151,139,151,140,150,160,151,141,151,142,150,160,151,143,151,187,150,160,151,128,151,129,150,160,151,130,151,160,150,160,151,131,151,160,150,160,151,162,151,189,150,160,151,132,151,140,150,160,151,133,151,160,150,160,151,134,151,135,150,160,151,152,151,153,150,160,151,154,151,187,150,151,155,136,170,182,170,151,156,191,182,169,146,160,151,169,151,180,150,160,151,171,151,187,150,160,151,173,151,157,150,151,155,136,170,182,170,151,156,191,151,158,172,182,169,146,160,151,169,151,187,150,160,151,171,151,167,150,160,151,173,151,159,150,160,151,175,151,153,150,160,151,161,151,144,150,151,155,136,170,159,159,159,159,136,170,131,169,182,170,151,145,191,153,985,151,146,232,168,137,147,182,171,155,169,171,232,171,232,170,232,169,165,169,170,171,163,172,163,173,190,169,190,170,190,171,155,170,170,232,173,232,172,190,172,232,171,190,172,145,143,153,315,182,170,151,145,191,235,153,450,152,315,152,450,190,173,160,153,478,131,169,190,173,151,148,191,153,291,182,172,190,173,136,169,153,289,190,168,151,169,170,232,168,152,289,152,313,182,171,190,172,145,150,152,491,190,168,151,146,142,153,719,182,168,160,151,168,191,189,182,169,146,160,151,169,151,170,150,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,170,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,187,150,160,151,188,151,129,150,160,151,190,151,149,150,160,151,191,151,129,150,160,151,176,151,189,150,160,151,178,151,138,150,160,151,179,151,187,150,160,151,181,151,140,150,160,151,182,151,160,150,160,151,183,151,153,150,160,151,136,151,138,150,160,151,137,151,142,150,160,151,139,151,187,150,151,155,136,170,190,168,182,169,146,160,151,169,151,187,150,160,151,171,151,189,150,160,151,173,151,138,150,160,151,175,151,150,150,160,151,161,151,138,150,160,151,163,151,165,150,160,151,164,151,180,150,151,155,136,170,159,159,136,170,131,169,152,719,182,168,160,151,168,191,189,182,169,146,160,151,169,151,170,150,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,170,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,187,150,160,151,188,151,153,150,160,151,190,151,138,150,160,151,191,151,151,150,160,151,176,151,174,150,160,151,178,151,187,150,160,151,179,151,129,150,160,151,181,151,149,150,160,151,182,151,129,150,160,151,183,151,189,150,160,151,136,151,138,150,160,151,137,151,187,150,160,151,139,151,170,150,160,151,141,151,174,150,160,151,143,151,187,150,151,155,136,170,137,232,151,233,191,182,169,146,160,151,169,151,234,150,160,151,171,151,182,150,160,151,173,151,185,150,160,151,175,151,234,150,160,151,161,151,141,150,160,151,163,151,185,150,160,151,164,151,234,150,160,151,166,151,184,150,151,155,136,170,137,232,151,235,191,136,168,182,170,151,156,191,170,136,170,159,136,170,131,169,137,236,151,237,191,182,170,151,156,191,136,169,131,169,163,168,163,169,163,170,163,171,163,172,163,173,152,399,147,182,168,160,151,168,191,189,182,169,146,160,151,169,151,170,150,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,170,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,190,151,160,150,160,151,191,151,160,150,160,151,176,151,177,150,160,151,178,151,187,150,160,151,179,151,180,150,160,151,181,151,174,150,160,151,182,151,160,150,160,151,183,151,177,150,160,151,136,151,177,150,160,151,137,151,138,150,160,151,139,151,140,150,151,155,155,170,-1,141,169,131,169,158,168},P={},U={{0,1},{0,2},{0,3},{0,4},{0,5}},nParams=0}},U={{1,47},{1,19},{1,1},{1,32},{1,48},{1,49}},nParams=0},{K={{209,70,200,65,221},{203,72,204,65},1,59,2,47,3,46,4,53,5,28,6,7,40,8,55,9,96,10,122,11,62,12,51,13,41,14,15,56,16,54,17,63,18,90},C={182,168,153,185,137,168,154,169,136,169,131,169,145,233,168,152,185,147,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,171,150,160,151,165,151,166,150,160,151,167,151,184,150,160,151,185,151,186,150,160,151,187,151,188,150,160,151,189,151,190,150,160,151,191,151,176,150,160,151,177,151,178,150,160,151,179,151,171,150,160,151,180,151,181,150,160,151,182,151,183,150,160,151,136,151,137,150,160,151,138,151,190,150,151,139,155,170,-1,141,169,131,169,158,168},P={{K={{213,68,218,70},{193,71,196,77,215,90}},C={137,168,151,169,191,182,168,136,169,131,169,158,168},P={},U={{0,0}},nParams=0}},U={{1,47},{1,19},{1,1}},nParams=0},{K={{200,75,207,66},1,2,10,3,19,4,25,5,17,6,7,122,8,20,9,59,55,11,63,12,96,13,90,{247,92,172,32},38,54,41,{254,45,164,58,190,31,180,52,184},46,50,{135,33,188,10,165,56,180,18,129,9,141},{135,44,167,41,151,60,171,46,149,38,129,4,157,17,182,27,66,233,104,254,98},51,57,49,30,53,40,{143,41,164,16,189,47,131,1,134,8,145,26,140,15},0,{131,61,147},14,15,16,18,21,22,52,34,35,42,23,24,31,44,{173,60,131,9,140},{179,48,145,3,152,26},{184,48,141,4,138,27},118},C={182,168,160,151,168,191,189,182,169,146,160,151,169,151,169,150,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,184,150,160,151,171,151,185,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,190,151,164,150,151,191,136,170,190,168,151,176,191,182,169,146,160,151,169,151,164,150,160,151,170,151,177,150,160,151,172,151,164,150,160,151,174,151,175,150,160,151,160,151,178,150,160,151,162,151,184,150,160,151,163,151,179,150,160,151,165,151,179,150,160,151,167,151,189,150,160,151,171,151,164,150,151,191,136,170,190,168,151,180,191,159,159,159,136,170,131,169,182,168,160,151,168,191,189,182,169,146,160,151,169,151,164,150,160,151,170,151,164,150,160,151,172,151,164,150,160,151,174,151,164,150,160,151,160,151,164,150,160,151,162,151,164,150,160,151,163,151,164,150,160,151,165,151,171,150,160,151,167,151,184,150,160,151,171,151,181,150,160,151,186,151,182,150,160,151,188,151,189,150,160,151,190,151,164,150,151,191,136,170,190,168,160,151,183,191,189,136,169,159,136,170,131,169,147,190,168,160,151,136,191,189,182,169,146,160,151,169,151,175,150,160,151,170,151,178,150,160,151,172,151,137,150,160,151,174,151,138,150,160,151,160,151,139,150,160,151,162,151,140,150,160,151,163,151,187,150,160,151,165,151,181,150,160,151,167,151,187,150,160,151,171,151,138,150,160,151,186,151,181,150,160,151,188,151,141,150,160,151,190,151,142,150,151,191,155,170,-1,141,169,232,169,190,169,235,153,665,190,168,160,151,143,191,189,136,169,232,170,151,169,232,171,190,170,164,232,172,151,169,232,173,190,173,151,128,142,153,257,190,171,190,172,183,153,647,152,280,190,171,190,172,179,153,647,163,174,190,171,232,174,147,190,170,190,174,191,160,151,129,191,189,182,169,146,160,151,169,151,175,150,160,151,170,151,178,150,160,151,172,151,137,150,160,151,174,151,138,150,160,151,160,151,139,150,160,151,162,151,140,150,160,151,163,151,187,150,160,151,165,151,181,150,160,151,167,151,187,150,160,151,171,151,138,150,160,151,186,151,181,150,160,151,188,151,141,150,160,151,190,151,142,150,151,191,155,170,-1,141,169,153,654,190,170,190,174,191,232,169,152,647,152,654,190,171,190,173,170,232,171,152,305,152,665,182,168,160,151,168,191,189,182,169,146,160,151,169,151,164,150,160,151,170,151,164,150,160,151,172,151,164,150,160,151,174,151,164,150,160,151,160,151,164,150,160,151,162,151,164,150,160,151,163,151,164,150,160,151,165,151,175,150,160,151,167,151,178,150,160,151,171,151,137,150,160,151,186,151,138,150,160,151,188,151,139,150,160,151,190,151,140,150,160,151,130,151,187,150,160,151,131,151,181,150,160,151,132,151,187,150,160,151,161,151,138,150,160,151,133,151,181,150,160,151,173,151,141,150,160,151,166,151,142,150,160,151,134,151,189,150,160,151,135,151,164,150,151,191,136,170,190,169,160,153,635,131,169,190,169,160,151,183,191,189,136,169,160,235,153,580,131,169,182,169,146,160,151,169,151,152,150,160,151,170,151,141,150,151,191,136,170,159,136,170,131,169,147,190,168,160,151,136,191,189,182,169,146,160,151,169,151,171,150,160,151,170,151,142,150,160,151,172,151,141,150,160,151,174,151,153,150,160,151,160,151,137,150,160,151,162,151,185,150,160,151,163,151,137,150,160,151,165,151,181,150,160,151,167,151,154,150,160,151,171,151,171,150,160,151,186,151,142,150,160,151,188,151,141,150,160,151,190,151,185,150,160,151,130,151,155,150,160,151,131,151,181,150,151,191,155,170,-1,141,169,232,175,190,175,235,153,1160,190,168,160,151,143,191,189,136,169,232,160,151,169,232,161,190,160,164,232,162,151,169,232,163,190,163,151,128,142,153,804,190,161,190,162,183,153,1206,152,827,190,161,190,162,179,153,1206,163,164,190,161,232,164,147,190,160,190,164,191,160,151,129,191,189,182,169,146,160,151,169,151,171,150,160,151,170,151,142,150,160,151,172,151,141,150,160,151,174,151,153,150,160,151,160,151,137,150,160,151,162,151,185,150,160,151,163,151,137,150,160,151,165,151,181,150,160,151,167,151,154,150,160,151,171,151,171,150,160,151,186,151,142,150,160,151,188,151,141,150,160,151,190,151,185,150,160,151,130,151,155,150,160,151,131,151,181,150,151,191,155,170,-1,141,169,153,1213,190,160,190,164,191,232,175,152,1206,152,1213,190,161,190,163,170,232,161,152,980,152,1160,182,168,160,151,168,191,189,182,169,146,160,151,169,151,164,150,160,151,170,151,164,150,160,151,172,151,164,150,160,151,174,151,164,150,160,151,160,151,164,150,160,151,162,151,164,150,160,151,163,151,164,150,160,151,165,151,171,150,160,151,167,151,142,150,160,151,171,151,141,150,160,151,186,151,153,150,160,151,188,151,137,150,160,151,190,151,185,150,160,151,130,151,137,150,160,151,131,151,181,150,160,151,132,151,154,150,160,151,161,151,171,150,160,151,133,151,142,150,160,151,173,151,141,150,160,151,166,151,185,150,160,151,134,151,155,150,160,151,135,151,181,150,160,151,156,151,189,150,160,151,157,151,164,150,151,191,136,170,190,175,160,153,1126,131,169,190,175,160,151,183,191,189,136,169,160,235,153,1103,131,169,182,169,146,160,151,169,151,152,150,160,151,170,151,141,150,151,191,136,170,159,136,170,131,169,146,232,165,190,168,160,151,143,191,189,136,169,232,166,151,169,232,167,190,166,164,232,184,151,169,232,185,190,185,151,128,142,153,1471,190,167,190,184,183,153,1331,152,1462,190,167,190,184,179,153,1331,163,186,190,167,232,186,147,190,166,190,186,191,160,151,129,191,189,182,169,146,160,151,169,151,165,150,160,151,170,151,187,150,160,151,172,151,185,150,160,151,174,151,141,150,160,151,160,151,181,150,160,151,162,151,187,150,160,151,163,151,158,150,160,151,165,151,159,150,160,151,167,151,187,150,160,151,171,151,152,150,160,151,186,151,181,150,151,191,155,170,-1,141,169,153,1338,137,144,151,145,191,190,165,190,166,190,186,191,151,176,191,136,170,131,169,152,1338,190,167,190,185,170,232,167,152,1455,182,168,160,151,168,191,189,182,169,146,160,151,169,151,164,150,160,151,170,151,164,150,160,151,172,151,164,150,160,151,174,151,164,150,160,151,160,151,164,150,160,151,162,151,164,150,160,151,163,151,164,150,160,151,165,151,165,150,160,151,167,151,187,150,160,151,171,151,185,150,160,151,186,151,141,150,160,151,188,151,181,150,160,151,190,151,187,150,160,151,130,151,158,150,160,151,131,151,159,150,160,151,132,151,187,150,160,151,161,151,152,150,160,151,133,151,181,150,160,151,173,151,179,150,160,151,166,151,189,150,160,151,134,151,164,150,151,191,136,170,190,165,164,151,128,142,160,153,1784,131,169,147,137,144,151,146,191,190,165,182,169,146,160,151,169,151,147,150,160,151,170,151,164,150,151,191,155,170,-1,141,169,160,235,153,1729,131,169,182,169,146,160,151,169,151,152,150,160,151,170,151,141,150,151,191,136,170,159,136,170,131,169,158,168},P={},U={{1,19},{1,1}},nParams=1},{K={{210,81,198,93,225,92,218,86,140,42,173,40},{210,79,201,69,255,89,222,91},{202,73,205,64},1,103,2,3,4,122,5,42,6,51,7,57,8,49,9,10,55,11,53,12,62,13,63,14,15,59,16,40,17,18,19,20,21,114,22,111,23,41,24,115,25,26,8270,27,28,29,54,30,31,32,33,34,35,36,37,38,44,39,43,52,45,61,46,47,48,50,90,{160,14,155,62,152,14,140,230},{170,25,132,0,151,18,49,192,103,251,126},{170,2,159,27,156,30,117},{158,15,129,29},{143,10,159,22,130}},C={137,168,136,168,131,169,182,168,151,169,181,150,147,182,169,160,151,170,191,189,182,170,146,160,151,171,151,172,150,160,151,173,151,172,150,160,151,174,151,172,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,184,150,160,151,185,151,160,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,190,151,191,150,160,151,176,151,177,150,160,151,178,151,160,150,160,151,179,151,180,150,160,151,181,151,182,150,160,151,183,151,187,150,160,151,136,151,177,150,160,151,137,151,191,150,160,151,138,151,160,150,160,151,139,151,140,150,160,151,141,151,142,150,160,151,143,151,128,150,160,151,129,151,130,150,160,151,131,151,160,150,160,151,132,151,133,150,160,151,134,151,160,150,160,151,135,151,166,150,160,151,152,151,153,150,160,151,154,151,164,150,160,151,155,151,166,150,160,151,156,151,184,150,160,151,157,151,160,150,160,151,158,151,180,150,160,151,159,151,160,150,160,151,144,151,153,150,160,151,145,151,177,150,160,151,146,151,147,150,160,151,148,151,177,150,160,151,182,151,182,150,160,151,128,151,160,150,160,151,162,151,164,150,160,151,149,151,150,150,160,151,147,151,160,150,160,151,151,151,232,150,160,151,233,151,180,150,160,151,234,151,187,150,160,151,235,151,177,150,160,151,184,151,160,150,160,151,236,151,172,150,160,151,164,151,172,150,160,151,150,151,172,150,151,237,155,170,-1,141,169,131,169,182,171,160,151,238,191,189,136,169,232,168,182,172,182,172,164,151,171,170,190,168,151,239,191,160,151,224,191,189,154,169,136,170,150,137,225,151,226,191,151,161,154,170,136,170,131,169,158,168},P={{K={{209,76,202,70,252,90,221,88},{246,71,216,73,215,66},{212,70,217,65},1,42,2,51,3,57,4,49,5,96,6,122,7,52,8,53,9,10,46,11,59,12,40,13,61,14,63,15,16,17,47,18,19,62,20,21,22,23,24,25,26,41,27,28,90,{150,48,173,27,148,9,133,35,144,24,156},{187,56,188,49},44},C={182,168,151,168,191,235,153,164,158,168,152,164,182,169,151,169,191,232,168,190,168,235,153,112,147,182,170,160,151,170,191,189,182,171,146,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,184,150,160,151,185,151,186,150,160,151,187,151,166,150,160,151,188,151,189,150,160,151,190,151,191,150,160,151,176,151,177,150,160,151,178,151,179,150,160,151,180,151,181,150,160,151,182,151,189,150,160,151,183,151,166,150,160,151,136,151,137,150,160,151,138,151,184,150,160,151,139,151,140,150,160,151,141,151,181,150,160,151,142,151,177,150,160,151,143,151,166,150,160,151,128,151,160,150,160,151,129,151,137,150,160,151,130,151,177,150,160,151,131,151,132,150,160,151,133,151,186,150,160,151,134,151,177,150,151,135,155,170,-1,141,169,131,169,158,168,152,112,182,172,190,168,160,151,152,191,189,136,169,190,168,150,182,170,160,151,153,191,189,182,171,146,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,132,150,160,151,185,151,191,150,160,151,187,151,154,150,160,151,188,151,181,150,160,151,190,151,140,150,160,151,176,151,166,150,151,135,136,170,190,168,160,151,152,191,189,136,169,159,136,170,131,169,182,173,190,168,136,169,131,169,158,168},P={},U={{0,0},{1,0},{0,1},{0,2},{0,5},{0,6}},nParams=0},{K={{209,76,202,70,252,90,221,88},{209,82,197,94,226,95,217,85,143,41,174,43},{202,73,205,64},1,103,2,3,4,122,5,42,6,51,7,57,8,49,9,10,55,11,53,12,62,13,63,14,15,16,52,17,18,19,20,21,22,23,90},C={182,168,151,168,191,153,5,137,169,136,168,131,169,147,182,169,160,151,170,191,189,182,170,146,160,151,171,151,172,150,160,151,173,151,172,150,160,151,174,151,172,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,184,150,160,151,185,151,160,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,190,151,191,150,160,151,176,151,177,150,160,151,178,151,160,150,160,151,179,151,177,150,160,151,180,151,181,150,160,151,182,151,191,150,160,151,183,151,177,150,160,151,136,151,191,150,160,151,137,151,160,150,160,151,138,151,172,150,160,151,139,151,172,150,160,151,140,151,172,150,151,141,155,170,-1,141,169,131,169,152,5,158,168},P={},U={{0,0},{0,1},{0,2}},nParams=0}},U={{1,32},{1,19},{1,1},{1,7},{1,50},{1,48},{1,51}},nParams=0},{K={{209,76,202,70,252,90,221,88},1,0,{224,65,223,83,219,86,210,37,167,60}},C={182,168,151,168,157,150,151,169,232,168,182,169,164,232,169,151,169,232,170,190,170,151,170,142,153,139,190,168,190,169,183,153,239,152,130,190,168,190,169,179,153,239,163,171,190,168,232,171,182,169,190,171,191,160,151,171,191,189,136,169,131,169,190,168,190,170,170,232,168,152,187,146,233,169,158,168},P={},U={{1,32},{1,50}},nParams=0},{K={0,{210,71,195,92,193},1,{205,70,202,95},2,9,3,27,4,12,5,31,6,30,7,8,122,90,46,53,59,54,41,44,10,63,11,62,96,13},C={151,168,232,168,137,169,182,168,155,169,171,232,171,232,170,232,169,165,169,170,171,163,172,163,173,190,169,190,170,190,171,155,170,170,232,173,232,172,190,172,232,171,190,172,145,143,153,214,190,168,151,170,170,232,168,182,169,160,151,171,191,189,182,170,146,160,151,170,151,170,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,166,150,160,151,167,151,184,150,151,185,136,170,190,172,159,136,170,131,169,152,189,182,169,160,151,171,191,189,182,170,146,160,151,170,151,186,150,160,151,172,151,187,150,160,151,174,151,186,150,160,151,160,151,188,150,160,151,162,151,189,150,160,151,164,151,184,150,160,151,166,151,190,150,160,151,167,151,188,150,160,151,173,151,191,150,160,151,176,151,177,150,160,151,178,151,179,150,160,151,161,151,180,150,160,151,181,151,184,150,151,185,136,170,190,168,159,136,170,131,169,158,168},P={},U={{1,48},{1,19},{1,1}},nParams=0},{K={{200,75,207,66},1,41,2,59,3,44,4,63,5,62,6,122,7,54,8,9,10,11,40,12,13,14,57,15,16,17,18,19,20,90},C={146,233,168,147,182,169,160,151,168,191,189,182,170,146,160,151,169,151,170,150,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,160,150,160,151,184,151,174,150,160,151,185,151,160,150,160,151,186,151,187,150,160,151,188,151,170,150,160,151,189,151,164,150,160,151,190,151,191,150,160,151,176,151,166,150,160,151,177,151,160,150,160,151,178,151,172,150,160,151,179,151,187,150,160,151,180,151,160,150,160,151,181,151,162,150,151,182,155,170,-1,141,169,131,169,158,168},P={},U={{1,48},{1,19},{1,1}},nParams=0},{K={5,{228,79,196,74,244,95,200,77,182,5,162,39,190,50},1,21,2,45,3,52,4,63,40,90,{194,66},{205,94,217,89,213},{255,82,197,94,209,55},{196,85,203,87},{198,84,208,73},0.05,{250,68,250},9,46,51,6,61,7,12,8,59,54,10,47,11,{151,36,165,56,180},{},{132,34,191,31,161,56,171,58,145,19,146,44,155,22,149,24,102,227,88,230,116,249,122,243},{135,39,162,62,177,59,168},{129,32,190,50,186,55,179,4,134,29}},C={190,169,160,235,153,162,131,169,151,168,232,169,147,190,168,160,151,169,191,189,182,168,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,168,151,162,150,151,163,155,170,-1,141,169,232,170,190,170,235,153,25,137,164,151,165,191,136,168,232,171,137,164,151,165,191,136,168,190,171,144,190,169,130,153,7,190,168,151,166,191,235,153,192,145,158,169,152,192,147,190,168,160,151,169,191,189,182,168,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,168,151,162,150,151,163,155,170,-1,141,169,232,170,190,170,153,10,152,7,152,10,137,167,151,184,191,151,185,136,169,131,169,152,228,152,25,190,170,235,160,235,153,423,131,169,147,190,170,160,151,186,191,189,182,168,146,160,151,170,151,187,150,160,151,172,151,188,150,160,151,174,151,162,150,160,151,160,151,189,150,160,151,168,151,175,150,160,151,190,151,191,150,160,151,176,151,177,150,160,151,178,151,179,150,160,151,187,151,180,150,160,151,181,151,182,150,160,151,183,151,161,150,151,163,155,170,-1,141,169,235,153,446,145,158,169,152,446,190,170,151,136,191,151,137,143,153,385,190,170,151,136,191,158,169,152,385,145,232,172,147,190,170,160,151,138,191,189,182,168,146,160,151,170,151,177,150,160,151,172,151,179,150,160,151,174,151,180,150,160,151,160,151,182,150,160,151,168,151,161,150,151,163,155,170,-1,141,169,160,151,139,191,189,154,169,136,170,232,173,137,164,151,165,191,136,168,232,174,137,164,151,165,191,136,168,190,174,144,190,169,130,160,153,301,131,169,190,172,235,153,260,190,168,151,166,191,235,153,311,190,173,160,151,140,191,189,136,169,131,169,145,158,169,152,311,137,167,151,184,191,151,185,136,169,131,169,152,472,190,173,160,151,140,191,189,136,169,131,169,190,172,160,235,153,368,131,169,190,170,151,136,191,151,137,143,160,153,377,131,169,190,170,151,136,191,160,235,153,368,131,169,145,158,169},P={{K={{247,68,197,88,212},{}},C={182,168,151,168,191,151,169,143,153,187,182,168,151,168,191,233,169,152,187,158,168},P={},U={{1,2},{1,4}},nParams=0}},U={{1,1}},nParams=2},{K={{239,68,196,72},1,29,2,40,3,59,4,56,5,10,6,7,8,46,9,41,90,{199,88,200,75,177,46,165,40},{225,75,217,50,141,44},{241,80,206,49,169,40,180,31,180,52,184}},C={190,168,151,168,191,182,168,146,160,151,169,151,170,150,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,174,150,160,151,164,151,172,150,160,151,165,151,166,150,160,151,167,151,184,150,151,185,136,170,143,153,226,157,158,169,152,226,190,169,235,153,252,157,158,169,152,252,190,169,182,169,151,168,191,234,160,235,153,198,131,169,190,169,137,186,182,169,151,187,191,136,169,234,160,235,153,212,131,169,190,169,182,169,151,188,191,234,153,43,157,158,169,152,43,181,158,169},P={},U={{1,1},{1,7}},nParams=2},{K={{226,77,200,95,208,86,205,88,179},{228,79,196,74,244,95,200,77,182,5,162,39,190,50},1,18,2,47,3,55,4,59,5,52,6,53,7,51,8,62,9,10,11,12,46,13,14,15,40,16,90,{248,43,168,46,136,59,164,41,170,33,142,3,130,22,185,28,189,238,103,249,125},0,{135,33,188,15,184,61,180,56,146,1,134},{143,36,164,40},29,56,41,21,45,63,{129,63,145},61,54,{157,46,191,34,190},{184,63,167,44,174,9,138,15},{152,34,176,43,148,5},{138,59,165,42,178,3,159,36,143,31,147},{139,54,164,47,173,12,158},{160,55,185,48,140},{153,48,184,49,149,13},{159,55,162,22,135,7,134,26,154},{186,57,189,48},60,31,57,42,96,122,17,19,20,22,23,24,25,26,118,27,28,30,32,44,33,34,35},C={182,168,151,168,191,232,168,190,168,235,153,184,158,168,152,184,147,190,168,160,151,169,191,189,182,169,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,184,150,160,151,187,151,165,150,160,151,188,151,165,150,160,151,189,151,190,150,160,151,191,151,187,150,160,151,176,151,161,150,160,151,177,151,178,150,160,151,179,151,190,150,151,180,155,170,-1,141,169,232,169,147,190,168,160,151,181,191,189,182,169,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,151,180,155,170,-1,141,169,232,170,151,182,232,171,182,170,160,151,183,191,189,136,169,232,172,151,170,232,173,190,172,164,232,174,151,170,232,175,190,175,151,182,142,153,92,190,173,190,174,183,153,746,152,83,190,173,190,174,179,153,746,163,160,190,173,232,160,190,172,190,160,191,232,161,190,161,151,136,191,182,169,146,160,151,170,151,137,150,160,151,172,151,178,150,160,151,174,151,161,150,160,151,160,151,138,150,160,151,162,151,187,150,160,151,164,151,161,150,160,151,166,151,178,150,160,151,184,151,190,150,160,151,186,151,139,150,151,180,136,170,234,153,665,147,190,161,160,151,169,191,189,182,169,146,160,151,170,151,140,150,160,151,172,151,141,150,160,151,174,151,163,150,160,151,160,151,142,150,160,151,162,151,178,150,151,180,155,170,-1,141,169,232,162,181,232,163,190,162,160,153,373,131,169,147,190,162,160,151,143,191,189,182,169,146,160,151,170,151,186,150,160,151,172,151,190,150,160,151,174,151,178,150,160,151,160,151,167,150,160,151,162,151,163,150,160,151,164,151,128,150,160,151,166,151,189,150,160,151,184,151,161,150,160,151,186,151,129,150,160,151,187,151,173,150,160,151,188,151,142,150,151,180,155,170,-1,141,169,153,703,190,162,151,130,191,232,164,190,164,182,168,151,136,191,234,160,235,153,680,131,169,190,164,137,131,182,168,151,132,191,136,169,234,160,235,153,678,131,169,190,164,182,168,151,133,191,234,153,701,157,232,163,152,701,152,703,190,163,153,647,190,161,160,151,134,191,189,136,169,131,169,190,171,151,170,170,232,171,152,647,152,665,163,161,163,162,163,163,163,164,190,173,190,175,170,232,173,152,76,190,169,153,760,137,135,154,169,136,169,131,169,152,760,190,170,153,704,137,135,154,170,136,169,131,169,190,170,151,152,190,170,151,153,191,150,152,704,182,171,160,151,154,191,189,182,169,146,160,151,170,151,155,150,160,151,172,151,161,150,160,151,174,151,139,150,160,151,160,151,190,150,160,151,162,151,156,150,160,151,164,151,139,150,160,151,166,151,157,150,160,151,184,151,161,150,160,151,186,151,158,150,160,151,187,151,142,150,160,151,188,151,159,150,160,151,189,151,144,150,160,151,191,151,155,150,160,151,176,151,165,150,160,151,177,151,178,150,160,151,179,151,157,150,160,151,145,151,142,150,160,151,171,151,185,150,160,151,146,151,144,150,160,151,147,151,142,150,160,151,140,151,139,150,160,151,148,151,157,150,160,151,149,151,161,150,160,151,150,151,158,150,160,151,151,151,142,150,160,151,232,151,233,150,160,151,234,151,144,150,160,151,235,151,178,150,160,151,137,151,142,150,160,151,236,151,175,150,160,151,156,151,165,150,160,151,237,151,238,150,160,151,239,151,142,150,160,151,224,151,185,150,160,151,225,151,144,150,151,180,136,170,190,171,182,169,146,160,151,170,151,144,150,160,151,172,151,137,150,160,151,174,151,178,150,160,151,160,151,161,150,160,151,162,151,138,150,160,151,164,151,187,150,160,151,166,151,161,150,160,151,184,151,178,150,160,151,186,151,190,150,160,151,187,151,139,150,151,180,136,170,159,159,136,170,131,169,158,168},P={{K={{224,86,218,72,220,87,213,68,141,44,167,40,176,39,143,56,141,10,138,4,133,12},{244,67,201,90,221,68,137},{205,66,220},0,120,{240,79,194,93,213,83,202,59}},C={182,168,151,168,137,169,151,170,191,151,171,151,172,151,171,136,171,150,182,168,151,173,137,169,151,170,191,151,171,151,172,151,171,136,171,150,158,168},P={},U={{1,1}},nParams=0},{K={{241,73,200,89,215,90,203,80,146,49,168,35,181},{225,78,203,64,213,83,233,74,163,50,175},{230,73,222,66},{236,93,193,81,218,87,213,36,151,60,173,36,177,12,165,16,129},{226,76,217,69,220,87,218,20,181}},C={182,168,151,168,157,150,182,168,160,151,169,191,189,137,170,151,171,191,151,172,191,136,170,131,169,158,168},P={},U={{1,2}},nParams=0}},U={{1,7},{1,1},{1,5},{1,19}},nParams=0},{K={{199,68,218,89,244,70,218,92,177,32},5,{202,73,205,64},1,60,2,59,3,41,4,46,31,6,7,57,8,9,42,10,63,11,96,12,122,13,51,14,61,15,52,16,53,17,40,18,19,20,21,22,23,45,24,25,117,26,47,27,28,49,29,30,32,33,34,35,36,37,56,38,39,114,43,44,103,90,{150,9,153,26,128,31,148,25},115,62,118,{131,25,141,19,134,31,170,235,107,239},{151,8,142,31,155},{156,13,131,31},{141,8,157,20,128}},C={182,168,151,168,191,235,153,164,158,168,152,164,182,169,190,168,151,169,136,170,232,169,182,170,190,168,190,169,136,170,235,153,740,190,169,153,500,182,171,160,151,170,191,189,182,172,146,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,169,151,163,150,160,151,164,151,160,150,160,151,165,151,166,150,160,151,167,151,174,150,160,151,184,151,185,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,190,151,191,150,160,151,176,151,177,150,160,151,178,151,179,150,160,151,180,151,181,150,160,151,182,151,183,150,160,151,136,151,137,150,160,151,138,151,177,150,160,151,139,151,181,150,160,151,140,151,179,150,160,151,141,151,191,150,160,151,142,151,183,150,160,151,143,151,128,150,160,151,129,151,181,150,160,151,130,151,131,150,160,151,132,151,133,150,160,151,134,151,181,150,160,151,135,151,152,150,160,151,153,151,181,150,160,151,154,151,183,150,160,151,163,151,128,150,160,151,155,151,181,150,160,151,156,151,191,150,160,151,157,151,179,150,160,151,158,151,137,150,160,151,159,151,174,150,160,151,144,151,145,150,160,151,146,151,191,150,160,151,147,151,148,150,160,151,137,151,183,150,160,151,160,151,128,150,160,151,185,151,181,150,160,151,149,151,187,150,160,151,150,151,137,150,160,151,128,151,151,150,151,232,136,170,137,233,190,169,136,169,182,172,146,160,151,171,151,234,150,151,232,136,170,159,159,136,170,131,169,152,736,147,182,171,160,151,170,191,189,182,172,146,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,169,151,163,150,160,151,164,151,160,150,160,151,165,151,166,150,160,151,167,151,174,150,160,151,184,151,185,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,190,151,191,150,160,151,176,151,181,150,160,151,178,151,183,150,160,151,180,151,191,150,160,151,182,151,183,150,160,151,136,151,128,150,160,151,138,151,181,150,160,151,139,151,187,150,160,151,140,151,137,150,160,151,141,151,191,150,160,151,142,151,172,150,160,151,143,151,183,150,160,151,129,151,133,150,160,151,130,151,181,150,160,151,132,151,235,150,160,151,134,151,236,150,160,151,135,151,191,150,160,151,153,151,160,150,160,151,154,151,152,150,160,151,163,151,177,150,160,151,155,151,185,150,160,151,156,151,185,150,160,151,157,151,177,150,160,151,158,151,181,150,160,151,159,151,179,150,151,232,155,170,-1,141,169,131,169,158,168,152,740,182,171,160,151,170,191,189,182,172,146,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,169,151,163,150,160,151,164,151,160,150,160,151,165,151,166,150,160,151,167,151,174,150,160,151,184,151,185,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,190,151,191,150,160,151,176,151,179,150,160,151,178,151,137,150,160,151,180,151,174,150,160,151,182,151,145,150,160,151,136,151,145,150,160,151,138,151,187,150,160,151,139,151,235,150,160,151,140,151,191,150,160,151,141,151,145,150,160,151,142,151,158,150,160,151,143,151,191,150,151,232,136,170,137,233,190,169,136,169,182,172,146,160,151,171,151,236,150,160,151,173,151,191,150,160,151,175,151,187,150,160,151,161,151,160,150,160,151,169,151,166,150,160,151,164,151,174,150,160,151,165,151,185,150,160,151,167,151,177,150,160,151,184,151,181,150,160,151,186,151,179,150,160,151,188,151,191,150,160,151,190,151,177,150,160,151,176,151,181,150,160,151,178,151,191,150,151,232,136,170,182,168,151,237,191,182,172,146,160,151,171,151,160,150,151,232,136,170,159,159,159,159,136,170,131,169,137,233,190,168,136,169,232,170,182,173,190,170,191,153,976,137,238,154,169,136,169,131,169,152,976,182,173,190,170,137,239,151,224,191,182,168,151,237,191,154,170,136,170,150,158,168},P={{K={{213,68,218,70},{193,71,196,77,215,90}},C={137,168,151,169,191,182,168,182,169,191,136,169,131,169,158,168},P={},U={{0,5},{1,2}},nParams=0},{K={{199,68,218,89,244,70,218,92,177,32}},C={182,168,182,169,145,150,182,170,151,168,191,153,189,182,171,136,168,131,169,152,189,158,168},P={},U={{0,5},{1,2},{0,0},{0,6}},nParams=0}},U={{1,32},{1,56},{1,57},{1,19},{1,1},{1,55},{1,58}},nParams=1},{K={1,{225,78,195,66,214,119,222,90,167,34},{224,72,197,65,214,84,207},{205,70,202,95},60,2,59,3,41,4,46,5,31,6,7,57,8,9,42,10,63,11,122,12,13,40,14,55,15,16,62,17,18,114,19,20,21,22,23,24,25,26,51,27,28,29,103,90,{180,38,186,60,145,0,189,4,156,16},115},C={182,168,182,168,164,151,168,170,182,169,151,169,191,160,151,170,191,189,154,169,136,170,150,182,173,160,151,171,191,189,182,171,146,160,151,168,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,160,150,160,151,166,151,167,150,160,151,184,151,174,150,160,151,185,151,186,150,160,151,187,151,188,150,160,151,189,151,190,150,160,151,191,151,174,150,160,151,176,151,177,150,160,151,178,151,179,150,160,151,180,151,188,150,160,151,181,151,182,150,160,151,183,151,190,150,160,151,136,151,137,150,160,151,138,151,188,150,160,151,139,151,160,150,160,151,140,151,167,150,160,151,141,151,174,150,160,151,142,151,186,150,160,151,143,151,188,150,160,151,128,151,178,150,160,151,129,151,130,150,160,151,131,151,179,150,160,151,132,151,188,150,160,151,133,151,134,150,151,135,136,170,182,170,151,152,191,182,171,146,160,151,168,151,160,150,160,151,173,151,153,150,151,135,136,170,159,159,136,170,131,169,158,168},P={{K={{199,68,218,89,244,70,218,92,177,32},{236,71,199,75},1,29,2,40,3,59,4,56,5,10,6,7,8,46,9,41,90,{192,89,207,43},{198,73,220,54,171}},C={182,168,151,168,191,235,153,164,158,168,152,164,190,168,151,169,191,182,169,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,175,150,160,151,165,151,173,150,160,151,166,151,167,150,160,151,184,151,185,150,151,186,136,170,143,153,253,158,168,152,253,137,187,151,188,191,154,169,136,169,131,169,158,168},P={{K={},C={182,168,182,169,136,169,131,169,158,168},P={},U={{0,2},{1,0}},nParams=0}},U={{0,2},{0,3},{0,4}},nParams=1}},U={{1,54},{1,5},{1,32},{1,1},{1,59},{1,19}},nParams=0},{K={1,0,{231,78,216,76,220,89,213,90,160,51},{212,73,197,66,199},{213,74,204,93,217},{207,68,200,93},60,2,59,3,41,4,46,5,31,6,7,57,8,9,42,10,63,11,122,12,62,13,51,14,15,16,40,17,55,18,19,90},C={151,168,232,168,182,168,164,232,169,151,168,232,170,190,170,151,169,142,153,181,190,168,190,169,183,153,233,152,140,190,168,190,169,179,153,233,163,171,190,168,232,171,182,168,190,171,191,160,151,170,191,189,136,169,131,169,190,168,190,170,170,232,168,152,165,146,233,168,137,171,182,169,155,169,171,232,174,232,173,232,172,165,172,173,174,163,175,163,160,190,172,190,173,190,174,155,170,170,232,160,232,175,190,175,232,174,190,175,145,143,153,40,137,172,154,169,136,169,131,169,182,169,190,175,145,150,152,253,147,182,170,160,151,173,191,189,182,171,146,160,151,168,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,162,150,160,151,184,151,185,150,160,151,186,151,160,150,160,151,187,151,188,150,160,151,189,151,190,150,160,151,191,151,176,150,160,151,177,151,178,150,160,151,179,151,180,150,160,151,181,151,162,150,160,151,182,151,160,150,160,151,183,151,136,150,160,151,137,151,138,150,160,151,139,151,190,150,160,151,140,151,178,150,151,141,155,170,-1,141,169,131,169,158,168},P={{K={{213,68,218,70},{193,71,196,77,215,90}},C={137,168,151,169,191,182,168,136,169,131,169,158,168},P={},U={{1,8}},nParams=0}},U={{1,54},{1,55},{1,19},{1,1}},nParams=0},{K={{199,68,218,89,244,70,218,92,177,32},{214,71,217,69},{212,70,194,91},0.5,{192,71,204,83,217,92,251,32,182,61,136,34,182,56,173,4}},C={182,168,151,168,191,153,178,137,169,151,170,191,151,171,136,169,131,169,137,172,136,168,131,169,152,178,158,168},P={},U={{1,32}},nParams=0},{K={{226,77,200,95,208,86,205,88,179},{228,79,196,74,244,95,200,77,182,5,162,39,190,50},1,18,2,47,3,55,4,59,5,52,6,53,7,51,8,62,9,10,11,12,46,13,14,15,40,16,90,{201,35,180,36},63,54,42,96,122,{138,41,161,53},50,41,57,17,{138,11,163,52,180,56},{156,43,177,34,181,44,209},{165,42,164},0,{164,63,179,54},44,19},C={182,168,151,168,191,232,169,190,169,235,153,184,158,168,152,184,147,190,169,160,151,169,191,189,182,169,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,184,150,160,151,187,151,165,150,160,151,188,151,165,150,160,151,189,151,190,150,160,151,191,151,187,150,160,151,176,151,161,150,160,151,177,151,178,150,160,151,179,151,190,150,151,180,155,170,-1,141,169,232,170,190,170,235,153,37,158,168,152,37,190,168,151,168,191,232,171,190,171,235,153,503,182,170,160,151,181,191,189,182,169,146,160,151,170,151,190,150,160,151,172,151,182,150,160,151,174,151,183,150,160,151,160,151,182,150,160,151,162,151,136,150,160,151,164,151,165,150,160,151,166,151,178,150,160,151,184,151,190,150,160,151,186,151,137,150,160,151,187,151,138,150,151,180,136,170,190,168,151,139,191,182,169,146,160,151,170,151,138,150,160,151,172,151,140,150,160,151,174,151,161,150,160,151,160,151,141,150,160,151,162,151,138,150,160,151,164,151,163,150,160,151,166,151,165,150,160,151,184,151,138,150,160,151,186,151,142,150,160,151,187,151,140,150,160,151,188,151,161,150,160,151,189,151,178,150,160,151,191,151,161,150,160,151,176,151,142,150,160,151,177,151,190,150,160,151,179,151,182,150,160,151,143,151,178,150,151,180,136,170,159,159,136,170,131,169,158,168,152,503,147,190,171,160,151,169,191,189,182,169,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,184,150,160,151,187,151,165,150,160,151,188,151,165,150,160,151,189,151,190,150,160,151,191,151,187,150,160,151,176,151,161,150,160,151,177,151,178,150,160,151,179,151,190,150,151,180,155,170,-1,141,169,232,172,190,172,235,153,372,158,168,152,372,190,170,151,128,190,172,151,128,191,137,129,151,130,191,151,131,151,174,151,131,136,171,170,150,182,170,160,151,132,191,189,182,169,146,160,151,170,151,190,150,160,151,172,151,182,150,160,151,174,151,183,150,160,151,160,151,182,150,160,151,162,151,136,150,160,151,164,151,165,150,160,151,166,151,178,150,160,151,184,151,190,150,160,151,186,151,137,150,160,151,187,151,138,150,160,151,188,151,175,150,160,151,189,151,165,150,160,151,191,151,133,150,160,151,176,151,182,150,160,151,177,151,185,150,160,151,179,151,138,150,160,151,143,151,190,150,160,151,171,151,165,150,160,151,134,151,138,150,151,180,136,170,190,168,151,139,191,159,136,170,131,169,158,168},P={},U={{1,7},{1,1},{1,19}},nParams=1},{K={{226,77,200,95,208,86,205,88,179},{228,79,196,74,244,95,200,77,182,5,162,39,190,50},1,18,2,47,3,55,4,59,5,52,6,53,7,51,8,62,9,10,11,12,46,13,14,15,40,16,90,{201,35,180,36},63,54,42,96,122,{138,41,161,53},50,41,57,17,{138,11,163,52,180,56},{156,43,177,34,181,44,209},{165,42,164},0,{164,63,179,54},56,61,35},C={182,168,151,168,191,232,169,190,169,235,153,184,158,168,152,184,147,190,169,160,151,169,191,189,182,169,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,184,150,160,151,187,151,165,150,160,151,188,151,165,150,160,151,189,151,190,150,160,151,191,151,187,150,160,151,176,151,161,150,160,151,177,151,178,150,160,151,179,151,190,150,151,180,155,170,-1,141,169,232,170,190,170,235,153,37,158,168,152,37,190,168,151,168,191,232,171,190,171,235,153,503,182,170,160,151,181,191,189,182,169,146,160,151,170,151,190,150,160,151,172,151,182,150,160,151,174,151,183,150,160,151,160,151,182,150,160,151,162,151,136,150,160,151,164,151,165,150,160,151,166,151,178,150,160,151,184,151,190,150,160,151,186,151,137,150,160,151,187,151,138,150,151,180,136,170,190,168,151,139,191,182,169,146,160,151,170,151,138,150,160,151,172,151,140,150,160,151,174,151,161,150,160,151,160,151,141,150,160,151,162,151,138,150,160,151,164,151,163,150,160,151,166,151,165,150,160,151,184,151,138,150,160,151,186,151,142,150,160,151,187,151,140,150,160,151,188,151,161,150,160,151,189,151,178,150,160,151,191,151,161,150,160,151,176,151,142,150,160,151,177,151,190,150,160,151,179,151,182,150,160,151,143,151,178,150,151,180,136,170,159,159,136,170,131,169,158,168,152,503,147,190,171,160,151,169,191,189,182,169,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,184,150,160,151,187,151,165,150,160,151,188,151,165,150,160,151,189,151,190,150,160,151,191,151,187,150,160,151,176,151,161,150,160,151,177,151,178,150,160,151,179,151,190,150,151,180,155,170,-1,141,169,232,172,190,172,235,153,372,158,168,152,372,190,172,151,128,190,170,151,128,191,137,129,151,130,191,151,174,151,174,151,131,136,171,170,150,182,170,160,151,132,191,189,182,169,146,160,151,170,151,190,150,160,151,172,151,182,150,160,151,174,151,183,150,160,151,160,151,182,150,160,151,162,151,136,150,160,151,164,151,165,150,160,151,166,151,178,150,160,151,184,151,190,150,160,151,186,151,137,150,160,151,187,151,138,150,160,151,188,151,133,150,160,151,189,151,178,150,160,151,191,151,165,150,160,151,176,151,173,150,160,151,177,151,134,150,160,151,179,151,140,150,160,151,143,151,190,150,160,151,171,151,138,150,151,180,136,170,190,168,151,139,191,182,169,146,160,151,170,151,138,150,160,151,172,151,190,150,160,151,174,151,165,150,160,151,160,151,138,150,160,151,162,151,135,150,160,151,164,151,165,150,160,151,166,151,173,150,151,180,136,170,159,159,136,170,131,169,158,168},P={},U={{1,7},{1,1},{1,19}},nParams=1},{K={{209,68,192,95,194},{210,69,203,66,222},{228,66,223,127,223,86,194,90,177,52},{208,73,206,92,209},{214,70,223,69},1,0,{230,77,221,81},122,2,114,3,35,4,53,5,47,6,115,90,{},{245,72,219,35,178,47,140,39,162,46,177,12},8648,50,51,55,96,7,{254,32,169,37,175,48,182,50},{235,49,163,56,135,54},63},C={137,168,182,168,155,169,171,232,170,232,169,232,168,165,168,169,170,163,171,163,172,190,168,190,169,190,170,155,170,170,232,172,232,171,190,171,232,170,190,171,145,143,153,158,137,169,154,169,136,169,131,169,152,185,146,233,168,182,169,160,151,170,191,189,136,169,232,173,137,171,151,172,191,190,173,154,170,136,170,131,169,151,173,232,174,190,173,164,232,175,151,173,232,160,190,160,151,174,142,153,198,190,174,190,175,183,153,284,152,221,190,174,190,175,179,153,284,163,161,190,174,232,161,190,173,190,161,191,232,162,190,162,151,175,191,190,162,182,170,234,160,153,20,131,169,182,171,146,160,151,173,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,184,150,160,151,185,151,186,150,151,187,136,170,160,235,153,108,131,169,151,188,159,232,163,182,172,160,151,189,191,189,146,160,151,175,182,171,146,160,151,173,151,190,150,160,151,161,151,160,150,160,151,163,151,191,150,160,151,165,151,176,150,160,151,167,151,177,150,160,151,185,151,178,150,160,151,179,151,160,150,151,187,136,170,190,163,159,150,160,151,180,154,171,150,136,170,232,164,182,168,190,162,151,181,191,182,171,146,160,151,173,151,167,150,160,151,161,151,191,150,160,151,163,151,176,150,160,151,165,151,177,150,151,187,136,170,159,190,164,150,182,172,160,151,189,191,189,146,160,151,175,182,171,146,160,151,173,151,190,150,160,151,161,151,160,150,160,151,163,151,177,150,160,151,165,151,182,150,160,151,167,151,178,150,160,151,185,151,160,150,151,187,136,170,190,163,159,150,160,151,180,154,172,150,136,170,232,165,182,168,190,162,151,181,191,182,171,146,160,151,173,151,167,150,160,151,161,151,177,150,160,151,163,151,182,150,151,187,136,170,159,190,165,150,163,162,163,163,163,164,163,165,190,174,190,160,170,232,174,152,246,158,168},P={{K={{229,64,218,89,195,90,192}},C={182,168,160,151,168,191,189,136,169,131,169,158,168},P={},U={{1,4}},nParams=0},{K={{239,68,196,72}},C={190,168,151,168,191,190,169,151,168,191,130,158,169},P={},U=nil,nParams=2},{K={},C={182,168,182,169,136,169,131,169,158,168},P={},U={{0,5},{1,10}},nParams=0},{K={},C={182,168,182,169,136,169,131,169,158,168},P={},U={{0,6},{1,10}},nParams=0}},U={{1,60},{1,2},{1,7},{1,1},{1,63},{1,61},{1,62}},nParams=0},{K={{213,68,218,70},{209,86,203,89,220}},C={182,168,153,160,158,168,152,160,137,168,151,169,191,154,169,155,169,169,233,168,158,168},P={{K={{200,75,207,66},1,59,2,52,3,46,4,51,5,27,6,60,7,49,8,96,9,122,10,41,11,12,13,40,14,15,63,16,62,90,{161,42,188,37,145,50,179},{177,38,168,33,189},{182,39,185,37},{180,38,162,59},240,53,42},C={147,182,168,160,151,168,191,189,182,169,146,160,151,169,151,170,150,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,184,150,160,151,185,151,186,150,160,151,187,151,188,150,160,151,189,151,174,150,160,151,190,151,170,150,160,151,191,151,176,150,160,151,177,151,174,150,160,151,178,151,179,150,160,151,180,151,181,150,151,182,155,170,-1,141,169,131,169,182,170,151,183,191,153,56,137,136,154,169,136,169,131,169,137,137,151,138,191,151,139,136,169,131,169,152,220,147,182,168,160,151,168,191,189,182,169,146,160,151,169,151,170,150,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,184,150,160,151,185,151,186,150,160,151,187,151,188,150,160,151,189,151,174,150,160,151,190,151,140,150,160,151,191,151,141,150,160,151,177,151,141,150,160,151,178,151,179,150,160,151,180,151,181,150,151,182,155,170,-1,141,169,131,169,158,168},P={{K={{198,68,196,72},{229,67,222,125,215,68,204,87,161,35},1,12,2,51,3,40,4,46,5,47,6,59,7,54,8,15,9,41,10,63,11,90,{250,92,177,49,188,63,180,22,182,51,149,23,134,1,157,16,139},{249,82,171,37,161,12,167,34,174,49,140,84},{237,90,160,51,164,61,225},{210,37,179}},C={147,137,168,160,151,169,191,189,182,168,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,190,151,175,150,151,191,155,170,-1,141,169,232,168,190,168,160,151,176,191,189,136,169,131,169,147,190,168,160,151,177,191,189,137,178,151,179,191,155,168,-1,141,169,131,169,158,168},P={},U={{0,1}},nParams=0}},U={{0,1},{0,2},{0,3}},nParams=0}},U={{1,65},{1,19},{1,1},{1,32}},nParams=0},{K={{209,70,200,65,221},{203,72,204,65},1,59,2,52,3,46,4,51,5,27,6,60,7,49,8,96,9,122,10,62,11,12,41,13,14,56,15,54,16,63,17,90},C={182,168,153,185,137,168,154,169,136,169,131,169,145,233,168,152,185,147,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,190,151,161,150,160,151,191,151,176,150,160,151,177,151,171,150,160,151,178,151,179,150,160,151,180,151,181,150,160,151,182,151,183,150,160,151,136,151,189,150,151,137,155,170,-1,141,169,131,169,158,168},P={{K={{213,68,218,70},{193,71,196,77,215,90}},C={137,168,151,169,191,182,168,136,169,131,169,158,168},P={},U={{0,0}},nParams=0}},U={{1,65},{1,19},{1,1}},nParams=0},{K={{209,70,200,65,221},{}},C={137,168,154,169,155,169,170,232,169,232,168,190,168,160,153,188,131,169,190,169,160,153,182,131,169,190,169,151,169,143,153,142,190,169,158,169,152,142,145,158,169},P={{K={{198,68,196,72},{232,73,200,103,214}},C={137,168,151,169,191,158,169},P={},U=nil,nParams=0}},U=nil,nParams=0},{K={{205,68,218,89,251,90,219,116,165},{},{212,70,217,65},1,59,2,47,3,46,4,53,5,8,6,63,7,48,9,51,10,52,11,96,12,122,13,14,15,16,17,18,56,19,20,62,21,22,41,23,24,44,25,26,27,118,28,29,57,30,31,32,125,33,34,35,40,36,37,38,39,90,{183,12,128,5},61,{144,7,137,0,156}},C={182,168,151,168,191,160,235,153,167,131,169,182,169,136,168,232,168,190,168,235,160,235,153,183,131,169,190,168,151,169,234,153,385,147,182,170,160,151,170,191,189,182,171,146,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,184,150,160,151,164,151,162,150,160,151,185,151,186,150,160,151,187,151,188,150,160,151,189,151,190,150,160,151,191,151,176,150,160,151,177,151,188,150,160,151,178,151,162,150,160,151,179,151,176,150,160,151,180,151,184,150,160,151,181,151,162,150,160,151,182,151,183,150,160,151,136,151,136,150,160,151,137,151,138,150,160,151,139,151,176,150,160,151,140,151,141,150,160,151,142,151,172,150,160,151,143,151,128,150,160,151,129,151,166,150,160,151,130,151,138,150,160,151,131,151,132,150,160,151,133,151,176,150,160,151,134,151,135,150,160,151,152,151,172,150,160,151,153,151,188,150,160,151,154,151,155,150,160,151,156,151,160,150,160,151,157,151,176,150,160,151,158,151,159,150,160,151,144,151,166,150,160,151,145,151,184,150,160,151,146,151,162,150,160,151,147,151,186,150,160,151,159,151,188,150,151,148,155,170,-1,141,169,131,169,158,168,152,385,182,170,160,151,149,191,189,182,171,146,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,184,150,160,151,164,151,162,150,160,151,185,151,186,150,160,151,187,151,188,150,160,151,189,151,190,150,160,151,191,151,176,150,160,151,177,151,160,150,160,151,178,151,159,150,160,151,179,151,158,150,160,151,180,151,186,150,160,151,181,151,188,150,160,151,182,151,150,150,160,151,136,151,176,150,160,151,137,151,160,150,160,151,139,151,162,150,160,151,140,151,176,150,160,151,142,151,159,150,160,151,143,151,166,150,160,151,129,151,184,150,160,151,130,151,162,150,160,151,131,151,186,150,160,151,133,151,188,150,160,151,134,151,176,150,151,148,136,170,190,168,159,136,170,131,169,137,151,154,169,136,169,131,169,158,168},P={{K={{198,68,196,72},{229,67,222,125,215,68,204,87,161,35},1,14,2,63,3,54,4,5,42,6,53,7,40,8,46,9,10,11,12,44,13,51,57,15,90,{232,37,168,45,188,63,166,44,136,15,180,4,141,19,145,49,146,243,112,233,98,243,113},{237,45,164,42,168,24,177}},C={147,137,168,160,151,169,191,189,182,168,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,173,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,184,150,160,151,185,151,185,150,160,151,186,151,173,150,160,151,187,151,166,150,160,151,188,151,189,150,160,151,190,151,191,150,160,151,171,151,176,150,160,151,177,151,173,150,151,178,155,170,-1,141,169,160,151,179,191,189,137,168,151,180,191,182,169,182,170,136,172,131,169,158,168},P={},U={{0,3},{1,0},{0,4}},nParams=0}},U={{1,32},{1,70},{1,19},{1,1},{1,7}},nParams=0},{K={{205,68,218,89,251,90,219,116,165},{203,72,204,65},1,59,2,47,3,46,4,53,5,8,6,63,7,48,9,51,10,52,11,96,12,122,13,14,40,15,55,16,17,62,18,19,114,20,21,22,56,23,24,25,103,90,{185,62,166,45,175,8,139,14},115,{159,63,182,34,186,17,181,14,130,28,129,18,145,228},{147,59,182,50,133,7,156},{182,52,180,56},{149,51,174,13,135,20,156,7,145,19},54,42,44,57,{131,62,179,6,151,4,157,7,190,21,150,247,65,234,102,255,114,255},{172,61,147,15},{170,45,128,18,135}},C={182,168,151,168,182,169,136,168,150,182,170,160,151,169,191,189,182,171,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,163,151,161,150,160,151,184,151,185,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,190,151,191,150,160,151,176,151,171,150,160,151,177,151,178,150,160,151,179,151,180,150,160,151,181,151,165,150,160,151,182,151,183,150,160,151,136,151,191,150,160,151,137,151,138,150,160,151,139,151,167,150,160,151,140,151,161,150,160,151,141,151,142,150,160,151,143,151,137,150,160,151,128,151,183,150,160,151,129,151,130,150,151,131,136,170,137,132,182,168,151,168,191,136,169,182,171,146,160,151,170,151,133,150,151,131,136,170,159,159,136,170,131,169,182,172,182,172,164,151,170,170,182,173,151,134,191,160,151,135,191,189,154,169,136,170,150,182,172,182,172,164,151,170,170,147,137,152,160,151,153,191,189,182,171,146,160,151,170,151,177,150,160,151,172,151,165,150,160,151,174,151,154,150,160,151,160,151,165,150,160,151,162,151,155,150,160,151,164,151,161,150,160,151,166,151,178,150,160,151,163,151,175,150,160,151,184,151,184,150,160,151,186,151,165,150,160,151,188,151,178,150,160,151,190,151,156,150,160,151,176,151,185,150,160,151,177,151,157,150,160,151,179,151,165,150,151,131,155,170,-1,141,169,151,158,191,160,151,135,191,189,154,170,136,170,150,137,159,151,144,191,154,171,155,169,169,233,160,158,168},P={{K={{192,80,221,66,227,80,211,82,168,43},{203,72,204,65},1,59,2,47,3,46,4,53,5,8,6,63,7,48,9,51,10,52,11,96,12,122,13,35,14,15,16,17,18,40,19,20,21,54,22,23,24,44,25,26,27,61,28,118,29,30,41,31,32,33,34,36,37,38,39,56,62,90,{177,0,150,29,167,30,151,48,153}},C={190,168,182,168,234,160,153,167,131,169,182,169,151,168,191,153,398,147,182,170,160,151,169,191,189,182,171,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,163,151,161,150,160,151,184,151,185,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,190,151,191,150,160,151,176,151,177,150,160,151,178,151,161,150,160,151,179,151,173,150,160,151,180,151,191,150,160,151,181,151,171,150,160,151,182,151,183,150,160,151,136,151,165,150,160,151,137,151,191,150,160,151,138,151,139,150,160,151,140,151,165,150,160,151,141,151,171,150,160,151,142,151,143,150,160,151,128,151,185,150,160,151,129,151,187,150,160,151,130,151,131,150,160,151,132,151,133,150,160,151,134,151,191,150,160,151,135,151,152,150,160,151,153,151,171,150,160,151,154,151,143,150,160,151,155,151,185,150,160,151,156,151,187,150,160,151,177,151,131,150,160,151,157,151,191,150,160,151,158,151,167,150,160,151,159,151,161,150,160,151,144,151,145,150,160,151,183,151,136,150,160,151,152,151,146,150,151,147,155,170,-1,141,169,131,169,182,169,151,148,182,172,136,168,150,152,398,158,168},P={},U={{0,6},{0,0},{0,2},{0,3},{0,1}},nParams=1},{K={{192,80,221,66,227,80,211,82,168,43},{213,71,216,64},1,59,2,47,3,46,4,53,5,8,6,63,7,48,9,51,10,52,11,96,12,122,13,14,15,54,16,17,42,18,19,40,20,21,22,60,23,24,25,26,27,62,28,118,29,30,31,32,33,34,35,36,37,61,38,39,41,107,43,106,44,90,{149,4,154,6},{134,3,134,15,139}},C={182,168,151,168,191,235,153,164,158,168,152,164,147,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,163,151,161,150,160,151,184,151,185,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,190,151,191,150,160,151,176,151,175,150,160,151,177,151,165,150,160,151,178,151,179,150,160,151,180,151,165,150,160,151,181,151,182,150,160,151,183,151,161,150,160,151,136,151,137,150,160,151,138,151,175,150,160,151,139,151,191,150,160,151,140,151,141,150,160,151,142,151,171,150,160,151,143,151,185,150,160,151,128,151,179,150,160,151,129,151,165,150,160,151,130,151,131,150,160,151,132,151,133,150,160,151,134,151,191,150,160,151,135,151,137,150,160,151,152,151,165,150,160,151,153,151,175,150,160,151,154,151,137,150,160,151,155,151,156,150,160,151,156,151,185,150,160,151,157,151,187,150,160,151,158,151,159,150,160,151,144,151,191,150,160,151,145,151,185,150,160,151,137,151,187,150,160,151,146,151,191,150,160,151,182,151,147,150,160,151,148,151,149,150,160,151,150,151,146,150,151,151,155,170,-1,141,169,131,169,137,232,151,233,191,151,186,182,171,136,170,131,169,158,168},P={},U={{0,0},{0,2},{0,3},{0,7}},nParams=0},{K={{192,80,221,66,227,80,211,82,168,43},{214,71,217,69},{212,70,194,91},5,{194,72,192,84},{239,89,226,93,215,94,219,38},{208,74,221,93},1,59,2,47,3,46,4,53,8,6,63,7,48,9,51,10,52,11,96,12,122,13,61,14,15,55,16,17,18,19,20,21,22,54,23,24,25,62,26,27,28,118,29,30,40,31,32,33,34,35,36,37,38,116,39,90},C={182,168,151,168,191,153,415,137,169,151,170,191,151,171,136,169,131,169,137,172,160,151,173,191,189,136,169,235,153,413,147,182,169,160,151,174,191,189,182,170,146,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,171,151,167,150,160,151,184,151,185,150,160,151,186,151,187,150,160,151,167,151,166,150,160,151,188,151,189,150,160,151,190,151,191,150,160,151,176,151,177,150,160,151,178,151,179,150,160,151,180,151,181,150,160,151,182,151,160,150,160,151,183,151,136,150,160,151,137,151,185,150,160,151,138,151,179,150,160,151,139,151,191,150,160,151,140,151,166,150,160,151,141,151,164,150,160,151,142,151,179,150,160,151,143,151,128,150,160,151,129,151,166,150,160,151,130,151,160,150,160,151,131,151,132,150,160,151,133,151,185,150,160,151,134,151,132,150,160,151,135,151,152,150,160,151,153,151,179,150,160,151,154,151,155,150,160,151,156,151,185,150,160,151,157,151,164,150,160,151,158,151,155,150,160,151,159,151,144,150,160,151,144,151,189,150,160,151,145,151,191,150,160,151,146,151,181,150,160,151,147,151,148,150,160,151,149,151,148,150,160,151,155,151,148,150,151,150,155,170,-1,141,169,131,169,137,169,151,170,191,151,171,136,169,131,169,182,171,136,168,131,169,152,413,152,168,158,168},P={},U={{0,0},{0,2},{0,3},{0,7}},nParams=0}},U={{1,32},{1,70},{1,19},{1,1},{1,68},{1,2},{1,7},{1,71},{1,69}},nParams=0},{K={1,0,{231,78,216,76,220,89,213,90,160,51},{212,75,205,92,216},{204,71,203,94},59,2,47,3,46,4,53,5,8,6,63,7,48,9,51,10,52,11,96,12,122,13,62,14,15,41,16,17,40,18,55,19,20,90},C={151,168,232,168,182,168,164,232,169,151,168,232,170,190,170,151,169,142,153,181,190,168,190,169,183,153,233,152,140,190,168,190,169,179,153,233,163,171,190,168,232,171,182,168,190,171,191,160,151,170,191,189,136,169,131,169,190,168,190,170,170,232,168,152,165,146,233,168,182,169,153,253,137,171,154,169,136,169,131,169,145,233,169,152,253,147,182,170,160,151,172,191,189,182,171,146,160,151,168,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,165,151,163,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,190,151,191,150,160,151,176,151,177,150,160,151,178,151,179,150,160,151,180,151,187,150,160,151,181,151,182,150,160,151,183,151,173,150,160,151,136,151,137,150,160,151,138,151,139,150,160,151,140,151,167,150,160,151,141,151,179,150,151,142,155,170,-1,141,169,131,169,158,168},P={{K={{213,68,218,70},{193,71,196,77,215,90}},C={137,168,151,169,191,182,168,136,169,131,169,158,168},P={},U={{0,1}},nParams=0}},U={{1,68},{1,69},{1,19},{1,1}},nParams=0},{K={{210,80,217,72,195,97,209,79,174,50},{203,72,204,65},1,41,2,47,3,42,4,63,5,40,6,14,7,50,8,9,53,10,45,11,122,12,103,13,90,{200,47,183,60,190,57,186,63}},C={182,168,151,168,190,168,150,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,163,150,160,151,185,151,186,150,160,151,187,151,188,150,160,151,189,151,190,150,160,151,191,151,176,150,160,151,177,151,190,150,151,178,136,170,137,179,190,168,136,169,159,136,170,131,169,158,168},P={},U={{1,32},{1,19},{1,1}},nParams=1},{K={{199,73,192,67,214,101,213,92,184,32,187,62},{203,72,204,65},1,60,2,54,3,51,4,52,5,61,6,10,7,8,59,9,35,63,11,40,12,41,13,122,14,103,15,90,{203,44,180,63,189,58,185,60}},C={182,168,151,168,190,168,150,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,173,150,160,151,167,151,184,150,160,151,185,151,186,150,160,151,165,151,187,150,160,151,188,151,189,150,160,151,190,151,191,150,160,151,176,151,177,150,160,151,178,151,179,150,160,151,180,151,177,150,151,181,136,170,137,182,190,168,136,169,159,136,170,131,169,158,168},P={},U={{1,32},{1,19},{1,1}},nParams=1},{K={{210,81,219,72,223,82,205,85},{203,72,204,65},1,41,2,46,3,40,4,63,5,52,6,61,7,8,50,9,122,10,103,11,90},C={182,168,151,168,190,168,150,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,173,150,160,151,167,151,184,150,160,151,185,151,186,150,160,151,187,151,188,150,160,151,189,151,186,150,151,190,136,170,190,168,159,136,170,131,169,158,168},P={},U={{1,32},{1,19},{1,1}},nParams=1},{K={{204,64,206,76,247,89,208,83,166},{203,72,204,65},1,55,2,63,3,61,4,59,5,28,6,54,7,51,8,52,9,10,122,11,103,12,90,{206,81,177,50,184,39,188,49}},C={182,168,151,168,190,168,150,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,175,150,160,151,187,151,188,150,160,151,189,151,190,150,160,151,191,151,188,150,151,176,136,170,137,177,190,168,136,169,159,136,170,131,169,158,168},P={},U={{1,32},{1,19},{1,1}},nParams=1},{K={{204,64,206,76,245,92,202,73,160,43,170,40},{203,72,204,65},1,55,2,63,3,61,4,59,5,30,6,51,7,41,8,46,9,10,52,11,57,12,13,122,14,103,15,90},C={182,168,151,168,190,168,150,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,161,150,160,151,187,151,188,150,160,151,189,151,190,150,160,151,191,151,173,150,160,151,176,151,177,150,160,151,178,151,179,150,160,151,180,151,177,150,151,181,136,170,190,168,159,136,170,131,169,158,168},P={},U={{1,32},{1,19},{1,1}},nParams=1},{K={{215,64,219,89,216,86,216,81,131,42,166,62,165},{203,72,204,65},1,44,2,63,3,40,4,46,5,51,6,57,7,59,8,54,9,24,10,53,11,12,41,13,14,122,15,103,16,90,{181,42,186,57,163,60,183,58}},C={182,168,151,168,190,168,150,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,190,151,189,150,160,151,191,151,176,150,160,151,177,151,161,150,160,151,178,151,179,150,160,151,180,151,181,150,160,151,182,151,179,150,151,183,136,170,137,136,190,168,136,169,159,136,170,131,169,158,168},P={},U={{1,32},{1,19},{1,1}},nParams=1},{K={{215,64,219,89,216,86,216,81,135,36,170,57,190,39},100,{202,73,205,64},1,44,2,63,3,40,4,46,5,51,6,57,7,59,8,54,9,28,10,11,12,13,53,14,15,122,16,103,17,90},C={182,168,151,168,190,168,151,169,172,150,182,169,160,151,170,191,189,182,170,146,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,184,150,160,151,185,151,186,150,160,151,187,151,188,150,160,151,189,151,184,150,160,151,190,151,166,150,160,151,191,151,162,150,160,151,176,151,177,150,160,151,178,151,160,150,160,151,179,151,180,150,160,151,181,151,182,150,160,151,183,151,180,150,151,136,136,170,182,168,151,168,191,159,136,170,131,169,158,168},P={},U={{1,32},{1,19},{1,1}},nParams=1},{K={},C={182,168,190,168,136,169,131,169,158,168},P={},U={{1,38}},nParams=1},{K={{214,68,197,70,226,69,220,88,165},{203,72,204,65},1,45,2,59,3,54,4,49,5,9,6,42,7,63,8,62,10,122,11,103,12,90},C={182,168,151,168,190,168,150,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,167,150,160,151,163,151,185,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,190,151,187,150,151,191,136,170,190,168,159,136,170,131,169,158,168},P={},U={{1,32},{1,19},{1,1}},nParams=1},{K={{199,73,208},{203,72,204,65},1,60,2,54,3,35,4,122,5,103,6,90,{219,92,196,79,205,42,169,44},{195,64,215,76,134,40,177}},C={182,168,151,168,190,168,150,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,161,150,151,165,136,170,137,166,190,168,136,169,159,136,170,131,169,190,168,235,153,249,137,167,136,168,131,169,152,249,158,168},P={},U={{1,32},{1,19},{1,1}},nParams=1},{K={{199,73,208,126,193,80,220,89},{203,72,204,65},1,60,2,54,3,35,4,9,5,42,6,63,7,8,62,122,10,103,11,90},C={182,168,151,168,190,168,150,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,165,150,160,151,167,151,184,150,160,151,161,151,185,150,160,151,186,151,187,150,160,151,188,151,185,150,151,189,136,170,190,168,159,136,170,131,169,158,168},P={},U={{1,32},{1,19},{1,1}},nParams=1},{K={{209,70,200,65,221},{196,74,211,101,215,79},{202,73,205,64},1,60,2,54,3,35,4,17,5,63,6,7,122,8,103,9,90},C={137,168,154,169,155,169,170,232,170,232,169,190,169,160,153,188,131,169,190,170,153,194,182,168,151,169,190,170,150,182,169,160,151,170,191,189,182,170,146,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,160,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,167,150,151,187,136,170,190,168,159,136,170,131,169,152,194,158,168},P={{K={{228,75,220,64},{233,67,211,109,221,82,223}},C={137,168,151,169,191,182,168,191,158,169},P={},U={{1,0}},nParams=0}},U={{1,32},{1,19},{1,1}},nParams=1},{K={{192,75,221,68,246,71,216,95},{203,72,204,65},1,59,2,52,3,46,4,51,5,29,6,40,7,8,56,9,122,10,103,11,90,{204,83,179,48,186,37,190,51},{220,83,160,39,165,40,144,59,173,52,166,23,136,15},{222,87,177,39,168,34,183,23,180,42,139,33,152,15,144}},C={182,168,151,168,190,168,150,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,171,150,160,151,167,151,184,150,160,151,185,151,186,150,160,151,187,151,188,150,160,151,189,151,186,150,151,190,136,170,137,191,190,168,136,169,159,136,170,131,169,190,168,153,198,137,176,136,168,131,169,152,220,137,177,136,168,131,169,158,168},P={},U={{1,32},{1,19},{1,1}},nParams=1},{K={{210,75,192,75,215,114,203,92,163},{203,72,204,65},1,41,2,52,3,51,4,60,5,6,29,7,40,8,59,9,56,10,122,11,103,12,90,{206,81,177,50,184,39,188,49}},C={182,168,151,168,190,168,150,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,161,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,184,150,160,151,185,151,186,150,160,151,187,151,188,150,160,151,189,151,190,150,160,151,191,151,188,150,151,176,136,170,137,177,190,168,136,169,159,136,170,131,169,190,168,153,220,182,171,136,168,131,169,152,210,182,172,136,168,131,169,158,168},P={},U={{1,32},{1,19},{1,1},{1,45},{1,46}},nParams=1},{K={},C={182,168,136,168,131,169,158,168},P={},U={{1,52}},nParams=0},{K={{205,76,218,89,226,84,207,88,165,9,172,59,180,39,170}},C={137,168,136,168,131,169,158,168},P={},U=nil,nParams=0},{K={{194,73,204,76,195,102,216,75,164,33,133,40,167,48,171,46}},C={137,168,136,168,131,169,158,168},P={},U=nil,nParams=0},{K={0,{210,71,195,92,193},{243,70,217,74,221,67},1,{204,71,203,94},55,2,59,3,52,4,47,5,6,54,7,122,8,46,9,40,10,51,11,61,12,13,63,14,15,96,16,90,44,41},C={151,168,232,168,137,169,182,168,155,169,171,232,171,232,170,232,169,165,169,170,171,163,172,163,173,190,169,190,170,190,171,155,170,170,232,173,232,172,190,172,232,171,190,172,145,143,153,251,190,173,160,153,148,131,169,190,173,151,170,191,153,249,182,169,190,173,136,169,153,231,190,168,151,171,170,232,168,152,231,152,249,152,189,182,170,160,151,172,191,189,182,171,146,160,151,171,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,175,150,160,151,165,151,166,150,160,151,167,151,184,150,160,151,185,151,186,150,160,151,187,151,188,150,160,151,189,151,190,150,160,151,191,151,176,150,160,151,177,151,176,150,160,151,178,151,179,150,160,151,180,151,188,150,160,151,181,151,182,150,160,151,183,151,184,150,151,136,136,170,190,168,182,171,146,160,151,171,151,184,150,160,151,174,151,166,150,160,151,160,151,179,150,160,151,162,151,137,150,160,151,164,151,179,150,160,151,165,151,188,150,160,151,167,151,138,150,151,136,136,170,159,159,136,170,131,169,158,168},P={},U={{1,48},{1,49},{1,19},{1,1}},nParams=0},{K={{192,80,221,66,247,84,203,80},{203,72,204,65},1,59,2,47,3,46,4,53,5,28,6,7,40,8,55,9,122,10,103,11,90,{204,83,179,48,186,37,190,51},{220,83,160,39,165,40,144,32,173,50,167,4,155,0},{222,87,177,39,168,34,183,23,175,42,141,32,139,28,159}},C={182,168,151,168,190,168,150,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,171,150,160,151,165,151,166,150,160,151,167,151,184,150,160,151,185,151,186,150,160,151,187,151,188,150,160,151,189,151,186,150,151,190,136,170,137,191,190,168,136,169,159,136,170,131,169,190,168,153,198,137,176,136,168,131,169,152,220,137,177,136,168,131,169,158,168},P={},U={{1,32},{1,19},{1,1}},nParams=1},{K={{199,68,219,64,242,90,214,81,165,42,190,35},{203,72,204,65},1,60,2,59,3,40,4,55,5,25,6,53,7,8,54,9,62,10,11,45,12,52,13,122,14,103,15,90,41,114,51,115},C={182,168,151,168,190,168,150,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,165,150,160,151,167,151,184,150,160,151,185,151,186,150,160,151,187,151,165,150,160,151,188,151,189,150,160,151,190,151,191,150,160,151,176,151,177,150,160,151,178,151,179,150,160,151,180,151,177,150,151,181,136,170,190,168,182,170,146,160,151,170,151,182,150,160,151,172,151,177,150,160,151,174,151,183,150,151,181,136,170,190,168,151,171,172,182,170,146,160,151,170,151,177,150,160,151,172,151,161,150,160,151,174,151,136,150,160,151,160,151,191,150,160,151,162,151,137,150,151,181,136,170,159,159,159,159,136,170,131,169,158,168},P={},U={{1,32},{1,19},{1,1}},nParams=1},{K={{199,68,218,89,244,70,218,92,177,32},{203,72,204,65},1,60,2,59,3,41,4,46,5,31,6,7,57,8,9,42,10,63,11,122,12,103,13,90,{207,80,176,51,185,38,189,48},{217,46,165,42,160,53,146,57,175,20,161,27,143,17,132,29},{217,40,182,40,175,61,176,31,188,18,145,44,158,18,148,9,152}},C={182,168,151,168,190,168,150,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,175,150,160,151,165,151,166,150,160,151,167,151,173,150,160,151,184,151,185,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,190,151,191,150,160,151,176,151,189,150,151,177,136,170,137,178,190,168,136,169,159,136,170,131,169,190,168,153,210,137,179,136,168,131,169,152,40,137,180,136,168,131,169,158,168},P={},U={{1,32},{1,19},{1,1}},nParams=1},{K={{196,86,202,76,193,80,237,84,172,32},{203,72,204,65},1,63,2,41,3,57,4,59,5,42,6,7,14,8,51,9,55,10,11,122,12,103,13,90},C={182,168,151,168,190,168,150,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,171,150,160,151,165,151,166,150,160,151,167,151,184,150,160,151,185,151,186,150,160,151,187,151,171,150,160,151,188,151,189,150,160,151,190,151,191,150,160,151,176,151,189,150,151,177,136,170,190,168,182,170,146,160,151,170,151,173,150,151,177,136,170,159,159,136,170,131,169,158,168},P={},U={{1,32},{1,19},{1,1}},nParams=1},{K={{226,77,200,95,208,86,205,88,179},{228,79,196,74,244,95,200,77,182,5,162,39,190,50},1,18,2,47,3,55,4,59,5,52,6,53,7,51,8,62,9,10,11,12,46,13,14,15,40,16,90},C={182,168,151,168,191,232,168,190,168,160,153,40,131,169,147,190,168,160,151,169,191,189,182,169,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,184,150,160,151,187,151,165,150,160,151,188,151,165,150,160,151,189,151,190,150,160,151,191,151,187,150,160,151,176,151,161,150,160,151,177,151,178,150,160,151,179,151,190,150,151,180,155,170,-1,141,169,158,169},P={},U={{1,7},{1,1}},nParams=0},{K={{226,77,200,95,208,86,205,88,179},{228,79,196,74,244,95,200,77,182,5,162,39,190,50,149,56,161,10,139,29,129},1,18,2,47,3,55,4,59,5,52,6,53,7,51,8,62,90},C={182,168,151,168,191,232,168,190,168,160,153,248,131,169,147,190,168,160,151,169,191,189,182,169,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,151,186,155,170,-1,141,169,158,169},P={},U={{1,7},{1,1}},nParams=0},{K={{204,68,221,69},{202,83,205,75},{202,87,202,70,193,68},{227,77,216,116,209,75,223,37,170,44,173,62,160,43},{236,90,236},1,24,2,59,3,41,4,63,5,10,6,7,40,8,46,90,{248,91,211,39},{219,84,200,38,181},{222,85,174,32},{233,82,178,44,189,36,190,59},{247,95,165,40,163,58,167,50,191}},C={182,168,136,168,232,171,190,171,235,160,235,153,186,131,169,190,168,235,153,177,145,158,169,152,177,145,190,170,160,235,153,143,131,169,137,168,151,169,191,232,173,232,172,147,137,170,190,168,160,151,171,191,189,155,169,-1,141,171,232,160,232,175,232,174,165,174,175,160,163,161,163,162,190,174,190,175,190,160,155,170,170,232,162,232,161,190,161,232,160,190,161,145,143,153,68,147,190,162,160,151,172,191,189,182,169,146,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,160,150,160,151,184,151,185,150,160,151,186,151,187,150,151,188,155,170,-1,141,169,153,64,190,169,235,160,235,153,105,131,169,190,162,151,189,191,160,151,190,191,189,136,169,160,151,191,191,189,190,169,136,170,153,78,190,171,151,176,191,190,162,151,176,191,144,151,177,191,232,163,190,163,190,173,130,153,76,190,162,190,163,232,173,232,172,152,76,152,78,152,64,163,163,152,236,190,172,190,173,158,170},P={},U={{1,79},{1,1}},nParams=3},{K={{213,68,218,70},{213,71,195,90},0.6,{197,93,216,95,247,80,211,48},{210,70,223,90,198,73,220,34,160},{224,67,192,86,240,83,204,49,178,9,166,59,186,62},1,14,2,40,3,63,4,5,0,6,53,7,52,8,9,10,11,12,41,13,42,59,15,45,16,90,25,50,22,57,54,{171,43,186,58},{175,62,168,54},{161,60,177,61,170,47},{142,40,165,22,177,52,141,1,155,8,159},{131,61,147},23,62,{131,48,184,60},31,{137,58,185,63,153,10,149,24,155,48,159,18,147,231,80,227,102,240,127,210,108,226},24,46,{130,36,179,51,131,20,147,62,147,4,142},{131,56,168,54,151,14,132,1},{153,57,187,14,141,28,153,20,145},30,{166,57,191,14,138}},C={181,153,658,137,168,151,169,191,151,170,136,169,131,169,182,168,151,171,191,153,650,147,137,172,160,151,173,191,189,182,169,146,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,163,150,160,151,165,151,166,150,160,151,167,151,184,150,160,151,185,151,186,150,160,151,187,151,163,150,160,151,188,151,165,150,160,151,189,151,187,150,160,151,190,151,163,150,160,151,191,151,176,150,160,151,177,151,178,150,160,151,175,151,179,150,160,151,180,151,181,150,160,151,182,151,186,150,151,183,155,170,-1,141,169,160,235,153,125,131,169,147,137,172,160,151,173,191,189,182,169,146,160,151,174,151,136,150,160,151,160,151,137,150,160,151,162,151,184,150,160,151,164,151,178,150,160,151,165,151,138,150,160,151,167,151,184,150,160,151,185,151,139,150,160,151,187,151,179,150,160,151,188,151,140,150,151,183,155,170,-1,141,169,232,168,182,170,136,168,232,169,190,168,160,153,78,131,169,190,169,153,648,145,137,141,151,142,191,232,171,232,170,147,137,143,190,168,160,151,128,191,189,155,169,-1,141,171,232,174,232,173,232,172,165,172,173,174,163,175,163,160,190,172,190,173,190,174,155,170,170,232,160,232,175,190,175,232,174,190,175,145,143,153,680,147,190,160,160,151,129,191,189,182,169,146,160,151,174,151,130,150,160,151,160,151,184,150,160,151,162,151,131,150,160,151,164,151,163,150,160,151,165,151,140,150,151,183,155,170,-1,141,169,160,153,296,131,169,190,160,151,132,191,182,169,146,160,151,174,151,175,150,160,151,160,151,187,150,160,151,162,151,133,150,160,151,164,151,133,150,151,183,136,170,234,153,338,147,190,160,160,151,134,191,189,182,169,146,160,151,174,151,135,150,160,151,160,151,179,150,160,151,162,151,176,150,160,151,164,151,163,150,160,151,165,151,189,150,160,151,167,151,179,150,160,151,185,151,161,150,160,151,187,151,152,150,151,183,155,170,-1,141,169,160,235,153,359,131,169,190,160,151,153,191,232,161,190,161,153,336,190,169,151,154,191,190,161,151,154,191,144,151,155,191,232,162,190,162,190,171,130,153,350,190,160,190,162,232,171,232,170,152,350,152,336,152,338,163,161,163,162,152,419,190,170,160,153,676,131,169,190,171,151,156,130,153,694,182,171,153,692,137,157,154,169,136,169,131,169,152,692,152,694,152,648,152,650,163,168,163,169,163,170,163,171,163,172,163,173,163,174,163,175,163,160,163,161,163,162,152,168,158,168},P={{K={{231,76,219,72,226,80,203,75,164,55}},C={182,168,160,151,168,191,189,182,169,136,170,131,169,158,168},P={},U={{0,3},{1,2}},nParams=0}},U={{1,76},{1,1},{1,79},{1,78}},nParams=0},{K={{213,68,218,70},{213,71,195,90},0.4,{197,93,216,95,247,87,208,44,161,43,184},{210,70,223,90,198,73,220,34,160},{224,67,192,86,240,83,204,49,178,9,166,59,186,62},1,22,2,53,3,61,4,41,90,50,{242,115,203,92,172,32},{228,83,217,74,173,52,249},{221,82,204},0,{197,90,220,45,169}},C={181,153,39,137,168,151,169,191,151,170,136,169,131,169,182,168,151,171,191,153,47,147,137,172,160,151,173,191,189,182,169,146,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,151,166,155,170,-1,141,169,232,168,182,170,136,168,232,169,190,168,160,153,248,131,169,190,169,153,45,182,171,190,168,145,151,167,136,171,232,170,190,170,153,43,190,169,151,184,190,170,151,184,191,137,185,151,186,191,151,187,151,162,151,187,136,171,170,150,137,188,154,169,136,169,131,169,152,43,152,45,152,47,163,168,163,169,163,170,152,168,158,168},P={{K={{241,76,202,70,196,69,245,82,166},{228,79,216,75,225,83,200,72,167,52}},C={182,168,151,168,191,160,151,169,191,189,182,169,136,170,131,169,158,168},P={},U={{0,4},{1,2}},nParams=0}},U={{1,76},{1,1},{1,79},{1,81},{1,77}},nParams=0},{K={{213,68,218,70},{213,71,195,90},2,{197,93,216,95,231,93,208,44},{210,70,223,90,198,73,220,34,160},{224,67,192,86,240,83,204,49,178,9,166,59,186,62},1,23,59,3,42,90,{224,80,197},9,63,54,4,5,6,7,53,8,46,28,40,41,18,47,10,{215,50,167,35,188,33},{248,38,179,15,170,32,180,62,177,7,134,5,155,0},{142,37,165,41},21,11,{133,46,165,43,149,62,169,44,151,36,131,6,159,19,172,23,106,228,99,198,96,214},24,{149,59,164,60,180,43,164,49,132,27,153},{133,12,188,51,187,63},{145,46,172,39,184,41,236},{166,41,167},0,{186,45,179,58,182},{162,33,181,56},57,50,96,122,12,13,14,{148,50,175,25,150,11,135,33,146,26,158}},C={181,153,546,137,168,151,169,191,151,170,136,169,131,169,182,168,151,171,191,153,730,182,169,136,168,232,168,190,168,153,728,147,137,172,160,151,173,191,189,182,170,146,160,151,174,151,175,150,160,151,170,151,160,150,160,151,161,151,162,150,151,163,155,170,-1,141,169,160,153,37,131,169,147,137,172,151,164,191,160,151,173,191,189,182,170,146,160,151,174,151,165,150,160,151,170,151,166,150,160,151,161,151,167,150,160,151,184,151,167,150,160,151,185,151,165,150,160,151,186,151,162,150,160,151,187,151,188,150,160,151,189,151,190,150,151,163,155,170,-1,141,169,232,169,145,232,170,147,137,172,160,151,173,191,189,182,170,146,160,151,174,151,191,150,160,151,170,151,188,150,160,151,161,151,176,150,160,151,184,151,166,150,160,151,185,151,177,150,160,151,186,151,190,150,160,151,187,151,178,150,160,151,189,151,179,150,160,151,165,151,190,150,160,151,180,151,177,150,151,163,155,170,-1,141,169,232,171,190,171,153,479,147,137,181,190,171,160,151,182,191,189,155,169,-1,141,171,232,174,232,173,232,172,165,172,173,174,163,175,163,160,190,172,190,173,190,174,155,170,170,232,160,232,175,190,175,232,174,190,175,145,143,153,477,190,160,151,183,191,182,170,146,160,151,174,151,165,150,160,151,170,151,166,150,160,151,161,151,167,150,160,151,184,151,167,150,160,151,185,151,136,150,160,151,186,151,179,150,160,151,187,151,190,150,160,151,189,151,162,150,160,151,165,151,188,150,160,151,180,151,177,150,160,151,137,151,190,150,151,163,136,170,234,153,475,190,160,232,170,152,477,152,475,152,87,152,479,190,169,160,235,153,297,131,169,190,170,232,161,190,161,153,710,147,190,161,160,151,138,191,189,182,170,146,160,151,174,151,139,150,160,151,170,151,160,150,160,151,161,151,177,150,160,151,184,151,166,150,160,151,185,151,180,150,160,151,186,151,160,150,160,151,187,151,176,150,160,151,189,151,190,150,151,163,155,170,-1,141,169,160,235,153,380,131,169,190,161,151,140,191,232,162,190,162,153,708,190,168,151,141,190,162,151,141,191,137,142,151,143,191,151,128,151,185,151,128,136,171,170,150,137,129,154,169,136,169,131,169,182,172,160,151,130,191,189,182,170,146,160,151,174,151,131,150,160,151,170,151,132,150,160,151,161,151,188,150,160,151,184,151,162,150,160,151,185,151,133,150,160,151,186,151,134,150,160,151,187,151,177,150,160,151,189,151,166,150,160,151,165,151,167,150,160,151,180,151,167,150,160,151,137,151,134,150,160,151,135,151,160,150,160,151,152,151,190,150,160,151,153,151,134,150,151,163,136,170,190,161,160,151,154,191,189,136,169,159,136,170,131,169,152,708,152,710,152,728,152,730,163,168,163,169,163,170,163,171,163,172,163,173,163,174,163,175,163,160,163,161,163,162,152,168,158,168},P={{K={{229,64,217,66,194,92,205,113,174,34,186},{228,79,216,75,225,83,200,72,167,52},{224,72,199,67,214,84,207,124,162,52,163}},C={182,168,151,168,191,160,151,169,191,189,136,169,131,169,182,168,151,170,191,160,151,169,191,189,136,169,131,169,158,168},P={},U={{0,3}},nParams=0}},U={{1,76},{1,79},{1,1},{1,77},{1,19}},nParams=0},{K={{213,68,218,70},{213,71,195,90},5,{197,93,216,95,246,77,197},{210,70,223,90,198,73,220,34,160},{224,67,192,86,240,83,204,49,178,9,166,59,186,62},1,28,2,53,3,40,4,63,41,6,46,7,18,8,47,9,10,90,59,45,50,57,49,42,{249,42,169,47,137,58,165,40,171,32,143,2,131,23,160,19,150,224,111,194,124,210},24,{145,55,160,32,176,39,160,13,128,23,157},{129,0,184,47,191,51},{149,34,168,59,188,37,232},{170,45,187},0,{182,41,175,62,186},{174,37,169,60},96,122,51,11,62,12,13,56,14,15,35,16,17,19,61,20,21,22,23,117,25,26,27,54},C={181,153,669,137,168,151,169,191,151,170,136,169,131,169,182,168,151,171,191,153,641,182,169,136,168,232,168,190,168,153,655,147,137,172,160,151,173,191,189,182,170,146,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,170,151,166,150,160,151,167,151,184,150,160,151,185,151,186,150,160,151,187,151,188,150,160,151,189,151,184,150,160,151,190,151,166,150,151,191,155,170,-1,141,169,232,169,145,232,170,190,169,153,70,147,190,169,160,151,173,191,189,182,170,146,160,151,174,151,189,150,160,151,160,151,176,150,160,151,162,151,177,150,160,151,164,151,189,150,160,151,170,151,178,150,160,151,167,151,176,150,160,151,185,151,179,150,160,151,187,151,180,150,151,191,155,170,-1,141,169,232,171,190,171,153,68,147,190,171,160,151,173,191,189,182,170,146,160,151,174,151,189,150,160,151,160,151,178,150,160,151,162,151,161,150,160,151,164,151,181,150,151,191,155,170,-1,141,169,232,170,152,68,152,70,190,170,153,457,147,190,170,160,151,182,191,189,182,170,146,160,151,174,151,183,150,160,151,160,151,176,150,160,151,162,151,166,150,160,151,164,151,165,150,160,151,170,151,190,150,160,151,167,151,176,150,160,151,185,151,163,150,160,151,187,151,184,150,151,191,155,170,-1,141,169,160,235,153,407,131,169,190,170,151,136,191,232,172,190,172,153,503,190,168,151,137,190,172,151,137,191,137,138,151,139,191,151,140,151,170,151,140,136,171,170,150,152,503,152,457,137,141,154,169,136,169,131,169,147,182,172,160,151,142,191,189,182,170,146,160,151,174,151,179,150,160,151,160,151,178,150,160,151,162,151,161,150,160,151,164,151,181,150,160,151,170,151,143,150,160,151,167,151,128,150,160,151,185,151,184,150,160,151,187,151,163,150,160,151,189,151,129,150,160,151,190,151,165,150,160,151,130,151,131,150,160,151,132,151,128,150,160,151,133,151,134,150,160,151,135,151,188,150,160,151,152,151,153,150,160,151,154,151,128,150,160,151,155,151,188,150,160,151,186,151,181,150,160,151,156,151,157,150,160,151,158,151,163,150,160,151,159,151,176,150,160,151,144,151,131,150,160,151,145,151,165,150,160,151,183,151,146,150,160,151,147,151,184,150,160,151,148,151,161,150,160,151,149,151,161,150,160,151,175,151,150,150,151,191,155,170,-1,141,169,131,169,152,655,152,641,163,168,163,169,163,170,163,171,163,172,152,168,158,168},P={{K={{227,80,208,120,193,82,203,92,165,32},{228,79,216,75,225,83,200,72,167,52},{225,82,210,123,220,88,215}},C={182,168,151,168,191,160,151,169,191,189,136,169,131,169,182,168,151,170,191,160,151,169,191,189,136,169,131,169,158,168},P={},U={{0,3}},nParams=0}},U={{1,76},{1,79},{1,1},{1,77},{1,19}},nParams=0},{K={{213,68,218,70},{213,71,195,90},0.2,{231,64,205,66,213,91,200,37,182},{214,89,200,84,209},{241,75,194,89,229,74,219,39,162},{212,91,202,86,211,109,222,47,178,46},{194,89,221,68},{227,88,220,69,233,82,182,32,187},{192,91,223,70,236,95,174,51,175},{254,92,214,125,206,82,179,23,164,56,182,37},{194,95,215,84,213,48},{196,65,212,80,207,50},{233,87,194,126,219,49,165,47,160,54,183,52,170,17},{230,64,246},1,24,2,59,3,41,4,63,5,10,6,7,40,8,46,90,{131,37,166,15,191,56,180,53,132,1}},C={181,153,71,137,168,151,169,191,151,170,136,169,131,169,182,168,136,168,232,168,182,169,151,171,191,232,169,190,168,153,229,182,170,151,172,191,153,154,190,168,151,173,182,170,151,174,191,150,152,154,182,170,151,175,191,153,227,190,168,151,160,182,170,151,161,191,150,190,168,151,162,181,150,152,227,152,229,182,170,151,163,191,160,153,241,131,169,190,169,153,119,147,137,164,190,169,160,151,165,191,189,155,169,-1,141,171,232,172,232,171,232,170,165,170,171,172,163,173,163,174,190,170,190,171,190,172,155,170,170,232,174,232,173,190,173,232,172,190,173,145,143,153,117,147,190,174,160,151,166,191,189,182,171,146,160,151,167,151,184,150,160,151,185,151,186,150,160,151,187,151,188,150,160,151,189,151,190,150,160,151,191,151,176,150,160,151,177,151,186,150,160,151,178,151,179,150,160,151,180,151,181,150,151,182,155,170,-1,141,169,153,115,190,174,151,183,157,150,152,115,152,220,152,119,163,168,163,169,163,170,163,171,163,172,163,173,163,174,152,168,158,168},P={},U={{1,80},{1,7},{1,76},{1,1}},nParams=0},{K={{192,80,221,66,242,93,214,77},{203,72,204,65},1,57,2,50,3,53,4,42,5,122,6,59,7,47,8,46,9,10,25,11,12,13,14,15,103,16,90,{202,45,181,62,188,59,184,61}},C={182,168,151,168,190,168,150,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,175,150,160,151,187,151,188,150,160,151,189,151,173,150,160,151,190,151,175,150,160,151,191,151,161,150,160,151,176,151,163,150,160,151,177,151,178,150,160,151,179,151,163,150,151,180,136,170,137,181,190,168,136,169,159,136,170,131,169,158,168},P={},U={{1,76},{1,19},{1,1}},nParams=1},{K={{192,80,221,66,242,90,213,81,164,38,189},{203,72,204,65},1,57,2,50,3,53,4,42,5,122,6,59,7,47,8,46,9,10,25,11,12,54,13,14,63,15,16,17,18,103,19,90,{183,40,184,59,161,62,181,56}},C={182,168,151,168,190,168,150,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,175,150,160,151,187,151,188,150,160,151,189,151,175,150,160,151,190,151,191,150,160,151,176,151,191,150,160,151,177,151,178,150,160,151,179,151,171,150,160,151,180,151,185,150,160,151,181,151,163,150,160,151,182,151,183,150,160,151,136,151,163,150,151,137,136,170,137,138,190,168,136,169,159,136,170,131,169,158,168},P={},U={{1,76},{1,19},{1,1}},nParams=1},{K={{192,80,221,66,226,80,213,81},{203,72,204,65},1,57,2,50,3,53,4,42,5,122,6,59,7,47,8,46,9,10,11,63,12,54,13,14,15,103,16,90,{203,44,180,63,189,58,185,60}},C={182,168,151,168,190,168,150,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,175,150,160,151,187,151,186,150,160,151,188,151,189,150,160,151,190,151,191,150,160,151,176,151,191,150,160,151,177,151,163,150,160,151,178,151,179,150,160,151,180,151,163,150,151,181,136,170,137,182,190,168,136,169,159,136,170,131,169,158,168},P={},U={{1,76},{1,19},{1,1}},nParams=1},{K={{192,80,221,66,243,64,192},{203,72,204,65},1,57,2,50,3,53,4,42,5,122,6,59,7,47,8,46,9,10,24,11,12,35,13,14,103,15,90,{202,45,181,62,188,59,184,61}},C={182,168,151,168,190,168,150,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,175,150,160,151,187,151,188,150,160,151,189,151,167,150,160,151,190,151,191,150,160,151,176,151,163,150,160,151,177,151,178,150,160,151,179,151,163,150,151,180,136,170,137,181,190,168,136,169,159,136,170,131,169,158,168},P={},U={{1,76},{1,19},{1,1}},nParams=1},{K={{207,74,202,65,216,69},{225,78,203,92,211,85,206,91,176},{202,87,202,70,193,68},{227,77,216,116,209,75,223,37,170,44,173,62,160,43},{236,90,236},1,24,2,59,3,41,4,63,5,10,6,7,40,8,46,90,{245,91,208,1,169,38,162,59,178,63},{222,85,217,44},57,50,53,42,122,52,9,54,51,11,12,13,103,14,{178,37,189,38,164,51,176,5}},C={182,168,151,168,190,168,150,182,169,151,169,191,232,169,190,169,160,153,176,131,169,190,168,235,153,54,147,137,170,190,169,160,151,171,191,189,155,169,-1,141,171,232,172,232,171,232,170,165,170,171,172,163,173,163,174,190,170,190,171,190,172,155,170,170,232,174,232,173,190,173,232,172,190,173,145,143,153,52,147,190,174,160,151,172,191,189,182,170,146,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,160,150,160,151,184,151,185,150,160,151,186,151,187,150,151,188,155,170,-1,141,169,153,50,190,174,151,189,181,150,152,50,152,155,152,54,182,171,160,151,190,191,189,182,170,146,160,151,173,151,191,150,160,151,175,151,176,150,160,151,161,151,177,150,160,151,163,151,178,150,160,151,165,151,179,150,160,151,167,151,180,150,160,151,184,151,177,150,160,151,186,151,191,150,160,151,181,151,182,150,160,151,166,151,183,150,160,151,136,151,178,150,160,151,137,151,179,150,160,151,138,151,139,150,160,151,140,151,179,150,151,188,136,170,137,141,190,168,136,169,159,136,170,131,169,158,168},P={},U={{1,76},{1,7},{1,1},{1,19}},nParams=1},{K={{210,85,204,72,213},{203,72,204,65},1,57,2,50,3,53,4,42,5,122,6,41,7,8,63,9,10,62,11,12,103,13,90,{206,81,177,50,184,39,188,49}},C={182,168,151,168,190,168,150,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,161,150,160,151,167,151,184,150,160,151,185,151,184,150,160,151,186,151,187,150,160,151,188,151,163,150,160,151,189,151,190,150,160,151,191,151,163,150,151,176,136,170,137,177,190,168,136,169,159,136,170,131,169,158,168},P={},U={{1,76},{1,19},{1,1}},nParams=1},{K={{210,85,204,72,213,99,216,81,180,32},{203,72,204,65},1,57,2,50,3,53,4,42,5,122,6,41,7,8,63,9,10,62,11,12,59,13,54,14,47,15,16,17,103,18,90},C={182,168,151,168,190,168,150,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,161,150,160,151,167,151,184,150,160,151,185,151,184,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,189,151,190,150,160,151,191,151,176,150,160,151,177,151,178,150,160,151,179,151,184,150,160,151,180,151,163,150,160,151,181,151,182,150,160,151,183,151,163,150,151,136,136,170,190,168,159,136,170,131,169,158,168},P={},U={{1,76},{1,19},{1,1}},nParams=1},{K={{203,80,196,93},{203,72,204,65},1,57,2,50,3,53,4,42,5,122,6,48,7,47,8,55,9,10,11,103,12,90,{205,82,178,49,187,36,191,50}},C={182,168,151,168,190,168,150,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,161,150,160,151,187,151,163,150,160,151,188,151,189,150,160,151,190,151,163,150,151,191,136,170,137,176,190,168,136,169,159,136,170,131,169,158,168},P={},U={{1,76},{1,19},{1,1}},nParams=1},{K={{203,80,196,93,231,84,213,72,164},{203,72,204,65},1,57,2,50,3,53,4,42,5,122,6,48,7,47,8,55,9,10,12,11,59,54,13,14,63,15,16,103,17,90},C={182,168,151,168,190,168,150,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,161,150,160,151,187,151,188,150,160,151,189,151,190,150,160,151,188,151,191,150,160,151,176,151,167,150,160,151,177,151,178,150,160,151,179,151,163,150,160,151,180,151,181,150,160,151,182,151,163,150,151,183,136,170,190,168,159,136,170,131,169,158,168},P={},U={{1,76},{1,19},{1,1}},nParams=1},{K={},C={182,168,136,168,131,169,158,168},P={},U={{1,64}},nParams=0},{K={{213,68,218,70},{213,71,195,90},15,{212,75,205,92,216}},C={182,168,153,177,137,168,151,169,191,151,170,136,169,131,169,137,171,182,169,136,169,131,169,152,168,158,168},P={},U={{1,63},{1,64}},nParams=0},{K={{192,75,221,68,240,83,210},{203,72,204,65},1,59,2,52,3,46,4,51,5,27,6,60,7,49,8,122,9,103,10,90,{195,84,204,55,181,34,161,52}},C={182,168,151,168,190,168,150,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,187,150,160,151,188,151,185,150,151,189,136,170,137,190,190,168,136,169,159,136,170,131,169,190,168,153,192,182,171,136,168,131,169,152,198,182,172,136,168,131,169,158,168},P={},U={{1,32},{1,19},{1,1},{1,66},{1,67}},nParams=1},{K={{192,80,221,66,227,80,211,82,168,43},{203,72,204,65},1,59,2,47,3,46,4,53,5,8,6,63,7,48,9,51,10,52,11,122,12,103,13,90,{207,80,176,51,185,38,189,48}},C={182,168,151,168,190,168,150,182,169,160,151,169,191,189,182,170,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,163,151,161,150,160,151,184,151,185,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,190,151,191,150,160,151,176,151,189,150,151,177,136,170,137,178,190,168,136,169,159,136,170,131,169,190,168,153,210,182,171,136,168,131,169,152,40,182,172,136,168,131,169,158,168},P={},U={{1,32},{1,19},{1,1},{1,72},{1,73}},nParams=1},{K={},C={182,168,136,168,131,169,158,168},P={},U={{1,71}},nParams=0},{K={{204,68,221,69},{207,79,196},{207,78,197,74,192},20,1,0,{211,74,205,95,210},{193,66,195,81,202,72},{217,78,208,89,213}},C={146,232,168,137,168,151,169,191,182,168,151,170,191,164,151,171,136,170,232,169,182,168,151,170,191,164,190,169,144,151,172,170,232,170,182,168,151,170,191,164,232,171,151,172,232,172,190,172,151,173,142,153,150,190,170,190,171,183,153,207,152,237,190,170,190,171,179,153,207,163,173,190,170,232,173,137,174,151,175,191,190,168,182,168,151,170,191,190,173,191,136,170,131,169,190,170,190,172,170,232,170,152,134,137,160,154,169,136,169,131,169,158,168},P={{K={{242,64,221},{225,73,196,90,215,88,206},{215,70,201,67,214},{199,71,194,83,213,76},1,80,90},C={182,168,160,151,168,191,189,146,160,151,169,147,137,170,151,171,191,182,169,182,170,146,160,151,172,151,173,150,151,174,155,170,-1,141,169,150,136,170,131,169,158,168},P={},U={{0,1},{1,0},{0,2}},nParams=0}},U={{1,19},{1,83},{1,1}},nParams=0},{K={{213,68,218,70},{213,71,195,90},1},C={182,168,153,191,182,169,136,168,131,169,137,168,151,169,191,151,170,136,169,131,169,152,168,158,168},P={},U={{1,22},{1,84}},nParams=0},{K={{197,80,196,93},{209,67,222,77,222,95,202,92,173,39,184,42},1,41,2,63,3,46,4,57,5,54,6,51,7,42,8,56,9,53,10,59,11,40,12,62,90,{200,47,167,36,165,32,182,55,189,18,128},{202,51,172,61,168,55,188,53,184},52,61,116,13,14,34,15,{172,39,171,62},122,44,{191,45,162,58},47,16,17,18,19,20,21},C={182,168,160,151,168,191,189,136,169,232,168,145,232,169,137,169,153,198,137,169,190,168,136,169,131,169,182,169,146,160,151,170,151,171,150,160,151,172,151,173,150,160,151,174,151,175,150,160,151,160,151,161,150,160,151,162,151,163,150,160,151,164,151,165,150,160,151,166,151,167,150,160,151,184,151,185,150,160,151,186,151,187,150,160,151,188,151,189,150,160,151,190,151,191,150,160,151,176,151,177,150,151,178,155,170,169,232,169,152,307,137,179,153,96,137,179,190,168,136,169,131,169,182,169,146,160,151,170,151,175,150,160,151,172,151,187,150,160,151,174,151,161,150,160,151,160,151,163,150,160,151,162,151,165,150,160,151,164,151,167,150,160,151,166,151,185,150,160,151,184,151,187,150,160,151,186,151,189,150,160,151,188,151,191,150,160,151,190,151,177,150,151,178,155,170,169,232,169,152,307,137,180,153,307,137,180,182,169,146,160,151,170,151,175,150,160,151,172,151,191,150,160,151,174,151,189,150,160,151,160,151,165,150,160,151,162,151,181,150,160,151,164,151,173,150,160,151,166,151,191,150,160,151,184,151,162,150,160,151,186,151,163,150,160,151,188,151,187,150,160,151,190,151,182,150,160,151,176,151,183,150,160,151,136,151,175,150,160,151,137,151,138,150,160,151,139,151,175,150,151,178,136,170,190,168,136,170,131,169,182,169,146,160,151,170,151,175,150,160,151,172,151,191,150,160,151,174,151,189,150,160,151,160,151,165,150,160,151,162,151,181,150,160,151,164,151,173,150,160,151,166,151,191,150,160,151,184,151,162,150,160,151,186,151,163,150,160,151,188,151,187,150,160,151,190,151,182,150,160,151,176,151,183,150,160,151,136,151,175,150,160,151,137,151,138,150,160,151,139,151,175,150,151,178,155,170,169,232,169,152,307,190,169,153,696,182,168,160,151,140,191,189,182,169,146,160,151,170,151,163,150,160,151,172,151,187,150,160,151,174,151,182,150,160,151,160,151,141,150,160,151,162,151,161,150,160,151,164,151,187,150,160,151,166,151,167,150,160,151,184,151,165,150,160,151,186,151,173,150,160,151,188,151,177,150,160,151,190,151,141,150,160,151,176,151,142,150,160,151,136,151,165,150,160,151,137,151,189,150,160,151,139,151,141,150,151,178,136,170,190,169,159,136,170,131,169,152,522,147,182,168,160,151,143,191,189,182,169,146,160,151,170,151,161,150,160,151,172,151,163,150,160,151,174,151,165,150,160,151,160,151,167,150,160,151,162,151,185,150,160,151,164,151,187,150,160,151,166,151,189,150,160,151,184,151,191,150,160,151,186,151,177,150,160,151,188,151,141,150,160,151,190,151,128,150,160,151,176,151,181,150,160,151,136,151,189,150,160,151,137,151,142,150,160,151,139,151,189,150,160,151,129,151,165,150,160,151,130,151,163,150,160,151,131,151,189,150,160,151,132,151,185,150,160,151,133,151,163,150,160,151,134,151,173,150,151,178,155,170,-1,141,169,131,169,158,168},P={},U={{1,19},{1,1}},nParams=0},{K={{205,76,199,72,194},{210,84,195,64,198},1,2,14,3,40,4,59,5,51,6,52,7,63,8,9,10,122,11,54,12,53,13,61,15,57,16,17,18,19,20,21,62,90},C={182,168,151,168,146,150,182,169,136,168,131,169,147,137,169,182,170,146,160,151,170,151,170,150,160,151,171,151,172,150,160,151,173,151,174,150,160,151,175,151,160,150,160,151,161,151,162,150,160,151,163,151,164,150,160,151,165,151,166,150,160,151,167,151,174,150,160,151,184,151,165,150,160,151,185,151,186,150,160,151,187,151,188,150,160,151,189,151,190,150,160,151,191,151,176,150,160,151,172,151,186,150,160,151,177,151,178,150,160,151,179,151,188,150,160,151,180,151,166,150,160,151,181,151,160,150,160,151,182,151,174,150,160,151,183,151,166,150,160,151,136,151,137,150,151,138,155,170,-1,141,169,131,169,158,168},P={},U={{1,19},{1,84},{1,1}},nParams=0},{K={{229,64,218,89,195,90,192}},C={182,168,160,151,168,191,189,136,169,131,169,158,168},P={},U={{1,22}},nParams=0}}
+return _IlO_10(_l_I23,__0O24,_O0111,_l1_25)
